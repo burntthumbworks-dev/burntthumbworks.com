@@ -70,7 +70,7 @@
 }
 .card--interactive { display: flex; flex-direction: column; }
 .card--interactive:hover {
-  border-color: var(--ash-600);
+  border-color: var(--line-strong);
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
 }
@@ -108,9 +108,9 @@
   font-family: var(--font-sans);
   font-size: 11px; font-weight: var(--weight-semibold);
   letter-spacing: .06em; text-transform: uppercase;
-  color: var(--brass-300);
+  color: var(--brass-deep);
   background: var(--brass-tint);
-  border: 1px solid #3a3115;
+  border: 1px solid var(--line);
   border-radius: var(--radius-pill);
   padding: 3px 10px;
   white-space: nowrap;
@@ -125,10 +125,10 @@
   white-space: nowrap;
 }
 .badge svg { width: 13px; height: 13px; }
-.badge--success { color:#7FB088; background:var(--pine-tint);  border:1px solid #2f4a35; }
-.badge--warning { color:#D6AE4F; background:var(--gold-tint);  border:1px solid #4a3c18; }
-.badge--info    { color:#88A7B1; background:var(--slate-tint); border:1px solid #2a3e44; }
-.badge--ember   { color:var(--ember-300); background:var(--ember-tint); border:1px solid #5a2e18; }
+.badge--success { color:#2F5A39; background:var(--pine-tint);  border:1px solid #A7C2A7; }
+.badge--warning { color:#7A5A12; background:var(--gold-tint);  border:1px solid #CDB05A; }
+.badge--info    { color:#2E5662; background:var(--slate-tint); border:1px solid #A4C0C8; }
+.badge--ember   { color:var(--copper-700); background:var(--ember-tint); border:1px solid var(--copper-400); }
 
 /* ---- Icon used inline ---- */
 .icon { display: inline-flex; align-items: center; line-height: 0; }
@@ -143,7 +143,7 @@ svg.ic { fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: r
 }
 .contact-form input,
 .contact-form textarea {
-  width: 100%; background: var(--charcoal-850);
+  width: 100%; background: var(--paper-card);
   border: 1px solid var(--border-default); color: var(--fg-1);
   border-radius: var(--radius-md); padding: 11px 13px;
   font-family: var(--font-sans); font-size: 15px;
@@ -157,5 +157,5 @@ svg.ic { fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: r
 /* honeypot — visually removed, kept reachable only to bots */
 .cf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .cf-status { font-family: var(--font-sans); font-size: 14px; line-height: 1.5; margin: 14px 0 0; min-height: 1.2em; }
-.cf-status.ok { color: #7FB088; }
-.cf-status.err { color: #D08176; }
+.cf-status.ok { color: #2F6B45; }
+.cf-status.err { color: #B23A2E; }

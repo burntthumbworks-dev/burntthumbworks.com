@@ -1,105 +1,88 @@
 /* ============================================================
-   BURNT THUMB WORKS — Brand Tokens
-   Ported from the studio design system. Self-contained: no CDN,
-   no @import, no external requests. Drop-in for static hosting.
+   BURNT THUMB WORKS — Brand Tokens (Parchment / Editorial)
+   v06 2026-05-29: warm paper backgrounds, near-black ink text,
+   fine dark borders, muted copper/umber/brass accents.
+   Self-contained: no CDN, no @import, no external requests.
+   Variable NAMES are unchanged so existing markup/CSS adapt.
    ============================================================ */
 
-/* ---- FONTS -------------------------------------------------
-   The brand display face is "IM Fell English SC" (antique
-   letterpress) with Spectral / Hanken Grotesk / JetBrains Mono.
-   Those are NOT bundled here (no external requests allowed), so
-   this build falls back to high-quality SYSTEM fonts.
-
-   TO USE THE REAL BRAND FONTS:
-   1. Drop licensed .woff2 files into  assets/fonts/
-   2. Uncomment the @font-face blocks below and adjust the paths.
-   3. The --font-* variables already prefer the real families,
-      so nothing else needs to change.
-
-   @font-face { font-family:'IM Fell English SC';
-     src:url('../assets/fonts/IMFellEnglishSC-Regular.woff2') format('woff2');
-     font-weight:400; font-display:swap; }
-   @font-face { font-family:'Spectral';
-     src:url('../assets/fonts/Spectral-Regular.woff2') format('woff2');
-     font-weight:400; font-display:swap; }
-   @font-face { font-family:'Spectral';
-     src:url('../assets/fonts/Spectral-SemiBold.woff2') format('woff2');
-     font-weight:600; font-display:swap; }
-   @font-face { font-family:'Hanken Grotesk';
-     src:url('../assets/fonts/HankenGrotesk-Variable.woff2') format('woff2');
-     font-weight:400 700; font-display:swap; }
-   @font-face { font-family:'JetBrains Mono';
-     src:url('../assets/fonts/JetBrainsMono-Regular.woff2') format('woff2');
-     font-weight:400; font-display:swap; }
-------------------------------------------------------------- */
+/* ---- FONTS — system fallbacks (no external requests). Drop licensed
+   .woff2 into assets/fonts/ and uncomment @font-face to use brand type. ---- */
 
 :root {
-  /* ===== BASE PALETTE — charcoal / soot / ash ===== */
-  --soot-900:     #14110D;
-  --charcoal-850: #1A160F;
-  --charcoal-800: #211C14;
-  --charcoal-750: #29231A;
-  --ash-700:      #332B20;
-  --ash-650:      #3D3426;
-  --ash-600:      #4A4031;
-
-  /* ===== EMBER — burnt orange (PRIMARY) ===== */
-  --ember-700: #8F3817;
-  --ember-600: #A6431D;
-  --ember-500: #C4551F;
-  --ember-400: #DB6A33;
-  --ember-300: #E98C5B;
-  --ember-tint:#2A1A12;
-
-  /* ===== BRASS / OCHRE (secondary) ===== */
-  --brass-600: #997225;
-  --brass-500: #B98C2E;
-  --brass-400: #CBA14A;
-  --brass-300: #DBBE78;
-  --brass-tint:#251F12;
-
-  /* ===== MOSS (support + success) ===== */
-  --moss-600: #3B5340;
-  --moss-500: #4E6B52;
-  --moss-400: #6E8A6E;
-  --moss-tint:#16201A;
-
-  /* ===== PAPER / PARCHMENT (text + light companion) ===== */
-  --paper-50:  #F4EAD5;
-  --paper-100: #ECE1C9;
+  /* ===== PARCHMENT / PAPER (backgrounds) ===== */
+  --paper-page:   #F4EBD7;   /* page background — warm parchment */
+  --paper-panel:  #ECE0C6;   /* alt sections, footer, insets */
+  --paper-card:   #FAF3E2;   /* card / panel surface (lifts off page) */
+  --paper-inset:  #E7D9BC;   /* icon wells, feature panels */
+  --paper-50:  #FBF4E3;
+  --paper-100: #F4EBD7;
   --parchment-100: #F1E6CD;
-  --sepia-700: #5A4A33;
 
-  /* ===== STATUS HUES (always paired with icon + label) ===== */
-  --rust-500:  #B23A2E;  --rust-tint:  #2A1714;
-  --gold-500:  #C99227;  --gold-tint:  #281F0F;
-  --pine-500:  #4F7D55;  --pine-tint:  #16241A;
-  --slate-500: #5E7C86;  --slate-tint: #122024;
+  /* ===== INK (text) ===== */
+  --ink-strong: #211B12;     /* headings — near-black warm ink */
+  --ink:        #2C2519;     /* body */
+  --ink-soft:   #5C5039;     /* muted body / lede */
+  --ink-faint:  #897B60;     /* meta / captions */
+
+  /* ===== LINES (fine dark borders on paper) ===== */
+  --line-subtle: #DCCBA6;
+  --line:        #CBB890;
+  --line-strong: #B19A6E;
+
+  /* ===== COPPER / UMBER (primary accent — muted, brand burnt tone) ===== */
+  --copper-700: #743514;
+  --copper-600: #8A4220;
+  --copper-500: #9C4D26;
+  --copper-400: #B05E31;
+  --copper-300: #BE6E3F;
+
+  /* ===== BRASS / OCHRE (secondary, readable on paper) ===== */
+  --brass-deep: #8A6A22;
+  --brass-mid:  #A07F2E;
+  --brass-300:  #8A6A22;   /* eyebrows + footer headings (darkened for paper) */
+  --brass-600:  #7C5E1E;
+  --brass-400:  #A07F2E;
+  --brass-tint: #EFE3C4;   /* light brass wash (button/tag fill) */
+
+  /* ===== legacy "ember-*" names kept, remapped to muted copper ===== */
+  --ember-700: var(--copper-700);
+  --ember-600: var(--copper-600);
+  --ember-500: var(--copper-500);
+  --ember-400: var(--copper-400);
+  --ember-300: var(--copper-500);
+  --ember-tint:#F0DEC8;
+
+  /* ===== STATUS HUES (paired with icon + label; tuned for paper) ===== */
+  --rust-500:  #A8392B;  --rust-tint:  #F1DAD3;
+  --gold-500:  #9A7320;  --gold-tint:  #F0E4BE;
+  --pine-500:  #3C6B45;  --pine-tint:  #DDE9DC;
+  --slate-500: #3E6470;  --slate-tint: #DBE6EA;
 
   /* ===== SEMANTIC ROLES ===== */
-  --bg-base:    var(--soot-900);
-  --bg-shell:   var(--charcoal-850);
-  --surface-1:  var(--charcoal-800);
-  --surface-2:  var(--charcoal-750);
-  --surface-3:  var(--ash-700);
+  --bg-base:    var(--paper-page);
+  --bg-shell:   var(--paper-panel);
+  --surface-1:  var(--paper-inset);
+  --surface-2:  var(--paper-card);
+  --surface-3:  var(--paper-panel);
 
-  --fg-1:        var(--paper-100);
-  --fg-strong:   var(--paper-50);
-  --fg-2:        #B6A98C;
-  --fg-3:        #897C63;
-  --fg-disabled: #5E543F;
+  --fg-1:        var(--ink);
+  --fg-strong:   var(--ink-strong);
+  --fg-2:        var(--ink-soft);
+  --fg-3:        var(--ink-faint);
+  --fg-disabled: #A99B7E;
 
-  --border-subtle:  var(--ash-650);
-  --border-default: #473D2D;
-  --border-strong:  var(--ash-600);
+  --border-subtle:  var(--line-subtle);
+  --border-default: var(--line);
+  --border-strong:  var(--line-strong);
 
-  --accent:       var(--ember-500);
-  --accent-hover: var(--ember-400);
-  --accent-press: var(--ember-600);
-  --accent-fg:    #FBF1E2;
-  --secondary:    var(--brass-400);
-  --link:         var(--ember-300);
-  --link-hover:   var(--ember-400);
+  --accent:       var(--copper-500);
+  --accent-hover: var(--copper-400);
+  --accent-press: var(--copper-700);
+  --accent-fg:    #FBF4E3;
+  --secondary:    var(--brass-deep);
+  --link:         var(--copper-600);
+  --link-hover:   var(--copper-700);
 
   --success: var(--pine-500); --success-soft: var(--pine-tint);
   --warning: var(--gold-500); --warning-soft: var(--gold-tint);
@@ -129,11 +112,11 @@
   /* ===== RADIUS ===== */
   --radius-xs:2px; --radius-sm:4px; --radius-md:6px; --radius-lg:10px; --radius-xl:14px; --radius-pill:999px;
 
-  /* ===== ELEVATION ===== */
-  --shadow-sm:0 1px 2px rgba(0,0,0,.45);
-  --shadow-md:0 4px 14px rgba(0,0,0,.45), 0 1px 0 rgba(255,225,180,.03) inset;
-  --shadow-lg:0 18px 48px rgba(0,0,0,.55), 0 1px 0 rgba(255,225,180,.04) inset;
-  --shadow-ember:0 6px 24px rgba(196,85,31,.28);
+  /* ===== ELEVATION (soft, light theme) ===== */
+  --shadow-sm:0 1px 2px rgba(50,38,18,.10);
+  --shadow-md:0 3px 12px rgba(60,45,20,.10), 0 1px 0 rgba(255,255,255,.5) inset;
+  --shadow-lg:0 16px 40px rgba(60,45,20,.16);
+  --shadow-ember:0 5px 16px rgba(150,70,30,.16);
 
   /* ===== LAYOUT ===== */
   --maxw: 1120px;
