@@ -1,20 +1,15 @@
 # Deployment — Burnt Thumb Works Website
 
 **Route:** GitHub-first → GitHub Pages (per BTW GitHub-First Website Publishing rule).
-**Status (2026-05-29):** built + committed locally; **NOT pushed** — no GitHub remote, `gh` not authenticated.
+**Status (2026-05-29):** built, committed, and **PUSHED** to `burntthumbworks-dev/burntthumbworks.com` (PRIVATE), branch `main`. **Not yet published** — Pages/public/custom-domain pending (steps below).
 
-## To publish (Eric or an authenticated session)
+## To publish (remaining steps — Eric's call; outward-facing)
 ```powershell
-cd C:\BurntThumbWorks\Websites\BurntThumbWorks
-gh auth login                                   # one-time
-gh repo create burntthumbworks-dev/burntthumbworks.com --private --source . --remote origin --push
-# Then enable GitHub Pages: Settings → Pages → Source = main (root). .nojekyll is present.
-# Optional custom domain: add a CNAME file with burntthumbworks.com and configure DNS (DNS NOT changed by this task).
-```
-Without `gh`: create the repo on github.com, then:
-```powershell
-git remote add origin https://github.com/burntthumbworks-dev/burntthumbworks.com.git
-git push -u origin main
+# 1) Make public OR keep private (Pages on private repos needs a paid GitHub plan):
+gh repo edit burntthumbworks-dev/burntthumbworks.com --visibility public --accept-visibility-change-consequences
+# 2) Enable GitHub Pages from main (root). .nojekyll is present.
+gh api -X POST repos/burntthumbworks-dev/burntthumbworks.com/pages -f "source[branch]=main" -f "source[path]=/"
+# 3) Optional custom domain: add a CNAME file with burntthumbworks.com and configure DNS (DNS NOT changed by this task).
 ```
 
 ## Live URL (after Pages enabled)

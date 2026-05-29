@@ -15,4 +15,4 @@ python -m http.server 8080   # or any static server
 ```
 
 ## Status
-Built locally 2026-05-29. **Not yet pushed** — no GitHub remote configured for this repo and `gh` is not authenticated. See `DEPLOYMENT.md` for the exact publish steps.
+Built 2026-05-29 and **pushed to GitHub**: `burntthumbworks-dev/burntthumbworks.com` (private), branch `main`. GitHub Pages / public visibility / custom domain are not enabled yet — see `DEPLOYMENT.md`.
