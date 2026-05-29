@@ -195,3 +195,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; text-underline-o
   .cta-band { padding: var(--space-12) var(--space-6); }
   .hero__actions .btn { width: 100%; justify-content: center; }
 }
+
+/* Project card "Read more" cue (added 2026-05-29) */
+.card__more { margin-top: auto; padding-top: 14px; color: var(--ember-300); font-weight: 700; font-size: .92rem; }
+.card--interactive:hover .card__more { text-decoration: underline; text-underline-offset: 3px; }

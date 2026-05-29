@@ -9,7 +9,7 @@ Static marketing site for Burnt Thumb Works, built from the approved Burnt Thumb
 
 ## Local preview
 ```
-cd C:\BurntThumbWorks\Websites\BurntThumbWorks
+# from the repo root
 python -m http.server 8080   # or any static server
 # open http://localhost:8080
 ```
