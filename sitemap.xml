@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://burntthumbworks.com/</loc>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://burntthumbworks.com/hook-and-skein.html</loc>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://burntthumbworks.com/garden-sage.html</loc>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <url><loc>https://burntthumbworks.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://burntthumbworks.com/apps.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burntthumbworks.com/hook-and-skein.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://burntthumbworks.com/garden-sage.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://burntthumbworks.com/ai-workflow-setup.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://burntthumbworks.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

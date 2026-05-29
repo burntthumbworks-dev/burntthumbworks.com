@@ -1,31 +1,22 @@
 /* ============================================================
    BURNT THUMB WORKS — site.js
-   Minimal, dependency-free. Four jobs:
-   1. Mobile nav toggle (accessible).
-   2. Current year in the footer.
-   3. "Start a Project" -> opens the BTW Client Intake form
-      (Google Form) in a new tab. The static site never submits
-      or stores anything; the form is the receiver. Until the
-      form URL is configured below, this falls back to email so
-      there is never a dead link.
-   4. Email fallback -> opens the visitor's email app (no backend,
-      no data collection). The address is assembled here so it is
-      never present as plain text in the page HTML.
+   Dependency-free. Mobile nav, footer year, project-intake wiring.
    ============================================================ */
 (function () {
   "use strict";
 
-  /* ---- CONFIG ----------------------------------------------------------
-     Paste the live BTW Client Intake Google Form URL between the quotes to
-     activate the "Start a Project" button. While it is empty, the button
-     safely falls back to email. No other change is needed to go live.      */
-  var PROJECT_FORM_URL = "";  // e.g. "https://forms.gle/XXXXXXXX"
-  /* --------------------------------------------------------------------- */
+  /* ------------------------------------------------------------------
+     PROJECT INTAKE (Google Form)
+     When the studio's Google Form is live, paste its share URL below.
+     Until then, "Start a project" buttons show a calm "opening soon"
+     note instead of faking a submission.
+     e.g.  var PROJECT_FORM_URL = "https://docs.google.com/forms/d/e/XXXX/viewform";
+  ------------------------------------------------------------------ */
+  var PROJECT_FORM_URL = "";
 
-  // ---- Mobile navigation toggle ----
+  // ---- Mobile nav ----
   var toggle = document.querySelector("[data-nav-toggle]");
   var nav = document.getElementById("primary-nav");
-
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("nav--open");
@@ -46,44 +37,43 @@
   }
 
   // ---- Footer year ----
-  var yearEl = document.querySelector("[data-year]");
-  if (yearEl) { yearEl.textContent = String(new Date().getFullYear()); }
+  var yearEls = document.querySelectorAll("[data-year]");
+  for (var i = 0; i < yearEls.length; i++) { yearEls[i].textContent = String(new Date().getFullYear()); }
 
-  // ---- Email fallback (static mailto, no backend, no data collection) ----
-  // The address is assembled from parts so it is not plain text in the HTML.
-  var address = ["burntthumbworks", "gmail.com"].join("@");
-  function openEmail(subject) {
-    window.location.href =
-      "mailto:" + address + "?subject=" + encodeURIComponent(subject || "Studio inquiry");
+  // ---- Email assembled from parts (kept out of page source) ----
+  var addr = ["burntthumbworks", "gmail.com"].join("@");
+  var mailEls = document.querySelectorAll("[data-email]");
+  for (var m = 0; m < mailEls.length; m++) {
+    var el = mailEls[m];
+    var subj = el.getAttribute("data-subject") || "Studio inquiry — Burnt Thumb Works";
+    el.setAttribute("href", "mailto:" + addr + "?subject=" + encodeURIComponent(subj));
+    if (el.hasAttribute("data-email-label")) { el.textContent = addr; }
   }
 
-  var contactBtns = document.querySelectorAll("[data-contact]");
-  if (contactBtns.length) {
-    Array.prototype.forEach.call(contactBtns, function (b) {
-      b.addEventListener("click", function (e) {
-        e.preventDefault();
-        openEmail(b.getAttribute("data-subject"));
-      });
-    });
-  }
-
-  // ---- "Start a Project" -> Google Form intake (new tab), or email fallback ----
-  // The static site does not submit or store anything. When PROJECT_FORM_URL
-  // is set, the button opens that form; until then it falls back to email so
-  // the button is never a dead link.
-  var startBtns = document.querySelectorAll("[data-start-project]");
-  if (startBtns.length) {
-    Array.prototype.forEach.call(startBtns, function (b) {
+  // ---- Start-a-project buttons ----
+  var noteEl = document.getElementById("intake-note");
+  var hasIntake = !!document.getElementById("intake");
+  var startEls = document.querySelectorAll("[data-start-project]");
+  for (var s = 0; s < startEls.length; s++) {
+    (function (btn) {
       if (PROJECT_FORM_URL) {
-        b.setAttribute("href", PROJECT_FORM_URL);
-        b.setAttribute("target", "_blank");
-        b.setAttribute("rel", "noopener noreferrer");
-      } else {
-        b.addEventListener("click", function (e) {
+        btn.setAttribute("href", PROJECT_FORM_URL);
+        btn.setAttribute("target", "_blank");
+        btn.setAttribute("rel", "noopener");
+      } else if (hasIntake) {
+        // On the page that hosts the intake: scroll to it and reveal the note.
+        btn.setAttribute("href", "#intake");
+        btn.addEventListener("click", function (e) {
           e.preventDefault();
-          openEmail("Project inquiry — Burnt Thumb Works");
+          var form = document.getElementById("intake");
+          if (form) { form.scrollIntoView({ behavior: "smooth", block: "start" }); }
+          if (noteEl) { noteEl.hidden = false; if (noteEl.focus) { noteEl.focus(); } }
         });
       }
-    });
+      // Otherwise leave the authored href (contact.html#intake) so the button
+      // navigates to the contact page's intake section.
+    })(startEls[s]);
   }
+  // If the form URL is set, the standing note is unnecessary.
+  if (PROJECT_FORM_URL && noteEl) { noteEl.remove(); }
 })();

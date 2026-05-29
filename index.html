@@ -4,43 +4,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Burnt Thumb Works — Independent software studio</title>
-  <meta name="description" content="Burnt Thumb Works is an independent software studio building practical websites, apps, tools, and interactive products. Clear scope, useful design, working software.">
+  <meta name="description" content="Burnt Thumb Works is an independent software studio. We build practical websites, apps, tools, and interactive products — and our own games and assistants. Small studio, real craft.">
   <link rel="canonical" href="https://burntthumbworks.com/">
-
   <meta property="og:type" content="website">
   <meta property="og:title" content="Burnt Thumb Works — Independent software studio">
-  <meta property="og:description" content="Practical websites, apps, tools, and interactive products. Clear scope, useful design, working software.">
+  <meta property="og:description" content="Practical websites, apps, tools, and interactive products, built with care. Small studio, real craft.">
   <meta property="og:url" content="https://burntthumbworks.com/">
   <meta property="og:site_name" content="Burnt Thumb Works">
+  <meta name="theme-color" content="#F0E4C7">
+  <link rel="icon" href="assets/crest-mark.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/crest-mark.png">
 
-  <meta name="theme-color" content="#F4EBD7">
-  <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/brand-tokens.css">
+  <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ============ HEADER / NAV ============ -->
+  <!-- ============ HEADER ============ -->
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="/" aria-label="Burnt Thumb Works home">
-        <img class="brand__mark" src="assets/logo-crest.png" alt="" width="57" height="38">
-        <span class="brand__name">Burnt Thumb<span>Works</span></span>
+      <a class="brand" href="index.html" aria-label="Burnt Thumb Works — home">
+        <img class="brand__mark" src="assets/crest-mark.png" alt="" width="42" height="42">
+        <span class="brand__name">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="#build">What we build</a>
-        <a class="nav__link" href="#products">Products</a>
         <a class="nav__link" href="#services">Services</a>
-        <a class="nav__link" href="#approach">Approach</a>
-        <a class="nav__link" href="#contact">Contact</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="#contact">Get in touch</a></span>
+        <a class="nav__link" href="apps.html">Products</a>
+        <span class="nav__cta"><a class="btn btn--primary" data-start-project href="contact.html#intake">Start a project</a></span>
       </nav>
     </div>
   </header>
@@ -49,87 +48,22 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero" aria-labelledby="hero-title">
-      <img class="hero__bg" src="assets/logo-crest.png" alt="" aria-hidden="true">
       <div class="hero__inner">
-        <p class="eyebrow">Independent software studio</p>
-        <h1 class="hero__title" id="hero-title">Practical software, built with clear scope and working results.</h1>
-        <p class="hero__sub">Burnt Thumb Works is an independent software studio building websites, apps, tools, and interactive products. The focus is straightforward: useful design, software that works, and honest status at every step.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary btn--lg" href="#contact">
-            Start a Project
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-          <a class="btn btn--secondary btn--lg" href="#products">See current products</a>
+        <div class="hero__copy">
+          <h1 class="hero__title" id="hero-title">Practical software, built with <em>working hands</em>.</h1>
+          <p class="hero__sub">We build websites, apps, tools, and interactive products for people who want something that works.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--lg" data-start-project href="contact.html#intake">
+              Start a project
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn--secondary btn--lg" href="apps.html">See what we build</a>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ WHAT WE BUILD ============ -->
-    <section class="section" id="build" aria-labelledby="build-title">
-      <div class="wrap">
-        <div class="section__head">
-          <p class="eyebrow">What we build</p>
-          <h2 class="section__title" id="build-title">Software, sites, and tools that earn their place</h2>
-          <p class="section__lede">A focused range of work, delivered properly — built to be reliable, readable, and genuinely useful.</p>
-        </div>
-        <div class="grid grid--4">
-          <article class="card">
-            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-            <h3 class="card__title">Websites &amp; landing pages</h3>
-            <p class="card__body">Clean, fast, mobile-ready sites for businesses and projects — clear to read and easy to maintain.</p>
-          </article>
-          <article class="card">
-            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
-            <h3 class="card__title">Web apps &amp; prototypes</h3>
-            <p class="card__body">Working applications and testable prototypes that prove an idea before larger investment.</p>
-          </article>
-          <article class="card">
-            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-            <h3 class="card__title">Internal tools &amp; workflows</h3>
-            <p class="card__body">Small tools and lightweight automation that remove repetitive work and keep operations organized.</p>
-          </article>
-          <article class="card">
-            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
-            <h3 class="card__title">Interactive &amp; narrative products</h3>
-            <p class="card__body">Games and interactive experiences built on real systems, with structure and continuity behind the scenes.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ CURRENT PRODUCTS ============ -->
-    <section class="section section--alt" id="products" aria-labelledby="products-title">
-      <div class="wrap">
-        <div class="section__head">
-          <p class="eyebrow">Current products</p>
-          <h2 class="section__title" id="products-title">In active development</h2>
-          <p class="section__lede">Products built and maintained by the studio. Status is stated plainly — nothing here is presented as finished before it is.</p>
-        </div>
-        <div class="grid grid--projects">
-          <a class="card card--interactive" href="hook-and-skein.html">
-            <div class="project__top">
-              <span class="tag">Narrative RPG</span>
-              <span class="badge badge--warning">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                In development
-              </span>
-            </div>
-            <h3 class="card__title card__title--lg">The Hook and Skein</h3>
-            <p class="card__body">A narrative role-playing game built around readable scenes, meaningful choices, optional typed actions, and save-and-return play.</p>
-            <span class="card__more">Learn more →</span>
-          </a>
-          <a class="card card--interactive" href="garden-sage.html">
-            <div class="project__top">
-              <span class="tag">Application</span>
-              <span class="badge badge--info">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-                In development
-              </span>
-            </div>
-            <h3 class="card__title card__title--lg">Garden Sage</h3>
-            <p class="card__body">A garden and grow-management assistant for tracking plants, notes, schedules, reminders, and care decisions in one place.</p>
-            <span class="card__more">Learn more →</span>
-          </a>
+        <div class="seal">
+          <div class="seal__frame">
+            <img class="seal__crest" src="assets/crest-ink.png" alt="The Burnt Thumb Works crest: a round tower and church beside a stream, with a figure cooking over a fire." width="1218" height="1089">
+          </div>
         </div>
       </div>
     </section>
@@ -139,125 +73,193 @@
       <div class="wrap">
         <div class="section__head">
           <p class="eyebrow">Services</p>
-          <h2 class="section__title" id="services-title">Practical help for real projects</h2>
-          <p class="section__lede">Available for focused engagements where clear scope and working software matter more than process for its own sake.</p>
+          <h2 class="section__title" id="services-title">What we build</h2>
         </div>
-        <div class="grid grid--3">
+        <div class="grid grid--projects">
           <article class="card">
-            <h3 class="card__title">Websites &amp; landing pages</h3>
-            <p class="card__body">Business sites, project pages, and simple marketing sites — designed, built, and ready to maintain.</p>
+            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <h3 class="card__title">Websites &amp; web apps</h3>
+            <p class="card__body">Fast, accessible sites and web apps that load quickly, read clearly, and hold up over time. The site you're reading is one of ours — built to standards, not trends.</p>
           </article>
           <article class="card">
+            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
             <h3 class="card__title">Product prototypes</h3>
-            <p class="card__body">A working version of an idea, scoped to test what matters before committing to a full build.</p>
+            <p class="card__body">Clickable prototypes and small MVPs that turn an idea into something real you can test with people before you commit to building it all.</p>
           </article>
           <article class="card">
+            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
             <h3 class="card__title">Lightweight automation</h3>
-            <p class="card__body">Practical automation for repetitive tasks, reporting, and routine operations.</p>
+            <p class="card__body">Small, dependable scripts that take the repetitive work off your plate — handed over with everything you need to run them yourself, on your own machines.</p>
           </article>
           <article class="card">
+            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
             <h3 class="card__title">Workflow &amp; documentation</h3>
-            <p class="card__body">Cleanup and structure for documentation, internal processes, and the systems a team relies on.</p>
+            <p class="card__body">The folders, binders, and plain-English documentation your team needs to run your own tools and processes — on your own computers, without depending on anyone.</p>
           </article>
           <article class="card">
+            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></svg></div>
             <h3 class="card__title">Small-business web &amp; app support</h3>
-            <p class="card__body">Ongoing, right-sized help for small businesses that need a capable builder, not an agency retainer.</p>
+            <p class="card__body">Ongoing, plain-spoken help keeping your site, tools, and apps running, updated, and quietly improving over time.</p>
           </article>
           <article class="card">
-            <h3 class="card__title">Scope &amp; planning</h3>
-            <p class="card__body">Turning a rough idea into a clear, buildable plan with realistic steps and honest trade-offs.</p>
+            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.992 6.012 17.49 2 12 2z"/></svg></div>
+            <h3 class="card__title">Logos &amp; brand marks</h3>
+            <p class="card__body">Distinctive logos and brand marks — like the engraved crest at the top of this page — made to suit who you are, not pulled from a template.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ APPROACH ============ -->
-    <section class="section section--alt" id="approach" aria-labelledby="approach-title">
+    <!-- ============ PRODUCTS ============ -->
+    <section class="section section--alt" id="products" aria-labelledby="products-title">
       <div class="wrap">
         <div class="section__head">
-          <p class="eyebrow">Approach</p>
-          <h2 class="section__title" id="approach-title">How the work gets done</h2>
-          <p class="section__lede">A simple standard, applied consistently.</p>
+          <p class="eyebrow">A sample of our work</p>
+          <h2 class="section__title" id="products-title">Things we've built</h2>
+          <p class="section__lede">A look at what we make — and the system we make it with.</p>
         </div>
-        <div class="grid grid--2" style="gap: var(--space-10);">
+        <div class="grid grid--2">
+          <a class="card card--interactive" href="hook-and-skein.html">
+            <div class="project__top">
+              <span class="tag">Narrative RPG</span>
+              <span class="badge badge--warning">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                In development
+              </span>
+            </div>
+            <h3 class="card__title card__title--lg">The Hook and Skein</h3>
+            <p class="card__body">A text-driven fantasy roleplaying world and narrative engine — a place to play, written one careful thread at a time.</p>
+            <span class="card__link">Read about the world <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </a>
+          <a class="card card--interactive" href="garden-sage.html">
+            <div class="project__top">
+              <span class="tag">Grow assistant</span>
+              <span class="badge badge--warning">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                In development
+              </span>
+            </div>
+            <h3 class="card__title card__title--lg">Garden Sage</h3>
+            <p class="card__body">A garden and grow-management assistant in development. Being built to start from a photo and hand back plant care, lifecycle planning, and watering and feeding schedules — no forms to fill out first. Features planned, not yet live.</p>
+            <span class="card__link">See what it does <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </a>
+          <a class="card card--interactive" href="ai-workflow-setup.html">
+            <div class="project__top">
+              <span class="tag">Service</span>
+              <span class="badge badge--success">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                Available now
+              </span>
+            </div>
+            <h3 class="card__title card__title--lg">AI Workflow Setup</h3>
+            <p class="card__body">We help people and small teams set up practical AI workflows that actually produce useful work — intake, source folders, task packets, handoffs, and repeatable production runs.</p>
+            <span class="card__link">What we set up <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </a>
+          <a class="card card--interactive" data-start-project href="contact.html#intake">
+            <div class="project__top">
+              <span class="tag">Website</span>
+              <span class="badge badge--success">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                Live
+              </span>
+            </div>
+            <h3 class="card__title card__title--lg">This website</h3>
+            <p class="card__body">Yes — this one. The site you're reading is a Burnt Thumb Works build, design and copy and all. If you like it, we'll make you one.</p>
+            <span class="card__link">Start a project <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW WE WORK ============ -->
+    <section class="section" id="approach" aria-labelledby="approach-title">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 class="section__title" id="approach-title">How we work</h2>
+        </div>
+        <div class="grid grid--2" style="gap: var(--space-10) var(--space-12);">
           <div class="method">
-            <span class="method__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg></span>
+            <span class="method__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
             <div>
-              <h3 class="method__title">Clear scope</h3>
-              <p class="method__body">Work begins with a defined goal and a realistic plan, so the cost and the outcome are understood up front.</p>
+              <h3 class="method__title">Clear scope, honest estimates</h3>
+              <p class="method__body">We agree on what we're building and what it costs before we start. No surprise invoices, no scope that quietly balloons.</p>
             </div>
           </div>
           <div class="method">
-            <span class="method__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+            <span class="method__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg></span>
             <div>
-              <h3 class="method__title">Useful design</h3>
-              <p class="method__body">Interfaces and structure are kept clear and practical, built around how people actually use the product.</p>
+              <h3 class="method__title">Built to last, yours to keep</h3>
+              <p class="method__body">You own what we ship — the files, the code, the accounts. We build maintainable work with no lock-in and no black boxes.</p>
             </div>
           </div>
           <div class="method">
-            <span class="method__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+            <span class="method__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span>
             <div>
-              <h3 class="method__title">Working software</h3>
-              <p class="method__body">The deliverable is software that runs and holds up — not slideware or an open-ended plan.</p>
+              <h3 class="method__title">Privacy and security by default</h3>
+              <p class="method__body">Access is scoped, secrets stay out of the work, and we don't bolt on trackers. Your data and your customers' data stay yours.</p>
             </div>
           </div>
           <div class="method">
-            <span class="method__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span class="method__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m14 7 6 6"/><path d="M3 21l4-1 11-11a2.83 2.83 0 0 0-4-4L3 16l-1 5z"/></svg></span>
             <div>
-              <h3 class="method__title">Honest status</h3>
-              <p class="method__body">Progress is reported straight: what is done, what remains, and what it will realistically take. No overbuilt process.</p>
+              <h3 class="method__title">Practical over flashy</h3>
+              <p class="method__body">We'd rather ship a small thing that works than promise a big thing that doesn't. Useful first, handsome second, honest throughout.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ CONTACT ============ -->
-    <section class="section" id="contact" aria-labelledby="contact-title">
-      <div class="cta-band">
-        <p class="eyebrow">Contact</p>
-        <h2 class="cta-band__title" id="contact-title">Start a project</h2>
-        <p class="cta-band__body">Tell us about the project — what you need, your timeline, and roughly what you're working with. You'll get a clear, direct response on whether it's a good fit and how it could be approached.</p>
-        <div class="hero__actions" style="justify-content:center;">
-          <a class="btn btn--primary btn--lg" href="#" data-start-project>
-            Start a Project
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
+    <!-- ============ CTA ============ -->
+    <section class="section section--alt" aria-labelledby="cta-title">
+      <div class="wrap">
+        <div class="cta-band">
+          <p class="eyebrow">Start a project</p>
+          <h2 class="cta-band__title" id="cta-title">Have a project in mind?</h2>
+          <p class="cta-band__body">Tell us what you're building. We'll come back with a straight answer on how we'd approach it and what it would take.</p>
+          <div class="cta-band__actions">
+            <a class="btn btn--primary btn--lg" data-start-project href="contact.html#intake">
+              Start a project
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn--onink btn--lg" href="apps.html">See our work</a>
+          </div>
         </div>
-        <p class="cta-note">Prefer email? <a href="#" data-contact data-subject="Project inquiry — Burnt Thumb Works">Email the studio directly</a>.</p>
       </div>
     </section>
 
   </main>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="site-footer" id="about">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <div>
-        <img src="assets/logo-crest.png" alt="Burnt Thumb Works" style="height:104px;width:auto;">
-        <p class="footer-blurb">Burnt Thumb Works is an independent software studio building practical websites, apps, tools, and interactive products.</p>
+        <div class="footer-brand">
+          <img src="assets/crest-mark.png" alt="" width="52" height="52">
+          <span class="nm">Burnt Thumb<br>Works</span>
+        </div>
+        <p class="footer-blurb">An independent software studio building practical websites, apps, tools, and interactive products.</p>
       </div>
       <div class="footer-col">
         <h2 class="footer-col__h">Studio</h2>
         <ul>
-          <li><a href="#build">What we build</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#approach">Approach</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="contact.html">Start a project</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h2 class="footer-col__h">Products</h2>
         <ul>
+          <li><a href="apps.html">All products</a></li>
           <li><a href="hook-and-skein.html">The Hook and Skein</a></li>
           <li><a href="garden-sage.html">Garden Sage</a></li>
-          <li><a href="apps/">Apps</a></li>
+          <li><a href="ai-workflow-setup.html">AI Workflow Setup</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> Burnt Thumb Works · Est. 2026</span>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

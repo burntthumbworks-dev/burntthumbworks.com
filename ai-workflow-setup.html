@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Workflow Setup — Burnt Thumb Works</title>
+  <meta name="description" content="Burnt Thumb Works helps people and small teams set up practical AI workflows that actually produce useful work — intake, source folders, task packets, handoffs, and repeatable production runs.">
+  <link rel="canonical" href="https://burntthumbworks.com/ai-workflow-setup.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AI Workflow Setup — Burnt Thumb Works">
+  <meta property="og:description" content="Practical AI workflows that keep the work organized: intake, source folders, task packets, handoffs, review points, and repeatable production runs.">
+  <meta property="og:url" content="https://burntthumbworks.com/ai-workflow-setup.html">
+  <meta property="og:site_name" content="Burnt Thumb Works">
+  <meta name="theme-color" content="#F0E4C7">
+  <link rel="icon" href="assets/crest-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/site.css">
+  <style>
+    .product-lead { display: grid; grid-template-columns: 1.25fr .75fr; gap: var(--space-16); align-items: start; }
+    .fact-panel { background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm); }
+    .fact-panel h2 { font-family: var(--font-sans); font-weight: var(--weight-bold); font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--brass-700); margin: 0 0 var(--space-4); }
+    .fact-row { display: flex; justify-content: space-between; gap: var(--space-4); padding: var(--space-3) 0; border-top: 1px solid var(--border-subtle); font-size: var(--text-sm); }
+    .fact-row:first-of-type { border-top: 0; }
+    .fact-row dt { color: var(--fg-3); font-family: var(--font-mono); font-size: 12px; letter-spacing: .03em; }
+    .fact-row dd { margin: 0; color: var(--fg-1); font-weight: var(--weight-semibold); text-align: right; }
+    @media (max-width: 860px) { .product-lead { grid-template-columns: 1fr; gap: var(--space-10); } }
+
+    .problem-list { list-style: none; margin: var(--space-6) 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3) var(--space-6); }
+    .problem-list li { display: flex; gap: var(--space-3); font-family: var(--font-serif); font-size: var(--text-base); color: var(--fg-1); line-height: var(--leading-snug); }
+    .problem-list .ic { color: var(--rust-500); flex-shrink: 0; margin-top: 2px; width: 18px; height: 18px; }
+    @media (max-width: 620px) { .problem-list { grid-template-columns: 1fr; } }
+
+    .who-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin-top: var(--space-8); }
+    .who { background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-sm); }
+    .who .ic { width: 22px; height: 22px; color: var(--moss-600); margin-bottom: var(--space-3); }
+    .who h3 { font-family: var(--font-sans); font-weight: var(--weight-bold); font-size: var(--text-sm); color: var(--fg-strong); margin: 0 0 4px; }
+    .who p { font-family: var(--font-serif); font-size: 14px; line-height: var(--leading-snug); color: var(--fg-2); margin: 0; }
+    @media (max-width: 820px) { .who-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .who-grid { grid-template-columns: 1fr; } }
+
+    .outcomes { list-style: none; margin: var(--space-8) 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4) var(--space-8); }
+    .outcomes li { display: flex; gap: var(--space-3); font-family: var(--font-serif); font-size: var(--text-md); color: var(--fg-1); line-height: var(--leading-snug); }
+    .outcomes .ic { color: var(--moss-600); flex-shrink: 0; width: 19px; height: 19px; margin-top: 3px; }
+    @media (max-width: 620px) { .outcomes { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="index.html" aria-label="Burnt Thumb Works — home">
+        <img class="brand__mark" src="assets/crest-mark.png" alt="" width="42" height="42">
+        <span class="brand__name">Burnt Thumb Works</span>
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <a class="nav__link" href="index.html#services">Services</a>
+        <a class="nav__link" href="apps.html" aria-current="page">Products</a>
+        <span class="nav__cta"><a class="btn btn--primary" data-start-project href="contact.html#intake">Start a project</a></span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="apps.html">Products</a> <span>/</span> <span>AI Workflow Setup</span></nav>
+        <span class="tag" style="margin-bottom: var(--space-4);">Service</span>
+        <h1 class="page-head__title">AI Workflow Setup</h1>
+        <p class="page-head__sub">We help people and small teams set up practical AI workflows that actually produce useful work.</p>
+      </div>
+    </div>
+
+    <!-- LEAD -->
+    <section class="section" aria-label="About the service">
+      <div class="wrap">
+        <div class="product-lead">
+          <div class="prose">
+            <p class="lede">AI tools are useful, but they get messy fast. Chats scatter, files pile up, decisions get lost, and the same work gets done twice. We set up workflows that keep it organized.</p>
+            <p>Burnt Thumb Works helps you put a practical system around AI-assisted work: intake, shared source folders, reusable task packets, handoffs, review points, file routing, and repeatable production runs. The goal is simple — use AI to produce useful output without losing the thread.</p>
+            <p>We build it around how you already work, set it up, and hand it over documented in plain English so your team can run it themselves.</p>
+          </div>
+          <aside class="fact-panel" aria-label="At a glance">
+            <h2>At a glance</h2>
+            <dl>
+              <div class="fact-row"><dt>Type</dt><dd>Service</dd></div>
+              <div class="fact-row"><dt>For</dt><dd>Solo builders &amp; small teams</dd></div>
+              <div class="fact-row"><dt>Engagement</dt><dd>Setup &amp; handoff</dd></div>
+              <div class="fact-row"><dt>Delivery</dt><dd>Documented, yours to run</dd></div>
+              <div class="fact-row"><dt>Studio</dt><dd>Burnt Thumb Works</dd></div>
+            </dl>
+            <p style="font-family: var(--font-serif); font-size: 14px; color: var(--fg-2); line-height: var(--leading-normal); margin: var(--space-5) 0 0;">Want a workflow set up for your work? Tell us how you work today.</p>
+            <a class="btn btn--secondary" data-start-project href="contact.html#intake" style="width:100%; justify-content:center; margin-top: var(--space-4);">Start a project</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section" aria-labelledby="problem-title">
+      <div class="wrap">
+        <div class="section__head">
+          <p class="eyebrow">The problem</p>
+          <h2 class="section__title" id="problem-title">AI makes the work fast. It also makes it scatter.</h2>
+          <p class="section__lede">The more tools and chats in play, the easier it is to lose the thread. A good setup stops the usual ways AI work falls apart:</p>
+        </div>
+        <ul class="problem-list">
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><span>Ideas scattered across a dozen chat windows</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><span>Files piling up with no home and no version</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><span>Decisions made once and quietly forgotten</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><span>The same work done twice by different tools</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><span>Context re-explained every time you switch tools</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><span>Half-finished outputs that never quite ship</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WHAT WE SET UP -->
+    <section class="section section--alt" aria-labelledby="setup-title">
+      <div class="wrap">
+        <div class="section__head">
+          <p class="eyebrow">What we set up</p>
+          <h2 class="section__title" id="setup-title">A frame around the work</h2>
+          <p class="section__lede">We put a handful of moving parts in place that keep a project on course from a rough idea to a finished, saved output.</p>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
+            <h3 class="card__title">Intake &amp; routing</h3>
+            <p class="card__body">A simple way to capture requests and ideas, then send each one to the right place — nothing dropped in an inbox.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg></div>
+            <h3 class="card__title">Shared source folders</h3>
+            <p class="card__body">One home for a project's material, so you and every tool work from the same truth instead of a copy of a copy.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg></div>
+            <h3 class="card__title">Reusable task packets</h3>
+            <p class="card__body">Common jobs turned into packets you can run again — carrying their own context, so you're not rebuilding the brief each time.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg></div>
+            <h3 class="card__title">Handoffs</h3>
+            <p class="card__body">Clean handoffs between steps, people, and tools — the context comes with the work instead of being left behind.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="m9 14 2 2 4-4"/></svg></div>
+            <h3 class="card__title">Review points</h3>
+            <p class="card__body">Checkpoints where work is checked against what was asked, then saved with a clear record of what was decided.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg></div>
+            <h3 class="card__title">Repeatable production runs</h3>
+            <p class="card__body">A steady rhythm that turns rough ideas into finished outputs — the same way, every time, instead of starting from scratch.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO IT HELPS -->
+    <section class="section" aria-labelledby="who-title">
+      <div class="wrap">
+        <div class="section__head">
+          <p class="eyebrow">Who it helps</p>
+          <h2 class="section__title" id="who-title">Built for people juggling tools and tasks</h2>
+          <p class="section__lede">If you're using more than one AI tool and the work keeps slipping through the cracks, this is for you.</p>
+        </div>
+        <div class="who-grid">
+          <div class="who">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <h3>Solo builders</h3>
+            <p>Stay organized without becoming your own full-time project manager.</p>
+          </div>
+          <div class="who">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <h3>Small teams</h3>
+            <p>Coordinate a few people and tools without losing track of who has what.</p>
+          </div>
+          <div class="who">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/></svg>
+            <h3>Service businesses</h3>
+            <p>Run client work to a repeatable standard, with a paper trail you can hand over.</p>
+          </div>
+          <div class="who">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+            <h3>Multi-tool users</h3>
+            <p>Tie several AI tools into one workflow instead of a scattered pile of tabs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUTCOMES -->
+    <section class="section" aria-labelledby="outcomes-title" style="padding-top:0;">
+      <div class="wrap">
+        <div class="section__head">
+          <p class="eyebrow">What you end up with</p>
+          <h2 class="section__title" id="outcomes-title">A workflow you can actually run</h2>
+        </div>
+        <ul class="outcomes">
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Cleaner file routing, so work lands where it belongs</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Reusable prompts and task packets for the jobs you repeat</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Clear project handoffs that carry their own context</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>An intake system that captures requests without the chaos</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>AI-assisted production workflows that run the same way each time</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Client and project organization you can hand to anyone</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--alt" aria-labelledby="cta-title">
+      <div class="wrap">
+        <div class="cta-band">
+          <p class="eyebrow">Set it up with us</p>
+          <h2 class="cta-band__title" id="cta-title">Set up your AI workflow</h2>
+          <p class="cta-band__body">Tell us how you work, and we'll build a practical workflow around it.</p>
+          <div class="cta-band__actions">
+            <a class="btn btn--primary btn--lg" data-start-project href="contact.html#intake">Start a project <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a class="btn btn--onink btn--lg" href="apps.html">See all our work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/crest-mark.png" alt="" width="52" height="52">
+          <span class="nm">Burnt Thumb<br>Works</span>
+        </div>
+        <p class="footer-blurb">An independent software studio building practical websites, apps, tools, and interactive products.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-col__h">Studio</h2>
+        <ul>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="contact.html">Start a project</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-col__h">Products</h2>
+        <ul>
+          <li><a href="apps.html">All products</a></li>
+          <li><a href="hook-and-skein.html">The Hook and Skein</a></li>
+          <li><a href="garden-sage.html">Garden Sage</a></li>
+          <li><a href="ai-workflow-setup.html">AI Workflow Setup</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>© <span data-year>2026</span> Burnt Thumb Works · Est. 2026</span>
+        <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+</body>
+</html>

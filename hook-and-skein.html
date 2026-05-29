@@ -3,150 +3,135 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Hook and Skein — narrative RPG | Burnt Thumb Works</title>
-  <meta name="description" content="The Hook and Skein is a narrative RPG in development: readable scenes, meaningful choices, optional typed actions, and save-and-return play. AI assists narration; game systems define structure and continuity.">
+  <title>The Hook and Skein — Burnt Thumb Works</title>
+  <meta name="description" content="The Hook and Skein is a text-driven fantasy roleplaying world and narrative engine in development at Burnt Thumb Works.">
   <link rel="canonical" href="https://burntthumbworks.com/hook-and-skein.html">
-
   <meta property="og:type" content="website">
-  <meta property="og:title" content="The Hook and Skein — narrative RPG (in development)">
-  <meta property="og:description" content="Readable scenes, meaningful choices, optional typed actions, save-and-return play. By Burnt Thumb Works.">
+  <meta property="og:title" content="The Hook and Skein — a narrative fantasy RPG in development">
+  <meta property="og:description" content="A text-driven fantasy roleplaying world and narrative engine, written one careful thread at a time.">
   <meta property="og:url" content="https://burntthumbworks.com/hook-and-skein.html">
   <meta property="og:site_name" content="Burnt Thumb Works">
-
-  <meta name="theme-color" content="#F4EBD7">
-  <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="assets/favicon.png">
-
-  <link rel="stylesheet" href="css/brand-tokens.css">
+  <meta name="theme-color" content="#F0E4C7">
+  <link rel="icon" href="assets/crest-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/site.css">
+  <style>
+    /* product-page layout */
+    .product-lead { display: grid; grid-template-columns: 1.25fr .75fr; gap: var(--space-16); align-items: start; }
+    .fact-panel { background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm); }
+    .fact-panel h2 { font-family: var(--font-sans); font-weight: var(--weight-bold); font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--brass-700); margin: 0 0 var(--space-4); }
+    .fact-row { display: flex; justify-content: space-between; gap: var(--space-4); padding: var(--space-3) 0; border-top: 1px solid var(--border-subtle); font-size: var(--text-sm); }
+    .fact-row:first-of-type { border-top: 0; }
+    .fact-row dt { color: var(--fg-3); font-family: var(--font-mono); font-size: 12px; letter-spacing: .03em; }
+    .fact-row dd { margin: 0; color: var(--fg-1); font-weight: var(--weight-semibold); text-align: right; }
+    @media (max-width: 860px) { .product-lead { grid-template-columns: 1fr; gap: var(--space-10); } }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="/" aria-label="Burnt Thumb Works home">
-        <img class="brand__mark" src="assets/logo-crest.png" alt="" width="57" height="38">
-        <span class="brand__name">Burnt Thumb<span>Works</span></span>
+      <a class="brand" href="index.html" aria-label="Burnt Thumb Works — home">
+        <img class="brand__mark" src="assets/crest-mark.png" alt="" width="42" height="42">
+        <span class="brand__name">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
       <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="/#build">What we build</a>
-        <a class="nav__link" href="/#products">Products</a>
-        <a class="nav__link" href="garden-sage.html">Garden Sage</a>
-        <a class="nav__link" href="/#contact">Contact</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="/">Studio home</a></span>
+        <a class="nav__link" href="index.html#services">Services</a>
+        <a class="nav__link" href="apps.html" aria-current="page">Products</a>
+        <span class="nav__cta"><a class="btn btn--primary" data-start-project href="contact.html#intake">Start a project</a></span>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero" aria-labelledby="hs-title">
-      <img class="hero__bg" src="assets/logo-crest.png" alt="" aria-hidden="true">
-      <div class="hero__inner">
-        <p class="eyebrow">A Burnt Thumb Works product · In development</p>
-        <h1 class="hero__title" id="hs-title">The Hook and Skein</h1>
-        <p class="hero__sub">A narrative role-playing game in development, built around readable scenes, meaningful choices, optional typed actions, and save-and-return play. AI assists with narration and responsiveness, while the game's systems define structure, limits, and continuity.</p>
-        <div class="hero__actions">
-          <a class="btn btn--secondary btn--lg" href="/#products">Back to products</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="hs-what">
+    <div class="page-head">
       <div class="wrap">
-        <div class="section__head">
-          <p class="eyebrow">What it is</p>
-          <h2 class="section__title" id="hs-what">A living world you read and steer</h2>
-          <p class="section__lede">A story experience with structure underneath: choose from clear options, or type your own action, and the game keeps track of what is true.</p>
-        </div>
-        <div class="grid grid--4">
-          <article class="card">
-            <h3 class="card__title">Choose or type</h3>
-            <p class="card__body">Select a clear option to continue, or type your own action when you want to do something specific.</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Readable, low-friction play</h3>
-            <p class="card__body">Short, readable scenes that work on a phone. Suited to brief sessions or longer ones.</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Save and return</h3>
-            <p class="card__body">Characters and world state persist. Stop at any point and continue later from where you left off.</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Systems define the truth</h3>
-            <p class="card__body">AI handles narration; the game owns the rules, your state, and what is possible. The narration stays within those limits.</p>
-          </article>
-        </div>
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="apps.html">Products</a> <span>/</span> <span>The Hook and Skein</span></nav>
+        <span class="tag" style="margin-bottom: var(--space-4);">Narrative RPG</span>
+        <h1 class="page-head__title">The Hook and Skein</h1>
+        <p class="page-head__sub">A text-driven fantasy roleplaying world and narrative engine — written one careful thread at a time.</p>
       </div>
-    </section>
+    </div>
 
-    <section class="section section--alt" aria-labelledby="hs-who">
+    <section class="section" aria-label="About the world">
       <div class="wrap">
-        <div class="section__head">
-          <p class="eyebrow">Who it is for</p>
-          <h2 class="section__title" id="hs-who">Players who like to read and decide</h2>
-          <p class="section__lede">For people who enjoy text-driven games, branching choices, and a world that responds — without needing a manual to begin.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="hs-status">
-      <div class="wrap">
-        <div class="section__head">
-          <p class="eyebrow">Status</p>
-          <h2 class="section__title" id="hs-status">Where it stands</h2>
-        </div>
-        <div class="grid grid--2" style="gap: var(--space-8);">
-          <div class="method">
-            <span class="badge badge--warning">In development</span>
-            <div>
-              <h3 class="method__title">Core experience in progress</h3>
-              <p class="method__body">Character creation, a starting region, turn-by-turn play, and save-and-return are in place. The world and its systems are being expanded. It is not a finished product, and is described as in development.</p>
-            </div>
+        <div class="product-lead">
+          <div class="prose">
+            <p class="lede">The Hook and Skein is a world you read your way into. No twitch reflexes, no flashing menus — just a place built from words, and the quiet systems holding it together underneath.</p>
+            <p>It's a fantasy roleplaying world driven by text. You make choices, follow threads, and watch a world respond. The aim is the feeling of a good campaign or a well-kept notebook: a place with its own logic, where what you did yesterday still matters today.</p>
+            <h3>What we're after</h3>
+            <p>Hand-written events and characters over endless procedural sludge. A narrative engine that keeps track of the world so the story stays coherent. Something that rewards attention rather than demanding speed — closer to reading by lamplight than grinding a feed.</p>
+            <h3>Where it stands</h3>
+            <p>In active development. The world, the systems, and the engine are being built and tested inside the studio. There's no public release yet, and we won't pretend otherwise. When there's something real to play, this is where it'll be announced.</p>
           </div>
-          <div class="method">
-            <span class="badge badge--info">Planned</span>
-            <div>
-              <h3 class="method__title">Next steps</h3>
-              <p class="method__body">More of the world, deeper systems, and a smoother first-time experience. Features that are not yet built are described as planned — not presented as available.</p>
-            </div>
-          </div>
+          <aside class="fact-panel" aria-label="At a glance">
+            <h2>At a glance</h2>
+            <dl>
+              <div class="fact-row"><dt>Type</dt><dd>Narrative fantasy RPG</dd></div>
+              <div class="fact-row"><dt>Format</dt><dd>Text-driven</dd></div>
+              <div class="fact-row"><dt>Status</dt><dd>In development</dd></div>
+              <div class="fact-row"><dt>Release</dt><dd>Not yet announced</dd></div>
+              <div class="fact-row"><dt>Studio</dt><dd>Burnt Thumb Works</dd></div>
+            </dl>
+            <p style="font-family: var(--font-serif); font-size: 14px; color: var(--fg-2); line-height: var(--leading-normal); margin: var(--space-5) 0 0;">Want to hear when it opens up? Mention The Hook and Skein when you get in touch.</p>
+            <a class="btn btn--secondary" data-email data-subject="The Hook and Skein — keep me posted" href="#" style="width:100%; justify-content:center; margin-top: var(--space-4);">Keep me posted</a>
+          </aside>
         </div>
-        <p class="section__lede" style="margin-top: var(--space-8);">To follow progress or ask about an early build, <a href="/#contact">contact the studio</a>.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="more-title">
+      <div class="wrap">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">Get in touch</p>
+          <h2 class="section__title" id="more-title">We build for other people too</h2>
+          <p class="section__lede" style="margin-left:auto;margin-right:auto;">Websites, apps, and tools, on request. If you need something built, get in touch.</p>
+        </div>
+        <div style="display:flex; gap: var(--space-4); justify-content:center; flex-wrap:wrap;">
+          <a class="btn btn--secondary btn--lg" href="garden-sage.html">See Garden Sage</a>
+          <a class="btn btn--primary btn--lg" data-start-project href="contact.html#intake">Start a project <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer" id="about">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <div>
-        <img src="assets/logo-crest.png" alt="Burnt Thumb Works" style="height:104px;width:auto;">
-        <p class="footer-blurb">Burnt Thumb Works is an independent software studio building practical websites, apps, tools, and interactive products.</p>
+        <div class="footer-brand">
+          <img src="assets/crest-mark.png" alt="" width="52" height="52">
+          <span class="nm">Burnt Thumb<br>Works</span>
+        </div>
+        <p class="footer-blurb">An independent software studio building practical websites, apps, tools, and interactive products.</p>
       </div>
       <div class="footer-col">
         <h2 class="footer-col__h">Studio</h2>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/#build">What we build</a></li>
-          <li><a href="/#contact">Contact</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="contact.html">Start a project</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h2 class="footer-col__h">Products</h2>
         <ul>
+          <li><a href="apps.html">All products</a></li>
           <li><a href="hook-and-skein.html">The Hook and Skein</a></li>
           <li><a href="garden-sage.html">Garden Sage</a></li>
-          <li><a href="apps/">Apps</a></li>
+          <li><a href="ai-workflow-setup.html">AI Workflow Setup</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> Burnt Thumb Works · Est. 2026</span>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

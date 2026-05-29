@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Start a project — Burnt Thumb Works</title>
+  <meta name="description" content="Start a project with Burnt Thumb Works. Tell us what you're building through our project form, or reach the studio directly by email.">
+  <link rel="canonical" href="https://burntthumbworks.com/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Start a project — Burnt Thumb Works">
+  <meta property="og:description" content="Tell us what you're building. We'll come back with a straight answer on how we'd build it and what it would take.">
+  <meta property="og:url" content="https://burntthumbworks.com/contact.html">
+  <meta property="og:site_name" content="Burnt Thumb Works">
+  <meta name="theme-color" content="#F0E4C7">
+  <link rel="icon" href="assets/crest-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/site.css">
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1.5fr .9fr; gap: var(--space-10); align-items: start; }
+    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: var(--space-8); } }
+
+    .intake {
+      background: var(--surface-1); border: 1px solid var(--border-default);
+      border-radius: var(--radius-xl); padding: var(--space-10); box-shadow: var(--shadow-md);
+    }
+    .intake__head { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2); }
+    .intake__title { font-family: var(--font-serif); font-weight: var(--weight-semibold); font-size: var(--text-2xl); color: var(--fg-strong); margin: 0; letter-spacing: -.01em; }
+    .intake__sub { font-family: var(--font-serif); font-size: var(--text-md); line-height: var(--leading-relaxed); color: var(--fg-2); margin: 0 0 var(--space-6); }
+
+    .form-spec { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4) var(--space-6); margin: var(--space-6) 0 var(--space-8); }
+    .spec { }
+    .spec--wide { grid-column: 1 / -1; }
+    .spec__label { display: flex; align-items: baseline; gap: 8px; font-family: var(--font-sans); font-size: 13px; font-weight: var(--weight-semibold); color: var(--ink-700); margin-bottom: 6px; }
+    .spec__label .opt { font-weight: var(--weight-regular); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); }
+    .spec__hint {
+      display: flex; align-items: center; min-height: 42px; padding: 0 13px;
+      background: var(--surface-3); border: 1px solid var(--border-default); border-radius: var(--radius-md);
+      font-family: var(--font-serif); font-size: 14px; color: var(--fg-3); font-style: italic;
+    }
+    .spec__chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .spec__chips .tag { text-transform: none; letter-spacing: .02em; font-weight: var(--weight-medium); cursor: default; }
+
+    .intake__action { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
+    .intake__hint { font-family: var(--font-mono); font-size: 12px; color: var(--fg-3); letter-spacing: .03em; }
+    #intake-note {
+      margin: var(--space-6) 0 0; padding: var(--space-5) var(--space-6);
+      background: var(--brass-tint); border: 1px solid var(--parchment-400); border-radius: var(--radius-md);
+      font-family: var(--font-serif); font-size: 15px; line-height: var(--leading-normal); color: var(--ink-700);
+    }
+    #intake-note .ic { width: 18px; height: 18px; color: var(--brass-700); }
+    #intake-note a { color: var(--ember-700); font-weight: var(--weight-semibold); }
+
+    .aside-card { background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm); margin-bottom: var(--space-5); }
+    .aside-card h2 { font-family: var(--font-sans); font-weight: var(--weight-bold); font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--brass-700); margin: 0 0 var(--space-3); }
+    .aside-card p { font-family: var(--font-serif); font-size: 15px; line-height: var(--leading-normal); color: var(--fg-2); margin: 0 0 var(--space-4); }
+    .next-list { list-style: none; margin: 0; padding: 0; counter-reset: n; display: grid; gap: var(--space-4); }
+    .next-list li { display: grid; grid-template-columns: 26px 1fr; gap: var(--space-3); align-items: start; font-family: var(--font-serif); font-size: 15px; color: var(--fg-1); line-height: var(--leading-normal); }
+    .next-list li::before { counter-increment: n; content: counter(n); width: 26px; height: 26px; border-radius: var(--radius-pill); background: var(--moss-tint); border: 1px solid var(--moss-400); color: var(--moss-600); font-family: var(--font-mono); font-size: 13px; display: flex; align-items: center; justify-content: center; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="index.html" aria-label="Burnt Thumb Works — home">
+        <img class="brand__mark" src="assets/crest-mark.png" alt="" width="42" height="42">
+        <span class="brand__name">Burnt Thumb Works</span>
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <a class="nav__link" href="index.html#services">Services</a>
+        <a class="nav__link" href="apps.html">Products</a>
+        <span class="nav__cta"><a class="btn btn--primary" data-start-project href="#intake">Start a project</a></span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Start a project</span></nav>
+        <h1 class="page-head__title">Start a project</h1>
+        <p class="page-head__sub">Tell us what you're trying to build. We'll come back with a straight answer on how we'd approach it, what it would take, and what it would cost.</p>
+      </div>
+    </div>
+
+    <section class="section" aria-label="Project intake">
+      <div class="wrap">
+        <div class="contact-grid">
+
+          <!-- ============ INTAKE ============ -->
+          <div class="intake" id="intake">
+            <h2 class="intake__title">Project form</h2>
+            <p class="intake__sub">The fastest way to start. It takes about two minutes — here's everything it asks:</p>
+
+            <div class="form-spec" aria-hidden="true">
+              <div class="spec">
+                <div class="spec__label">Your name</div>
+                <div class="spec__hint">Who we'll be working with</div>
+              </div>
+              <div class="spec">
+                <div class="spec__label">Email</div>
+                <div class="spec__hint">Where we'll reply</div>
+              </div>
+              <div class="spec">
+                <div class="spec__label">Phone <span class="opt">Optional</span></div>
+                <div class="spec__hint">If you'd rather talk</div>
+              </div>
+              <div class="spec">
+                <div class="spec__label">Business / project name <span class="opt">Optional</span></div>
+                <div class="spec__hint">What to call it</div>
+              </div>
+              <div class="spec spec--wide">
+                <div class="spec__label">What do you need help with?</div>
+                <div class="spec__chips">
+                  <span class="tag">Website or web app</span>
+                  <span class="tag">Product prototype</span>
+                  <span class="tag">Lightweight automation</span>
+                  <span class="tag">Workflow &amp; documentation</span>
+                  <span class="tag">Ongoing support</span>
+                  <span class="tag">Something else</span>
+                </div>
+              </div>
+              <div class="spec">
+                <div class="spec__label">Budget range <span class="opt">Optional</span></div>
+                <div class="spec__hint">Rough is fine</div>
+              </div>
+              <div class="spec">
+                <div class="spec__label">Timeline <span class="opt">Optional</span></div>
+                <div class="spec__hint">When you'd like it</div>
+              </div>
+              <div class="spec spec--wide">
+                <div class="spec__label">Project notes</div>
+                <div class="spec__hint">A few lines on what you're trying to build</div>
+              </div>
+            </div>
+
+            <div class="intake__action">
+              <a class="btn btn--primary btn--lg" data-start-project href="#intake">
+                Start a project
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+              <span class="intake__hint">Opens the studio project form</span>
+            </div>
+
+            <p id="intake-note" role="status" tabindex="-1" hidden>
+              <strong>The project form is coming online shortly.</strong> In the meantime, the fastest way to reach us is email — send the details above to
+              <a data-email data-email-label data-subject="New project — Burnt Thumb Works" href="#">the studio</a>
+              and we'll take it from there.
+            </p>
+          </div>
+
+          <!-- ============ ASIDE ============ -->
+          <aside>
+            <div class="aside-card">
+              <h2>Prefer email?</h2>
+              <p>Skip the form and write to us directly. Include whatever you've got — even a rough idea is a fine place to start.</p>
+              <a class="btn btn--secondary" data-email data-email-label data-subject="New project — Burnt Thumb Works" href="#" style="width:100%; justify-content:center;">studio email</a>
+            </div>
+            <div class="aside-card">
+              <h2>What happens next</h2>
+              <ol class="next-list">
+                <li>You send the details — form or email.</li>
+                <li>We reply within two business days with honest first thoughts.</li>
+                <li>If it's a fit, we scope it in writing before any work begins.</li>
+              </ol>
+            </div>
+            <div class="aside-card">
+              <h2>Good to know</h2>
+              <p style="margin:0;">No newsletter, no sales sequence, no trackers. Your details are used to reply to your enquiry and nothing else.</p>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/crest-mark.png" alt="" width="52" height="52">
+          <span class="nm">Burnt Thumb<br>Works</span>
+        </div>
+        <p class="footer-blurb">An independent software studio building practical websites, apps, tools, and interactive products.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-col__h">Studio</h2>
+        <ul>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="contact.html">Start a project</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-col__h">Products</h2>
+        <ul>
+          <li><a href="apps.html">All products</a></li>
+          <li><a href="hook-and-skein.html">The Hook and Skein</a></li>
+          <li><a href="garden-sage.html">Garden Sage</a></li>
+          <li><a href="ai-workflow-setup.html">AI Workflow Setup</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>© <span data-year>2026</span> Burnt Thumb Works · Est. 2026</span>
+        <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+</body>
+</html>
