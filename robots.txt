@@ -1,0 +1,10 @@
+# robots.txt — Burnt Thumb Works
+# Normal indexing allowed.
+
+User-agent: *
+Allow: /
+
+# Keep build/review docs out of search results if uploaded.
+Disallow: /reports/
+
+Sitemap: https://burntthumbworks.com/sitemap.xml

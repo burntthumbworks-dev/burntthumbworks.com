@@ -1,0 +1,141 @@
+/* ============================================================
+   BURNT THUMB WORKS — Brand Tokens
+   Ported from the studio design system. Self-contained: no CDN,
+   no @import, no external requests. Drop-in for static hosting.
+   ============================================================ */
+
+/* ---- FONTS -------------------------------------------------
+   The brand display face is "IM Fell English SC" (antique
+   letterpress) with Spectral / Hanken Grotesk / JetBrains Mono.
+   Those are NOT bundled here (no external requests allowed), so
+   this build falls back to high-quality SYSTEM fonts.
+
+   TO USE THE REAL BRAND FONTS:
+   1. Drop licensed .woff2 files into  assets/fonts/
+   2. Uncomment the @font-face blocks below and adjust the paths.
+   3. The --font-* variables already prefer the real families,
+      so nothing else needs to change.
+
+   @font-face { font-family:'IM Fell English SC';
+     src:url('../assets/fonts/IMFellEnglishSC-Regular.woff2') format('woff2');
+     font-weight:400; font-display:swap; }
+   @font-face { font-family:'Spectral';
+     src:url('../assets/fonts/Spectral-Regular.woff2') format('woff2');
+     font-weight:400; font-display:swap; }
+   @font-face { font-family:'Spectral';
+     src:url('../assets/fonts/Spectral-SemiBold.woff2') format('woff2');
+     font-weight:600; font-display:swap; }
+   @font-face { font-family:'Hanken Grotesk';
+     src:url('../assets/fonts/HankenGrotesk-Variable.woff2') format('woff2');
+     font-weight:400 700; font-display:swap; }
+   @font-face { font-family:'JetBrains Mono';
+     src:url('../assets/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+     font-weight:400; font-display:swap; }
+------------------------------------------------------------- */
+
+:root {
+  /* ===== BASE PALETTE — charcoal / soot / ash ===== */
+  --soot-900:     #14110D;
+  --charcoal-850: #1A160F;
+  --charcoal-800: #211C14;
+  --charcoal-750: #29231A;
+  --ash-700:      #332B20;
+  --ash-650:      #3D3426;
+  --ash-600:      #4A4031;
+
+  /* ===== EMBER — burnt orange (PRIMARY) ===== */
+  --ember-700: #8F3817;
+  --ember-600: #A6431D;
+  --ember-500: #C4551F;
+  --ember-400: #DB6A33;
+  --ember-300: #E98C5B;
+  --ember-tint:#2A1A12;
+
+  /* ===== BRASS / OCHRE (secondary) ===== */
+  --brass-600: #997225;
+  --brass-500: #B98C2E;
+  --brass-400: #CBA14A;
+  --brass-300: #DBBE78;
+  --brass-tint:#251F12;
+
+  /* ===== MOSS (support + success) ===== */
+  --moss-600: #3B5340;
+  --moss-500: #4E6B52;
+  --moss-400: #6E8A6E;
+  --moss-tint:#16201A;
+
+  /* ===== PAPER / PARCHMENT (text + light companion) ===== */
+  --paper-50:  #F4EAD5;
+  --paper-100: #ECE1C9;
+  --parchment-100: #F1E6CD;
+  --sepia-700: #5A4A33;
+
+  /* ===== STATUS HUES (always paired with icon + label) ===== */
+  --rust-500:  #B23A2E;  --rust-tint:  #2A1714;
+  --gold-500:  #C99227;  --gold-tint:  #281F0F;
+  --pine-500:  #4F7D55;  --pine-tint:  #16241A;
+  --slate-500: #5E7C86;  --slate-tint: #122024;
+
+  /* ===== SEMANTIC ROLES ===== */
+  --bg-base:    var(--soot-900);
+  --bg-shell:   var(--charcoal-850);
+  --surface-1:  var(--charcoal-800);
+  --surface-2:  var(--charcoal-750);
+  --surface-3:  var(--ash-700);
+
+  --fg-1:        var(--paper-100);
+  --fg-strong:   var(--paper-50);
+  --fg-2:        #B6A98C;
+  --fg-3:        #897C63;
+  --fg-disabled: #5E543F;
+
+  --border-subtle:  var(--ash-650);
+  --border-default: #473D2D;
+  --border-strong:  var(--ash-600);
+
+  --accent:       var(--ember-500);
+  --accent-hover: var(--ember-400);
+  --accent-press: var(--ember-600);
+  --accent-fg:    #FBF1E2;
+  --secondary:    var(--brass-400);
+  --link:         var(--ember-300);
+  --link-hover:   var(--ember-400);
+
+  --success: var(--pine-500); --success-soft: var(--pine-tint);
+  --warning: var(--gold-500); --warning-soft: var(--gold-tint);
+  --danger:  var(--rust-500); --danger-soft:  var(--rust-tint);
+  --info:    var(--slate-500);--info-soft:    var(--slate-tint);
+
+  /* ===== TYPE FAMILIES (real brand fonts preferred, system fallbacks) ===== */
+  --font-display: 'IM Fell English SC', 'Trajan Pro', 'Cochin', Georgia, 'Times New Roman', serif;
+  --font-serif:   'Spectral', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-sans:    'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, 'Liberation Mono', monospace;
+
+  /* ===== TYPE SCALE ===== */
+  --text-xs:12px; --text-sm:14px; --text-base:16px; --text-md:18px;
+  --text-lg:20px; --text-xl:24px; --text-2xl:30px; --text-3xl:38px;
+  --text-4xl:48px; --text-5xl:62px;
+
+  --leading-tight:1.12; --leading-snug:1.3; --leading-normal:1.55; --leading-relaxed:1.7;
+  --tracking-display:0.03em; --tracking-eyebrow:0.18em; --tracking-tight:-0.01em;
+  --weight-regular:400; --weight-medium:500; --weight-semibold:600; --weight-bold:700;
+
+  /* ===== SPACING (4px base) ===== */
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px;
+  --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px;
+  --space-16:64px; --space-20:80px; --space-24:96px;
+
+  /* ===== RADIUS ===== */
+  --radius-xs:2px; --radius-sm:4px; --radius-md:6px; --radius-lg:10px; --radius-xl:14px; --radius-pill:999px;
+
+  /* ===== ELEVATION ===== */
+  --shadow-sm:0 1px 2px rgba(0,0,0,.45);
+  --shadow-md:0 4px 14px rgba(0,0,0,.45), 0 1px 0 rgba(255,225,180,.03) inset;
+  --shadow-lg:0 18px 48px rgba(0,0,0,.55), 0 1px 0 rgba(255,225,180,.04) inset;
+  --shadow-ember:0 6px 24px rgba(196,85,31,.28);
+
+  /* ===== LAYOUT ===== */
+  --maxw: 1120px;
+  --maxw-prose: 680px;
+}

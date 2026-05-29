@@ -1,0 +1,161 @@
+/* ============================================================
+   BURNT THUMB WORKS — Components
+   Buttons, cards, badges, nav, eyebrows. No external deps.
+   ============================================================ */
+
+/* ---- Eyebrow label ---- */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--brass-300);
+  margin: 0 0 var(--space-4);
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  line-height: 1;
+  padding: 13px 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .16s cubic-bezier(.2,.7,.2,1), border-color .16s, color .16s, transform .12s;
+}
+.btn:active { transform: translateY(1px); }
+.btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+
+.btn--primary {
+  background: var(--ember-500);
+  color: var(--accent-fg);
+  box-shadow: var(--shadow-ember);
+}
+.btn--primary:hover { background: var(--ember-400); color: var(--accent-fg); }
+.btn--primary:active { background: var(--ember-600); }
+
+.btn--secondary {
+  background: transparent;
+  color: var(--brass-300);
+  border-color: var(--brass-600);
+}
+.btn--secondary:hover { background: var(--brass-tint); color: var(--brass-300); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--fg-1);
+  border-color: var(--border-default);
+}
+.btn--ghost:hover { background: var(--surface-3); }
+
+.btn--lg { padding: 15px 28px; font-size: var(--text-base); }
+.btn--lg svg { width: 19px; height: 19px; }
+
+/* ---- Cards ---- */
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+  transition: transform .16s cubic-bezier(.2,.7,.2,1), border-color .16s, box-shadow .16s;
+}
+.card--interactive { display: flex; flex-direction: column; }
+.card--interactive:hover {
+  border-color: var(--ash-600);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.card__icon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--brass-300);
+  margin-bottom: var(--space-4);
+}
+.card__icon svg { width: 21px; height: 21px; }
+
+.card__title {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-md);
+  color: var(--fg-strong);
+  margin: 0 0 var(--space-2);
+}
+.card__title--lg { font-size: var(--text-xl); }
+.card__body {
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--fg-2);
+  margin: 0;
+}
+
+/* ---- Tags & status badges ---- */
+.tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-sans);
+  font-size: 11px; font-weight: var(--weight-semibold);
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--brass-300);
+  background: var(--brass-tint);
+  border: 1px solid #3a3115;
+  border-radius: var(--radius-pill);
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 12px; font-weight: var(--weight-semibold);
+  border-radius: var(--radius-pill);
+  padding: 4px 11px;
+  white-space: nowrap;
+}
+.badge svg { width: 13px; height: 13px; }
+.badge--success { color:#7FB088; background:var(--pine-tint);  border:1px solid #2f4a35; }
+.badge--warning { color:#D6AE4F; background:var(--gold-tint);  border:1px solid #4a3c18; }
+.badge--info    { color:#88A7B1; background:var(--slate-tint); border:1px solid #2a3e44; }
+.badge--ember   { color:var(--ember-300); background:var(--ember-tint); border:1px solid #5a2e18; }
+
+/* ---- Icon used inline ---- */
+.icon { display: inline-flex; align-items: center; line-height: 0; }
+svg.ic { fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---- Contact form ---- */
+.contact-form { max-width: 520px; margin: 28px auto 0; text-align: left; }
+.contact-form .field { margin-bottom: 16px; }
+.contact-form label {
+  display: block; font-family: var(--font-sans); font-size: 13px;
+  font-weight: 600; color: var(--fg-2); margin-bottom: 6px;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%; background: var(--charcoal-850);
+  border: 1px solid var(--border-default); color: var(--fg-1);
+  border-radius: var(--radius-md); padding: 11px 13px;
+  font-family: var(--font-sans); font-size: 15px;
+}
+.contact-form textarea { resize: vertical; min-height: 96px; }
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid var(--ember-400); outline-offset: 0; border-color: var(--ember-400);
+}
+.contact-form .btn { width: 100%; justify-content: center; margin-top: 4px; }
+/* honeypot — visually removed, kept reachable only to bots */
+.cf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.cf-status { font-family: var(--font-sans); font-size: 14px; line-height: 1.5; margin: 14px 0 0; min-height: 1.2em; }
+.cf-status.ok { color: #7FB088; }
+.cf-status.err { color: #D08176; }
