@@ -1,5 +1,10 @@
 # Changelog — Burnt Thumb Works Website
 
+## v0.2.2 - 2026-05-31
+- Added services.html as a dedicated public service-menu route for website starter, client intake to AI brief, workflow automation, records/reporting, app/tool prototype, and AI-assisted operations setup packages.
+- Updated site navigation, footer links, apps CTA, and sitemap to point Services at the dedicated service route.
+- No deploy/DNS/visibility change from this branch.
+
 ## v0.2.1 — 2026-05-31
 - Services: added "AI-assisted operations setup" card (now: small business websites, client intake & AI brief, business records & reporting, workflow automation, app/tool prototyping, AI-assisted operations setup, logos & brand marks).
 - Featured Projects (index + apps): added "Client intake → AI brief" and "Website starter / service package" as honest service/tool candidates (badge: Candidate). All six packet-named projects now present.

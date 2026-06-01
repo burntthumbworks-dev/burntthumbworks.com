@@ -75,6 +75,7 @@
 .card__title { font-family: var(--font-sans); font-weight: var(--weight-bold); font-size: var(--text-md); color: var(--fg-strong); margin: 0 0 var(--space-2); }
 .card__title--lg { font-size: var(--text-xl); letter-spacing: -.01em; }
 .card__body { font-family: var(--font-serif); font-size: var(--text-base); line-height: var(--leading-normal); color: var(--fg-2); margin: 0; }
+.card__body + .ticks { margin-top: var(--space-5); }
 
 /* ---- Tags & badges ---- */
 .tag {
