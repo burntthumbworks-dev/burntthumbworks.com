@@ -1,5 +1,10 @@
 # Changelog — Burnt Thumb Works Website
 
+## v0.2.1 — 2026-05-31
+- Services: added "AI-assisted operations setup" card (now: small business websites, client intake & AI brief, business records & reporting, workflow automation, app/tool prototyping, AI-assisted operations setup, logos & brand marks).
+- Featured Projects (index + apps): added "Client intake → AI brief" and "Website starter / service package" as honest service/tool candidates (badge: Candidate). All six packet-named projects now present.
+- No deploy/DNS/visibility change.
+
 ## v0.2.0 — 2026-05-31
 - Aligned public copy to current production direction: BTW as a practical AI-assisted software, automation, web, and product studio.
 - index.html: Services reworked to named offerings (small business websites, client intake & AI brief systems, business records & reporting, workflow automation, app/tool prototyping, logos & brand marks). Featured Projects expanded with honest status badges (available now / in development / internal tool). Added a Product Pipeline section.
