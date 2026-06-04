@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  BURNT THUMB WORKS — REUSABLE PRODUCT / POST TEMPLATE
+  ============================================================================
+  Copy this file to create a new post in /products/, /lab/, or /showcase/.
+  See /POSTS_SYSTEM.md for the full workflow.
+
+  DRAFT BY DEFAULT: this template ships with robots "noindex, nofollow" and is
+  NOT linked anywhere. A new copy stays private until you deliberately publish.
+
+  TO PUBLISH (make public + indexable):
+    1. Change the robots meta below to:  <meta name="robots" content="index, follow">
+    2. Set a correct <link rel="canonical"> URL.
+    3. Add a card linking to it on the section index (products/lab/showcase index.html).
+    4. Add a <url> entry to /sitemap.xml.
+
+  TO KEEP AS A DRAFT:
+    - Leave robots as "noindex, nofollow".
+    - Do NOT link it from any index and do NOT add it to sitemap.xml.
+    - (Optional) keep drafts in a /drafts/ subfolder for tidiness.
+
+  Fill every  <!-- FILL: ... -->  marker. These files sit ONE level deep
+  (e.g. /products/your-post.html), so assets use "../".
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><!-- FILL: Post title --> — Burnt Thumb Works</title>
+  <meta name="description" content="<!-- FILL: 1–2 sentence description for search + social. -->">
+  <link rel="canonical" href="https://burntthumbworks.com/<!-- FILL: section/slug.html -->">
+  <!-- DRAFT default. Change to "index, follow" only when publishing (see header). -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="<!-- FILL: Social title -->">
+  <meta property="og:description" content="<!-- FILL: Social description -->">
+  <meta property="og:url" content="https://burntthumbworks.com/<!-- FILL: section/slug.html -->">
+  <meta property="og:site_name" content="Burnt Thumb Works">
+  <meta name="theme-color" content="#F0E4C7">
+  <link rel="icon" href="../assets/crest-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="../index.html" aria-label="Burnt Thumb Works — home">
+        <img class="brand__mark" src="../assets/crest-mark.png" alt="" width="42" height="42">
+        <span class="brand__name">Burnt Thumb Works</span>
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <a class="nav__link" href="../services.html">Services</a>
+        <a class="nav__link" href="../apps.html">Products</a>
+        <a class="nav__link" href="../games/">Games</a>
+        <span class="nav__cta"><a class="btn btn--primary" data-start-project href="../contact.html#intake">Start a project</a></span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> <span>/</span> <a href="./"><!-- FILL: Section name --></a> <span>/</span> <span><!-- FILL: Post title --></span></nav>
+        <h1 class="page-head__title"><!-- FILL: Post title --></h1>
+        <p class="page-head__sub"><!-- FILL: One-line summary / hook. --></p>
+        <!-- Optional primary CTA:
+        <p style="margin-top: var(--space-6);">
+          <a class="btn btn--primary btn--lg" href="#"><!-- FILL: CTA label --></a>
+        </p>
+        -->
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section__head">
+          <p class="eyebrow"><!-- FILL: Eyebrow --></p>
+          <h2 class="section__title"><!-- FILL: Section heading --></h2>
+          <p class="section__lede"><!-- FILL: Lead paragraph. --></p>
+        </div>
+
+        <!-- Body. Reuse site components: grid grid--3, card, card__title, card__body,
+             badge badge--success/info/warning/ember, tag, btn btn--primary/secondary/ghost. -->
+        <div class="grid grid--3">
+          <article class="card">
+            <h3 class="card__title"><!-- FILL --></h3>
+            <p class="card__body"><!-- FILL --></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/crest-mark.png" alt="" width="52" height="52">
+          <span class="nm">Burnt Thumb<br>Works</span>
+        </div>
+        <p class="footer-blurb">An independent software studio building practical websites, apps, tools, and interactive products.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-col__h">Explore</h2>
+        <ul>
+          <li><a href="../products/">Products</a></li>
+          <li><a href="../games/">Games</a></li>
+          <li><a href="../lab/">The Lab</a></li>
+          <li><a href="../showcase/">Showcase</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-col__h">Studio</h2>
+        <ul>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../contact.html">Start a project</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>© <span data-year>2026</span> Burnt Thumb Works · Est. 2026</span>
+        <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/site.js"></script>
+</body>
+</html>
