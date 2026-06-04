@@ -1,3 +1,5 @@
+# Burnt Thumb Works — public studio site. Everything here is public and indexable,
+# including the games section (/games/ and /games/grimmkart/).
 User-agent: *
 Allow: /
 
