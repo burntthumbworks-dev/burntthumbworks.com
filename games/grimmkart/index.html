@@ -1,25 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>GrimmKart.io — Grimm Folklore Kart Racer &amp; Battle Arena</title>
-  <meta name="description" content="GrimmKart.io — a free public-domain Grimm fairy-tale kart game by Burnt Thumb Works. Race 32 cursed circular tracks or do battle across 10 arenas. Last tale standing wins." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://burntthumbworks.com/games/grimmkart/" />
-  <meta name="theme-color" content="#0b0a0f" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="GrimmKart.io — Grimm Folklore Kart Racer & Battle Arena" />
-  <meta property="og:description" content="Free browser kart game by Burnt Thumb Works — Race Mode + Battle Arena Mode, built on public-domain Grimm fairy tales." />
-  <meta property="og:url" content="https://burntthumbworks.com/games/grimmkart/" />
-  <meta property="og:site_name" content="Burnt Thumb Works" />
-  <script type="module" crossorigin src="./assets/index-C55qMBNN.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-C8LYy8Bn.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GrimmKart — a premium tale-inspired arcade game | Burnt Thumb Works</title>
+  <meta name="description" content="GrimmKart is an original Burnt Thumb Works arcade game built around speed, strategy, unlocks, and a huge expandable cast of folklore-inspired racers, karts, companions, pets, and skins. Play the free browser prototype on desktop and mobile.">
+  <link rel="canonical" href="https://burntthumbworks.com/games/grimmkart/">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GrimmKart — a premium tale-inspired arcade game">
+  <meta property="og:description" content="Speed, strategy, unlocks, and a huge expandable cast of folklore-inspired racers and karts. Play the free browser prototype.">
+  <meta property="og:url" content="https://burntthumbworks.com/games/grimmkart/">
+  <meta property="og:site_name" content="Burnt Thumb Works">
+  <meta name="theme-color" content="#F0E4C7">
+  <link rel="icon" href="../../assets/crest-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/site.css">
 </head>
 <body>
-  <div id="app">
-    <canvas id="game-canvas"></canvas>
-    <div id="ui-root"></div>
-  </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="../../index.html" aria-label="Burnt Thumb Works — home">
+        <img class="brand__mark" src="../../assets/crest-mark.png" alt="" width="42" height="42">
+        <span class="brand__name">Burnt Thumb Works</span>
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <a class="nav__link" href="../" aria-current="page">Games</a>
+        <a class="nav__link" href="../../apps.html">Apps</a>
+        <a class="nav__link" href="../../lab/">Lab</a>
+        <a class="nav__link" href="../../about.html">About</a>
+        <span class="nav__cta"><a class="btn btn--primary" href="./play/">Play GrimmKart</a></span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../index.html">Home</a> <span>/</span> <a href="../">Games</a> <span>/</span> <span>GrimmKart</span></nav>
+        <span class="tag" style="margin-bottom: var(--space-4);">Playable Prototype</span>
+        <h1 class="page-head__title">GrimmKart</h1>
+        <p class="page-head__sub">A premium tale-inspired arcade game built around speed, strategy, unlocks, and a huge expandable cast of racers, rivals, karts, companions, pets, skins, and seasonal content.</p>
+        <p style="margin-top: var(--space-6); display:flex; gap: var(--space-3); flex-wrap:wrap;">
+          <a class="btn btn--primary btn--lg" href="./play/">Play GrimmKart
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a class="btn btn--secondary btn--lg" href="../">All games</a>
+        </p>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="what-title">
+      <div class="wrap">
+        <div class="section__head">
+          <p class="eyebrow">What GrimmKart is</p>
+          <h2 class="section__title" id="what-title">Folklore, on wheels — built to grow.</h2>
+          <p class="section__lede">GrimmKart is an original Burnt Thumb Works premium game prototype built around speed, strategy, tale-inspired chaos, and a huge expandable cast.</p>
+        </div>
+        <div class="prose">
+          <p>The game pulls from folklore, fairy tales, public-domain story traditions, monsters, tricksters, heroes, villains, side characters, companions, cursed creatures, strange helpers, and the kind of background weirdos who usually get one paragraph before vanishing forever.</p>
+          <p>GrimmKart is not designed around a tiny fixed roster. It is designed to grow. A hero from one tale, a villain from another, a cursed animal, a forgotten helper, a witch's servant, a talking object, or a background character with one perfect gimmick can all become part of the game — as racers, unlockable skins, companions, pets, rivals, bosses, kart themes, power sets, and seasonal variants.</p>
+          <p>All designs are original Burnt Thumb Works interpretations rooted in public-domain story traditions — folklore-inspired, not based on any modern franchise.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="roster-title">
+      <div class="wrap">
+        <div class="section__head">
+          <p class="eyebrow">The expandable roster</p>
+          <h2 class="section__title" id="roster-title">One cast, many roles.</h2>
+          <p class="section__lede">Instead of a fixed number of characters or vehicles, GrimmKart is built around an expandable content model.</p>
+        </div>
+        <div class="grid grid--3">
+          <article class="card"><h3 class="card__title">Racers &amp; rivals</h3><p class="card__body">A large, growing cast of folklore-inspired drivers — heroes, villains, tricksters, and one-line side characters given a second life.</p></article>
+          <article class="card"><h3 class="card__title">Karts</h3><p class="card__body">Unlockable vehicles with distinct feel and themes, from breadcrumb buggies to cursed coaches.</p></article>
+          <article class="card"><h3 class="card__title">Companions &amp; pets</h3><p class="card__body">Cursed creatures, strange helpers, and talking objects that ride along as collectible companions.</p></article>
+          <article class="card"><h3 class="card__title">Skins &amp; alternates</h3><p class="card__body">Alternate looks and seasonal variants — a way to keep favorites fresh without pay-to-win.</p></article>
+          <article class="card"><h3 class="card__title">Power sets</h3><p class="card__body">Item and ability themes drawn from each tale's logic, so characters play to their story.</p></article>
+          <article class="card"><h3 class="card__title">Collectible identities</h3><p class="card__body">Background weirdos become bosses, rivals, kart themes, or unlockable identities over time.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="vision-title">
+      <div class="wrap">
+        <div class="section__head">
+          <p class="eyebrow">Premium game direction</p>
+          <h2 class="section__title" id="vision-title">A premium game with long-term content support.</h2>
+          <p class="section__lede">The goal is a game that keeps expanding through new seasons, racers, karts, cosmetics, powers, and themed content drops.</p>
+        </div>
+        <div class="grid grid--3">
+          <article class="card"><h3 class="card__title">Seasonal content vision</h3><p class="card__body"><strong>Planned</strong> seasonal drops and season-pass-style content — new racers, karts, and cosmetics over time. (Planned direction; not live, nothing for sale yet.)</p></article>
+          <article class="card"><h3 class="card__title">Cosmetic expansion</h3><p class="card__body"><strong>Planned</strong> cosmetic and content expansions — looks and collectibles, never power you have to buy.</p></article>
+          <article class="card"><h3 class="card__title">Future progression</h3><p class="card__body"><strong>Planned</strong> progression systems, and later, optional online/backend features when they're ready.</p></article>
+        </div>
+        <p class="prose" style="margin-top: var(--space-6);"><em>Accounts, multiplayer, leaderboards, and any store are future direction — they are not live today. The prototype below is free to play with nothing to buy.</em></p>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="proto-title">
+      <div class="wrap">
+        <div class="product-lead" style="display:grid; grid-template-columns: 1.25fr .75fr; gap: var(--space-12); align-items:start;">
+          <div class="prose">
+            <p class="eyebrow">Current public prototype</p>
+            <h2 class="section__title" id="proto-title">Playable now, on desktop and mobile.</h2>
+            <p>The current public prototype focuses on making GrimmKart playable online and testing the core feel on desktop and mobile browsers. Two modes ship: a <strong>Race Mode</strong> across cursed tracks and a <strong>Battle Arena Mode</strong> for free-drive item combat. No install, no account.</p>
+            <h3>Mobile / Android test status</h3>
+            <p>This prototype now includes a <strong>rebuilt mobile touch control system</strong>: pointer-based buttons that keep working when your thumb slides, support steering and accelerating at the same time, sit clear of the Android browser bar, and can be <strong>moved, resized (S/M/L), and reset</strong> — your layout is saved on the device. On-screen controls appear automatically on phones and tablets.</p>
+            <p style="font-size: 14px; color: var(--fg-2);">Best experienced in your phone's browser in landscape. If anything feels off on your specific device, that feedback directly helps us tune it.</p>
+            <p style="margin-top: var(--space-5);">
+              <a class="btn btn--primary btn--lg" href="./play/">Play GrimmKart
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            </p>
+          </div>
+          <aside class="fact-panel" aria-label="At a glance" style="background: var(--surface-1, #fff); border:1px solid var(--border-default, #ddd); border-radius: 14px; padding: var(--space-6);">
+            <h2 style="font-size: var(--text-xs); letter-spacing:.16em; text-transform:uppercase; margin:0 0 var(--space-4);">At a glance</h2>
+            <dl>
+              <div class="fact-row" style="display:flex; justify-content:space-between; padding: var(--space-3) 0; border-top:1px solid var(--border-subtle, #eee);"><dt>Type</dt><dd>Arcade kart racer + battle arena</dd></div>
+              <div class="fact-row" style="display:flex; justify-content:space-between; padding: var(--space-3) 0; border-top:1px solid var(--border-subtle, #eee);"><dt>Modes</dt><dd>Race · Battle Arena</dd></div>
+              <div class="fact-row" style="display:flex; justify-content:space-between; padding: var(--space-3) 0; border-top:1px solid var(--border-subtle, #eee);"><dt>Platforms</dt><dd>Desktop + mobile browser</dd></div>
+              <div class="fact-row" style="display:flex; justify-content:space-between; padding: var(--space-3) 0; border-top:1px solid var(--border-subtle, #eee);"><dt>Status</dt><dd>Playable prototype</dd></div>
+              <div class="fact-row" style="display:flex; justify-content:space-between; padding: var(--space-3) 0; border-top:1px solid var(--border-subtle, #eee);"><dt>Cost</dt><dd>Free · nothing to buy</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Ownership">
+      <div class="wrap">
+        <p class="prose" style="font-size: 13px; color: var(--fg-3, #777);">GrimmKart™ is an original game project by Burnt Thumb Works LLC. © 2026 Burnt Thumb Works LLC. All rights reserved. Folklore-inspired, original designs rooted in public-domain story traditions; no affiliation with any modern franchise.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div>
+        <div class="footer-brand">
+          <img src="../../assets/crest-mark.png" alt="" width="52" height="52">
+          <span class="nm">Burnt Thumb<br>Works</span>
+        </div>
+        <p class="footer-blurb">An independent software studio building practical websites, apps, tools, and interactive products.</p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-col__h">Play &amp; build</h2>
+        <ul>
+          <li><a href="../">Games</a></li>
+          <li><a href="./play/">Play GrimmKart</a></li>
+          <li><a href="../the-hook-and-skein/">The Hook and Skein</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-col__h">Studio</h2>
+        <ul>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../contact.html">Start a project</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>© <span data-year>2026</span> Burnt Thumb Works LLC · GrimmKart™ · The Hook and Skein™</span>
+        <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/site.js"></script>
 </body>
 </html>
