@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Garden Sage — Burnt Thumb Works</title>
-  <meta name="description" content="Garden Sage is a source-backed growing assistant in development at Burnt Thumb Works — a master gardener in your pocket for planning, timing, records, and grounded advice (USDA / Cooperative Extension aligned).">
+  <title>Garden Sage Public Demo | Burnt Thumb Works</title>
+  <meta name="description" content="Public-safe preview of Garden Sage, a source-backed master gardener app in development for observations, planning, task timing, and season records.">
   <link rel="canonical" href="https://burntthumbworks.com/garden-sage.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Garden Sage — a source-backed master gardener app">
-  <meta property="og:description" content="In development: a source-backed growing assistant for planning, timing, records, and grounded advice — a master gardener in your pocket.">
+  <meta property="og:title" content="Garden Sage public demo | Burnt Thumb Works">
+  <meta property="og:description" content="A public-safe preview of a source-backed master gardener app in development for observations, planning, task timing, and season records.">
   <meta property="og:url" content="https://burntthumbworks.com/garden-sage.html">
   <meta property="og:site_name" content="Burnt Thumb Works">
   <meta name="theme-color" content="#F0E4C7">
@@ -20,14 +20,70 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/site.css">
   <style>
-    .product-lead { display: grid; grid-template-columns: 1.25fr .75fr; gap: var(--space-16); align-items: start; }
+    .product-lead { display: grid; grid-template-columns: 1.18fr .82fr; gap: var(--space-16); align-items: start; }
     .fact-panel { background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm); }
     .fact-panel h2 { font-family: var(--font-sans); font-weight: var(--weight-bold); font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--brass-700); margin: 0 0 var(--space-4); }
     .fact-row { display: flex; justify-content: space-between; gap: var(--space-4); padding: var(--space-3) 0; border-top: 1px solid var(--border-subtle); font-size: var(--text-sm); }
     .fact-row:first-of-type { border-top: 0; }
     .fact-row dt { color: var(--fg-3); font-family: var(--font-mono); font-size: 12px; letter-spacing: .03em; }
     .fact-row dd { margin: 0; color: var(--fg-1); font-weight: var(--weight-semibold); text-align: right; }
-    @media (max-width: 860px) { .product-lead { grid-template-columns: 1fr; gap: var(--space-10); } }
+    .demo-board { display: grid; grid-template-columns: .94fr 1.06fr; gap: var(--space-10); align-items: stretch; }
+    .demo-copy { align-self: center; }
+    .demo-copy .section__lede { max-width: 58ch; }
+    .demo-device {
+      background: linear-gradient(180deg, #2A2114 0%, #1F180E 100%);
+      border: 1px solid #4A3D29;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      color: #F4EAD5;
+      overflow: hidden;
+    }
+    .demo-device__top {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+      border-bottom: 1px solid #4A3D29; padding: var(--space-4) var(--space-5);
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+    }
+    .demo-device__top span:last-child { color: var(--brass-300); }
+    .demo-screen { background: #FDF9EE; color: var(--fg-1); padding: var(--space-5); display: grid; gap: var(--space-4); }
+    .screen-card {
+      background: var(--surface-1); border: 1px solid var(--border-default);
+      border-radius: var(--radius-md); padding: var(--space-4);
+    }
+    .screen-card__head { display: flex; justify-content: space-between; gap: var(--space-3); align-items: flex-start; margin-bottom: var(--space-3); }
+    .screen-card__title { font-weight: var(--weight-bold); color: var(--fg-strong); margin: 0; font-size: var(--text-base); }
+    .screen-card__meta { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); margin: 0; }
+    .signal { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; color: var(--moss-600); background: var(--moss-tint); border: 1px solid #BCD0B6; border-radius: var(--radius-pill); padding: 3px 9px; white-space: nowrap; }
+    .signal::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--moss-600); }
+    .demo-list { display: grid; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+    .demo-list li { display: grid; grid-template-columns: 28px 1fr; gap: var(--space-3); align-items: start; }
+    .demo-list b { display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: var(--radius-pill); background: var(--brass-tint); color: var(--brass-700); font-family: var(--font-mono); font-size: 12px; }
+    .demo-list span { color: var(--fg-2); font-size: var(--text-sm); line-height: var(--leading-normal); }
+    .demo-note { border-left: 3px solid var(--ember-600); padding: var(--space-3) var(--space-4); background: var(--ember-tint); color: var(--ink-700); font-size: var(--text-sm); line-height: var(--leading-normal); margin: 0; }
+    .demo-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); margin-top: var(--space-8); }
+    .demo-step {
+      background: var(--surface-1); border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-sm);
+    }
+    .demo-step__num { display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; background: var(--moss-tint); color: var(--moss-600); border-radius: var(--radius-pill); font-family: var(--font-mono); font-weight: var(--weight-bold); font-size: 12px; margin-bottom: var(--space-4); }
+    .demo-step__title { margin: 0 0 var(--space-2); font-size: var(--text-md); color: var(--fg-strong); }
+    .demo-step__body { margin: 0; color: var(--fg-2); font-size: var(--text-sm); line-height: var(--leading-normal); }
+    .guardrail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+    .guardrail {
+      background: var(--surface-1); border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg); padding: var(--space-5);
+    }
+    .guardrail h3 { margin: 0 0 var(--space-2); color: var(--fg-strong); font-size: var(--text-md); }
+    .guardrail p { margin: 0; color: var(--fg-2); font-family: var(--font-serif); line-height: var(--leading-normal); }
+    .status-strip { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-8); }
+    @media (max-width: 940px) {
+      .demo-board, .product-lead { grid-template-columns: 1fr; gap: var(--space-10); }
+      .demo-steps, .guardrail-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .demo-steps, .guardrail-grid { grid-template-columns: 1fr; }
+      .screen-card__head { flex-direction: column; }
+      .signal { width: max-content; }
+    }
   </style>
 </head>
 <body>
@@ -58,7 +114,7 @@
         <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="apps.html">Products</a> <span>/</span> <span>Garden Sage</span></nav>
         <span class="tag" style="margin-bottom: var(--space-4);">Master gardener app</span>
         <h1 class="page-head__title">Garden Sage</h1>
-        <p class="page-head__sub">A source-backed growing assistant — a master gardener in your pocket for planning, timing, records, and grounded advice. In development.</p>
+        <p class="page-head__sub">A public-safe preview of a source-backed master gardener app in development for observations, planning, task timing, and season records.</p>
       </div>
     </div>
 
@@ -66,31 +122,129 @@
       <div class="wrap">
         <div class="product-lead">
           <div class="prose">
-            <p class="lede">Garden Sage is being built as a master gardener in your pocket — a source-backed assistant for planning, timing, and recordkeeping, not just another plant-photo identifier.</p>
-            <p>The aim is to help you decide what to do now and what to prepare for next: plan a bed, greenhouse, or plot, time the work that can't be missed, keep records across the season, and get advice grounded in credible sources. It's designed to scale from a few containers to a market garden — for home and hobby gardeners, homesteaders, greenhouse and market growers alike.</p>
-            <h3>What it's being built to do</h3>
+            <p class="lede">Garden Sage is being built as a master gardener in your pocket: an assistant for turning observations into practical next steps, not just another plant-photo identifier.</p>
+            <p>This page is a sanitized web demo of the intended user loop. It shows the public concept: record what you see, review a cautious draft, turn the decision into a task, and keep a season history. Private build details, internal workflows, and future packaging remain out of view.</p>
+            <h3>What the demo shows</h3>
             <ul class="ticks">
-              <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Plan &amp; schedule.</strong> Task windows, lifecycle stages, and the timing that matters across the season.</span></li>
-              <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Source-backed guidance.</strong> Being built to align with credible public horticulture sources (USDA / Cooperative Extension / land-grant universities) and to label how sure each claim is — no fabricated citations.</span></li>
-              <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Photo-assisted observation.</strong> Snap a photo to draft a plant, stage, and likely needs — you review and confirm. (Early builds use on-device drafting only.)</span></li>
-              <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Records &amp; follow-up.</strong> Keep photo timelines, notes, and history so each cycle improves on the last.</span></li>
+              <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Observation intake.</strong> Capture a plant note, photo, location label, and timing context.</span></li>
+              <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Review-first drafts.</strong> Draft guidance is presented as something to verify, not as automatic authority.</span></li>
+              <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Task conversion.</strong> Decisions become practical work items with timing and follow-up.</span></li>
+              <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Season records.</strong> Notes and outcomes are meant to build a useful record over time.</span></li>
             </ul>
             <h3>Where it stands</h3>
-            <p>Early development — scaffolding stage. The planning, source-backed advice, photo drafting, and scheduling are <strong>planned features, not live yet</strong>; photo drafting in early builds is on-device only, with no live AI calls. An Android preview build is in progress and not yet ready to install. There's no public release and no app-store listing, and we won't claim a feature works until it does. When there's something to try, you'll find it here first.</p>
+            <p>Garden Sage is in early development. The web demo below is public-facing concept work, not a live app connection. There is no public release, no downloadable app yet, no live AI service connected here, and no live customer data collection through this page.</p>
           </div>
           <aside class="fact-panel" aria-label="At a glance">
             <h2>At a glance</h2>
             <dl>
-              <div class="fact-row"><dt>Type</dt><dd>Source-backed grow assistant</dd></div>
-              <div class="fact-row"><dt>Helps with</dt><dd>Planning, timing, records</dd></div>
-              <div class="fact-row"><dt>Knowledge</dt><dd>USDA / Extension-aligned</dd></div>
-              <div class="fact-row"><dt>Status</dt><dd>In development (scaffolding)</dd></div>
-              <div class="fact-row"><dt>Release</dt><dd>Not yet announced</dd></div>
+              <div class="fact-row"><dt>Type</dt><dd>Master gardener app</dd></div>
+              <div class="fact-row"><dt>Demo</dt><dd>Public-safe preview</dd></div>
+              <div class="fact-row"><dt>Helps with</dt><dd>Observations, tasks, records</dd></div>
+              <div class="fact-row"><dt>Guidance</dt><dd>Extension-style, source-backed</dd></div>
+              <div class="fact-row"><dt>Status</dt><dd>In development</dd></div>
+              <div class="fact-row"><dt>Release</dt><dd>Not announced</dd></div>
               <div class="fact-row"><dt>Studio</dt><dd>Burnt Thumb Works</dd></div>
             </dl>
-            <p style="font-family: var(--font-serif); font-size: 14px; color: var(--fg-2); line-height: var(--leading-normal); margin: var(--space-5) 0 0;">Want to hear when it's ready to try? Mention Garden Sage when you get in touch.</p>
-            <a class="btn btn--secondary" data-email data-subject="Garden Sage — keep me posted" href="#" style="width:100%; justify-content:center; margin-top: var(--space-4);">Keep me posted</a>
+            <p style="font-family: var(--font-serif); font-size: 14px; color: var(--fg-2); line-height: var(--leading-normal); margin: var(--space-5) 0 0;">Want to hear when it is ready to try? Mention Garden Sage when you get in touch.</p>
+            <a class="btn btn--secondary" data-email data-subject="Garden Sage - keep me posted" href="#" style="width:100%; justify-content:center; margin-top: var(--space-4);">Keep me posted</a>
           </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-labelledby="demo-title">
+      <div class="wrap">
+        <div class="demo-board">
+          <div class="demo-copy">
+            <p class="eyebrow">Public demo</p>
+            <h2 class="section__title" id="demo-title">One sample workflow, safely shown</h2>
+            <p class="section__lede">The example below is a static, public-safe storyboard. It demonstrates the intended shape of the product without connecting to private systems or revealing how the production app will be built.</p>
+            <div class="status-strip" aria-label="Public safety status">
+              <span class="badge badge--warning"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Demo only</span>
+              <span class="badge badge--info"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M12 4h9"/><path d="M4 9h16"/><path d="M4 15h16"/></svg> Static page only</span>
+              <span class="badge badge--success"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Public-safe claims</span>
+            </div>
+          </div>
+
+          <div class="demo-device" aria-label="Static Garden Sage workflow mockup">
+            <div class="demo-device__top">
+              <span>Garden Sage</span>
+              <span>Static preview</span>
+            </div>
+            <div class="demo-screen">
+              <div class="screen-card">
+                <div class="screen-card__head">
+                  <div>
+                    <p class="screen-card__title">Observation draft</p>
+                    <p class="screen-card__meta">Bed A / tomato / early fruit set</p>
+                  </div>
+                  <span class="signal">Review required</span>
+                </div>
+                <ul class="demo-list" aria-label="Observation draft steps">
+                  <li><b>1</b><span>Log symptom notes, photo context, weather, and watering history.</span></li>
+                  <li><b>2</b><span>Compare against credible public horticulture references before acting.</span></li>
+                  <li><b>3</b><span>Create a cautious task: inspect leaves, adjust watering notes, and check again in 48 hours.</span></li>
+                </ul>
+              </div>
+              <div class="screen-card">
+                <div class="screen-card__head">
+                  <div>
+                    <p class="screen-card__title">Next task</p>
+                    <p class="screen-card__meta">Queued for owner review</p>
+                  </div>
+                  <span class="signal">Source status shown</span>
+                </div>
+                <p class="demo-note">Garden Sage is designed to keep advice cautious and reviewable. This page does not make plant-health diagnoses or guarantee outcomes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-steps" aria-label="Demo workflow steps">
+          <article class="demo-step">
+            <span class="demo-step__num">01</span>
+            <h3 class="demo-step__title">Capture</h3>
+            <p class="demo-step__body">Start with a real-world observation: plant, place, timing, notes, and optional photo context.</p>
+          </article>
+          <article class="demo-step">
+            <span class="demo-step__num">02</span>
+            <h3 class="demo-step__title">Review</h3>
+            <p class="demo-step__body">Draft guidance is marked for human review and tied to a visible source-status habit.</p>
+          </article>
+          <article class="demo-step">
+            <span class="demo-step__num">03</span>
+            <h3 class="demo-step__title">Act</h3>
+            <p class="demo-step__body">Turn the decision into a task with timing, follow-up, and a clear owner action.</p>
+          </article>
+          <article class="demo-step">
+            <span class="demo-step__num">04</span>
+            <h3 class="demo-step__title">Remember</h3>
+            <p class="demo-step__body">Keep the outcome in the season record so the next decision starts with better context.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="guardrails-title">
+      <div class="wrap">
+        <div class="section__head">
+          <p class="eyebrow">Public guardrails</p>
+          <h2 class="section__title" id="guardrails-title">What this preview does not expose</h2>
+          <p class="section__lede">The public page is intentionally limited. It is meant to be useful enough to understand the product direction while protecting the parts that should remain private until release.</p>
+        </div>
+        <div class="guardrail-grid">
+          <article class="guardrail">
+            <h3>No live system access</h3>
+            <p>This page is static. It does not connect to accounts, storage, live AI, or customer data.</p>
+          </article>
+          <article class="guardrail">
+            <h3>No private build details</h3>
+            <p>The preview keeps internal workflows and technical implementation out of view.</p>
+          </article>
+          <article class="guardrail">
+            <h3>No pricing disclosure</h3>
+            <p>Release packaging and paid-feature decisions are not public yet.</p>
+          </article>
         </div>
       </div>
     </section>
