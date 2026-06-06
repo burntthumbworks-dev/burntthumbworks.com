@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../../css/brand-tokens.css">
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/site.css">
+  <link rel="stylesheet" href="../../css/garden-sage.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -29,16 +30,61 @@
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero">
-      <img class="hero__bg" src="../../assets/logo-crest.png" alt="" aria-hidden="true">
-      <div class="hero__inner">
-        <p class="eyebrow">App entry · In development</p>
-        <h1 class="hero__title">Garden Sage</h1>
-        <p class="hero__sub">Web app entry coming soon. The app will open here once it is ready for use. Until then, read about Garden Sage or get in touch to be notified when it is available.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary btn--lg" href="/garden-sage.html">About the app</a>
-          <a class="btn btn--secondary btn--lg" href="/#contact">Contact the studio</a>
+  <main id="main" class="gs-page">
+    <section class="gs-hero">
+      <div class="gs-hero__inner">
+        <svg class="gs-hero__lockup" viewBox="0 0 260 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Garden Sage" width="260" height="64">
+          <g>
+            <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.35"></circle>
+            <path d="M16 44 Q32 40 48 44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.5"></path>
+            <path d="M32 46 C32 38 32 30 32 20" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"></path>
+            <path d="M32 33 C24 33 19 28 19 21 C27 21 32 26 32 33 Z" fill="currentColor"></path>
+            <path d="M32 28 C40 28 45 23 45 16 C37 16 32 21 32 28 Z" fill="currentColor"></path>
+            <circle cx="32" cy="17.5" r="3.1" fill="currentColor"></circle>
+          </g>
+          <text x="74" y="40" font-family="Spectral, Georgia, serif" font-size="27" font-weight="600" fill="currentColor" letter-spacing="-0.01em">Garden Sage</text>
+        </svg>
+        <p class="gs-eyebrow">App entry · In development</p>
+        <h1 class="gs-hero__title">Garden Sage</h1>
+        <p class="gs-hero__sub">Garden Sage is in development. The web app will open right here once it is ready for use. It is not live yet — there is no account to sign in to and no AI service running on this page.</p>
+        <div class="gs-hero__actions">
+          <a class="gs-btn gs-btn--primary" href="/garden-sage.html">About the app</a>
+          <a class="gs-btn" href="/#contact">Contact the studio</a>
+        </div>
+        <p class="gs-hero__note">Want to be told when it opens? <a href="/#contact">Reach out</a> and we will let you know.</p>
+      </div>
+    </section>
+
+    <section class="gs-section">
+      <div class="gs-section__inner">
+        <h2 class="gs-section__title">How it will work</h2>
+        <p class="gs-section__lede">A simple, honest loop. Early builds keep photo drafting on your device — the app drafts what it sees, and you confirm before anything is saved.</p>
+        <ol class="gs-steps">
+          <li class="gs-step">
+            <span class="gs-step__num">1</span>
+            <div class="gs-step__body">
+              <h3 class="gs-step__title">Photo</h3>
+              <p class="gs-step__text">Snap a plant. In early builds this stays on your device — no photo is sent off to a server.</p>
+            </div>
+          </li>
+          <li class="gs-step">
+            <span class="gs-step__num">2</span>
+            <div class="gs-step__body">
+              <h3 class="gs-step__title">Draft</h3>
+              <p class="gs-step__text">Garden Sage drafts what it sees: a plant guess, a lifecycle stage, a care note.</p>
+            </div>
+          </li>
+          <li class="gs-step">
+            <span class="gs-step__num">3</span>
+            <div class="gs-step__body">
+              <h3 class="gs-step__title">Verify</h3>
+              <p class="gs-step__text">You confirm or correct the draft. Nothing is treated as fact until you say so.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="gs-card gs-card--note">
+          <p class="gs-confidence"><span class="gs-status-tag gs-status-tag--review">In development</span> This page is a placeholder, not a live AI or customer-data system. Features shown describe the intended product and are not final. Any cannabis-related guidance, where present, will stay general and lifecycle-based, limited to legal-state context, and is not medical or legal advice.</p>
         </div>
       </div>
     </section>

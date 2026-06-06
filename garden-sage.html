@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/garden-sage.css">
   <style>
     .product-lead { display: grid; grid-template-columns: 1.25fr .75fr; gap: var(--space-16); align-items: start; }
     .fact-panel { background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm); }
@@ -52,17 +53,34 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" class="gs-page">
     <div class="page-head">
       <div class="wrap">
         <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="apps.html">Products</a> <span>/</span> <span>Garden Sage</span></nav>
-        <span class="tag" style="margin-bottom: var(--space-4);">Master gardener app</span>
-        <h1 class="page-head__title">Garden Sage</h1>
-        <p class="page-head__sub">A source-backed growing assistant — a master gardener in your pocket for planning, timing, records, and grounded advice. In development.</p>
       </div>
     </div>
 
-    <section class="section" aria-label="About Garden Sage">
+    <section class="gs-section" aria-label="Garden Sage overview" style="padding-top:var(--gs-space-8);">
+      <div class="wrap">
+        <div class="gs-hero">
+          <span class="gs-eyebrow">Master gardener app · In development</span>
+          <h1>Garden Sage</h1>
+          <p>A source-backed growing assistant — a master gardener in your pocket for planning, timing, records, and grounded advice. In development.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:var(--gs-space-2); justify-content:center; align-items:center; margin-top:var(--gs-space-5);">
+            <span class="gs-status-tag gs-status-tag--seedling">Seedling</span>
+            <span class="gs-status-tag gs-status-tag--veg">Veg</span>
+            <span class="gs-status-tag gs-status-tag--flowering">Flowering</span>
+            <span class="gs-moon-chip"><span class="gs-moon-chip__phase" aria-hidden="true"></span>Waxing gibbous</span>
+          </div>
+          <div class="gs-hero__actions">
+            <a class="gs-btn gs-btn--primary" data-email data-subject="Garden Sage — keep me posted" href="#">Keep me posted</a>
+            <a class="gs-btn" href="#how-it-works">How it works</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gs-section" aria-label="About Garden Sage">
       <div class="wrap">
         <div class="product-lead">
           <div class="prose">
@@ -78,8 +96,8 @@
             <h3>Where it stands</h3>
             <p>Early development — scaffolding stage. The planning, source-backed advice, photo drafting, and scheduling are <strong>planned features, not live yet</strong>; photo drafting in early builds is on-device only, with no live AI calls. An Android preview build is in progress and not yet ready to install. There's no public release and no app-store listing, and we won't claim a feature works until it does. When there's something to try, you'll find it here first.</p>
           </div>
-          <aside class="fact-panel" aria-label="At a glance">
-            <h2>At a glance</h2>
+          <aside class="gs-card" aria-label="At a glance">
+            <h2 style="font-size:var(--gs-text-xs); letter-spacing:.16em; text-transform:uppercase; color:var(--gs-soil); margin:0 0 var(--gs-space-4);">At a glance</h2>
             <dl>
               <div class="fact-row"><dt>Type</dt><dd>Source-backed grow assistant</dd></div>
               <div class="fact-row"><dt>Helps with</dt><dd>Planning, timing, records</dd></div>
@@ -88,10 +106,129 @@
               <div class="fact-row"><dt>Release</dt><dd>Not yet announced</dd></div>
               <div class="fact-row"><dt>Studio</dt><dd>Burnt Thumb Works</dd></div>
             </dl>
-            <p style="font-family: var(--font-serif); font-size: 14px; color: var(--fg-2); line-height: var(--leading-normal); margin: var(--space-5) 0 0;">Want to hear when it's ready to try? Mention Garden Sage when you get in touch.</p>
-            <a class="btn btn--secondary" data-email data-subject="Garden Sage — keep me posted" href="#" style="width:100%; justify-content:center; margin-top: var(--space-4);">Keep me posted</a>
+            <p style="font-family: var(--gs-font-display); font-size: 14px; color: var(--gs-text-muted); line-height: 1.5; margin: var(--gs-space-5) 0 0;">Want to hear when it's ready to try? Mention Garden Sage when you get in touch.</p>
+            <a class="gs-btn gs-btn--primary" data-email data-subject="Garden Sage — keep me posted" href="#" style="width:100%; margin-top: var(--gs-space-4);">Keep me posted</a>
           </aside>
         </div>
+      </div>
+    </section>
+
+    <section class="gs-section gs-section--alt" id="how-it-works" aria-labelledby="how-title">
+      <div class="wrap">
+        <header class="gs-section__head">
+          <span class="gs-eyebrow">The core flow</span>
+          <h2 class="gs-section__title" id="how-title">How it's meant to work</h2>
+          <p class="gs-section__lede">Garden Sage drafts what it sees — you confirm. The loop being built is three steps. (Planned flow, not live yet.)</p>
+        </header>
+        <div class="gs-grid gs-grid--3">
+          <article class="gs-card">
+            <div class="gs-step">
+              <div class="gs-step__num" aria-hidden="true">1</div>
+              <div class="gs-step__body">
+                <h3>Take a photo</h3>
+                <p>Snap a plant in a bed, pot, or tray. Nothing leaves your phone to do this in early builds — on-device only, no live AI calls.</p>
+              </div>
+            </div>
+          </article>
+          <article class="gs-card">
+            <div class="gs-step">
+              <div class="gs-step__num" aria-hidden="true">2</div>
+              <div class="gs-step__body">
+                <h3>Sage drafts what it sees</h3>
+                <p>A draft of the likely plant, lifecycle stage, and what to check next — shown with how sure it is. A draft, not a diagnosis.</p>
+              </div>
+            </div>
+          </article>
+          <article class="gs-card">
+            <div class="gs-step">
+              <div class="gs-step__num" aria-hidden="true">3</div>
+              <div class="gs-step__body">
+                <h3>You confirm</h3>
+                <p>Accept, correct, or skip. What you keep is saved to your garden log so each cycle builds on the last. You stay in control.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+        <p class="gs-disclaimer" style="margin-top:var(--gs-space-8);"><strong>In development.</strong> The photo flow above is a planned feature, not live yet. Early builds draft on-device only, with no live AI calls, and we won't claim a feature works until it does.</p>
+      </div>
+    </section>
+
+    <section class="gs-section" aria-labelledby="examples-title">
+      <div class="wrap">
+        <header class="gs-section__head">
+          <span class="gs-eyebrow">Examples · not live</span>
+          <h2 class="gs-section__title" id="examples-title">What the cues could look like</h2>
+          <p class="gs-section__lede">Previews of the in-context tags Garden Sage is being built around. These are illustrative examples, not screenshots of a working app.</p>
+        </header>
+
+        <div class="gs-card" style="margin-bottom:var(--gs-space-6);">
+          <h3 style="margin-bottom:var(--gs-space-4);">Lifecycle status tags</h3>
+          <div style="display:flex; flex-wrap:wrap; gap:var(--gs-space-2); align-items:center;">
+            <span class="gs-status-tag gs-status-tag--seedling">Seedling</span>
+            <span class="gs-status-tag gs-status-tag--veg">Veg</span>
+            <span class="gs-status-tag gs-status-tag--flowering">Flowering</span>
+            <span class="gs-status-tag gs-status-tag--ready">Ready</span>
+            <span class="gs-status-tag gs-status-tag--watch">Watch</span>
+            <span class="gs-status-tag gs-status-tag--review">Needs review</span>
+          </div>
+          <p style="margin:var(--gs-space-4) 0 0; color:var(--gs-text-muted); font-size:var(--gs-text-sm);">Status is always paired with a word, never color alone.</p>
+        </div>
+
+        <div class="gs-card">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:var(--gs-space-3); margin-bottom:var(--gs-space-4);">
+            <h3 style="margin:0;">A photo draft — you confirm</h3>
+            <span class="gs-chip">Example preview</span>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:var(--gs-space-2); align-items:center; margin-bottom:var(--gs-space-5);">
+            <span class="gs-moon-chip"><span class="gs-moon-chip__phase" aria-hidden="true"></span>Waxing gibbous</span>
+            <span class="gs-chip">Bed 2 · Backyard</span>
+          </div>
+          <dl style="margin:0;">
+            <div class="fact-row"><dt>Likely plant</dt><dd>Tomato (draft)</dd></div>
+            <div class="fact-row"><dt>Stage</dt><dd><span class="gs-status-tag gs-status-tag--flowering">Flowering</span></dd></div>
+            <div class="fact-row"><dt>Check next</dt><dd>Water · support stems</dd></div>
+          </dl>
+          <div class="gs-confidence gs-confidence--med" style="--gs-confidence-pct:60%; margin-top:var(--gs-space-5);">
+            <div class="gs-confidence__label"><span><strong style="color:var(--gs-text);">Medium confidence</strong> — confirm before saving</span><span class="gs-datum">draft</span></div>
+            <span class="gs-confidence__track"><span class="gs-confidence__fill"></span></span>
+          </div>
+          <p class="gs-disclaimer" style="margin:var(--gs-space-5) 0 0;">Illustrative example, not a screenshot of a working app. Photo drafting is a planned feature; early builds run on-device only with no live AI calls.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gs-section gs-section--alt" aria-labelledby="areas-title">
+      <div class="wrap">
+        <header class="gs-section__head">
+          <span class="gs-eyebrow">Built to scale</span>
+          <h2 class="gs-section__title" id="areas-title">From a windowsill to a plot</h2>
+          <p class="gs-section__lede">The same loop is being designed to work across the places people actually grow. Example areas below.</p>
+        </header>
+        <div class="gs-grid">
+          <article class="gs-area-card">
+            <div class="gs-area-card__head">
+              <h3 class="gs-area-card__title">Backyard beds &amp; pots</h3>
+              <span class="gs-area-card__meta">Outdoor</span>
+            </div>
+            <p style="margin:0; color:var(--gs-text-muted);">Outdoor beds, raised boxes, and containers — plan the season and log what each plant is doing.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:var(--gs-space-2);">
+              <span class="gs-status-tag gs-status-tag--veg">Veg</span>
+              <span class="gs-status-tag gs-status-tag--ready">Ready</span>
+            </div>
+          </article>
+          <article class="gs-area-card">
+            <div class="gs-area-card__head">
+              <h3 class="gs-area-card__title">Indoor seed-starting &amp; grow tents</h3>
+              <span class="gs-area-card__meta">Indoor</span>
+            </div>
+            <p style="margin:0; color:var(--gs-text-muted);">Trays on a windowsill or a tent with lights — track germination, stages, and timing indoors.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:var(--gs-space-2);">
+              <span class="gs-status-tag gs-status-tag--seedling">Seedling</span>
+              <span class="gs-status-tag gs-status-tag--watch">Watch</span>
+            </div>
+          </article>
+        </div>
+        <p class="gs-disclaimer" style="margin-top:var(--gs-space-6);">Where legal in your state, lifecycle tracking is general and applies to any plant you grow. Always follow your local laws. <strong>Not medical or legal advice.</strong></p>
       </div>
     </section>
 

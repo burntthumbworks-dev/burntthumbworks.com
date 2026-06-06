@@ -1,0 +1,531 @@
+/* ============================================================
+   Garden Sage — Public Site Theme (scoped)
+   ------------------------------------------------------------
+   Status: Garden Sage is IN DEVELOPMENT. This stylesheet skins
+   the marketing/preview pages only. It does NOT imply a live AI
+   or customer-data system.
+
+   SCOPING CONTRACT:
+   - EVERY rule is nested under .gs-page so nothing here can
+     affect any other page on burntthumbworks.com.
+   - Tokens live on .gs-page (not :root) for the same reason.
+
+   FONTS:
+   - Reuses the site's already-loaded fonts (Inter for body/UI,
+     the site's --font-serif for display). No new font requests,
+     no font files. The design system's Source Sans 3 / Spectral
+     intent maps onto Inter / serif here.
+
+   Derived from GardenSage_DesignSystem_ref (tokens + foundations).
+   Light-mode-first, warm parchment "garden journal" palette.
+   ============================================================ */
+
+.gs-page {
+  /* =========================================================
+     RAW PALETTE (warm, earthy — do not style against directly)
+     ========================================================= */
+  --sage-50:  #EEF3EC;  --sage-100: #DCE6D7;  --sage-200: #BFD0B7;
+  --sage-300: #9DB492;  --sage-400: #7E9872;  --sage-500: #5F7B55;
+  --sage-600: #4C6444;  --sage-700: #3B4E36;  --sage-800: #2C3A29;
+  --sage-900: #1F291D;
+
+  --leaf-300: #6FA45C;  --leaf-400: #538A41;  --leaf-500: #3E7430;  --leaf-600: #305B25;
+
+  --soil-50:  #F4EFE6;  --soil-100: #E6DBC9;  --soil-200: #D0BFA3;
+  --soil-300: #B39C78;  --soil-400: #927B58;  --soil-500: #715F42;
+  --soil-600: #574832;  --soil-700: #423626;  --soil-800: #2E261A;
+  --soil-900: #1E1810;
+
+  --paper-0:   #FFFDF8;  --paper-50:  #FCF9F1;  --paper-100: #F7F1E4;
+  --paper-200: #EFE6D3;  --paper-300: #E4D7BE;
+
+  --clay-300: #E0A98C;  --clay-400: #CA7E5C;  --clay-500: #AC603F;  --clay-600: #8A4A2E;
+  --sun-300:  #F4D183;  --sun-400:  #ECB44B;  --sun-500:  #D8962C;  --sun-600:  #B5751B;
+  --water-300:#9FC4D6;  --water-400:#6FA3BC;  --water-500:#4E839E;  --water-600:#3A6680;
+  --moon-300: #CDC9E0;  --moon-400: #A9A4C8;  --moon-500: #847EA8;  --moon-600: #655F86;
+  --berry-300:#E59A92;  --berry-400:#D2685C;  --berry-500:#B84436;  --berry-600:#952F23;
+
+  /* =========================================================
+     SEMANTIC ROLES  (--gs-*)  — style against THESE
+     ========================================================= */
+
+  /* Surfaces & structure */
+  --gs-bg:             var(--paper-100);
+  --gs-surface:        var(--paper-50);
+  --gs-surface-raised: var(--paper-0);
+  --gs-surface-sunk:   var(--paper-200);
+  --gs-border:         #E2D6BE;
+  --gs-border-strong:  var(--soil-200);
+
+  /* Text */
+  --gs-text:         var(--soil-800);
+  --gs-text-muted:   var(--soil-500);
+  --gs-text-faint:   var(--soil-400);
+  --gs-text-on-dark: var(--paper-50);
+
+  /* Brand greens + natural accents (packet-required aliases) */
+  --gs-sage:  var(--sage-500);
+  --gs-leaf:  var(--leaf-500);
+  --gs-soil:  var(--soil-500);
+  --gs-clay:  var(--clay-500);
+  --gs-sun:   var(--sun-500);
+  --gs-water: var(--water-500);
+  --gs-moon:  var(--moon-500);
+
+  /* Interaction */
+  --gs-primary:       var(--sage-500);
+  --gs-primary-hover: var(--sage-600);
+  --gs-primary-press: var(--sage-700);
+  --gs-primary-soft:  var(--sage-100);
+  --gs-focus-ring:    var(--sun-400);
+  --gs-link:          var(--leaf-500);
+
+  /* Status / feedback */
+  --gs-success: var(--leaf-500);
+  --gs-warning: var(--sun-500);
+  --gs-danger:  var(--berry-500);
+  --gs-info:    var(--water-500);
+
+  --gs-success-soft: #E2EDD9;
+  --gs-warning-soft: #F8E9C8;
+  --gs-danger-soft:  #F4DCD6;
+  --gs-info-soft:    #DCEAF0;
+  --gs-moon-soft:    #E7E4F1;
+
+  /* Lifecycle stage colors */
+  --gs-stage-seedling:  var(--leaf-400);
+  --gs-stage-veg:       var(--sage-500);
+  --gs-stage-flowering: var(--clay-400);
+  --gs-stage-ready:     var(--sun-500);
+  --gs-stage-dormant:   var(--soil-300);
+
+  /* Confidence cues (AI-draft "you confirm" screens) */
+  --gs-confidence-high: var(--leaf-500);
+  --gs-confidence-med:  var(--sun-500);
+  --gs-confidence-low:  var(--clay-500);
+
+  /* Radius */
+  --gs-radius-xs:   4px;
+  --gs-radius-sm:   8px;
+  --gs-radius:      12px;   /* default control radius (packet alias) */
+  --gs-radius-md:   12px;
+  --gs-radius-lg:   16px;
+  --gs-radius-xl:   22px;
+  --gs-radius-pill: 999px;
+
+  /* Spacing helpers (4px grid) */
+  --gs-space-1:  0.25rem;  --gs-space-2:  0.5rem;   --gs-space-3:  0.75rem;
+  --gs-space-4:  1rem;     --gs-space-5:  1.25rem;  --gs-space-6:  1.5rem;
+  --gs-space-8:  2rem;     --gs-space-10: 2.5rem;   --gs-space-12: 3rem;
+  --gs-space-16: 4rem;
+
+  /* Touch + control sizing (outdoor / gloved targets) */
+  --gs-tap-min:   44px;
+  --gs-tap-pref:  48px;
+  --gs-control-h: 48px;
+
+  /* Layout */
+  --gs-content-max: 1120px;
+  --gs-page-pad:    var(--gs-space-4);
+
+  /* Type ramp (mobile-tuned, base 17px) */
+  --gs-text-2xs: 0.75rem;   --gs-text-xs:  0.8125rem; --gs-text-sm:  0.9375rem;
+  --gs-text-base: 1.0625rem;--gs-text-lg:  1.1875rem; --gs-text-xl:  1.375rem;
+  --gs-text-2xl: 1.6875rem; --gs-text-3xl: 2.0625rem; --gs-text-4xl: 2.5625rem;
+  --gs-text-5xl: 3.25rem;
+
+  --gs-leading-tight:   1.15;  --gs-leading-snug: 1.3;
+  --gs-leading-normal:  1.5;   --gs-leading-relaxed: 1.65;
+  --gs-tracking-tight:  -0.015em;
+  --gs-tracking-caps:   0.08em;
+
+  --gs-weight-medium:   500;
+  --gs-weight-semibold: 600;
+  --gs-weight-bold:     700;
+
+  /* Fonts — reuse the site's already-linked families. */
+  --gs-font-body:    var(--font-sans, 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, sans-serif);
+  --gs-font-display: var(--font-serif, Georgia, 'Times New Roman', serif);
+
+  /* Warm soil-tinted shadows + motion */
+  --gs-shadow-color: 30 24 16;
+  --gs-shadow-sm: 0 1px 2px rgb(var(--gs-shadow-color) / 0.06),
+                  0 2px 6px rgb(var(--gs-shadow-color) / 0.07);
+  --gs-shadow-md: 0 2px 4px rgb(var(--gs-shadow-color) / 0.06),
+                  0 6px 16px rgb(var(--gs-shadow-color) / 0.10);
+  --gs-shadow-lg: 0 4px 8px rgb(var(--gs-shadow-color) / 0.08),
+                  0 16px 32px rgb(var(--gs-shadow-color) / 0.14);
+  --gs-ring: 0 0 0 2px var(--gs-surface), 0 0 0 4px var(--gs-focus-ring);
+
+  --gs-ease:     cubic-bezier(0.22, 0.61, 0.36, 1);
+  --gs-dur-fast: 120ms;
+  --gs-dur-base: 200ms;
+
+  /* Page canvas */
+  background: var(--gs-bg);
+  color: var(--gs-text);
+  font-family: var(--gs-font-body);
+  font-size: var(--gs-text-base);
+  line-height: var(--gs-leading-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================================
+   BASE ELEMENTS (scoped — only inside .gs-page)
+   ========================================================= */
+.gs-page *, .gs-page *::before, .gs-page *::after { box-sizing: border-box; }
+
+.gs-page h1, .gs-page h2, .gs-page h3, .gs-page h4 {
+  font-family: var(--gs-font-display);
+  color: var(--gs-text);
+  font-weight: var(--gs-weight-semibold);
+  line-height: var(--gs-leading-snug);
+  margin: 0 0 var(--gs-space-3);
+  text-wrap: balance;
+}
+.gs-page h1 { font-size: var(--gs-text-3xl); line-height: var(--gs-leading-tight); letter-spacing: var(--gs-tracking-tight); }
+.gs-page h2 { font-size: var(--gs-text-2xl); }
+.gs-page h3 { font-size: var(--gs-text-xl); }
+.gs-page h4 { font-size: var(--gs-text-lg); }
+
+.gs-page p { margin: 0 0 var(--gs-space-4); line-height: var(--gs-leading-relaxed); text-wrap: pretty; }
+.gs-page a { color: var(--gs-link); text-decoration: none; }
+.gs-page a:hover { text-decoration: underline; text-underline-offset: 2px; }
+.gs-page small { font-size: var(--gs-text-xs); color: var(--gs-text-muted); }
+
+.gs-page :focus-visible {
+  outline: none;
+  box-shadow: var(--gs-ring);
+  border-radius: var(--gs-radius-sm);
+}
+
+/* Eyebrow / overline label */
+.gs-page .gs-eyebrow {
+  display: inline-block;
+  font-family: var(--gs-font-body);
+  font-size: var(--gs-text-xs);
+  font-weight: var(--gs-weight-semibold);
+  letter-spacing: var(--gs-tracking-caps);
+  text-transform: uppercase;
+  color: var(--gs-text-muted);
+}
+
+/* Monospaced datum is intentionally omitted (no mono font loaded);
+   tabular numerals via the body font instead. */
+.gs-page .gs-datum { font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+
+/* =========================================================
+   LAYOUT: HERO + SECTION
+   ========================================================= */
+.gs-page .gs-hero {
+  position: relative;
+  max-width: var(--gs-content-max);
+  margin: 0 auto;
+  padding: var(--gs-space-12) var(--gs-page-pad) var(--gs-space-10);
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--sage-100) 50%, transparent) 0%,
+      transparent 70%),
+    var(--gs-bg);
+  border-radius: var(--gs-radius-xl);
+  text-align: center;
+}
+.gs-page .gs-hero h1 { font-size: clamp(2.0625rem, 6vw, 3.25rem); }
+.gs-page .gs-hero p {
+  max-width: 56ch;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: var(--gs-text-lg);
+  color: var(--gs-text-muted);
+}
+.gs-page .gs-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gs-space-3);
+  justify-content: center;
+  margin-top: var(--gs-space-6);
+}
+
+.gs-page .gs-section {
+  max-width: var(--gs-content-max);
+  margin: 0 auto;
+  padding: var(--gs-space-10) var(--gs-page-pad);
+}
+.gs-page .gs-section > header { margin-bottom: var(--gs-space-6); }
+
+/* Responsive card/area grids (optional helper) */
+.gs-page .gs-grid {
+  display: grid;
+  gap: var(--gs-space-5);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .gs-page .gs-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 960px) {
+  .gs-page .gs-grid--3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+.gs-page .gs-card {
+  background: var(--gs-surface);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-radius-lg);
+  padding: var(--gs-space-6);
+  box-shadow: var(--gs-shadow-sm);
+}
+.gs-page .gs-card > :last-child { margin-bottom: 0; }
+.gs-page .gs-card h3 { margin-bottom: var(--gs-space-2); }
+
+/* =========================================================
+   AREA CARD (garden bed / zone summary)
+   ========================================================= */
+.gs-page .gs-area-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gs-space-3);
+  background: var(--gs-surface);
+  border: 1px solid var(--gs-border);
+  border-left: 4px solid var(--gs-leaf);
+  border-radius: var(--gs-radius-lg);
+  padding: var(--gs-space-5);
+  box-shadow: var(--gs-shadow-sm);
+}
+.gs-page .gs-area-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gs-space-3);
+}
+.gs-page .gs-area-card__title { margin: 0; font-size: var(--gs-text-lg); }
+.gs-page .gs-area-card__meta { color: var(--gs-text-muted); font-size: var(--gs-text-sm); }
+
+/* =========================================================
+   CHIP (filter / tag)
+   ========================================================= */
+.gs-page .gs-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gs-space-2);
+  min-height: 32px;
+  padding: var(--gs-space-1) var(--gs-space-3);
+  background: var(--gs-surface-sunk);
+  color: var(--gs-text);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-radius-pill);
+  font-size: var(--gs-text-xs);
+  font-weight: var(--gs-weight-medium);
+  line-height: 1.2;
+}
+.gs-page .gs-chip--selected {
+  background: var(--gs-primary-soft);
+  border-color: var(--gs-primary);
+  color: var(--sage-700);
+}
+
+/* =========================================================
+   STATUS TAG  (dot + word — never color alone)
+   Modifiers: --seedling --veg --flowering --ready --watch --review
+   ========================================================= */
+.gs-page .gs-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gs-space-2);
+  min-height: 28px;
+  padding: var(--gs-space-1) var(--gs-space-3);
+  border-radius: var(--gs-radius-pill);
+  font-size: var(--gs-text-xs);
+  font-weight: var(--gs-weight-semibold);
+  letter-spacing: var(--gs-tracking-caps);
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  background: var(--gs-surface-sunk);
+  color: var(--gs-text);
+}
+.gs-page .gs-status-tag::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--soil-400);
+  flex: none;
+}
+.gs-page .gs-status-tag--seedling  { background: var(--gs-success-soft); color: var(--leaf-600); }
+.gs-page .gs-status-tag--seedling::before  { background: var(--gs-stage-seedling); }
+
+.gs-page .gs-status-tag--veg        { background: var(--sage-100); color: var(--sage-700); }
+.gs-page .gs-status-tag--veg::before        { background: var(--gs-stage-veg); }
+
+.gs-page .gs-status-tag--flowering  { background: #F6E3D8; color: var(--clay-600); }
+.gs-page .gs-status-tag--flowering::before  { background: var(--gs-stage-flowering); }
+
+.gs-page .gs-status-tag--ready      { background: var(--gs-warning-soft); color: var(--sun-600); }
+.gs-page .gs-status-tag--ready::before      { background: var(--gs-stage-ready); }
+
+.gs-page .gs-status-tag--watch      { background: var(--gs-warning-soft); color: var(--sun-600); }
+.gs-page .gs-status-tag--watch::before      { background: var(--gs-warning); }
+
+.gs-page .gs-status-tag--review     { background: var(--gs-info-soft); color: var(--water-600); }
+.gs-page .gs-status-tag--review::before     { background: var(--gs-info); }
+
+/* =========================================================
+   MOON CHIP (lunar / seasonal cue)
+   ========================================================= */
+.gs-page .gs-moon-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gs-space-2);
+  min-height: 32px;
+  padding: var(--gs-space-1) var(--gs-space-3);
+  background: var(--gs-moon-soft);
+  color: var(--moon-600);
+  border: 1px solid color-mix(in srgb, var(--moon-400) 50%, transparent);
+  border-radius: var(--gs-radius-pill);
+  font-size: var(--gs-text-xs);
+  font-weight: var(--gs-weight-medium);
+}
+.gs-page .gs-moon-chip__phase {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background:
+    linear-gradient(90deg, var(--moon-500) 0 50%, var(--moon-300) 50% 100%);
+  flex: none;
+}
+
+/* =========================================================
+   CONFIDENCE METER (bar + plain-language label)
+   "AI drafts what it sees — you confirm."
+   Set --gs-confidence-pct (0-100) inline; default 60.
+   ========================================================= */
+.gs-page .gs-confidence {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gs-space-2);
+}
+.gs-page .gs-confidence__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gs-space-3);
+  font-size: var(--gs-text-sm);
+  color: var(--gs-text-muted);
+}
+.gs-page .gs-confidence__track {
+  height: 8px;
+  border-radius: var(--gs-radius-pill);
+  background: var(--gs-surface-sunk);
+  overflow: hidden;
+}
+.gs-page .gs-confidence__fill {
+  display: block;
+  height: 100%;
+  width: var(--gs-confidence-pct, 60%);
+  border-radius: inherit;
+  background: var(--gs-confidence-med);
+}
+.gs-page .gs-confidence--high .gs-confidence__fill { background: var(--gs-confidence-high); }
+.gs-page .gs-confidence--med  .gs-confidence__fill { background: var(--gs-confidence-med); }
+.gs-page .gs-confidence--low  .gs-confidence__fill { background: var(--gs-confidence-low); }
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.gs-page .gs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gs-space-2);
+  min-height: var(--gs-control-h);   /* 48px — outdoor tap target */
+  min-width: var(--gs-tap-min);
+  padding: 0 var(--gs-space-6);
+  border-radius: var(--gs-radius-md);
+  border: 1px solid var(--gs-border-strong);
+  background: var(--gs-surface-raised);
+  color: var(--gs-text);
+  font-family: var(--gs-font-body);
+  font-size: var(--gs-text-base);
+  font-weight: var(--gs-weight-semibold);
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--gs-dur-fast) var(--gs-ease),
+              border-color var(--gs-dur-fast) var(--gs-ease),
+              transform var(--gs-dur-fast) var(--gs-ease);
+}
+.gs-page .gs-btn:hover { background: var(--gs-surface-sunk); }
+.gs-page .gs-btn:active { transform: translateY(1px); }
+
+.gs-page .gs-btn--primary {
+  background: var(--gs-primary);
+  border-color: var(--gs-primary);
+  color: var(--gs-text-on-dark);
+}
+.gs-page .gs-btn--primary:hover { background: var(--gs-primary-hover); border-color: var(--gs-primary-hover); }
+.gs-page .gs-btn--primary:active { background: var(--gs-primary-press); border-color: var(--gs-primary-press); }
+
+/* =========================================================
+   STEP (numbered: photo -> draft -> verify)
+   ========================================================= */
+.gs-page .gs-step {
+  display: flex;
+  gap: var(--gs-space-4);
+  align-items: flex-start;
+}
+.gs-page .gs-step + .gs-step { margin-top: var(--gs-space-6); }
+.gs-page .gs-step__num {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--gs-primary-soft);
+  color: var(--sage-700);
+  border: 2px solid var(--gs-primary);
+  font-family: var(--gs-font-display);
+  font-weight: var(--gs-weight-bold);
+  font-size: var(--gs-text-lg);
+}
+.gs-page .gs-step__body { flex: 1 1 auto; }
+.gs-page .gs-step__body h3 { margin-bottom: var(--gs-space-1); font-size: var(--gs-text-lg); }
+.gs-page .gs-step__body p { margin-bottom: 0; color: var(--gs-text-muted); }
+
+/* Connector for vertical step lists (optional) */
+.gs-page .gs-step--connected { position: relative; }
+.gs-page .gs-step--connected::before {
+  content: "";
+  position: absolute;
+  left: 19px;
+  top: 44px;
+  bottom: calc(-1 * var(--gs-space-6));
+  width: 2px;
+  background: var(--gs-border-strong);
+}
+.gs-page .gs-step--connected:last-child::before { display: none; }
+
+/* =========================================================
+   IN-DEVELOPMENT / DISCLAIMER NOTE (honest product truth)
+   ========================================================= */
+.gs-page .gs-disclaimer {
+  font-size: var(--gs-text-sm);
+  color: var(--gs-text-muted);
+  background: var(--gs-surface-sunk);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-radius-sm);
+  padding: var(--gs-space-3) var(--gs-space-4);
+}
+
+/* =========================================================
+   MOTION GUARD
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .gs-page * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
