@@ -15,11 +15,61 @@
   <meta property="og:site_name" content="Burnt Thumb Works" />
   <script type="module" crossorigin src="./assets/index-hrK3O73u.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index--tpLDkce.css">
+  <style>
+    /* Site-return menu for the GrimmKart shell. Top-LEFT only (the game's pause
+       button is top-center and its touch controls are along the bottom, so this
+       does not overlap any gameplay control). Does not use Escape — the game
+       already binds Escape for its own pause. Pure local; no network. */
+    #btw-site-menu{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);
+      left:calc(env(safe-area-inset-left,0px) + 10px);z-index:50;
+      font-family:'Segoe UI',system-ui,-apple-system,sans-serif;}
+    #btw-site-toggle{display:flex;align-items:center;gap:6px;height:40px;min-width:40px;
+      padding:0 12px;border-radius:999px;border:1px solid rgba(216,180,106,.5);
+      background:rgba(11,10,15,.62);color:#e9dcc0;font-size:13px;font-weight:600;
+      cursor:pointer;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);}
+    #btw-site-toggle:active{transform:translateY(1px);}
+    #btw-site-panel{margin-top:8px;width:208px;background:rgba(17,14,28,.97);
+      border:1px solid rgba(216,180,106,.4);border-radius:14px;padding:8px;
+      box-shadow:0 14px 38px rgba(0,0,0,.6);}
+    #btw-site-panel[hidden]{display:none;}
+    #btw-site-panel a,#btw-site-panel button{display:block;width:100%;box-sizing:border-box;
+      text-align:left;text-decoration:none;font:inherit;font-size:15px;color:#efe9f5;
+      background:transparent;border:0;border-radius:9px;padding:12px 12px;min-height:44px;cursor:pointer;}
+    #btw-site-panel a:hover,#btw-site-panel button:hover{background:rgba(216,180,106,.14);}
+    #btw-site-panel .sub{font-size:12px;color:#b6abca;}
+  </style>
 </head>
 <body>
   <div id="app">
     <canvas id="game-canvas"></canvas>
     <div id="ui-root"></div>
   </div>
+
+  <!-- Site-return menu (local only; does not touch the game bundle or its controls) -->
+  <nav id="btw-site-menu" aria-label="Site navigation">
+    <button id="btw-site-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="btw-site-panel">⌂ Site</button>
+    <div id="btw-site-panel" hidden>
+      <button type="button" data-site="resume">Resume game</button>
+      <a href="/games/grimmkart/">GrimmKart page</a>
+      <a href="/games/">All games</a>
+      <a href="/">Burnt Thumb Works home</a>
+      <span class="sub" style="display:block;padding:6px 12px 4px;">In-game pause is still the game's own button (top centre).</span>
+    </div>
+  </nav>
+  <script>
+    /* Local site menu only. No network, no game-input interception beyond its own
+       small top-left control. Escape is intentionally NOT bound (the game uses it). */
+    (function () {
+      "use strict";
+      var t = document.getElementById("btw-site-toggle");
+      var p = document.getElementById("btw-site-panel");
+      function open() { p.hidden = false; t.setAttribute("aria-expanded", "true"); }
+      function close() { p.hidden = true; t.setAttribute("aria-expanded", "false"); }
+      t.addEventListener("click", function (e) { e.stopPropagation(); if (p.hidden) open(); else close(); });
+      p.addEventListener("click", function (e) {
+        if (e.target && e.target.getAttribute("data-site") === "resume") { close(); }
+      });
+    })();
+  </script>
 </body>
 </html>
