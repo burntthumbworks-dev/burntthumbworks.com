@@ -50,7 +50,25 @@ a:hover { color: var(--link-hover); text-decoration: underline; text-underline-o
 .section--alt { background: linear-gradient(180deg, #2A2114 0%, #241C10 100%); border-top: 1px solid #4A3D29; border-bottom: 1px solid #4A3D29; }
 .section--alt .section__title { color: #F4EAD5; }
 .section--alt .section__lede { color: #CBBE9F; }
-.section--alt .eyebrow { color: var(--brass-300); }
+/* Dark "brown" alt sections: lighten ALL copy that sits directly on the brown
+   (prose, ledes, lists, plain paragraphs, links). Cards inside keep their own
+   light surface + dark text, so they are intentionally NOT affected. Fixes
+   dark-ink-on-dark-brown body text that was previously near-invisible (~1:1). */
+.section--alt .eyebrow { color: #DEC480; }
+.section--alt .prose,
+.section--alt .prose p,
+.section--alt > .wrap > p,
+.section--alt > .wrap > ul > li { color: #E7DBC1; }
+.section--alt .prose .lede,
+.section--alt .prose h3,
+.section--alt .prose h2,
+.section--alt .prose strong { color: #F6ECD6; }
+.section--alt .prose a:not(.btn),
+.section--alt > .wrap > p a:not(.btn) { color: #EDCB82; text-decoration: underline; text-underline-offset: 2px; }
+.section--alt .prose a:not(.btn):hover { color: #F6ECD6; }
+.section--alt .ticks li { color: #E7DBC1; }
+.section--alt .ticks strong { color: #F6ECD6; }
+.section--alt .ticks .ic { color: #A8C596; }
 .section--tight { padding: var(--space-16) 0; }
 .section__head { margin-bottom: var(--space-12); max-width: var(--maxw-prose); }
 .section__head--center { margin-left: auto; margin-right: auto; text-align: center; }
@@ -195,7 +213,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; text-underline-o
   background: linear-gradient(180deg, #221A0E 0%, #1A140B 100%);
   padding: var(--space-16) var(--space-12); text-align: center; position: relative; overflow: hidden;
 }
-.cta-band .eyebrow { color: var(--brass-300); }
+.cta-band .eyebrow { color: #DEC480; }
 .cta-band__title { font-family: var(--font-serif); font-weight: var(--weight-semibold); font-size: var(--text-2xl); color: var(--paper-50, #F4EAD5); margin: 0 0 var(--space-3); letter-spacing: -.01em; }
 .cta-band__body { font-family: var(--font-serif); font-size: var(--text-lg); color: #CBBE9F; margin: 0 auto var(--space-8); max-width: 52ch; line-height: var(--leading-relaxed); }
 .cta-band__actions { display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; }
@@ -217,14 +235,14 @@ a:hover { color: var(--link-hover); text-decoration: underline; text-underline-o
 .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: var(--space-4); }
 .footer-brand img { height: 52px; width: 52px; border-radius: var(--radius-pill); border: 1px solid var(--border-strong); background: var(--surface-2); padding: 3px; }
 .footer-brand .nm { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .08em; font-size: 17px; color: var(--fg-strong); line-height: 1.1; }
-.footer-col__h { font-family: var(--font-sans); font-weight: var(--weight-bold); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--brass-700); margin: 0 0 var(--space-4); }
+.footer-col__h { font-family: var(--font-sans); font-weight: var(--weight-bold); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--brass-700, #7A5A1C); margin: 0 0 var(--space-4); }
 .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
 .footer-col a, .footer-col span { font-family: var(--font-sans); font-size: var(--text-sm); color: var(--fg-2); }
 .footer-col a:hover { color: var(--ember-700); }
 .footer-blurb { font-family: var(--font-serif); font-size: var(--text-sm); line-height: var(--leading-normal); color: var(--fg-2); max-width: 36ch; margin: 0; }
 .footer-bar { border-top: 1px solid var(--border-default); }
 .footer-bar__inner { max-width: var(--maxw); margin: 0 auto; padding: var(--space-5) var(--space-6); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3); }
-.footer-bar__inner span, .footer-bar__inner a { font-family: var(--font-mono); font-size: 11.5px; color: var(--fg-3); letter-spacing: .06em; }
+.footer-bar__inner span, .footer-bar__inner a { font-family: var(--font-mono); font-size: 11.5px; color: var(--fg-2); letter-spacing: .06em; }
 
 /* ---- 404 ---- */
 .error-page { min-height: 64vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: var(--space-16) var(--space-6); position: relative; z-index: 1; }
