@@ -1,3 +1,14 @@
 Burnt Thumb Works/
 reports/
 Greenthumb Abbey/
+
+# --- secrets / runtime config: never commit (public static site) ---
+.env
+.env.*
+!.env.example
+assets/supabase/config.js
+*.key
+*.pem
+*-service-account*.json
+*credentials*.json
+*client_secret*.json
