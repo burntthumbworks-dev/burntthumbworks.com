@@ -3,318 +3,357 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>The Hook and Skein — Public Demo | Burnt Thumb Works</title>
-  <meta name="description" content="A safe public browser demo of The Hook and Skein. Local demo systems only — no live AI calls, no account, no backend.">
+  <title>The Hook and Skein — Playable Demo | Burnt Thumb Works</title>
+  <meta name="description" content="A mobile-first narrative choice demo of The Hook and Skein. Read, choose, survive, and live with the consequences in Low Vale beneath the Black Spine. Local demo only — no live AI, no account, no backend.">
   <link rel="canonical" href="https://burntthumbworks.com/games/the-hook-and-skein/play/">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0b0a0f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Hook and Skein — Playable narrative demo">
+  <meta property="og:description" content="Read, choose, survive. A mobile-first choice demo set in Low Vale beneath the Black Spine. Local only, no live AI.">
+  <meta property="og:url" content="https://burntthumbworks.com/games/the-hook-and-skein/play/">
+  <link rel="icon" href="/assets/favicon.png" type="image/png">
   <!--
     SAFE PUBLIC DEMO — by design this file makes ZERO network/AI calls.
-    No fetch, no XMLHttpRequest, no WebSocket, no external scripts, no API keys.
-    Everything below is local, deterministic, in-browser only. SAFE_PUBLIC_DEMO_MODE = true.
+    No fetch, no XMLHttpRequest, no WebSocket, no EventSource, no external scripts, no API keys.
+    Story flow is local, deterministic, in-browser only. State persists via localStorage with a reset.
+    SAFE_PUBLIC_DEMO_MODE = true.
   -->
   <style>
-    :root{ --ink:#0b0a0f; --panel:#16131f; --panel2:#1f1b2c; --edge:#3a2f4d; --gold:#d8b46a;
-           --rose:#ff7096; --mist:#cdb9e6; --txt:#efe9f5; --txt2:#b6abca; --good:#7fc3ae; }
-    *{box-sizing:border-box;}
-    html,body{margin:0;height:100%;background:var(--ink);color:var(--txt);
-      font-family:'Iowan Old Style','Palatino Linotype',Georgia,serif;}
-    body{display:flex;flex-direction:column;min-height:100dvh;}
+    :root{
+      --ink:#0b0a0f; --panel:#15121f; --panel2:#1d1830; --edge:#3a2f4d;
+      --gold:#d8b46a; --rose:#ff7096; --mist:#cdb9e6; --txt:#efe9f5; --txt2:#b6abca;
+      --good:#7fc3ae; --bad:#e08a6a; --r:16px;
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    html,body{margin:0;height:100%;}
+    body{
+      background:
+        radial-gradient(120% 80% at 50% 0%, rgba(120,80,160,.16), rgba(11,10,15,0) 55%),
+        radial-gradient(100% 60% at 50% 100%, rgba(120,200,190,.07), rgba(11,10,15,0) 70%),
+        var(--ink);
+      color:var(--txt);font-family:'Iowan Old Style','Palatino Linotype',Georgia,serif;
+      display:flex;flex-direction:column;min-height:100dvh;overflow-x:hidden;
+    }
     a{color:var(--gold);}
-    .topbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;
-      border-bottom:1px solid var(--edge);background:linear-gradient(180deg,#120e1b,#0b0a0f);}
-    .topbar h1{font-size:18px;margin:0;color:var(--gold);font-weight:600;letter-spacing:.01em;}
-    .topbar .io{color:var(--rose);}
-    .badge{font-family:'Segoe UI',system-ui,sans-serif;font-size:11px;color:var(--good);
-      border:1px solid var(--edge);border-radius:999px;padding:4px 10px;white-space:nowrap;}
+    .ui{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;}
+
+    .topbar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;
+      padding:10px 14px;border-bottom:1px solid var(--edge);
+      background:linear-gradient(180deg,#120e1b,rgba(11,10,15,.92));backdrop-filter:blur(6px);}
+    .topbar h1{font-size:17px;margin:0;color:var(--gold);font-weight:600;}
+    .topbar h1 .io{color:var(--rose);}
+    .badge{font-family:'Segoe UI',system-ui,sans-serif;font-size:10.5px;color:var(--good);
+      border:1px solid var(--edge);border-radius:999px;padding:3px 9px;white-space:nowrap;}
     .spacer{flex:1;}
-    .tb-link{font-family:'Segoe UI',system-ui,sans-serif;font-size:12px;color:var(--mist);
-      text-decoration:none;border:1px solid var(--edge);border-radius:999px;padding:5px 11px;}
-    .tb-link:hover{color:var(--gold);border-color:var(--gold);}
-    .wrap{flex:1;display:flex;flex-direction:column;max-width:820px;width:100%;margin:0 auto;padding:14px;}
-    /* character creation */
-    .creator{background:var(--panel);border:1px solid var(--edge);border-radius:14px;padding:22px;margin:auto 0;}
-    .creator h2{font-size:24px;color:var(--gold);margin:0 0 6px;}
-    .creator p{color:var(--txt2);font-size:14px;margin:0 0 16px;}
-    .creator label{display:block;font-size:13px;color:var(--mist);margin:14px 0 6px;}
-    .creator input[type=text]{width:100%;background:var(--panel2);border:1px solid var(--edge);
-      border-radius:8px;color:var(--txt);font-size:16px;padding:11px 12px;font-family:inherit;}
-    .traits{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
-    .trait{background:var(--panel2);border:1px solid var(--edge);border-radius:10px;color:var(--txt2);
-      padding:9px 13px;font-size:13px;cursor:pointer;font-family:'Segoe UI',system-ui,sans-serif;}
-    .trait.on{border-color:var(--rose);color:var(--gold);background:#251b2e;}
-    .begin{margin-top:20px;background:linear-gradient(180deg,var(--rose),#c44f72);color:#fff;border:none;
-      border-radius:12px;padding:13px 26px;font-size:17px;font-weight:700;cursor:pointer;font-family:'Segoe UI',system-ui,sans-serif;}
-    /* play view */
-    .log{flex:1;overflow-y:auto;padding:6px 2px 12px;line-height:1.55;}
-    .log .area{color:var(--gold);font-size:18px;margin:14px 0 2px;}
-    .log .sys{color:var(--txt2);font-style:italic;}
-    .log .echo{color:var(--mist);}
-    .log .echo::before{content:"› ";color:var(--rose);}
-    .log p{margin:6px 0;}
-    .cmdrow{display:flex;gap:8px;border-top:1px solid var(--edge);padding-top:10px;}
-    .cmdrow input{flex:1;background:var(--panel2);border:1px solid var(--edge);border-radius:8px;color:var(--txt);
-      font-size:16px;padding:11px 12px;font-family:'Segoe UI',system-ui,sans-serif;}
-    .cmdrow button{background:var(--panel2);border:1px solid var(--edge);color:var(--gold);border-radius:8px;
-      padding:0 16px;font-size:15px;cursor:pointer;font-family:'Segoe UI',system-ui,sans-serif;}
-    .quickbar{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 2px;}
-    .quick{background:transparent;border:1px solid var(--edge);color:var(--txt2);border-radius:999px;
-      font-size:12px;padding:5px 11px;cursor:pointer;font-family:'Segoe UI',system-ui,sans-serif;}
-    .quick:hover{color:var(--gold);border-color:var(--gold);}
-    .footnote{font-family:'Segoe UI',system-ui,sans-serif;font-size:11px;color:var(--txt2);text-align:center;padding:8px;}
+    .iconbtn{font-family:'Segoe UI',system-ui,sans-serif;font-size:12px;color:var(--txt2);
+      background:transparent;border:1px solid var(--edge);border-radius:999px;padding:6px 11px;cursor:pointer;}
+    .iconbtn:active{transform:translateY(1px);}
+
+    .stats{display:flex;gap:7px;padding:10px 14px;overflow-x:auto;border-bottom:1px solid rgba(58,47,77,.5);}
+    .stat{flex:1 0 auto;min-width:74px;background:var(--panel);border:1px solid var(--edge);
+      border-radius:12px;padding:8px 10px;}
+    .stat__l{font-family:'Segoe UI',system-ui,sans-serif;font-size:10px;letter-spacing:.06em;
+      text-transform:uppercase;color:var(--txt2);}
+    .stat__v{font-size:18px;font-weight:700;color:var(--txt);transition:color .2s;}
+    .stat__v.up{color:var(--good);} .stat__v.down{color:var(--bad);}
+
+    .stage{flex:1;width:100%;max-width:620px;margin:0 auto;padding:18px 16px 28px;}
+    .scene-title{font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--gold);font-family:'Segoe UI',system-ui,sans-serif;margin:4px 0 10px;}
+    .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--edge);
+      border-radius:var(--r);padding:18px 18px;box-shadow:0 10px 30px rgba(0,0,0,.45);}
+    .card p{margin:0 0 12px;font-size:18px;line-height:1.6;}
+    .card p:last-child{margin-bottom:0;}
+    .conseq{margin:14px 0 0;padding:12px 14px;border-left:3px solid var(--gold);
+      background:rgba(216,180,106,.08);border-radius:8px;font-size:15.5px;color:var(--mist);}
+    .choices{display:flex;flex-direction:column;gap:12px;margin-top:18px;}
+    .choice{display:block;width:100%;text-align:left;cursor:pointer;color:var(--txt);
+      background:linear-gradient(180deg,#1b1730,#171327);border:1px solid var(--edge);
+      border-radius:14px;padding:16px 16px;min-height:58px;font-family:inherit;font-size:17px;line-height:1.4;
+      transition:border-color .15s, box-shadow .15s, transform .05s;}
+    .choice:hover{border-color:var(--gold);box-shadow:0 6px 18px rgba(0,0,0,.4);}
+    .choice:active{transform:translateY(1px);}
+    .choice .hint{display:block;margin-top:5px;font-family:'Segoe UI',system-ui,sans-serif;
+      font-size:12.5px;color:var(--txt2);}
+
+    .arche{display:flex;flex-direction:column;gap:12px;margin-top:16px;}
+    .field{display:flex;flex-direction:column;gap:8px;margin-top:16px;}
+    .field label{font-family:'Segoe UI',system-ui,sans-serif;font-size:13px;color:var(--txt2);}
+    .field input{font:inherit;font-size:17px;color:var(--txt);background:#0f0c18;
+      border:1px solid var(--edge);border-radius:12px;padding:13px 14px;}
+
+    .end .card{border-color:var(--gold);}
+    .reflect{font-style:italic;color:var(--mist);}
+    .footnote{font-family:'Segoe UI',system-ui,sans-serif;font-size:12px;color:var(--txt2);
+      text-align:center;padding:6px 16px 22px;}
+    .footnote a{color:var(--gold);}
+    @media (min-width:560px){ .stat{min-width:88px;} }
   </style>
 </head>
 <body>
   <div class="topbar">
     <h1>The Hook and Skein<span class="io"> · demo</span></h1>
-    <span class="badge">Public Prototype · No live AI calls · Local demo systems only</span>
     <span class="spacer"></span>
-    <button class="tb-link" data-reset type="button">Reset demo</button>
-    <a class="tb-link" href="../">← Project page</a>
+    <span class="badge">No live AI · local only</span>
+    <button class="iconbtn" id="reset" type="button">Reset</button>
   </div>
 
-  <div class="wrap" id="app"></div>
+  <div class="stats" id="stats" hidden>
+    <div class="stat"><div class="stat__l">Resolve</div><div class="stat__v" data-stat="resolve">2</div></div>
+    <div class="stat"><div class="stat__l">Burden</div><div class="stat__v" data-stat="burden">1</div></div>
+    <div class="stat"><div class="stat__l">Memory</div><div class="stat__v" data-stat="memory">0</div></div>
+    <div class="stat"><div class="stat__l">Supplies</div><div class="stat__v" data-stat="supplies">1</div></div>
+  </div>
 
-  <div class="footnote">A Burnt Thumb Works prototype. The Hook and Skein™ © 2026 Burnt Thumb Works LLC. This demo runs entirely in your browser — no AI, no account, no backend.</div>
+  <main class="stage" id="stage" aria-live="polite"></main>
+
+  <p class="footnote ui">A short, safe demo set in Low Vale, beneath the Black Spine. Choices and state are local to your device — there's no live AI, account, or backend.
+    Looking for the old typed-command build? It's archived as a <a href="/games/the-hook-and-skein/systems-prototype/">systems prototype</a>.</p>
 
   <script>
-  /* ============================================================================
-     The Hook and Skein — SAFE PUBLIC DEMO (SAFE_PUBLIC_DEMO_MODE = true)
-     100% local + deterministic. No network of any kind. No AI. No secrets.
-     ============================================================================ */
+  /* The Hook and Skein — public narrative choice demo.
+     Deterministic, local, no network. State persists in localStorage with reset. */
   (function () {
     "use strict";
-    var SAVE_KEY = "has_public_demo_v1";
-    var app = document.getElementById("app");
+    var LS = "btw_has_demo_v1";
+    var STATS = ["resolve", "burden", "memory", "supplies"];
 
-    var TRAITS = [
-      { id: "ledger-hand", label: "Ledger-hand", note: "you keep accounts; debts and favors are never quite forgotten." },
-      { id: "ford-walker", label: "Ford-walker", note: "you know which old roads still hold and which have drowned." },
-      { id: "hearth-kept", label: "Hearth-kept", note: "the household leans on you; chores done are a kind of armor." }
+    var ARCHETYPES = [
+      { id: "hand",   name: "the Hand",          line: "You work with your hands. Backs remember what ledgers forget.", start: { resolve: 2, burden: 1, memory: 0, supplies: 2 } },
+      { id: "keeper", name: "the Ledger-keeper", line: "You keep the counts. Debts in this valley are a kind of weather.", start: { resolve: 1, burden: 2, memory: 1, supplies: 1 } },
+      { id: "quiet",  name: "the Quiet One",     line: "You listen more than you speak. The valley notices who listens.", start: { resolve: 3, burden: 1, memory: 1, supplies: 0 } }
     ];
 
-    // Static, deterministic Low Vale map (public-safe flavor only).
-    var ROOMS = {
+    var SCENES = {
       cottage: {
-        name: "Your cottage",
-        desc: "A low room of soot and habit. The fire is banked, the ledger open on the table, and a list of the day's work waits whether you like it or not. The door gives onto the lane.",
-        exits: { out: "lane", lane: "lane", north: "lane" },
-        items: ["lantern", "ledger"]
+        title: "Low Vale · the cottage",
+        text: [
+          "You wake before the light, in the cottage at the edge of Low Vale. The Black Spine stands over the valley like a held breath.",
+          "There is work that still has to be done, and a day that has already decided to be difficult. What do you do first?"
+        ],
+        choices: [
+          { label: "Step into the lane", hint: "See who's about", effects: { resolve: +1 }, to: "lane",
+            conseq: "Cold air, wet stone. The lane keeps its own counsel — but you feel steadier for facing it." },
+          { label: "Check the ledger", hint: "Know what's owed", effects: { memory: +1, burden: +1 }, to: "ledger",
+            conseq: "Names and numbers in a tired hand. Knowing the debt doesn't lighten it — but you'd rather know." },
+          { label: "Take the lantern", hint: "Be ready for dark places", effects: { supplies: +1 }, to: "lantern",
+            conseq: "The lantern is heavy and honest. Light is a thing you can carry." },
+          { label: "Listen at the door", hint: "Before you commit to anything", effects: { memory: +1 }, to: "door",
+            conseq: "You wait. Under the wind, the valley is saying something it always says: not yet, not yet." }
+        ]
       },
       lane: {
-        name: "The Vale lane",
-        desc: "The lane runs the spine of Low Vale between leaning fences. Smoke stands straight from a dozen chimneys. East the ground softens toward the ford; west a well sits crooked; uphill the land darkens toward the Black Spine.",
-        exits: { home: "cottage", south: "cottage", east: "ford", west: "well", up: "spine_foot", north: "spine_foot" },
-        items: []
+        title: "Low Vale · the lane",
+        text: [ "The lane runs down toward water and up toward stone. A neighbour's gate hangs open; no smoke from their chimney.",
+                "Two ways pull at you." ],
+        choices: [
+          { label: "Follow the lane to the old well", hint: "People gather where water is", effects: { memory: +1 }, to: "well",
+            conseq: "You take the low road, toward the well the whole vale still uses." },
+          { label: "Climb toward the foot of the Black Spine", hint: "Where the roads shouldn't be followed", effects: { resolve: +1, burden: +1 }, to: "spine",
+            conseq: "The climb starts gentle and turns to warning underfoot." }
+        ]
+      },
+      ledger: {
+        title: "Low Vale · the ledger",
+        text: [ "The ledger is plain about it: more is owed than the season can carry. One name is circled — a debt that comes due at the drowned ford.",
+                "Knowing changes the shape of the day." ],
+        choices: [
+          { label: "Go to the drowned ford", hint: "Settle what you can", effects: { burden: -1, resolve: +1 }, to: "ford",
+            conseq: "Better to walk toward a debt than to wait for it to walk to you." },
+          { label: "Hide the ledger and go to the well", hint: "Buy yourself a morning", effects: { burden: +1, memory: +1 }, to: "well",
+            conseq: "You tuck it away. The valley keeps its own ledger, and it does not lose pages." }
+        ]
+      },
+      lantern: {
+        title: "Low Vale · the threshold",
+        text: [ "Lantern in hand, the dark places of the day look a little less like teeth. You could go where light is needed.",
+                "Down to the drowned ford, or up toward the Spine's foot?" ],
+        choices: [
+          { label: "Down to the drowned ford", hint: "Old crossing, bad memory", effects: { memory: +1 }, to: "ford",
+            conseq: "The lantern throws your shadow long ahead of you, like someone arriving first." },
+          { label: "Up to the foot of the Black Spine", hint: "Where the light matters most", effects: { resolve: +1 }, to: "spine",
+            conseq: "Light against that much stone feels like a small, stubborn argument. You make it anyway." }
+        ]
+      },
+      door: {
+        title: "Low Vale · at the door",
+        text: [ "You listen, and the listening pays you back: footsteps on the lane, going the wrong way — toward the old well, fast, then stopping.",
+                "Someone is out there who shouldn't be." ],
+        choices: [
+          { label: "Go to the old well", hint: "Toward the sound", effects: { resolve: +1, memory: +1 }, to: "well",
+            conseq: "You move toward the trouble, the way the valley remembers its people doing." },
+          { label: "Stay in, bar the door", hint: "Survive the morning first", effects: { supplies: +1, burden: +1 }, to: "stay",
+            conseq: "You choose the walls. There's no shame in it — only the small weight of a thing left unanswered." }
+        ]
       },
       well: {
-        name: "The old well",
-        desc: "Stone worn smooth by rope and worry. People still leave small things here — a coin, a knot of wool — as if the water keeps a tally. It remembers more than it should.",
-        exits: { lane: "lane", east: "lane" },
-        items: ["wool-knot"]
+        title: "Low Vale · the old well",
+        text: [ "The old well sits where it always has, and the vale's faces are around it — fewer than there should be. They look at you, and at what you carried here: your nerve, your knowing, your light." ],
+        choices: [ { label: "See how the morning ends", effects: {}, to: "_end_well" } ]
       },
       ford: {
-        name: "The drowned ford",
-        desc: "Where the road tried to cross and lost. Black water moves slow over the old stones. A warning is scratched into a post: not after dark. Beyond, the far bank waits — but that is not for a demo.",
-        exits: { lane: "lane", west: "lane" },
-        items: []
+        title: "Low Vale · the drowned ford",
+        text: [ "The ford is half a memory of a crossing now, water over the old stones. Whatever is owed here, the valley has been patient about collecting." ],
+        choices: [ { label: "See how the morning ends", effects: {}, to: "_end_ford" } ]
       },
-      spine_foot: {
-        name: "Foot of the Black Spine",
-        desc: "The hills gather into one long shoulder of rock that the whole valley lives beneath. Old ruins stud the slope, half-swallowed. The Spine is patient. So, the stories say, is whatever it owes.",
-        exits: { down: "lane", south: "lane" },
-        items: ["grey-stone"]
+      spine: {
+        title: "Beneath the Black Spine",
+        text: [ "At the foot of the Spine the roads give out and the warnings begin — cairns, old marks, the kind of quiet that has opinions. You have come as far as a sensible person comes." ],
+        choices: [ { label: "See how the morning ends", effects: {}, to: "_end_spine" } ]
+      },
+      stay: {
+        title: "Low Vale · indoors",
+        text: [ "You bar the door and the morning passes on the other side of it. Later there will be a thing to ask about, a thing to make right. The valley keeps the question for you. It always does." ],
+        choices: [ { label: "See how the morning ends", effects: {}, to: "_end_stay" } ]
       }
     };
 
-    var ITEM_TEXT = {
-      "lantern": "A tin lantern, oil low. Light enough for a chore, not for a long road.",
-      "ledger": "Your ledger. Names, debts, small kindnesses owed in both directions.",
-      "wool-knot": "A knot of grey wool left at the well. A small offering, or a small ask.",
-      "grey-stone": "A flat grey stone from the Spine's foot. It is colder than it should be."
-    };
-
+    var $ = function (s, r) { return (r || document).querySelector(s); };
+    var stage = $("#stage"), statsEl = $("#stats");
     var state = null;
 
-    function load() {
-      try { var raw = localStorage.getItem(SAVE_KEY); return raw ? JSON.parse(raw) : null; }
-      catch (e) { return null; }
-    }
-    function save() {
-      try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
-    }
-    function clearSave() {
-      try { localStorage.removeItem(SAVE_KEY); } catch (e) { /* ignore */ }
-    }
+    function save() { try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) {} }
+    function clamp(n) { return Math.max(0, Math.min(9, n)); }
 
-    // -------------------------------------------------------------- views
-    function renderCreator() {
-      app.innerHTML =
-        '<div class="creator">' +
-        '  <h2>Begin in Low Vale</h2>' +
-        '  <p>You are not a chosen hero. You are someone ordinary enough to be missed, and stubborn enough to matter. Make yourself, then step out the door.</p>' +
-        '  <label for="nm">Your name</label>' +
-        '  <input id="nm" type="text" maxlength="24" placeholder="e.g. Maren, Aldous, Briar…" autocomplete="off">' +
-        '  <label>What people know you for</label>' +
-        '  <div class="traits" data-traits></div>' +
-        '  <button class="begin" data-begin type="button">Step outside →</button>' +
-        '</div>';
-      var tw = app.querySelector("[data-traits]");
-      var chosen = TRAITS[0].id;
-      TRAITS.forEach(function (t) {
-        var b = document.createElement("button");
-        b.className = "trait" + (t.id === chosen ? " on" : "");
-        b.type = "button";
-        b.textContent = t.label;
-        b.title = t.note;
-        b.addEventListener("click", function () {
-          chosen = t.id;
-          tw.querySelectorAll(".trait").forEach(function (x) { x.classList.remove("on"); });
-          b.classList.add("on");
-        });
-        tw.appendChild(b);
-      });
-      app.querySelector("[data-begin]").addEventListener("click", function () {
-        var name = (app.querySelector("#nm").value || "").trim() || "Stranger";
-        startGame(name, chosen);
+    function renderStats(changed) {
+      statsEl.hidden = false;
+      STATS.forEach(function (k) {
+        var el = statsEl.querySelector('[data-stat="' + k + '"]');
+        el.textContent = state.stats[k];
+        el.classList.remove("up", "down");
+        if (changed && changed[k]) el.classList.add(changed[k] > 0 ? "up" : "down");
       });
     }
 
-    function renderPlay() {
-      app.innerHTML =
-        '<div class="log" data-log></div>' +
-        '<div class="quickbar" data-quick></div>' +
-        '<div class="cmdrow">' +
-        '  <input data-cmd type="text" placeholder="Type a command — try: help" autocomplete="off" autocapitalize="off" spellcheck="false">' +
-        '  <button data-send type="button">Enter</button>' +
-        '</div>';
-      var quick = app.querySelector("[data-quick]");
-      ["look", "inventory", "help", "status"].forEach(function (c) {
-        var b = document.createElement("button");
-        b.className = "quick"; b.type = "button"; b.textContent = c;
-        b.addEventListener("click", function () { run(c); });
-        quick.appendChild(b);
-      });
-      var input = app.querySelector("[data-cmd]");
-      function send() { var v = input.value; input.value = ""; if (v.trim()) run(v); input.focus(); }
-      app.querySelector("[data-send]").addEventListener("click", send);
-      input.addEventListener("keydown", function (e) { if (e.key === "Enter") send(); });
-      input.focus();
-    }
-
-    function print(text, cls) {
-      var log = app.querySelector("[data-log]");
-      if (!log) return;
-      var p = document.createElement("p");
-      if (cls) p.className = cls;
-      p.textContent = text;
-      log.appendChild(p);
-      log.scrollTop = log.scrollHeight;
-    }
-    function describeArea() {
-      var r = ROOMS[state.loc];
-      print(r.name, "area");
-      print(r.desc);
-      if (r.items && r.items.length) print("You can see: " + r.items.join(", ") + ".", "sys");
-      var dirs = Object.keys(r.exits);
-      print("Ways from here: " + dirs.join(", ") + ".", "sys");
-    }
-
-    // -------------------------------------------------------------- game
-    function startGame(name, trait) {
-      state = { name: name, trait: trait, loc: "cottage", inv: ["lantern"], debts: 1, steps: 0 };
-      save();
-      renderPlay();
-      var t = TRAITS.filter(function (x) { return x.id === trait; })[0] || TRAITS[0];
-      print("Low Vale, beneath the Black Spine.", "area");
-      print("You are " + state.name + ", known as a " + t.label.toLowerCase() + " — " + t.note);
-      print("The day's work is not done, and the valley is awake. Type ‘help’ for what you can do.", "sys");
-      describeArea();
-    }
-
-    function resume() {
-      renderPlay();
-      print("You take up where you left off.", "sys");
-      describeArea();
-    }
-
-    // Deterministic command parser — purely local.
-    function run(raw) {
-      var text = String(raw).trim().toLowerCase();
-      if (!text) return;
-      print(raw.trim(), "echo");
-      var parts = text.split(/\s+/);
-      var verb = parts[0];
-      var arg = parts.slice(1).join(" ");
-
-      // direction shorthands
-      var DIRS = { n: "north", s: "south", e: "east", w: "west", u: "up", d: "down" };
-      if (DIRS[verb]) { move(DIRS[verb]); return; }
-
-      switch (verb) {
-        case "help":
-          print("Commands: look, go <way> (or n/s/e/w/up/down), take <thing>, examine <thing>, inventory (i), status, restart.", "sys");
-          print("This is a small public demo — a handful of places around Low Vale to wander and read.", "sys");
-          break;
-        case "look": case "l":
-          describeArea(); break;
-        case "go": case "move": case "walk":
-          if (!arg) { print("Go where? Try a direction like ‘east’.", "sys"); } else { move(arg); }
-          break;
-        case "north": case "south": case "east": case "west": case "up": case "down":
-        case "out": case "home": case "lane":
-          move(verb); break;
-        case "inventory": case "inv": case "i":
-          print(state.inv.length ? "You carry: " + state.inv.join(", ") + "." : "Your hands are empty.", "sys");
-          break;
-        case "take": case "get":
-          takeItem(arg); break;
-        case "examine": case "look-at": case "x": case "read":
-          examine(arg); break;
-        case "status":
-          var tr = TRAITS.filter(function (x) { return x.id === state.trait; })[0];
-          print(state.name + " — " + (tr ? tr.label : "of Low Vale") + ". At: " + ROOMS[state.loc].name +
-                ". Carrying " + state.inv.length + ". Debts on the ledger: " + state.debts + ". Steps walked: " + state.steps + ".", "sys");
-          break;
-        case "restart": case "reset":
-          clearSave(); state = null; renderCreator(); return;
-        case "wait": case "rest":
-          print("You let the moment pass. The valley does not hurry, and neither, for now, do you.", "sys"); break;
-        default:
-          print("That isn't something the demo understands yet. Try ‘help’.", "sys");
+    function button(label, hint, onClick) {
+      var b = document.createElement("button");
+      b.className = "choice"; b.type = "button";
+      b.appendChild(document.createElement("span"));
+      b.firstChild.textContent = label;
+      if (hint) {
+        var h = document.createElement("span"); h.className = "hint"; h.textContent = hint;
+        b.appendChild(h);
       }
-      if (state) save();
+      b.addEventListener("click", onClick);
+      return b;
     }
 
-    function move(way) {
-      var r = ROOMS[state.loc];
-      var dest = r.exits[way];
-      if (!dest) { print("You can't go " + way + " from here.", "sys"); return; }
-      state.loc = dest; state.steps += 1; save();
-      describeArea();
-    }
-    function takeItem(name) {
-      if (!name) { print("Take what?", "sys"); return; }
-      var r = ROOMS[state.loc];
-      var idx = (r.items || []).indexOf(name);
-      if (idx === -1) { print("There's no " + name + " here to take.", "sys"); return; }
-      // demo: don't permanently strip the static map; just note it in inventory once
-      if (state.inv.indexOf(name) === -1) state.inv.push(name);
-      print("You take the " + name + ".", "sys");
-    }
-    function examine(name) {
-      if (!name) { print("Examine what?", "sys"); return; }
-      if (ITEM_TEXT[name]) { print(ITEM_TEXT[name]); return; }
-      print("You look closer, but the demo has nothing more to say about that.", "sys");
+    function showSetup() {
+      statsEl.hidden = true;
+      var card = document.createElement("div");
+      card.className = "card";
+      var t = document.createElement("div"); t.className = "scene-title"; t.textContent = "Before the day begins";
+      var p = document.createElement("p");
+      p.textContent = "The Hook and Skein begins with someone ordinary enough to be missed, and stubborn enough to matter. Choose who you are this morning.";
+      card.appendChild(t); card.appendChild(p);
+      var ar = document.createElement("div"); ar.className = "arche";
+      var field = document.createElement("div"); field.className = "field";
+      var lbl = document.createElement("label"); lbl.setAttribute("for", "nm");
+      lbl.textContent = "A name to be remembered by (optional)";
+      var nameInput = document.createElement("input");
+      nameInput.id = "nm"; nameInput.maxLength = 24; nameInput.placeholder = "e.g. Wren";
+      field.appendChild(lbl); field.appendChild(nameInput);
+      ARCHETYPES.forEach(function (a) {
+        ar.appendChild(button("The " + a.name.replace(/^the /, ""), a.line, function () { startGame(a, nameInput.value.trim()); }));
+      });
+      card.appendChild(ar); card.appendChild(field);
+      var sec = document.createElement("section"); sec.className = "setup"; sec.appendChild(card);
+      stage.innerHTML = ""; stage.appendChild(sec);
     }
 
-    // -------------------------------------------------------------- boot
-    document.querySelector("[data-reset]").addEventListener("click", function () {
-      clearSave(); state = null; renderCreator();
-    });
+    function startGame(arche, name) {
+      state = {
+        archetype: arche.id, name: name || ("the " + arche.name.replace(/^the /, "")),
+        stats: { resolve: arche.start.resolve, burden: arche.start.burden, memory: arche.start.memory, supplies: arche.start.supplies },
+        scene: "cottage", lastConseq: null
+      };
+      save(); renderScene();
+    }
 
-    state = load();
-    if (state && ROOMS[state.loc]) { resume(); } else { state = null; renderCreator(); }
+    function applyEffects(eff) {
+      var changed = {};
+      Object.keys(eff || {}).forEach(function (k) {
+        if (!eff[k]) return;
+        state.stats[k] = clamp(state.stats[k] + eff[k]);
+        changed[k] = eff[k];
+      });
+      return changed;
+    }
+
+    function choose(c) {
+      var changed = applyEffects(c.effects);
+      state.lastConseq = c.conseq || null;
+      if (c.to && c.to.indexOf("_end_") === 0) { state.scene = c.to; save(); renderEnding(c.to); return; }
+      state.scene = c.to; save(); renderScene(changed);
+    }
+
+    function renderScene(changed) {
+      var sc = SCENES[state.scene];
+      if (!sc) { showSetup(); return; }
+      renderStats(changed);
+      var card = document.createElement("div"); card.className = "card";
+      var t = document.createElement("div"); t.className = "scene-title"; t.textContent = sc.title;
+      card.appendChild(t);
+      sc.text.forEach(function (line) { var p = document.createElement("p"); p.textContent = line; card.appendChild(p); });
+      if (state.lastConseq) {
+        var c = document.createElement("div"); c.className = "conseq"; c.textContent = state.lastConseq;
+        card.appendChild(c); state.lastConseq = null;
+      }
+      var choices = document.createElement("div"); choices.className = "choices";
+      sc.choices.forEach(function (ch) { choices.appendChild(button(ch.label, ch.hint, function () { choose(ch); })); });
+      var sec = document.createElement("section");
+      sec.appendChild(card); sec.appendChild(choices);
+      stage.innerHTML = ""; stage.appendChild(sec);
+    }
+
+    function renderEnding(endId) {
+      renderStats();
+      var s = state.stats;
+      var lines = [];
+      lines.push("The morning closes. " + cap(state.name) + " carries it the way you chose to.");
+      if (s.memory >= 2) lines.push("You noticed more than most would. In Low Vale, memory is a kind of map — and the valley remembers that you paid attention.");
+      else lines.push("You kept your head down and your eyes near. Some mornings that's the whole of wisdom.");
+      if (s.burden >= 3) lines.push("But the weight you're carrying is real, and it isn't done with you.");
+      else if (s.burden <= 1) lines.push("For once, you owe a little less than the valley expected. A small, real thing.");
+      if (s.resolve >= 4) lines.push("Whatever comes next, you'll meet it standing.");
+
+      var place = { _end_well: "at the old well", _end_ford: "at the drowned ford", _end_spine: "beneath the Black Spine", _end_stay: "behind a barred door" }[endId] || "in Low Vale";
+
+      var sec = document.createElement("section"); sec.className = "end";
+      var card = document.createElement("div"); card.className = "card";
+      var t = document.createElement("div"); t.className = "scene-title"; t.textContent = "An ending · " + place;
+      card.appendChild(t);
+      lines.forEach(function (line) { var p = document.createElement("p"); p.className = "reflect"; p.textContent = line; card.appendChild(p); });
+      var note = document.createElement("p"); note.className = "ui";
+      note.style.cssText = "font-size:14px;color:var(--txt2);font-style:normal;margin-top:14px;";
+      note.textContent = "This is one short branch of the demo. The full game keeps the world coherent across many such mornings.";
+      card.appendChild(note);
+      var choices = document.createElement("div"); choices.className = "choices";
+      choices.appendChild(button("Play again", "New character, same valley", function () { reset(); }));
+      sec.appendChild(card); sec.appendChild(choices);
+      stage.innerHTML = ""; stage.appendChild(sec);
+    }
+
+    function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+
+    function reset() {
+      try { localStorage.removeItem(LS); } catch (e) {}
+      state = null; showSetup();
+    }
+    $("#reset").addEventListener("click", reset);
+
+    (function boot() {
+      var saved = null;
+      try { saved = JSON.parse(localStorage.getItem(LS) || "null"); } catch (e) { saved = null; }
+      if (saved && saved.stats && saved.scene) {
+        state = saved;
+        if (state.scene.indexOf("_end_") === 0) renderEnding(state.scene);
+        else renderScene();
+      } else {
+        showSetup();
+      }
+    })();
   })();
   </script>
 </body>
