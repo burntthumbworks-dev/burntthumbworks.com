@@ -372,3 +372,17 @@ a:hover { color: var(--link-hover); text-decoration: underline; text-underline-o
 .btw-exit-pill:active {
   transform: translateY(1px);
 }
+
+/* ---- Crest & Name Story Layout ---- */
+.crest-story-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+  gap: var(--space-10);
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .crest-story-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
