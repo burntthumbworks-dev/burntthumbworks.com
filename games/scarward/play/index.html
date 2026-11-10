@@ -3,17 +3,72 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Scarward — Hold the Line (Hook and Skein prototype)</title>
-  <meta name="description" content="A Hook and Skein side-view tower-defense roguelite prototype by Burnt Thumb Works. Hold a Joined-Hands holding-circle near the Scar against the Otherworld." />
-  <meta name="robots" content="noindex, nofollow" />
+  <title>Scarward — Hold the Line | Burnt Thumb Works</title>
+  <meta name="description" content="A Hook and Skein side-view tower-defense roguelite by Burnt Thumb Works. Hold a Joined-Hands holding-circle near the Scar against the Otherworld." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://burntthumbworks.com/games/scarward/play/" />
   <meta name="theme-color" content="#0d0915" />
-  <script type="module" crossorigin src="./assets/index-CqTOgzsL.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BCLil2qJ.css">
+  <style>
+    #btw-site-menu{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);
+      left:calc(env(safe-area-inset-left,0px) + 10px);z-index:60;
+      font-family:'Segoe UI',system-ui,-apple-system,sans-serif;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+    .btw-pill{display:inline-flex;align-items:center;gap:6px;height:38px;min-width:38px;
+      padding:0 12px;border-radius:999px;border:1px solid rgba(216,180,106,.5);
+      background:rgba(13,9,21,.78);color:#f7efd9;font-size:12.5px;font-weight:600;text-decoration:none;
+      cursor:pointer;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);
+      box-shadow:0 4px 14px rgba(0,0,0,.45);}
+    .btw-pill:hover{border-color:#f59e2e;color:#ffb84d;text-decoration:none;}
+    .btw-pill:active{transform:translateY(1px);}
+    #btw-site-panel{position:absolute;top:46px;left:0;width:220px;background:rgba(20,14,33,.98);
+      border:1px solid rgba(216,180,106,.45);border-radius:12px;padding:8px;
+      box-shadow:0 14px 38px rgba(0,0,0,.65);}
+    #btw-site-panel[hidden]{display:none;}
+    #btw-site-panel a,#btw-site-panel button{display:block;width:100%;box-sizing:border-box;
+      text-align:left;text-decoration:none;font:inherit;font-size:14px;color:#f7efd9;
+      background:transparent;border:0;border-radius:8px;padding:11px 12px;min-height:44px;cursor:pointer;}
+    #btw-site-panel a:hover,#btw-site-panel button:hover{background:rgba(245,158,46,.16);color:#ffb84d;}
+    #btw-site-panel .sub{font-size:11.5px;color:#a89ec0;line-height:1.35;}
+  </style>
+  <script type="module" crossorigin src="./assets/index-CeMwnC2Y.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CO9Z3A_E.css">
 </head>
 <body>
   <div id="app">
     <canvas id="game-canvas"></canvas>
     <div id="ui-root"></div>
   </div>
+
+  <nav id="btw-site-menu" aria-label="Site navigation">
+    <a class="btw-pill" href="/games/scarward/" aria-label="Exit game to Scarward page">← Exit</a>
+    <button class="btw-pill" id="btw-site-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="btw-site-panel">☰ Site</button>
+    <div id="btw-site-panel" hidden>
+      <button type="button" data-site="resume">▶ Resume game</button>
+      <a href="/games/scarward/">← Scarward Overview</a>
+      <a href="/games/">🎮 All Games</a>
+      <a href="/apps.html">📱 All Apps</a>
+      <a href="/">⌂ Burnt Thumb Works Home</a>
+      <span class="sub" style="display:block;padding:6px 12px 4px;">Tap 1–3 on the bottom bar to switch Workings, then tap a lane to cast.</span>
+    </div>
+  </nav>
+  <script>
+    (function () {
+      "use strict";
+      var t = document.getElementById("btw-site-toggle");
+      var p = document.getElementById("btw-site-panel");
+      if (!t || !p) return;
+      function open() { p.hidden = false; t.setAttribute("aria-expanded", "true"); }
+      function close() { p.hidden = true; t.setAttribute("aria-expanded", "false"); }
+      t.addEventListener("click", function (e) { e.stopPropagation(); if (p.hidden) open(); else close(); });
+      p.addEventListener("click", function (e) {
+        if (e.target && e.target.getAttribute("data-site") === "resume") { close(); }
+      });
+      document.addEventListener("click", function (e) {
+        if (!p.hidden && !p.contains(e.target) && !t.contains(e.target)) close();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !p.hidden) close();
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -54,13 +54,17 @@
   <header class="site-header">
     <div class="site-header__inner">
       <a class="brand" href="/" aria-label="Burnt Thumb Works home">
-        <img class="brand__mark" src="/assets/logo-crest.png" alt="" width="57" height="38">
-        <span class="brand__name">Burnt Thumb<span>Works</span></span>
+        <img class="brand__mark" src="/assets/crest-mark.png" alt="" width="42" height="42">
+        <span class="brand__name">Burnt Thumb Works</span>
       </a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+      </button>
       <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="/garden-sage.html">About the app</a>
-        <a class="nav__link" href="/apps/garden-sage/">App entry</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="/apps/">All apps</a></span>
+        <a class="nav__link" href="/garden-sage.html">About Garden Sage</a>
+        <a class="nav__link" href="/apps.html">All Apps</a>
+        <a class="nav__link" href="/games/">Games</a>
+        <span class="nav__cta"><a class="btn btn--secondary" href="/garden-sage.html">✕ Exit Demo</a></span>
       </nav>
     </div>
   </header>
@@ -75,12 +79,13 @@
     </section>
 
     <div class="gsd-wrap">
-      <div class="gsd-bar" aria-hidden="true">
-        <div class="gsd-steps" id="gsd-steps">
+      <div class="gsd-bar" aria-label="Demo controls">
+        <div class="gsd-steps" id="gsd-steps" aria-hidden="true">
           <span class="gsd-steps__dot"></span><span class="gsd-steps__dot"></span>
           <span class="gsd-steps__dot"></span><span class="gsd-steps__dot"></span>
         </div>
-        <button class="gs-btn" id="gsd-reset" type="button" style="padding:6px 14px;font-size:13px;">Reset demo</button>
+        <button class="gs-btn" id="gsd-reset" type="button" style="padding:8px 14px;font-size:13px;min-height:40px;">Reset demo</button>
+        <a class="gs-btn" href="/garden-sage.html" style="padding:8px 14px;font-size:13px;min-height:40px;text-decoration:none;">← Exit Demo</a>
       </div>
 
       <!-- STEP 1 — choose an observation -->

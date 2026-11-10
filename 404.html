@@ -15,17 +15,23 @@
   <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="index.html" aria-label="Burnt Thumb Works — home">
-        <img class="brand__mark" src="assets/crest-mark.png" alt="" width="42" height="42">
+      <a class="brand" href="/index.html" aria-label="Burnt Thumb Works — home">
+        <img class="brand__mark" src="/assets/crest-mark.png" alt="" width="42" height="42">
         <span class="brand__name">Burnt Thumb Works</span>
       </a>
-      <nav class="nav" aria-label="Primary">
-        <a class="nav__link" href="games/">Games</a>
-        <a class="nav__link" href="apps.html">Apps</a>
-        <a class="nav__link" href="lab/">Lab</a>
-        <a class="nav__link" href="about.html">About</a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <a class="nav__link" href="/games/">Games</a>
+        <a class="nav__link" href="/apps.html">Apps</a>
+        <a class="nav__link" href="/lab/">Lab</a>
+        <a class="nav__link" href="/about.html">About</a>
+        <span class="nav__cta"><a class="btn btn--primary" href="/games/grimmkart/">Play GrimmKart</a></span>
       </nav>
     </div>
   </header>
