@@ -13,13 +13,9 @@
   <meta property="og:description" content="Free browser kart game by Burnt Thumb Works — Race Mode + Battle Arena Mode, built on public-domain Grimm fairy tales." />
   <meta property="og:url" content="https://burntthumbworks.com/games/grimmkart/play/" />
   <meta property="og:site_name" content="Burnt Thumb Works" />
-  <script type="module" crossorigin src="./assets/index-hrK3O73u.js"></script>
+  <script type="module" crossorigin src="./assets/index-BZ4-2ygt.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index--tpLDkce.css">
   <style>
-    /* Site-return menu for the GrimmKart shell. Top-LEFT only (the game's pause
-       button is top-center and its touch controls are along the bottom, so this
-       does not overlap any gameplay control). Does not use Escape — the game
-       already binds Escape for its own pause. Pure local; no network. */
     #btw-site-menu{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);
       left:calc(env(safe-area-inset-left,0px) + 10px);z-index:50;
       font-family:'Segoe UI',system-ui,-apple-system,sans-serif;}
@@ -45,7 +41,6 @@
     <div id="ui-root"></div>
   </div>
 
-  <!-- Site-return menu (local only; does not touch the game bundle or its controls) -->
   <nav id="btw-site-menu" aria-label="Site navigation">
     <button id="btw-site-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="btw-site-panel">⌂ Site</button>
     <div id="btw-site-panel" hidden>
@@ -57,8 +52,6 @@
     </div>
   </nav>
   <script>
-    /* Local site menu only. No network, no game-input interception beyond its own
-       small top-left control. Escape is intentionally NOT bound (the game uses it). */
     (function () {
       "use strict";
       var t = document.getElementById("btw-site-toggle");

@@ -16,20 +16,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- HAS design-system faces (scoped to .has-world sections only) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/site.css">
-  <style>
-    /* product-page layout */
-    .product-lead { display: grid; grid-template-columns: 1.25fr .75fr; gap: var(--space-16); align-items: start; }
-    .fact-panel { background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm); }
-    .fact-panel h2 { font-family: var(--font-sans); font-weight: var(--weight-bold); font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--brass-700); margin: 0 0 var(--space-4); }
-    .fact-row { display: flex; justify-content: space-between; gap: var(--space-4); padding: var(--space-3) 0; border-top: 1px solid var(--border-subtle); font-size: var(--text-sm); }
-    .fact-row:first-of-type { border-top: 0; }
-    .fact-row dt { color: var(--fg-3); font-family: var(--font-mono); font-size: 12px; letter-spacing: .03em; }
-    .fact-row dd { margin: 0; color: var(--fg-1); font-weight: var(--weight-semibold); text-align: right; }
-    @media (max-width: 860px) { .product-lead { grid-template-columns: 1fr; gap: var(--space-10); } }
-  </style>
+  <link rel="stylesheet" href="css/hook-and-skein.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -54,42 +46,44 @@
   </header>
 
   <main id="main">
-    <div class="page-head">
-      <div class="wrap">
-        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="apps.html">Products</a> <span>/</span> <span>The Hook and Skein</span></nav>
-        <span class="tag" style="margin-bottom: var(--space-4);">Narrative RPG</span>
-        <h1 class="page-head__title">The Hook and Skein</h1>
-        <p class="page-head__sub">A mobile-first narrative choice adventure — read, choose, survive, and live with the consequences.</p>
-        <p style="margin-top: var(--space-6); display:flex; gap: var(--space-3); flex-wrap:wrap;">
-          <a class="btn btn--primary btn--lg" href="games/the-hook-and-skein/play/">Play the demo
+    <!-- HAS world hero — design-system treatment, scoped to .has-world -->
+    <section class="has-world" aria-label="The Hook and Skein">
+      <div class="has-world__inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:18px;"><a href="index.html">Home</a> <span>/</span> <a href="apps.html">Products</a> <span>/</span> <span>The Hook and Skein</span></nav>
+        <span class="has-mark" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M76.5 41.5 A29 29 0 1 1 59.5 18"/><path d="M70 36 l7.5 -4.5" stroke-width="3.2"/><path d="M64.5 29 l7.5 -4.5" stroke-width="3.2"/><path d="M48 73 C48 86 45 93 35 93 C26 93 22 84 28 78"/><path d="M28 78 q3 6 9 5" stroke-width="4"/></g></svg></span>
+        <span class="has-tag">Narrative RPG · in development</span>
+        <h1 class="has-title">The Hook and Skein</h1>
+        <p class="has-lede">A mobile-first narrative choice adventure — read, choose, survive, and live with the consequences. Begin in Low Vale, beneath the Black Spine.</p>
+        <div class="has-actions">
+          <a class="has-btn has-btn--primary" href="games/the-hook-and-skein/play/">Play the demo
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-          <a class="btn btn--secondary btn--lg" href="games/the-hook-and-skein/">Game &amp; demo page</a>
-        </p>
+          <a class="has-btn" href="games/the-hook-and-skein/">Game &amp; demo page</a>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <section class="section" aria-label="About the world">
-      <div class="wrap">
-        <div class="product-lead">
-          <div class="prose">
-            <p class="lede">The Hook and Skein is a world you read your way into. No twitch reflexes, no flashing menus — just a place built from words, and the quiet systems holding it together underneath.</p>
+    <section class="has-world has-world--deep" aria-label="About the world">
+      <div class="has-world__inner">
+        <div class="has-lead">
+          <div class="has-stack">
+            <p class="has-lede">The Hook and Skein is a world you read your way into. No twitch reflexes, no flashing menus — just a place built from words, and the quiet systems holding it together underneath.</p>
             <p>It's a narrative choice adventure. You read, make choices, follow threads, and watch a world respond. The aim is the feeling of a good campaign or a well-kept notebook: a place with its own logic, where what you did yesterday still matters today.</p>
-            <h3>What we're after</h3>
+            <h3 class="has-heading" style="font-size:1.15rem;">What we're after</h3>
             <p>Hand-written events and characters over endless procedural sludge. A narrative engine that keeps track of the world so the story stays coherent. Something that rewards attention rather than demanding speed — closer to reading by lamplight than grinding a feed.</p>
-            <h3>Where it stands</h3>
+            <h3 class="has-heading" style="font-size:1.15rem;">Where it stands</h3>
             <p>In active development. The world, the systems, and the engine are being built and tested inside the studio. There's a short, safe <a href="games/the-hook-and-skein/play/">mobile choice demo</a> you can play now — read, choose, and live with it — while the full game is still being built. No full public release yet, and we won't pretend otherwise.</p>
           </div>
-          <aside class="fact-panel" aria-label="At a glance">
-            <h2>At a glance</h2>
-            <dl>
-              <div class="fact-row"><dt>Type</dt><dd>Narrative fantasy RPG</dd></div>
-              <div class="fact-row"><dt>Format</dt><dd>Narrative choice · mobile-first</dd></div>
-              <div class="fact-row"><dt>Status</dt><dd>In development</dd></div>
-              <div class="fact-row"><dt>Release</dt><dd>Not yet announced</dd></div>
-              <div class="fact-row"><dt>Studio</dt><dd>Burnt Thumb Works</dd></div>
+          <aside class="has-panel" aria-label="At a glance">
+            <p class="has-eyebrow" style="margin-bottom:14px;">At a glance</p>
+            <dl style="margin:0;">
+              <div class="has-fact"><dt>Type</dt><dd>Narrative fantasy RPG</dd></div>
+              <div class="has-fact"><dt>Format</dt><dd>Narrative choice · mobile-first</dd></div>
+              <div class="has-fact"><dt>Status</dt><dd>In development</dd></div>
+              <div class="has-fact"><dt>Release</dt><dd>Not yet announced</dd></div>
+              <div class="has-fact"><dt>Studio</dt><dd>Burnt Thumb Works</dd></div>
             </dl>
-            <p style="font-family: var(--font-serif); font-size: 14px; color: var(--fg-2); line-height: var(--leading-normal); margin: var(--space-5) 0 0;">Want to hear when it opens up? Mention The Hook and Skein when you get in touch.</p>
-            <a class="btn btn--secondary" data-email data-subject="The Hook and Skein — keep me posted" href="#" style="width:100%; justify-content:center; margin-top: var(--space-4);">Keep me posted</a>
+            <p style="font-size:14px; color:var(--has-muted); margin:20px 0 0;">Want to hear when it opens up? Mention The Hook and Skein when you get in touch.</p>
+            <a class="has-btn" data-email data-subject="The Hook and Skein — keep me posted" href="#" style="width:100%; justify-content:center; margin-top:16px;">Keep me posted</a>
           </aside>
         </div>
       </div>
@@ -98,13 +92,14 @@
     <section class="section section--alt" aria-labelledby="more-title">
       <div class="wrap">
         <div class="section__head section__head--center">
-          <p class="eyebrow">Get in touch</p>
-          <h2 class="section__title" id="more-title">We build for other people too</h2>
-          <p class="section__lede" style="margin-left:auto;margin-right:auto;">Websites, apps, and tools, on request. If you need something built, get in touch.</p>
+          <p class="eyebrow">Play in your browser</p>
+          <h2 class="section__title" id="more-title">Explore the world of The Hook and Skein</h2>
+          <p class="section__lede" style="margin-left:auto;margin-right:auto;">Play the Low Vale narrative demo or hold the Scar borderlands in Scarward.</p>
         </div>
         <div style="display:flex; gap: var(--space-4); justify-content:center; flex-wrap:wrap;">
+          <a class="btn btn--primary btn--lg" href="games/the-hook-and-skein/play/">Play Low Vale Demo <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a class="btn btn--secondary btn--lg" href="games/scarward/">Explore Scarward</a>
           <a class="btn btn--secondary btn--lg" href="garden-sage.html">See Garden Sage</a>
-          <a class="btn btn--primary btn--lg" data-start-project href="contact.html#intake">Start a project <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
         </div>
       </div>
     </section>
@@ -117,22 +112,24 @@
           <img src="assets/crest-mark.png" alt="" width="52" height="52">
           <span class="nm">Burnt Thumb<br>Works</span>
         </div>
-        <p class="footer-blurb">An independent software studio building practical websites, apps, tools, and interactive products.</p>
+        <p class="footer-blurb">An independent studio making original games, practical apps, and story-driven tools.</p>
       </div>
       <div class="footer-col">
-        <h2 class="footer-col__h">Studio</h2>
+        <h2 class="footer-col__h">Games</h2>
         <ul>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Start a project</a></li>
+          <li><a href="games/">All Games</a></li>
+          <li><a href="games/grimmkart/">GrimmKart.io</a></li>
+          <li><a href="games/the-hook-and-skein/">The Hook and Skein</a></li>
+          <li><a href="games/scarward/">Scarward</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h2 class="footer-col__h">Products</h2>
+        <h2 class="footer-col__h">Apps &amp; Studio</h2>
         <ul>
-          <li><a href="apps.html">All products</a></li>
-          <li><a href="hook-and-skein.html">The Hook and Skein</a></li>
+          <li><a href="apps.html">All Apps</a></li>
           <li><a href="garden-sage.html">Garden Sage</a></li>
-          <li><a href="ai-workflow-setup.html">AI Workflow Setup</a></li>
+          <li><a href="pantry-panda.html">Pantry Panda</a></li>
+          <li><a href="about.html">About</a></li>
         </ul>
       </div>
     </div>
