@@ -1,0 +1,115 @@
+/* ============================================================
+   BURNT THUMB WORKS — Medieval Manuscript & Illuminated Codex System
+   v01 2026-11-11
+   Transforms studio pages into an illuminated medieval treatise / codex:
+   rubricated initials, double-ruled folio borders, illuminated badges,
+   calligraphic dividers, and classical bookish hierarchy.
+   100% local, zero external requests, strict $0 runtime cost.
+   ============================================================ */
+
+/* ---- Illuminated Drop Cap ---- */
+.drop-cap {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 3.8rem;
+  line-height: 0.82;
+  margin: 4px 14px 4px 0;
+  color: var(--manuscript-rubric, #8F2D18);
+  font-weight: var(--weight-bold, 700);
+  text-shadow: 1px 1px 0 var(--manuscript-gold, #9E741E);
+}
+
+/* ---- Rubricated Headings & Eyebrows ---- */
+.rubric {
+  color: var(--manuscript-rubric, #8F2D18) !important;
+}
+
+.folio-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--manuscript-rubric, #8F2D18);
+  background: var(--surface-2);
+  border: 1px solid var(--border-default);
+  padding: 3px 10px;
+  border-radius: var(--radius-xs);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+}
+
+/* ---- Illuminated Book Divider ---- */
+.manuscript-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin: var(--space-12) 0;
+  color: var(--brass-600);
+}
+
+.manuscript-divider::before,
+.manuscript-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+}
+
+.manuscript-divider__ornament {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--manuscript-rubric, #8F2D18);
+  letter-spacing: 0.2em;
+}
+
+/* ---- Codex Folio Cards ---- */
+.card--manuscript {
+  position: relative;
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: var(--space-6);
+  box-shadow: 0 1px 3px rgba(33,26,14,0.06), inset 0 0 0 3px var(--surface-1), inset 0 0 0 4px var(--border-subtle);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.card--manuscript:hover {
+  border-color: var(--brass-500);
+  box-shadow: 0 4px 16px rgba(33,26,14,0.10), inset 0 0 0 3px var(--surface-1), inset 0 0 0 4px var(--brass-400);
+  transform: translateY(-2px);
+}
+
+/* Corner flourishes for manuscript cards */
+.card--manuscript::before,
+.card--manuscript::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+}
+
+.card--manuscript::before {
+  top: 6px;
+  left: 6px;
+  border-top: 2px solid var(--manuscript-gold, #9E741E);
+  border-left: 2px solid var(--manuscript-gold, #9E741E);
+}
+
+.card--manuscript::after {
+  bottom: 6px;
+  right: 6px;
+  border-bottom: 2px solid var(--manuscript-gold, #9E741E);
+  border-right: 2px solid var(--manuscript-gold, #9E741E);
+}
+
+/* ---- Folio Page Head Decoration ---- */
+.page-head--manuscript {
+  border-bottom: 3px double var(--border-default);
+  padding-bottom: var(--space-8);
+  margin-bottom: var(--space-10);
+}
