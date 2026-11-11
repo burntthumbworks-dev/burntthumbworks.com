@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Pantry Panda — Usable Web Slice | Burnt Thumb Works</title>
-  <meta name="description" content="A live, zero-cost usable slice of Pantry Panda: inventory tracking, smart ingredient normalization, deterministic 'What Can I Make?' recipe matching, and interactive shopping list.">
+  <meta name="description" content="A live, zero-cost usable slice of Pantry Panda: dual shopping philosophies (Shop Like a European vs Shop Like a Prepper), deterministic recipe matching, and smart grocery store dispatch.">
   <link rel="canonical" href="https://burntthumbworks.com/apps/pantry-panda/demo/">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#2C2B29">
@@ -38,6 +38,12 @@
       --pp-soon-bg: #FFF8E1;
       --pp-expired: #C62828;
       --pp-expired-bg: #FFEBEE;
+      --pp-prepper: #B5751B;
+      --pp-prepper-bg: #FFF8E7;
+      --pp-prepper-border: #E8C882;
+      --pp-euro: #2E7D32;
+      --pp-euro-bg: #EAF5EA;
+      --pp-euro-border: #A3D1A5;
       --pp-shadow: 0 4px 16px rgba(40, 36, 28, 0.07);
       --pp-radius: 12px;
     }
@@ -131,7 +137,7 @@
       border-radius: var(--pp-radius);
       padding: 24px 28px;
       box-shadow: var(--pp-shadow);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -178,6 +184,120 @@
       background: var(--pp-brand-soft);
       color: var(--pp-brand);
       border: 1px solid rgba(43, 110, 63, 0.25);
+    }
+
+    /* Philosophy / Mode Switcher Card */
+    .pp-mode-card {
+      background: var(--pp-surface);
+      border: 1px solid var(--pp-border);
+      border-radius: var(--pp-radius);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--pp-shadow);
+      transition: all 0.2s ease;
+    }
+    .pp-mode-card.is-euro {
+      border-color: var(--pp-euro-border);
+      background: linear-gradient(180deg, #FFFFFF 0%, #F9FCF8 100%);
+    }
+    .pp-mode-card.is-prepper {
+      border-color: var(--pp-prepper-border);
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF8 100%);
+    }
+    .pp-mode-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .pp-mode-label-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .pp-mode-eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--pp-ink-muted);
+      margin-bottom: 2px;
+    }
+    .pp-mode-title {
+      font-size: 16px;
+      font-weight: 800;
+      margin: 0;
+      color: var(--pp-ink);
+    }
+    .pp-mode-toggles {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .pp-mode-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid var(--pp-border);
+      background: var(--pp-surface-subtle);
+      color: var(--pp-ink-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .pp-mode-btn:hover {
+      border-color: var(--pp-border-strong);
+      color: var(--pp-ink);
+    }
+    .pp-mode-btn.is-active-euro {
+      background: var(--pp-euro-bg);
+      border-color: var(--pp-euro);
+      color: #1A5424;
+      box-shadow: 0 0 0 1px var(--pp-euro);
+    }
+    .pp-mode-btn.is-active-prepper {
+      background: var(--pp-prepper-bg);
+      border-color: var(--pp-prepper);
+      color: #8C550E;
+      box-shadow: 0 0 0 1px var(--pp-prepper);
+    }
+    .pp-mode-desc-box {
+      font-size: 13px;
+      line-height: 1.5;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--pp-border);
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pp-resilience-meter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .pp-meter-bar {
+      width: 110px;
+      height: 8px;
+      border-radius: 99px;
+      background: var(--pp-border);
+      overflow: hidden;
+      display: inline-block;
+    }
+    .pp-meter-fill {
+      height: 100%;
+      background: var(--pp-prepper);
+      border-radius: 99px;
+      transition: width 0.3s;
     }
 
     /* Presets & Controls Bar */
@@ -385,6 +505,8 @@
     .pp-fresh-fresh { background: var(--pp-fresh-bg); color: var(--pp-fresh); }
     .pp-fresh-use_soon { background: var(--pp-soon-bg); color: var(--pp-soon); }
     .pp-fresh-expired { background: var(--pp-expired-bg); color: var(--pp-expired); }
+    .pp-fresh-buffer_low { background: var(--pp-prepper-bg); color: #B5751B; border: 1px solid #E8C882; }
+
     .pp-item-ctrls {
       display: flex;
       justify-content: space-between;
@@ -516,6 +638,13 @@
     .pp-btn-warm:hover {
       background: #AA581D;
     }
+    .pp-btn-prepper {
+      background: #B5751B;
+      color: #fff;
+    }
+    .pp-btn-prepper:hover {
+      background: #8F5B12;
+    }
 
     /* Recipe Section */
     .pp-recipe-section {
@@ -566,6 +695,7 @@
       font-weight: 600;
       color: var(--pp-ink-muted);
       margin-bottom: 6px;
+      flex-wrap: wrap;
     }
     .pp-recipe-title {
       font-size: 17px;
@@ -573,6 +703,17 @@
       margin: 0 0 6px;
       color: var(--pp-ink);
     }
+    .pp-philosophy-tag {
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 99px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .pp-tag-euro { background: var(--pp-euro-bg); color: var(--pp-euro); border: 1px solid var(--pp-euro-border); }
+    .pp-tag-prepper { background: var(--pp-prepper-bg); color: var(--pp-prepper); border: 1px solid var(--pp-prepper-border); }
+
     .pp-ingredient-match-list {
       margin: 12px 0;
       padding: 0;
@@ -604,7 +745,7 @@
       margin: 10px 0;
     }
 
-    /* Shopping List */
+    /* Shopping List & Partner Dispatch */
     .pp-shopping-wrap {
       background: var(--pp-surface);
       border: 1px solid var(--pp-border);
@@ -612,6 +753,61 @@
       padding: 22px;
       box-shadow: var(--pp-shadow);
     }
+    .pp-dispatch-panel {
+      background: var(--pp-surface-subtle);
+      border: 1px solid var(--pp-border);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    .pp-dispatch-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .pp-dispatch-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pp-dispatch-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .pp-partner-dispatch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--pp-border);
+      background: #FFFFFF;
+      color: var(--pp-ink);
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .pp-partner-dispatch-btn:hover {
+      border-color: var(--pp-brand);
+      color: var(--pp-brand);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .pp-dispatch-disclosure {
+      font-size: 11.5px;
+      color: var(--pp-ink-muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+
     .pp-shop-list {
       list-style: none;
       margin: 16px 0;
@@ -636,6 +832,66 @@
       display: flex;
       align-items: center;
       gap: 12px;
+    }
+
+    /* Partner Showcase Tab */
+    .pp-partner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .pp-partner-card {
+      background: #FFFFFF;
+      border: 1px solid var(--pp-border);
+      border-radius: var(--pp-radius);
+      padding: 18px;
+      box-shadow: var(--pp-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .pp-partner-card:hover {
+      border-color: var(--pp-border-strong);
+    }
+    .pp-partner-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 99px;
+      margin-bottom: 8px;
+      width: fit-content;
+    }
+    .pp-partner-title {
+      font-size: 17px;
+      font-weight: 800;
+      margin: 0 0 6px;
+      color: var(--pp-ink);
+    }
+    .pp-partner-desc {
+      font-size: 13px;
+      color: var(--pp-ink-muted);
+      margin: 0 0 14px;
+      line-height: 1.5;
+    }
+    .pp-partner-link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #FFFFFF;
+      transition: opacity 0.15s;
+    }
+    .pp-partner-link-btn:hover {
+      opacity: 0.9;
     }
 
     /* Intake & Scan simulation */
@@ -701,20 +957,47 @@
         <div class="pp-mascot" aria-hidden="true">🐼</div>
         <div class="pp-brand-text">
           <h1>Pantry Panda</h1>
-          <p>Interactive kitchen companion · Inventory, matching &amp; shopping list</p>
+          <p>Kitchen companion · European daily fresh vs. Prepper bulk resilience</p>
         </div>
       </div>
       <div>
-        <span class="pp-meta-pill">Usable Web Slice · $0 Spend</span>
+        <span class="pp-meta-pill">Usable Web Slice · Dual Mode</span>
       </div>
     </header>
+
+    <!-- NEW FEATURE: Shopping Philosophy & Mode Selector -->
+    <div class="pp-mode-card is-euro" id="pp-mode-card">
+      <div class="pp-mode-top">
+        <div class="pp-mode-label-group">
+          <span class="pp-mode-eyebrow">Shopping Philosophy</span>
+          <h3 class="pp-mode-title" id="pp-mode-title">🥖 Shop Like a European (Daily / Fresh Focus)</h3>
+        </div>
+        <div class="pp-mode-toggles">
+          <button class="pp-mode-btn is-active-euro" type="button" data-set-mode="european">
+            🥖 Shop Like a European
+          </button>
+          <button class="pp-mode-btn" type="button" data-set-mode="prepper">
+            🥫 Shop Like a Prepper
+          </button>
+        </div>
+      </div>
+      <div class="pp-mode-desc-box" id="pp-mode-desc-box">
+        <span id="pp-mode-desc-text">
+          <strong>Daily Market Rhythm:</strong> Small frequent neighborhood stops, high turnover, ultra-fresh seasonal produce, compact pantry footprint, and near-zero food waste.
+        </span>
+        <div id="pp-mode-metric-box">
+          <span style="font-size:12px; font-weight:700; color:var(--pp-euro);">🍃 Turnover: 48h Fresh Window</span>
+        </div>
+      </div>
+    </div>
 
     <!-- Preset & Local Storage Controls -->
     <div class="pp-ctrl-bar">
       <div class="pp-preset-group">
         <span style="font-weight:700; color:var(--pp-ink);">Kitchen Presets:</span>
         <button class="pp-btn-preset" type="button" data-preset="starter">Starter Kitchen</button>
-        <button class="pp-btn-preset" type="button" data-preset="pasta">Pasta Night</button>
+        <button class="pp-btn-preset" type="button" data-preset="euro_market">🥖 European Fresh Basket</button>
+        <button class="pp-btn-preset" type="button" data-preset="prepper_bulk">🥫 Prepper Deep Stock</button>
         <button class="pp-btn-preset" type="button" data-preset="empty">Empty Kitchen</button>
       </div>
       <div>
@@ -735,6 +1018,9 @@
       </button>
       <button class="pp-tab-btn" type="button" data-tab="tab-shopping">
         🛒 Shopping List <span class="pp-tab-badge" id="pp-badge-shop">0</span>
+      </button>
+      <button class="pp-tab-btn" type="button" data-tab="tab-partners">
+        🏪 Where to Shop
       </button>
     </nav>
 
@@ -807,8 +1093,8 @@
     <section class="pp-tab-pane" id="tab-cook">
       <div style="background:var(--pp-surface); border:1px solid var(--pp-border); border-radius:var(--pp-radius); padding:18px 22px; margin-bottom:20px;">
         <h2 style="font-size:18px; margin:0 0 6px;">Deterministic Recipe Matching Engine</h2>
-        <p style="margin:0; font-size:13.5px; color:var(--pp-ink-muted);">
-          Matches what you have in inventory against Burnt Thumb Works canonical recipe seeds. Zero network calls or external APIs — pure client-side logic.
+        <p style="margin:0; font-size:13.5px; color:var(--pp-ink-muted);" id="pp-cook-engine-sub">
+          Matches what you have in inventory against Burnt Thumb Works canonical recipe seeds.
         </p>
       </div>
 
@@ -845,11 +1131,12 @@
       <div class="pp-intake-card">
         <h2 style="margin:0 0 6px; font-size:18px;">Simulated Grocery Haul &amp; Normalization</h2>
         <p style="margin:0 0 16px; font-size:13.5px; color:var(--pp-ink-muted);">
-          In the full mobile app, intake parses paper receipts and barcode scans. Try simulating grocery hauls below to see automatic canonical normalization (e.g., "Roma tomatoes" resolves to canonical <code style="background:var(--pp-surface-subtle); padding:2px 4px; border-radius:4px;">tomato</code>).
+          Test simulated grocery hauls below tailored to your shopping philosophy. Automatic canonical normalization maps raw names to canonical ingredients.
         </p>
 
         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;">
-          <button class="pp-btn pp-btn-secondary" type="button" data-haul="haul-produce">🥬 Farmer's Market Haul</button>
+          <button class="pp-btn pp-btn-secondary" type="button" data-haul="haul-produce">🥖 European Daily Market Haul</button>
+          <button class="pp-btn pp-btn-secondary" type="button" data-haul="haul-prepper">🥫 Prepper Bulk Warehouse Run</button>
           <button class="pp-btn pp-btn-secondary" type="button" data-haul="haul-italian">🍝 Italian Dinner Run</button>
           <button class="pp-btn pp-btn-secondary" type="button" data-haul="haul-breakfast">🍳 Weekend Breakfast Stock</button>
         </div>
@@ -868,6 +1155,28 @@
     <!-- ==================== TAB 4: SHOPPING LIST ==================== -->
     <section class="pp-tab-pane" id="tab-shopping">
       <div class="pp-shopping-wrap">
+        
+        <!-- Smart Partner Dispatch / Ad Revenue Box -->
+        <div class="pp-dispatch-panel">
+          <div class="pp-dispatch-header">
+            <div>
+              <h3 class="pp-dispatch-title">
+                <span id="pp-dispatch-icon">🥖</span>
+                <span id="pp-dispatch-headline">European Market Dispatch</span>
+              </h3>
+              <p style="margin:2px 0 0; font-size:12.5px; color:var(--pp-ink-muted);" id="pp-dispatch-sub">
+                Quick local delivery or neighborhood market sourcing for today's fresh meal.
+              </p>
+            </div>
+            <div class="pp-dispatch-actions" id="pp-dispatch-btn-group">
+              <!-- Dynamically populated based on mode -->
+            </div>
+          </div>
+          <div class="pp-dispatch-disclosure">
+            ✦ Studio Partner Integration: Outbound referral links connect you with vetted grocers and wholesale purveyors to help support Burnt Thumb Works at $0 cost to you.
+          </div>
+        </div>
+
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
           <div>
             <h2 style="margin:0 0 4px; font-size:18px;">Active Shopping List</h2>
@@ -889,6 +1198,64 @@
       </div>
     </section>
 
+    <!-- ==================== TAB 5: WHERE TO SHOP (PARTNER SHOWCASE) ==================== -->
+    <section class="pp-tab-pane" id="tab-partners">
+      <div style="background:var(--pp-surface); border:1px solid var(--pp-border); border-radius:var(--pp-radius); padding:22px; box-shadow:var(--pp-shadow);">
+        <h2 style="margin:0 0 6px; font-size:19px;">Where to Shop: European Fresh vs. Prepper Bulk</h2>
+        <p style="margin:0 0 16px; font-size:13.5px; color:var(--pp-ink-muted);">
+          Depending on your kitchen philosophy, these curated studio partner channels supply the highest quality ingredients at the best cost-per-ounce or peak daily freshness.
+        </p>
+
+        <div class="pp-partner-grid">
+          
+          <!-- European Card 1 -->
+          <div class="pp-partner-card">
+            <div>
+              <span class="pp-partner-badge" style="background:var(--pp-euro-bg); color:var(--pp-euro);">Daily Fresh · Market</span>
+              <h3 class="pp-partner-title">Instacart Fresh Express</h3>
+              <p class="pp-partner-desc">Need fresh herbs, eggs, or vegetables in under 2 hours for dinner? Order from your neighborhood grocer or co-op with zero pantry clutter.</p>
+            </div>
+            <a class="pp-partner-link-btn" style="background:var(--pp-brand);" href="https://www.instacart.com" target="_blank" rel="noopener">Shop Fresh Produce →</a>
+          </div>
+
+          <!-- European Card 2 -->
+          <div class="pp-partner-card">
+            <div>
+              <span class="pp-partner-badge" style="background:var(--pp-euro-bg); color:var(--pp-euro);">Neighborhood · Scratch</span>
+              <h3 class="pp-partner-title">Local Co-ops &amp; Farm Stands</h3>
+              <p class="pp-partner-desc">Connect with independent local farmers and bakeries. The European doctrine emphasizes knowing your producers and seasonal eating.</p>
+            </div>
+            <a class="pp-partner-link-btn" style="background:#3B4E36;" href="https://www.localharvest.org" target="_blank" rel="noopener">Find Local Growers →</a>
+          </div>
+
+          <!-- Prepper Card 1 -->
+          <div class="pp-partner-card">
+            <div>
+              <span class="pp-partner-badge" style="background:var(--pp-prepper-bg); color:var(--pp-prepper);">Bulk · Wholesale</span>
+              <h3 class="pp-partner-title">Costco &amp; Sam's Club Wholesale</h3>
+              <p class="pp-partner-desc">Case-lot canned tomatoes, 25 lb sacks of jasmine rice, gallons of cold-pressed olive oil, and vacuum-sealed freezer beef for your deep pantry buffer.</p>
+            </div>
+            <a class="pp-partner-link-btn" style="background:var(--pp-prepper);" href="https://www.costco.com" target="_blank" rel="noopener">Wholesale Bulk Deals →</a>
+          </div>
+
+          <!-- Prepper Card 2 -->
+          <div class="pp-partner-card">
+            <div>
+              <span class="pp-partner-badge" style="background:var(--pp-prepper-bg); color:var(--pp-prepper);">Long-Term · Automated</span>
+              <h3 class="pp-partner-title">Amazon Subscribe &amp; Save Bulk</h3>
+              <p class="pp-partner-desc">Automate your monthly pantry staple deliveries and save 15%. Order bulk beans, canned proteins, and food-grade Mylar storage buckets.</p>
+            </div>
+            <a class="pp-partner-link-btn" style="background:#8C550E;" href="https://www.amazon.com/b?node=5856181011" target="_blank" rel="noopener">Subscribe &amp; Save Pantry →</a>
+          </div>
+
+        </div>
+
+        <div style="margin-top:20px; font-size:12px; color:var(--pp-ink-muted); text-align:center;">
+          ✦ Studio Transparency: Outbound links may include referral attribution. This generates $0-cost revenue that keeps Burnt Thumb Works independent and free of pop-up ads.
+        </div>
+      </div>
+    </section>
+
   </div>
 
   <script src="/js/site.js"></script>
@@ -903,26 +1270,27 @@
   (function () {
     "use strict";
 
-    var LS_KEY = "btw_pantry_panda_slice_v1";
+    var LS_KEY = "btw_pantry_panda_slice_v2";
 
     // Canonical ingredients with alias resolver
     var CANONICALS = [
-      { id: 'cing-tomato', name: 'tomato', aliases: ['canned diced tomatoes', 'canned tomatoes', 'diced tomatoes', 'roma tomato', 'cherry tomato', 'tomatoes'] },
-      { id: 'cing-milk', name: 'milk', aliases: ['whole milk', 'skim milk', '2% milk'] },
-      { id: 'cing-egg', name: 'egg', aliases: ['eggs', 'large eggs'] },
-      { id: 'cing-spinach', name: 'spinach', aliases: ['baby spinach', 'fresh spinach'] },
-      { id: 'cing-chicken', name: 'chicken', aliases: ['chicken thighs', 'chicken thigh', 'chicken breast'] },
-      { id: 'cing-rice', name: 'rice', aliases: ['white rice', 'jasmine rice', 'basmati rice'] },
-      { id: 'cing-pasta', name: 'pasta', aliases: ['spaghetti', 'noodles', 'penne', 'macaroni'] },
-      { id: 'cing-onion', name: 'onion', aliases: ['yellow onion', 'red onion', 'white onion'] },
-      { id: 'cing-garlic', name: 'garlic', aliases: ['garlic clove', 'garlic cloves'] },
-      { id: 'cing-cheese', name: 'cheese', aliases: ['cheddar', 'cheddar cheese', 'shredded cheese', 'parmesan'] },
-      { id: 'cing-butter', name: 'butter', aliases: ['salted butter', 'unsalted butter'] },
-      { id: 'cing-soy-sauce', name: 'soy sauce', aliases: ['soy'] },
-      { id: 'cing-broth', name: 'vegetable broth', aliases: ['broth', 'stock', 'vegetable stock', 'chicken broth'] },
-      { id: 'cing-beef', name: 'beef', aliases: ['ground beef'] },
-      { id: 'cing-tortilla', name: 'tortilla', aliases: ['tortillas', 'corn tortilla', 'flour tortilla'] },
-      { id: 'cing-lettuce', name: 'lettuce', aliases: ['romaine'] },
+      { id: 'cing-tomato', name: 'tomato', aliases: ['canned diced tomatoes', 'canned tomatoes', 'diced tomatoes', 'roma tomato', 'cherry tomato', 'tomatoes'], isStaple: false },
+      { id: 'cing-milk', name: 'milk', aliases: ['whole milk', 'skim milk', '2% milk'], isStaple: false },
+      { id: 'cing-egg', name: 'egg', aliases: ['eggs', 'large eggs'], isStaple: false },
+      { id: 'cing-spinach', name: 'spinach', aliases: ['baby spinach', 'fresh spinach'], isStaple: false },
+      { id: 'cing-chicken', name: 'chicken', aliases: ['chicken thighs', 'chicken thigh', 'chicken breast'], isStaple: false },
+      { id: 'cing-rice', name: 'rice', aliases: ['white rice', 'jasmine rice', 'basmati rice'], isStaple: false },
+      { id: 'cing-pasta', name: 'pasta', aliases: ['spaghetti', 'noodles', 'penne', 'macaroni'], isStaple: false },
+      { id: 'cing-onion', name: 'onion', aliases: ['yellow onion', 'red onion', 'white onion'], isStaple: false },
+      { id: 'cing-garlic', name: 'garlic', aliases: ['garlic clove', 'garlic cloves'], isStaple: false },
+      { id: 'cing-cheese', name: 'cheese', aliases: ['cheddar', 'cheddar cheese', 'shredded cheese', 'parmesan'], isStaple: false },
+      { id: 'cing-butter', name: 'butter', aliases: ['salted butter', 'unsalted butter'], isStaple: false },
+      { id: 'cing-soy-sauce', name: 'soy sauce', aliases: ['soy'], isStaple: false },
+      { id: 'cing-broth', name: 'vegetable broth', aliases: ['broth', 'stock', 'vegetable stock', 'chicken broth'], isStaple: false },
+      { id: 'cing-beef', name: 'beef', aliases: ['ground beef'], isStaple: false },
+      { id: 'cing-tortilla', name: 'tortilla', aliases: ['tortillas', 'corn tortilla', 'flour tortilla'], isStaple: false },
+      { id: 'cing-lettuce', name: 'lettuce', aliases: ['romaine'], isStaple: false },
+      { id: 'cing-beans', name: 'black beans', aliases: ['canned black beans', 'beans', 'pinto beans'], isStaple: false },
       // Staples
       { id: 'cing-olive-oil', name: 'olive oil', aliases: ['oil', 'cooking oil'], isStaple: true },
       { id: 'cing-salt', name: 'salt', aliases: [], isStaple: true },
@@ -937,7 +1305,8 @@
         cuisine: 'Italian',
         time: 25,
         servings: 2,
-        tags: ['quick', 'vegetarian'],
+        tags: ['quick', 'vegetarian', 'euro'],
+        philosophy: 'european',
         steps: '1. Bring a pot of salted water to a boil and cook pasta until al dente.\n2. In a skillet, gently sizzle sliced garlic in olive oil until aromatic.\n3. Add canned tomatoes and a pinch of salt; simmer for 10 minutes.\n4. Toss drained pasta into the sauce and finish with black pepper.',
         ingredients: [
           { canonicalId: 'cing-pasta', label: '200g spaghetti' },
@@ -953,7 +1322,8 @@
         cuisine: 'Breakfast',
         time: 10,
         servings: 1,
-        tags: ['quick', 'vegetarian', 'high-protein'],
+        tags: ['quick', 'vegetarian', 'euro', 'fresh'],
+        philosophy: 'european',
         steps: '1. Warm olive oil in a non-stick pan over medium heat.\n2. Wilt fresh baby spinach for 1-2 minutes until tender.\n3. Pour in beaten eggs and stir gently until soft curds form.\n4. Season with salt and black pepper.',
         ingredients: [
           { canonicalId: 'cing-egg', label: '3 eggs' },
@@ -969,6 +1339,7 @@
         time: 25,
         servings: 2,
         tags: ['dinner', 'comfort'],
+        philosophy: 'general',
         steps: '1. Sauté diced chicken thighs in oil until browned and cooked through; set aside.\n2. In the same pan, stir-fry diced onion and minced garlic.\n3. Scramble beaten eggs on one side of the pan.\n4. Add cold cooked rice, return chicken, and toss with soy sauce over high heat.',
         ingredients: [
           { canonicalId: 'cing-rice', label: '2 cups cooked rice' },
@@ -986,7 +1357,8 @@
         cuisine: 'Breakfast',
         time: 12,
         servings: 1,
-        tags: ['quick', 'vegetarian'],
+        tags: ['quick', 'vegetarian', 'euro'],
+        philosophy: 'european',
         steps: '1. Whisk eggs with a pinch of salt.\n2. Melt butter in a non-stick skillet over medium-low heat.\n3. Pour eggs in and allow the edges to set.\n4. Sprinkle shredded cheddar over half and fold gently.',
         ingredients: [
           { canonicalId: 'cing-egg', label: '3 eggs' },
@@ -996,13 +1368,32 @@
         ]
       },
       {
+        id: 'recipe-pantry-chili',
+        title: 'Hearty Pantry Beef & Bean Chili',
+        cuisine: 'Batch Cook',
+        time: 40,
+        servings: 4,
+        tags: ['prepper', 'bulk', 'comfort', 'high-calorie'],
+        philosophy: 'prepper',
+        steps: '1. Brown ground beef with diced onion and garlic in a Dutch oven; drain fat.\n2. Add canned diced tomatoes, black beans, and a splash of broth.\n3. Simmer gently for 30 minutes until thick and savory.\n4. Top with shredded cheddar cheese.',
+        ingredients: [
+          { canonicalId: 'cing-beef', label: '1 lb ground beef' },
+          { canonicalId: 'cing-tomato', label: '2 cans diced tomatoes' },
+          { canonicalId: 'cing-beans', label: '1 can black beans' },
+          { canonicalId: 'cing-onion', label: '1 onion' },
+          { canonicalId: 'cing-cheese', label: '1/2 cup shredded cheese' },
+          { canonicalId: 'cing-salt', label: 'salt to taste', isStaple: true }
+        ]
+      },
+      {
         id: 'recipe-tomato-rice-soup',
         title: 'Tomato Rice Soup',
         cuisine: 'Soup',
         time: 35,
         servings: 3,
-        tags: ['vegetarian', 'comfort'],
-        steps: '1. Sauté diced onion and garlic in olive oil in a soup pot.\n2. Pour in diced tomatoes, vegetable broth, and rinsed rice.\n3. Bring to a gentle boil, then cover and simmer for 25 minutes until rice is tender.\n4. Season to taste with salt and pepper.',
+        tags: ['vegetarian', 'comfort', 'prepper'],
+        philosophy: 'prepper',
+        steps: '1. Soften diced onion and garlic in olive oil in a soup pot.\n2. Pour in diced tomatoes, vegetable broth, and rinsed rice.\n3. Bring to a gentle boil, then cover and simmer for 25 minutes until rice is tender.\n4. Season to taste with salt and pepper.',
         ingredients: [
           { canonicalId: 'cing-tomato', label: '1 can diced tomatoes' },
           { canonicalId: 'cing-rice', label: '1/2 cup rice' },
@@ -1013,12 +1404,31 @@
         ]
       },
       {
+        id: 'recipe-resilience-rice-beans',
+        title: 'Resilience Rice & Black Bean Skillet',
+        cuisine: 'Pantry Staple',
+        time: 20,
+        servings: 3,
+        tags: ['prepper', 'bulk', 'vegetarian'],
+        philosophy: 'prepper',
+        steps: '1. Sauté onion and minced garlic in olive oil until translucent.\n2. Add rinsed black beans, cooked rice, and vegetable broth.\n3. Stir until heated through and liquid is absorbed.\n4. Fold in cheese and season with salt and pepper.',
+        ingredients: [
+          { canonicalId: 'cing-rice', label: '2 cups cooked rice' },
+          { canonicalId: 'cing-beans', label: '1 can black beans' },
+          { canonicalId: 'cing-onion', label: '1 yellow onion' },
+          { canonicalId: 'cing-cheese', label: '1/2 cup shredded cheese' },
+          { canonicalId: 'cing-olive-oil', label: '1 tbsp oil', isStaple: true },
+          { canonicalId: 'cing-salt', label: 'salt to taste', isStaple: true }
+        ]
+      },
+      {
         id: 'recipe-buttered-noodles',
         title: 'Buttered Noodles with Parmesan',
         cuisine: 'Comfort',
         time: 15,
         servings: 2,
-        tags: ['quick', 'vegetarian'],
+        tags: ['quick', 'vegetarian', 'prepper'],
+        philosophy: 'prepper',
         steps: '1. Boil pasta in generously salted water until tender.\n2. Drain, leaving 2 tablespoons of starchy pasta water in the pot.\n3. Toss noodles with butter and grated cheese until glossy and emulsified.',
         ingredients: [
           { canonicalId: 'cing-pasta', label: '200g pasta noodles' },
@@ -1034,6 +1444,7 @@
         time: 25,
         servings: 2,
         tags: ['dinner', 'weeknight'],
+        philosophy: 'general',
         steps: '1. Brown ground beef in a skillet, drain excess fat, and season.\n2. Warm tortillas in a dry pan until soft and pliable.\n3. Layer beef into tortillas with shredded cheese, crisp lettuce, and diced tomato.',
         ingredients: [
           { canonicalId: 'cing-beef', label: '1/2 lb ground beef' },
@@ -1046,7 +1457,7 @@
       }
     ];
 
-    // Starter Kitchen Presets
+    // Presets
     var PRESETS = {
       starter: [
         { id: 'i1', name: 'Eggs', location: 'fridge', qty: 6, unit: 'count', fresh: 'fresh', canonicalId: 'cing-egg' },
@@ -1057,12 +1468,22 @@
         { id: 'i6', name: 'Butter', location: 'fridge', qty: 1, unit: 'pkg', fresh: 'fresh', canonicalId: 'cing-butter' },
         { id: 'i7', name: 'Cheddar Cheese', location: 'fridge', qty: 1, unit: 'pkg', fresh: 'fresh', canonicalId: 'cing-cheese' }
       ],
-      pasta: [
-        { id: 'p1', name: 'Spaghetti Pasta', location: 'pantry', qty: 2, unit: 'pkg', fresh: 'fresh', canonicalId: 'cing-pasta' },
-        { id: 'p2', name: 'Canned Diced Tomatoes', location: 'pantry', qty: 3, unit: 'can', fresh: 'fresh', canonicalId: 'cing-tomato' },
-        { id: 'p3', name: 'Garlic Cloves', location: 'other', qty: 6, unit: 'count', fresh: 'fresh', canonicalId: 'cing-garlic' },
-        { id: 'p4', name: 'Parmesan Cheese', location: 'fridge', qty: 1, unit: 'pkg', fresh: 'fresh', canonicalId: 'cing-cheese' },
-        { id: 'p5', name: 'Butter', location: 'fridge', qty: 2, unit: 'pkg', fresh: 'fresh', canonicalId: 'cing-butter' }
+      euro_market: [
+        { id: 'em1', name: 'Farm Eggs', location: 'fridge', qty: 4, unit: 'count', fresh: 'fresh', canonicalId: 'cing-egg' },
+        { id: 'em2', name: 'Baby Spinach', location: 'fridge', qty: 1, unit: 'bunch', fresh: 'use_soon', canonicalId: 'cing-spinach' },
+        { id: 'em3', name: 'Vine Ripe Tomatoes', location: 'other', qty: 3, unit: 'count', fresh: 'fresh', canonicalId: 'cing-tomato' },
+        { id: 'em4', name: 'Fresh Garlic Clove', location: 'other', qty: 3, unit: 'count', fresh: 'fresh', canonicalId: 'cing-garlic' },
+        { id: 'em5', name: 'Artisan Butter', location: 'fridge', qty: 1, unit: 'pkg', fresh: 'fresh', canonicalId: 'cing-butter' },
+        { id: 'em6', name: 'Shredded Cheese', location: 'fridge', qty: 1, unit: 'cup', fresh: 'fresh', canonicalId: 'cing-cheese' }
+      ],
+      prepper_bulk: [
+        { id: 'pb1', name: 'White Rice (20 lb bag)', location: 'pantry', qty: 20, unit: 'lb', fresh: 'fresh', canonicalId: 'cing-rice' },
+        { id: 'pb2', name: 'Canned Diced Tomatoes (Case)', location: 'pantry', qty: 8, unit: 'can', fresh: 'fresh', canonicalId: 'cing-tomato' },
+        { id: 'pb3', name: 'Black Beans (Case)', location: 'pantry', qty: 6, unit: 'can', fresh: 'fresh', canonicalId: 'cing-beans' },
+        { id: 'pb4', name: 'Spaghetti Pasta', location: 'pantry', qty: 6, unit: 'pkg', fresh: 'fresh', canonicalId: 'cing-pasta' },
+        { id: 'pb5', name: 'Ground Beef (Freezer Pack)', location: 'freezer', qty: 4, unit: 'lb', fresh: 'fresh', canonicalId: 'cing-beef' },
+        { id: 'pb6', name: 'Vegetable Broth', location: 'pantry', qty: 4, unit: 'pkg', fresh: 'fresh', canonicalId: 'cing-broth' },
+        { id: 'pb7', name: 'Cheddar Cheese Block', location: 'fridge', qty: 2, unit: 'lb', fresh: 'fresh', canonicalId: 'cing-cheese' }
       ],
       empty: []
     };
@@ -1070,11 +1491,21 @@
     // Haul Presets
     var HAUL_DATA = {
       'haul-produce': {
-        title: "Farmer's Market Haul",
+        title: "European Daily Market Basket",
         items: [
-          { name: 'Baby Spinach', location: 'fridge', qty: 2, unit: 'bunch', fresh: 'fresh' },
-          { name: 'Roma Tomatoes', location: 'other', qty: 4, unit: 'count', fresh: 'fresh' },
-          { name: 'Yellow Onion', location: 'pantry', qty: 2, unit: 'count', fresh: 'fresh' }
+          { name: 'Baby Spinach', location: 'fridge', qty: 1, unit: 'bunch', fresh: 'fresh' },
+          { name: 'Fresh Roma Tomatoes', location: 'other', qty: 3, unit: 'count', fresh: 'fresh' },
+          { name: 'Farm Eggs', location: 'fridge', qty: 6, unit: 'count', fresh: 'fresh' },
+          { name: 'Artisan Butter', location: 'fridge', qty: 1, unit: 'pkg', fresh: 'fresh' }
+        ]
+      },
+      'haul-prepper': {
+        title: "Prepper Bulk Warehouse Haul",
+        items: [
+          { name: 'White Rice', location: 'pantry', qty: 10, unit: 'lb', fresh: 'fresh' },
+          { name: 'Canned Diced Tomatoes', location: 'pantry', qty: 6, unit: 'can', fresh: 'fresh' },
+          { name: 'Black Beans', location: 'pantry', qty: 6, unit: 'can', fresh: 'fresh' },
+          { name: 'Ground Beef', location: 'freezer', qty: 3, unit: 'lb', fresh: 'fresh' }
         ]
       },
       'haul-italian': {
@@ -1098,6 +1529,7 @@
 
     // App state
     var state = {
+      mode: 'european', // 'european' or 'prepper'
       inventory: [],
       shoppingList: [
         { id: 's1', name: 'Olive Oil', checked: false, canonicalId: 'cing-olive-oil' },
@@ -1108,7 +1540,7 @@
       pendingHaul: null
     };
 
-    // Normalizer helper: match raw item name to canonical ingredient ID
+    // Normalizer helper
     function normalizeToCanonical(rawName) {
       var low = (rawName || '').trim().toLowerCase();
       if (!low) return null;
@@ -1133,17 +1565,19 @@
           if (parsed && Array.isArray(parsed.inventory)) {
             state.inventory = parsed.inventory;
             state.shoppingList = parsed.shoppingList || [];
+            state.mode = parsed.mode || 'european';
             return;
           }
         }
       } catch (e) {}
-      // fallback to starter
       state.inventory = JSON.parse(JSON.stringify(PRESETS.starter));
+      state.mode = 'european';
     }
 
     function saveState() {
       try {
         localStorage.setItem(LS_KEY, JSON.stringify({
+          mode: state.mode,
           inventory: state.inventory,
           shoppingList: state.shoppingList
         }));
@@ -1185,15 +1619,109 @@
       });
     });
 
+    // MODE SWITCHER (Shop Like a European vs Shop Like a Prepper)
+    $$("[data-set-mode]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var newMode = btn.getAttribute("data-set-mode");
+        setPhilosophyMode(newMode);
+      });
+    });
+
+    function setPhilosophyMode(mode) {
+      state.mode = mode;
+      saveState();
+
+      var card = $("#pp-mode-card");
+      var title = $("#pp-mode-title");
+      var desc = $("#pp-mode-desc-text");
+      var metric = $("#pp-mode-metric-box");
+      var cookSub = $("#pp-cook-engine-sub");
+
+      var btnEuro = document.querySelector('[data-set-mode="european"]');
+      var btnPrepper = document.querySelector('[data-set-mode="prepper"]');
+
+      if (mode === 'european') {
+        card.className = "pp-mode-card is-euro";
+        title.innerHTML = "🥖 Shop Like a European (Daily / Fresh Focus)";
+        desc.innerHTML = "<strong>Daily Market Rhythm:</strong> Small frequent neighborhood stops, high turnover, ultra-fresh seasonal produce, compact pantry footprint, and near-zero food waste.";
+        metric.innerHTML = '<span style="font-size:12px; font-weight:700; color:var(--pp-euro);">🍃 Turnover Target: 24–48h Meal Window</span>';
+        cookSub.textContent = "Prioritizing fresh, scratch cooking with whatever is peak freshness today.";
+
+        btnEuro.className = "pp-mode-btn is-active-euro";
+        btnPrepper.className = "pp-mode-btn";
+      } else {
+        card.className = "pp-mode-card is-prepper";
+        title.innerHTML = "🥫 Shop Like a Prepper (Bulk Resilience & Deep Reserve)";
+        desc.innerHTML = "<strong>Resilience & Buffer Focus:</strong> Lowest cost-per-ounce bulk buying, 30-day deep pantry buffer, case-lot staples (rice, beans, tomatoes, fats), and FIFO rotation.";
+        
+        // Calculate Prepper Buffer Score based on inventory counts
+        var stapleCount = 0;
+        state.inventory.forEach(function (i) {
+          if (['cing-rice', 'cing-beans', 'cing-tomato', 'cing-pasta', 'cing-beef'].indexOf(i.canonicalId) !== -1) {
+            stapleCount += i.qty;
+          }
+        });
+        var bufferPct = Math.min(100, Math.round((stapleCount / 20) * 100));
+
+        metric.innerHTML = 
+          '<div class="pp-resilience-meter">' +
+            '<span style="color:#8C550E;">Pantry Buffer: ' + bufferPct + '%</span>' +
+            '<div class="pp-meter-bar"><div class="pp-meter-fill" style="width:' + bufferPct + '%;"></div></div>' +
+          '</div>';
+        cookSub.textContent = "Prioritizing high-calorie, long-shelf-life batch meals to rotate deep pantry reserves.";
+
+        btnEuro.className = "pp-mode-btn";
+        btnPrepper.className = "pp-mode-btn is-active-prepper";
+      }
+
+      renderInventory();
+      renderCookingMatches();
+      renderPartnerDispatch();
+    }
+
+    // Render Partner Dispatch Box inside Shopping List
+    function renderPartnerDispatch() {
+      var icon = $("#pp-dispatch-icon");
+      var headline = $("#pp-dispatch-headline");
+      var sub = $("#pp-dispatch-sub");
+      var group = $("#pp-dispatch-btn-group");
+
+      var listKeywords = state.shoppingList.map(function (s) { return s.name; }).join(" ");
+
+      if (state.mode === 'european') {
+        icon.textContent = "🥖";
+        headline.textContent = "European Daily Market Dispatch";
+        sub.textContent = "Find peak-freshness produce, neighborhood bakeries, or same-day local delivery.";
+        group.innerHTML = 
+          '<a class="pp-partner-dispatch-btn" href="https://www.instacart.com/store/s?k=' + encodeURIComponent(listKeywords || 'fresh produce') + '" target="_blank" rel="noopener">' +
+            '🛵 Order on Instacart Fresh →' +
+          '</a>' +
+          '<a class="pp-partner-dispatch-btn" href="https://www.localharvest.org" target="_blank" rel="noopener">' +
+            '🌾 Find Farm Stand / Co-op →' +
+          '</a>';
+      } else {
+        icon.textContent = "🥫";
+        headline.textContent = "Prepper Bulk Wholesale Dispatch";
+        sub.textContent = "Stock deep buffers: wholesale warehouse pricing and long-shelf-life bulk cases.";
+        group.innerHTML = 
+          '<a class="pp-partner-dispatch-btn" href="https://www.amazon.com/s?k=bulk+' + encodeURIComponent(listKeywords || 'pantry staples') + '" target="_blank" rel="noopener">' +
+            '📦 Order Bulk on Amazon Pantry →' +
+          '</a>' +
+          '<a class="pp-partner-dispatch-btn" href="https://www.costco.com" target="_blank" rel="noopener">' +
+            '🏪 Costco Wholesale Restock →' +
+          '</a>';
+      }
+    }
+
     // Preset Switchers
     $$("[data-preset]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var key = btn.getAttribute("data-preset");
         if (PRESETS[key]) {
           state.inventory = JSON.parse(JSON.stringify(PRESETS[key]));
-          saveState();
-          renderInventory();
-          renderCookingMatches();
+          if (key === 'euro_market') state.mode = 'european';
+          if (key === 'prepper_bulk') state.mode = 'prepper';
+          setPhilosophyMode(state.mode);
         }
       });
     });
@@ -1203,6 +1731,7 @@
       if (confirm("Reset Panda Pantry demo back to starter state?")) {
         try { localStorage.removeItem(LS_KEY); } catch (e) {}
         loadState();
+        setPhilosophyMode('european');
         renderInventory();
         renderShoppingList();
         renderCookingMatches();
@@ -1250,6 +1779,7 @@
       saveState();
       renderInventory();
       renderCookingMatches();
+      setPhilosophyMode(state.mode);
       $("#pp-add-item-form").reset();
       $("#pp-inp-qty").value = 1;
     });
@@ -1283,6 +1813,13 @@
 
         var freshLabel = item.fresh === 'fresh' ? 'Fresh' : (item.fresh === 'use_soon' ? 'Use soon' : 'Expired');
         var freshClass = 'pp-fresh-' + (item.fresh || 'fresh');
+
+        // Prepper low-buffer flag for major staples
+        var isPrepperLow = state.mode === 'prepper' && ['cing-rice', 'cing-tomato', 'cing-beans'].indexOf(item.canonicalId) !== -1 && item.qty <= 2;
+        if (isPrepperLow) {
+          freshLabel = '⚠️ Low Buffer';
+          freshClass = 'pp-fresh-buffer_low';
+        }
 
         card.innerHTML = 
           '<div>' +
@@ -1330,7 +1867,7 @@
             checked: false,
             canonicalId: item.canonicalId
           });
-          saveState(); renderShoppingList();
+          saveState(); renderShoppingList(); renderPartnerDispatch();
           alert('Added "' + item.name + '" to your shopping list!');
         });
 
@@ -1338,9 +1875,8 @@
       });
     }
 
-    // Deterministic Recipe Matching Engine (mirroring src/lib/matching/recipeMatch.ts)
+    // Deterministic Recipe Matching Engine
     function renderCookingMatches() {
-      // Build onHand Set of canonical IDs
       var onHand = new Set();
       state.inventory.forEach(function (item) {
         if (item.qty > 0) {
@@ -1353,13 +1889,20 @@
       var almost = [];
       var stretch = [];
 
-      RECIPES.forEach(function (r) {
+      // Sort recipes with active philosophy bias
+      var sortedRecipes = RECIPES.slice().sort(function (a, b) {
+        if (a.philosophy === state.mode && b.philosophy !== state.mode) return -1;
+        if (b.philosophy === state.mode && a.philosophy !== state.mode) return 1;
+        return 0;
+      });
+
+      sortedRecipes.forEach(function (r) {
         var requiredCount = 0;
         var haveCount = 0;
         var missing = [];
 
         r.ingredients.forEach(function (ing) {
-          if (ing.isStaple) return; // ignore staples in missing count
+          if (ing.isStaple) return;
           requiredCount++;
           if (onHand.has(ing.canonicalId)) {
             haveCount++;
@@ -1409,6 +1952,13 @@
         var card = document.createElement("div");
         card.className = "pp-recipe-card " + (type === 'makenow' ? 'is-make-now' : (type === 'almost' ? 'is-almost' : ''));
 
+        var philoTag = "";
+        if (r.philosophy === 'european') {
+          philoTag = '<span class="pp-philosophy-tag pp-tag-euro">🥖 European Scratch</span>';
+        } else if (r.philosophy === 'prepper') {
+          philoTag = '<span class="pp-philosophy-tag pp-tag-prepper">🥫 Prepper Bulk</span>';
+        }
+
         var ingHtml = "";
         r.ingredients.forEach(function (ing) {
           var isHave = ing.isStaple || m.missing.indexOf(ing) === -1;
@@ -1432,6 +1982,7 @@
                 '<span>⏱️ ' + r.time + 'm</span>' +
                 '<span>🍽️ ' + r.servings + ' servings</span>' +
                 '<span>🌍 ' + r.cuisine + '</span>' +
+                philoTag +
               '</div>' +
               '<h4 class="pp-recipe-title">' + r.title + '</h4>' +
             '</div>' +
@@ -1461,6 +2012,7 @@
             });
             saveState();
             renderShoppingList();
+            renderPartnerDispatch();
             alert('Added ' + m.missing.length + ' ingredient(s) to your shopping list!');
           });
         }
@@ -1477,6 +2029,7 @@
 
       if (!state.shoppingList.length) {
         ul.innerHTML = '<li class="pp-empty"><p>Your shopping list is clear!</p></li>';
+        renderPartnerDispatch();
         return;
       }
 
@@ -1497,11 +2050,13 @@
 
         li.querySelector("[data-del]").addEventListener("click", function () {
           state.shoppingList.splice(index, 1);
-          saveState(); renderShoppingList();
+          saveState(); renderShoppingList(); renderPartnerDispatch();
         });
 
         ul.appendChild(li);
       });
+
+      renderPartnerDispatch();
     }
 
     $("#pp-add-shop-form").addEventListener("submit", function (e) {
@@ -1551,6 +2106,7 @@
       renderInventory();
       renderShoppingList();
       renderCookingMatches();
+      setPhilosophyMode(state.mode);
       alert("Restocked " + checkedItems.length + " item(s) to your pantry inventory!");
     });
 
@@ -1600,6 +2156,7 @@
       saveState();
       renderInventory();
       renderCookingMatches();
+      setPhilosophyMode(state.mode);
       alert("Successfully imported " + state.pendingHaul.items.length + " items into kitchen inventory!");
       state.pendingHaul = null;
       $("#pp-btn-import-haul").disabled = true;
@@ -1608,6 +2165,7 @@
 
     // Initial load
     loadState();
+    setPhilosophyMode(state.mode || 'european');
     renderInventory();
     renderShoppingList();
     renderCookingMatches();
