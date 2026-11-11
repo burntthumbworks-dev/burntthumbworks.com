@@ -163,12 +163,6 @@ a:hover { color: var(--link-hover); text-decoration: underline; text-underline-o
   border-radius: var(--radius-md); pointer-events: none;
 }
 .seal__crest { width: 100%; height: auto; display: block; }
-.seal__cap {
-  position: absolute; bottom: -13px; left: 50%; transform: translateX(-50%);
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--brass-700); background: var(--surface-2); border: 1px solid var(--border-strong);
-  border-radius: var(--radius-pill); padding: 4px 14px; white-space: nowrap;
-}
 
 /* ---- Grids ---- */
 .grid { display: grid; gap: var(--space-5); }
@@ -371,18 +365,4 @@ a:hover { color: var(--link-hover); text-decoration: underline; text-underline-o
 }
 .btw-exit-pill:active {
   transform: translateY(1px);
-}
-
-/* ---- Crest & Name Story Layout ---- */
-.crest-story-grid {
-  display: grid;
-  grid-template-columns: minmax(260px, 340px) 1fr;
-  gap: var(--space-10);
-  align-items: start;
-}
-@media (max-width: 860px) {
-  .crest-story-grid {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
 }
