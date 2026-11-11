@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pantry Panda — App Entry | Burnt Thumb Works</title>
+  <meta name="description" content="Web app entry point for Pantry Panda. Try the interactive usable slice directly in your browser with zero network or AI costs.">
+  <link rel="canonical" href="https://burntthumbworks.com/apps/pantry-panda/">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F4EBD7">
+  <link rel="icon" href="../../assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../../css/brand-tokens.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/site.css">
+  <style>
+    .pp-entry-hero {
+      padding: var(--space-16) 0 var(--space-12);
+      text-align: center;
+      background: var(--surface-1);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .pp-entry-lockup {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      background: var(--fg-1);
+      border-radius: 18px;
+      font-size: 38px;
+      margin-bottom: var(--space-4);
+      box-shadow: var(--shadow-md);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/" aria-label="Burnt Thumb Works home">
+        <img class="brand__mark" src="../../assets/crest-mark.png" alt="" width="42" height="42">
+        <span class="brand__name">Burnt Thumb Works</span>
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <a class="nav__link" href="/games/">Games</a>
+        <a class="nav__link" href="/apps.html" aria-current="page">Apps</a>
+        <a class="nav__link" href="/lab/">Lab</a>
+        <a class="nav__link" href="/about.html">About</a>
+        <span class="nav__cta"><a class="btn btn--primary" href="/apps/pantry-panda/demo/">Try Usable Slice</a></span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="pp-entry-hero">
+      <div class="wrap">
+        <div class="pp-entry-lockup" aria-hidden="true">🐼</div>
+        <p class="eyebrow">App Entry · Usable Web Slice Online</p>
+        <h1 class="hero__title" style="margin-bottom: var(--space-4);">Pantry Panda</h1>
+        <p class="hero__sub" style="max-width: 620px; margin: 0 auto var(--space-6);">
+          A friendly kitchen helper for tracking what you have on hand, cutting food waste, and knowing exactly what you can cook right now.
+        </p>
+        <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+          <a class="btn btn--primary btn--lg" href="/apps/pantry-panda/demo/">Open Interactive Web Slice →</a>
+          <a class="btn btn--secondary btn--lg" href="/pantry-panda.html">About the App</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">Engine Features</p>
+          <h2 class="section__title">What the slice can do</h2>
+          <p class="section__lede" style="margin-left: auto; margin-right: auto;">
+            The interactive slice runs 100% in your browser using local storage and deterministic matching logic. No live AI, no accounts, and zero cloud spend.
+          </p>
+        </div>
+
+        <div class="grid grid--3">
+          <div class="card">
+            <span class="tag" style="margin-bottom: var(--space-3);">01 · Track</span>
+            <h3 class="card__title">Storage Zones</h3>
+            <p class="card__body">Organize kitchen stock across Pantry, Fridge, Freezer, and Counter with freshness badges, count pickers, and instant search.</p>
+          </div>
+          <div class="card">
+            <span class="tag" style="margin-bottom: var(--space-3);">02 · Cook</span>
+            <h3 class="card__title">Deterministic Matcher</h3>
+            <p class="card__body">Calculates "Ready to Make Now" (100% in-stock) vs "Almost There" recipes using canonical ingredients with 1-click shopping list add.</p>
+          </div>
+          <div class="card">
+            <span class="tag" style="margin-bottom: var(--space-3);">03 · Restock</span>
+            <h3 class="card__title">Smart Intake &amp; List</h3>
+            <p class="card__body">Simulate grocery intake hauls with automatic ingredient normalization, then restock purchased shopping list items back to inventory with one tap.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>© <span data-year>2026</span> Burnt Thumb Works · Pantry Panda Web Slice</span>
+        <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
+      </div>
+    </div>
+  </footer>
+  <script src="../../js/site.js"></script>
+</body>
+</html>
