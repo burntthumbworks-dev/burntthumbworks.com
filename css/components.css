@@ -16,12 +16,15 @@
 
 /* ---- Buttons ---- */
 .btn {
-  display: inline-flex; align-items: center; gap: var(--space-2);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
   font-family: var(--font-sans); font-weight: var(--weight-semibold);
   font-size: var(--text-sm); line-height: 1;
+  min-height: 48px;
   padding: 13px 22px; border-radius: var(--radius-md);
   border: 1px solid transparent; cursor: pointer; text-decoration: none;
   white-space: nowrap;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   transition: background .16s cubic-bezier(.2,.7,.2,1), border-color .16s, color .16s, box-shadow .16s, transform .12s;
 }
 .btn:active { transform: translateY(1px); }
@@ -52,7 +55,11 @@
   box-shadow: var(--shadow-sm);
   transition: transform .16s cubic-bezier(.2,.7,.2,1), border-color .16s, box-shadow .16s;
 }
-.card--interactive { display: flex; flex-direction: column; }
+.card--interactive {
+  display: flex; flex-direction: column;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
 .card--interactive:hover { border-color: var(--brass-500); box-shadow: var(--shadow-md); transform: translateY(-2px); }
 
 /* dark/brown feature card — the work showcase */

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -14,11 +14,6 @@
   <meta property="og:site_name" content="Burnt Thumb Works">
   <meta name="theme-color" content="#F0E4C7">
   <link rel="icon" href="../../assets/crest-mark.png" type="image/png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <!-- HAS design-system faces (scoped to .has-world sections only) -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/tokens.css">
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/site.css">
@@ -30,7 +25,7 @@
   <header class="site-header">
     <div class="site-header__inner">
       <a class="brand" href="../../index.html" aria-label="Burnt Thumb Works — home">
-        <img class="brand__mark" src="../../assets/crest-mark.png" alt="" width="42" height="42">
+        <img class="brand__mark" src="../../assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
         <span class="brand__name">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
@@ -130,10 +125,10 @@
             </ul>
           </div>
           <aside class="has-panel" aria-label="At a glance" style="align-self:start;">
-            <h3 class="has-heading" style="font-size:1.1rem;">Vertical Slice · Safe by Design</h3>
-            <p style="color:var(--has-muted);">This vertical slice is <strong style="color:var(--has-bone);">100% static Canvas 2D + JavaScript</strong>. It makes <strong style="color:var(--has-bone);">zero network or API calls</strong>, requires no account, and stores run progress strictly in your browser's <code>localStorage</code>.</p>
+            <h3 class="has-heading" style="font-size:1.1rem;">Vertical Slice · 100% Client-Side</h3>
+            <p style="color:var(--has-muted);">This vertical slice is <strong style="color:var(--has-bone);">100% static Canvas 2D + JavaScript</strong>. It makes zero external network calls, requires no accounts, and stores run progress strictly in your browser's <code>localStorage</code>.</p>
             <div class="has-actions">
-              <a class="has-btn has-btn--primary" href="./play/">Play Scarward
+              <a class="has-btn has-btn--primary" href="./play/">Launch Scarward
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
             </div>
           </aside>
@@ -147,7 +142,7 @@
     <div class="site-footer__inner">
       <div>
         <div class="footer-brand">
-          <img src="../../assets/crest-mark.png" alt="" width="52" height="52">
+          <img src="../../assets/crest-mark.png" alt="" width="52" height="52" decoding="async" loading="lazy">
           <span class="nm">Burnt Thumb<br>Works</span>
         </div>
         <p class="footer-blurb">An independent software studio building practical websites, apps, tools, and interactive products.</p>
