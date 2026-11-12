@@ -17,24 +17,27 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/hook-and-skein.css">
+  <link rel="stylesheet" href="css/voynich-rich.css" id="btw-codex-rich-css">
+  <script src="js/codex-loader.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
+  <header class="site-header site-header--codex">
     <div class="site-header__inner">
       <a class="brand" href="index.html" aria-label="Burnt Thumb Works — home">
         <img class="brand__mark" src="assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="games/" aria-current="page">Games</a>
-        <a class="nav__link" href="apps.html">Apps</a>
-        <a class="nav__link" href="lab/">Lab</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="games/grimmkart/">Play GrimmKart</a></span>
+      <nav class="nav" id="primary-nav" aria-label="Navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="index.html">Home</a>
+          <a class="ribbon-tab ribbon-tab--active" href="games/" aria-current="page">Games</a>
+          <a class="ribbon-tab" href="apps.html">Apps</a>
+        </div>
       </nav>
     </div>
   </header>
@@ -43,10 +46,9 @@
     <!-- HAS world hero — design-system treatment, scoped to .has-world -->
     <section class="has-world" aria-label="The Hook and Skein">
       <div class="has-world__inner">
-        <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:18px;"><a href="index.html">Home</a> <span>/</span> <a href="apps.html">Products</a> <span>/</span> <span>The Hook and Skein</span></nav>
+        <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:18px;"><a href="index.html">Home</a> <span>/</span> <a href="games/">Games</a> <span>/</span> <span>The Hook and Skein</span></nav>
         <span class="has-mark" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M76.5 41.5 A29 29 0 1 1 59.5 18"/><path d="M70 36 l7.5 -4.5" stroke-width="3.2"/><path d="M64.5 29 l7.5 -4.5" stroke-width="3.2"/><path d="M48 73 C48 86 45 93 35 93 C26 93 22 84 28 78"/><path d="M28 78 q3 6 9 5" stroke-width="4"/></g></svg></span>
-        <span class="has-tag">Narrative RPG · in development</span>
-        <h1 class="has-title">The Hook and Skein</h1>
+        <h1 class="has-title" translate="no">The Hook and the Skein</h1>
         <p class="has-lede">A mobile-first narrative choice adventure — read, choose, survive, and live with the consequences. Begin in Low Vale, beneath the Black Spine.</p>
         <div class="has-actions">
           <a class="has-btn has-btn--primary" href="games/the-hook-and-skein/play/">Play the demo
@@ -86,7 +88,6 @@
     <section class="section section--alt" aria-labelledby="more-title">
       <div class="wrap">
         <div class="section__head section__head--center">
-          <p class="eyebrow">Play in your browser</p>
           <h2 class="section__title" id="more-title">Explore the world of The Hook and Skein</h2>
           <p class="section__lede" style="margin-left:auto;margin-right:auto;">Play the Low Vale narrative demo or hold the Scar borderlands in Scarward.</p>
         </div>
@@ -104,32 +105,37 @@
       <div>
         <div class="footer-brand">
           <img src="assets/crest-mark.png" alt="" width="52" height="52" decoding="async" loading="lazy">
-          <span class="nm">Burnt Thumb<br>Works</span>
+          <span class="nm" translate="no">Burnt Thumb<br>Works</span>
         </div>
-        <p class="footer-blurb">An independent studio making original games, practical apps, and story-driven tools.</p>
+        <p class="footer-blurb">Handcrafted browser games and dependable everyday tools.</p>
       </div>
       <div class="footer-col">
         <h2 class="footer-col__h">Games</h2>
         <ul>
           <li><a href="games/">All Games</a></li>
-          <li><a href="games/grimmkart/">GrimmKart.io</a></li>
-          <li><a href="games/the-hook-and-skein/">The Hook and Skein</a></li>
-          <li><a href="games/scarward/">Scarward</a></li>
+          <li><a href="games/grimmkart/" translate="no">GrimmKart</a></li>
+          <li><a href="games/the-hook-and-skein/" translate="no">The Hook and the Skein</a></li>
+          <li><a href="games/scarward/" translate="no">Scarward</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h2 class="footer-col__h">Apps &amp; Studio</h2>
+        <h2 class="footer-col__h">Apps</h2>
         <ul>
           <li><a href="apps.html">All Apps</a></li>
-          <li><a href="garden-sage.html">Garden Sage</a></li>
-          <li><a href="pantry-panda.html">Pantry Panda</a></li>
-          <li><a href="lab/">The Lab</a></li>
+          <li><a href="garden-sage.html" translate="no">Garden Sage</a></li>
+          <li><a href="pantry-panda.html" translate="no">Pantry Panda</a></li>
+          <li><a href="contact.html">Contact Studio</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
+        <div class="codex-toggle-wrap">
+          <button type="button" class="codex-mode-btn" data-codex-toggle onclick="btwToggleCodexMode()" aria-label="Toggle codex display mode">
+            View: <span>Lite</span> | <strong style="color:var(--manuscript-rubric,#8F2D18);">Full Manuscript</strong>
+          </button>
+        </div>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

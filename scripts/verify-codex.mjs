@@ -158,9 +158,10 @@ assert(labNavLinks.length === 0, 'Zero navigation links to /lab/ across all prim
 // ---------------------------------------------------------------------------
 // TEST 4: Explicit width and height Attributes on Images
 // ---------------------------------------------------------------------------
-console.log('\n4. Image CLS Prevention (Explicit width and height Attributes)');
+console.log('\n4. Image CLS Prevention & Asset Integrity');
 
 let imagesMissingDimensions = [];
+let brokenImages = [];
 
 for (const pageRel of primaryPages) {
   const pagePath = join(REPO_ROOT, pageRel);
@@ -170,6 +171,17 @@ for (const pageRel of primaryPages) {
   const imgTags = [...content.matchAll(/<img\s+([^>]+)>/gi)];
   for (const tag of imgTags) {
     const attrs = tag[1];
+    const srcMatch = attrs.match(/\bsrc=["']([^"']+)["']/i);
+    if (srcMatch) {
+      const src = srcMatch[1].trim();
+      if (!src.startsWith('data:') && !src.startsWith('http')) {
+        const cleanSrc = src.split('#')[0].split('?')[0];
+        const imgPath = cleanSrc.startsWith('/') ? join(REPO_ROOT, cleanSrc.slice(1)) : resolve(dirname(pagePath), cleanSrc);
+        if (!existsSync(imgPath)) {
+          brokenImages.push(`${pageRel}: ${src}`);
+        }
+      }
+    }
     const hasWidth = /\bwidth=["']?\d+["']?/i.test(attrs);
     const hasHeight = /\bheight=["']?\d+["']?/i.test(attrs);
     if (!hasWidth || !hasHeight) {
@@ -178,6 +190,7 @@ for (const pageRel of primaryPages) {
   }
 }
 
+assert(brokenImages.length === 0, 'Zero broken image paths across all pages', brokenImages.length ? `${brokenImages.length} missing: ${brokenImages.join(', ')}` : 'All image assets exist on disk');
 assert(imagesMissingDimensions.length === 0, 'All images have explicit width and height attributes', imagesMissingDimensions.length ? `${imagesMissingDimensions.length} images missing dims: ${imagesMissingDimensions[0]}` : 'Zero CLS layout shift');
 
 // ---------------------------------------------------------------------------
