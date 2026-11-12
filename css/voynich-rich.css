@@ -106,12 +106,17 @@ html.codex-lite .voynich-plate {
 
 /* Card-anchored marginalia vignette */
 .card,
-.card--manuscript {
+.card--manuscript,
+.fact-panel,
+.gs-card,
+.aside-card,
+.has-panel {
   position: relative;
   overflow: hidden;
 }
 
-.card-marginalia {
+.card-marginalia,
+.panel-marginalia {
   position: absolute;
   bottom: -15px;
   right: -15px;
@@ -126,9 +131,23 @@ html.codex-lite .voynich-plate {
   z-index: 1;
 }
 
-.card:hover .card-marginalia {
+.card:hover .card-marginalia,
+.fact-panel:hover .panel-marginalia,
+.gs-card:hover .panel-marginalia,
+.aside-card:hover .panel-marginalia,
+.has-panel:hover .panel-marginalia {
   opacity: 0.42;
   transform: rotate(0deg) scale(1.05);
+}
+
+.manuscript-divider__plate {
+  display: block;
+  max-width: 200px;
+  height: auto;
+  mix-blend-mode: multiply;
+  opacity: 0.72;
+  margin: 0 var(--space-3);
+  pointer-events: none;
 }
 
 .project__top {
@@ -143,7 +162,11 @@ html.codex-lite .voynich-plate {
 
 .card__title,
 .card__body,
-.card__link {
+.card__link,
+.fact-panel > *,
+.gs-card > *,
+.aside-card > *,
+.has-panel > * {
   position: relative;
   z-index: 2;
 }
