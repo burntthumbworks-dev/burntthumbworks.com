@@ -14,9 +14,13 @@
   <meta property="og:site_name" content="Burnt Thumb Works">
   <meta name="theme-color" content="#F0E4C7">
   <link rel="icon" href="../../assets/crest-mark.png" type="image/png">
+  <!-- Adaptive Codex Loader -->
+  <script src="../../js/codex-loader.js"></script>
+
   <link rel="stylesheet" href="../../css/tokens.css">
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/site.css">
+  <link rel="stylesheet" href="../../css/manuscript.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -25,16 +29,16 @@
     <div class="site-header__inner">
       <a class="brand" href="../../index.html" aria-label="Burnt Thumb Works — home">
         <img class="brand__mark" src="../../assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
+      <nav class="nav" id="primary-nav" aria-label="Navigation">
+        <a class="nav__link" href="../../index.html">Home</a>
         <a class="nav__link" href="../" aria-current="page">Games</a>
         <a class="nav__link" href="../../apps.html">Apps</a>
-        <a class="nav__link" href="../../lab/">Lab</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="./play/">Play GrimmKart</a></span>
+        <span class="nav__cta"><a class="btn btn--primary" href="./play/">Play <span translate="no">GrimmKart</span></a></span>
       </nav>
     </div>
   </header>
@@ -146,15 +150,20 @@
         <h2 class="footer-col__h">Apps &amp; Studio</h2>
         <ul>
           <li><a href="../../apps.html">Apps</a></li>
-          <li><a href="../../garden-sage.html">Garden Sage</a></li>
-          <li><a href="../../pantry-panda.html">Pantry Panda</a></li>
-          <li><a href="../../lab/">The Lab</a></li>
+          <li><a href="../../garden-sage.html" translate="no">Garden Sage</a></li>
+          <li><a href="../../pantry-panda.html" translate="no">Pantry Panda</a></li>
+          <li><a href="../../contact.html">Contact Studio</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works · GrimmKart™ · The Hook and Skein™</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span> · <span translate="no">GrimmKart</span> · <span translate="no">The Hook and the Skein</span></span>
+        <div class="codex-toggle-wrap">
+          <button type="button" class="codex-mode-btn" data-codex-toggle onclick="btwToggleCodexMode()" aria-label="Toggle codex display mode">
+            View: <span>Lite</span> | <strong style="color:var(--manuscript-rubric,#8F2D18);">Full Manuscript</strong>
+          </button>
+        </div>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

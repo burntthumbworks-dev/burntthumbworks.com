@@ -13,6 +13,9 @@
   <meta property="og:site_name" content="Burnt Thumb Works">
   <meta name="theme-color" content="#F0E4C7">
   <link rel="icon" href="assets/crest-mark.png" type="image/png">
+  <!-- Adaptive Codex Loader -->
+  <script src="js/codex-loader.js"></script>
+
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/site.css">
@@ -72,13 +75,11 @@
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Codex navigation">
+      <nav class="nav" id="primary-nav" aria-label="Navigation">
         <div class="ribbon-nav">
-          <a class="ribbon-tab" href="index.html"><span class="ribbon-tab__icon">❦</span> Frontispiece</a>
-          <a class="ribbon-tab" href="games/"><span class="ribbon-tab__icon">⚔</span> Folio I · <span translate="no">Games</span></a>
-          <a class="ribbon-tab" href="apps.html"><span class="ribbon-tab__icon">⚖</span> Folio II · <span translate="no">Apps</span></a>
-          <a class="ribbon-tab" href="lab/"><span class="ribbon-tab__icon">⚗</span> Folio III · Lab</a>
-          <a class="ribbon-tab ribbon-tab--active ribbon-tab--action" href="contact.html" aria-current="page"><span class="ribbon-tab__icon">✍</span> Scriptorium</a>
+          <a class="ribbon-tab" href="index.html">Home</a>
+          <a class="ribbon-tab" href="games/">Games</a>
+          <a class="ribbon-tab" href="apps.html">Apps</a>
         </div>
       </nav>
     </div>
@@ -211,6 +212,11 @@
     <div class="footer-bar">
       <div class="footer-bar__inner">
         <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
+        <div class="codex-toggle-wrap">
+          <button type="button" class="codex-mode-btn" data-codex-toggle onclick="btwToggleCodexMode()" aria-label="Toggle codex display mode">
+            View: <span>Lite</span> | <strong style="color:var(--manuscript-rubric,#8F2D18);">Full Manuscript</strong>
+          </button>
+        </div>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

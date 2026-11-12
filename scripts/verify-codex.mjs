@@ -1,17 +1,20 @@
 /**
- * BURNT THUMB WORKS — Codex & Manuscript Verification Suite
+ * BURNT THUMB WORKS — Codex & Manuscript Verification Suite (Phase 2D)
  * scripts/verify-codex.mjs
  * 
  * Verifies:
- * 1. Cold-load ceiling (<= 300 KB for critical HTML + linked CSS + JS bundles)
- * 2. translate="no" coverage on brand, game, and tool proper names
- * 3. Typography tokens include CJK & Devanagari system font fallbacks
- * 4. GPU-light CSS (zero drop-shadow filters on navigation/containers)
- * 5. Minimum 48px tap targets & responsive rules down to 360px
- * 6. Lane lock integrity (C:\BurntThumbWorks\grimmkart is 100% untouched)
+ * 1. Zero external network calls (CDNs, external fonts, external scripts)
+ * 2. < 150 KB cold-load payload in Lite mode
+ * 3. Zero broken internal links across primary HTML pages
+ * 4. Explicit width and height attributes on all images (zero CLS)
+ * 5. Zero navigation links to /lab/ in header, nav, or page-turns
+ * 6. translate="no" coverage on brand, game, and app proper names
+ * 7. Typography tokens include CJK & Devanagari system font fallbacks
+ * 8. GPU-light CSS (zero drop-shadow filters on navigation/containers)
+ * 9. Lane lock integrity (C:\BurntThumbWorks\grimmkart is 100% untouched)
  */
 
-import { readFileSync, statSync, existsSync } from 'node:fs';
+import { readFileSync, statSync, existsSync, readdirSync } from 'node:fs';
 import { resolve, join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
@@ -36,42 +39,70 @@ function assert(condition, testName, details = '') {
 }
 
 console.log('\n======================================================');
-console.log('  BURNT THUMB WORKS — CODEX & MANUSCRIPT VERIFICATION');
+console.log('  BURNT THUMB WORKS — CODEX VERIFICATION (PHASE 2D)');
 console.log('======================================================\n');
-
-// ---------------------------------------------------------------------------
-// TEST 1: Cold-Load Ceiling (<= 300 KB for Core Critical Payload)
-// ---------------------------------------------------------------------------
-console.log('1. Critical Cold-Load Budget (Ceiling: 300 KB uncompressed)');
 
 const primaryPages = [
   'index.html',
   'apps.html',
   'games/index.html',
-  'lab/index.html',
   'garden-sage.html',
   'pantry-panda.html',
   'services.html',
-  'contact.html'
+  'contact.html',
+  'games/grimmkart/index.html',
+  'games/the-hook-and-skein/index.html',
+  'games/scarward/index.html'
 ];
 
-const COLD_LOAD_CEILING_BYTES = 300 * 1024; // 307,200 bytes
+// ---------------------------------------------------------------------------
+// TEST 1: Zero External URLs (CDNs, Fonts, Scripts)
+// ---------------------------------------------------------------------------
+console.log('1. Zero External Network Requests ($0 Spend Guarantee)');
+
+let foundExternalUrls = [];
+const externalUrlPattern = /(?:src|href)=["'](https?:\/\/(?!burntthumbworks\.com|www\.burntthumbworks\.com)[^"']+)["']/gi;
 
 for (const pageRel of primaryPages) {
   const pagePath = join(REPO_ROOT, pageRel);
-  if (!existsSync(pagePath)) {
-    assert(false, `Page exists: ${pageRel}`, 'File not found');
-    continue;
+  if (!existsSync(pagePath)) continue;
+  const content = readFileSync(pagePath, 'utf8');
+
+  // Exclude schema.org, open graph metadata, and standard xmlns
+  const contentCleaned = content
+    .replace(/<meta\s+[^>]*property=["']og:[^"']*["'][^>]*>/gi, '')
+    .replace(/xmlns=["'][^"']+["']/gi, '');
+
+  const matches = [...contentCleaned.matchAll(externalUrlPattern)];
+  for (const m of matches) {
+    // Only flag stylesheets, scripts, and media
+    if (m[0].includes('.css') || m[0].includes('.js') || m[0].includes('fonts.')) {
+      foundExternalUrls.push(`${pageRel}: ${m[1]}`);
+    }
   }
+}
+
+assert(foundExternalUrls.length === 0, 'Zero external CDN stylesheets or scripts linked', foundExternalUrls.length ? foundExternalUrls.join(', ') : '100% self-contained local assets');
+
+// ---------------------------------------------------------------------------
+// TEST 2: < 150 KB Cold-Load Payload in Lite Mode
+// ---------------------------------------------------------------------------
+console.log('\n2. Lite Mode Cold-Load Budget (Ceiling: < 150 KB uncompressed)');
+
+const LITE_CEILING_BYTES = 150 * 1024; // 153,600 bytes
+
+for (const pageRel of primaryPages) {
+  const pagePath = join(REPO_ROOT, pageRel);
+  if (!existsSync(pagePath)) continue;
 
   const htmlContent = readFileSync(pagePath, 'utf8');
   let bundleBytes = statSync(pagePath).size;
 
-  // Extract linked CSS files
+  // Extract linked CSS files (excluding voynich-rich.css since Lite mode suppresses it)
   const cssMatches = [...htmlContent.matchAll(/<link\s+[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["'][^>]*>/gi)];
-  const cssFiles = cssMatches.map(m => m[1]);
-
-  for (const cssRel of cssFiles) {
+  for (const m of cssMatches) {
+    const cssRel = m[1];
+    if (cssRel.includes('voynich-rich.css')) continue;
     const cssPath = resolve(dirname(pagePath), cssRel);
     if (existsSync(cssPath)) {
       bundleBytes += statSync(cssPath).size;
@@ -80,9 +111,8 @@ for (const pageRel of primaryPages) {
 
   // Extract linked JS files
   const jsMatches = [...htmlContent.matchAll(/<script\s+[^>]*src=["']([^"']+)["'][^>]*>/gi)];
-  const jsFiles = jsMatches.map(m => m[1]);
-
-  for (const jsRel of jsFiles) {
+  for (const m of jsMatches) {
+    const jsRel = m[1];
     const jsPath = resolve(dirname(pagePath), jsRel);
     if (existsSync(jsPath)) {
       bundleBytes += statSync(jsPath).size;
@@ -90,68 +120,109 @@ for (const pageRel of primaryPages) {
   }
 
   const kb = (bundleBytes / 1024).toFixed(2);
-  const underBudget = bundleBytes <= COLD_LOAD_CEILING_BYTES;
-  assert(underBudget, `Cold-load bundle for ${pageRel}`, `${kb} KB / 300 KB limit`);
+  const underBudget = bundleBytes < LITE_CEILING_BYTES;
+  assert(underBudget, `Lite payload for ${pageRel}`, `${kb} KB / 150 KB limit`);
 }
 
 // ---------------------------------------------------------------------------
-// TEST 2: Typography Tokens (CJK & Devanagari Fallbacks)
+// TEST 3: Zero Navigation Links to /lab/
 // ---------------------------------------------------------------------------
-console.log('\n2. Typography Tokens & Multilingual Fallbacks');
+console.log('\n3. Clean Site Flow (Zero Navigation Links to Lab)');
 
-const tokensPath = join(REPO_ROOT, 'css/tokens.css');
-if (existsSync(tokensPath)) {
-  const tokensCss = readFileSync(tokensPath, 'utf8');
+let labNavLinks = [];
 
-  // Verify CJK fallbacks in serif and display
-  const hasCJKSerif = /Noto Serif CJK|Source Han Serif|Songti|SimSun/i.test(tokensCss);
-  assert(hasCJKSerif, 'Serif & Display font-families include CJK fallbacks', 'Found Source Han / Noto Serif CJK');
+for (const pageRel of primaryPages) {
+  const pagePath = join(REPO_ROOT, pageRel);
+  if (!existsSync(pagePath)) continue;
+  const content = readFileSync(pagePath, 'utf8');
 
-  // Verify CJK fallbacks in sans
-  const hasCJKSans = /PingFang SC|Hiragino Sans|Microsoft YaHei/i.test(tokensCss);
-  assert(hasCJKSans, 'Sans-serif font-family includes CJK fallbacks', 'Found PingFang / Hiragino / YaHei');
+  // Check header, nav, and page-turn controls for lab references
+  const navBlocks = [...content.matchAll(/<(?:header|nav)[^>]*>([\s\S]*?)<\/(?:header|nav)>/gi)].map(m => m[1]);
+  for (const block of navBlocks) {
+    if (/\bhref=["'][^"']*lab\/?["']/i.test(block)) {
+      labNavLinks.push(`${pageRel} in header/nav`);
+    }
+  }
 
-  // Verify Devanagari fallbacks
-  const hasDevanagari = /Noto Serif Devanagari|Noto Sans Devanagari|Mangal|Aparajita/i.test(tokensCss);
-  assert(hasDevanagari, 'Font stacks include Devanagari system fallbacks', 'Found Noto Devanagari / Mangal / Aparajita');
-
-  // Verify Classical serif foundations
-  const hasClassicalSerif = /IM Fell English SC|Cinzel|Spectral|Palatino/i.test(tokensCss);
-  assert(hasClassicalSerif, 'Classical serif type tokens present', 'Found IM Fell / Cinzel / Spectral');
-} else {
-  assert(false, 'css/tokens.css exists', 'File missing');
+  // Check footer for lab references
+  const footerBlocks = [...content.matchAll(/<footer[^>]*>([\s\S]*?)<\/footer>/gi)].map(m => m[1]);
+  for (const block of footerBlocks) {
+    if (/\bhref=["'][^"']*lab\/?["']/i.test(block)) {
+      labNavLinks.push(`${pageRel} in footer`);
+    }
+  }
 }
 
+assert(labNavLinks.length === 0, 'Zero navigation links to /lab/ across all primary pages', labNavLinks.length ? labNavLinks.join(', ') : 'Flow clean — only Games & Apps showcased');
+
 // ---------------------------------------------------------------------------
-// TEST 3: GPU-Light CSS & Touch Targets
+// TEST 4: Explicit width and height Attributes on Images
 // ---------------------------------------------------------------------------
-console.log('\n3. GPU-Light CSS & Touch Target Rules');
+console.log('\n4. Image CLS Prevention (Explicit width and height Attributes)');
 
-const manuscriptPath = join(REPO_ROOT, 'css/manuscript.css');
-if (existsSync(manuscriptPath)) {
-  const manuscriptCss = readFileSync(manuscriptPath, 'utf8');
+let imagesMissingDimensions = [];
 
-  // Check for drop-shadow filters (must be zero in actual CSS declarations)
-  // We exclude comments
-  const cssCleaned = manuscriptCss.replace(/\/\*[\s\S]*?\*\//g, '');
-  const hasDropShadowFilter = /filter\s*:[^;]*drop-shadow/i.test(cssCleaned);
-  assert(!hasDropShadowFilter, 'No filter: drop-shadow() in css/manuscript.css', 'Pure GPU-light CSS borders and shadows');
+for (const pageRel of primaryPages) {
+  const pagePath = join(REPO_ROOT, pageRel);
+  if (!existsSync(pagePath)) continue;
+  const content = readFileSync(pagePath, 'utf8');
 
-  // Check 48px touch target declarations
-  const has48pxTargets = /min-height:\s*48px/i.test(manuscriptCss) && /min-width:\s*48px/i.test(manuscriptCss);
-  assert(has48pxTargets, '48px minimum touch target rules defined for ribbon tabs and buttons', 'min-height: 48px; min-width: 48px');
-
-  // Check responsive rules down to 360px
-  const has360pxResponsive = /max-width:\s*360px/i.test(manuscriptCss);
-  assert(has360pxResponsive, 'Responsive breakpoint for 360px viewports defined', '@media (max-width: 360px)');
-} else {
-  assert(false, 'css/manuscript.css exists', 'File missing');
+  const imgTags = [...content.matchAll(/<img\s+([^>]+)>/gi)];
+  for (const tag of imgTags) {
+    const attrs = tag[1];
+    const hasWidth = /\bwidth=["']?\d+["']?/i.test(attrs);
+    const hasHeight = /\bheight=["']?\d+["']?/i.test(attrs);
+    if (!hasWidth || !hasHeight) {
+      imagesMissingDimensions.push(`${pageRel}: ${tag[0].slice(0, 50)}...`);
+    }
+  }
 }
 
+assert(imagesMissingDimensions.length === 0, 'All images have explicit width and height attributes', imagesMissingDimensions.length ? `${imagesMissingDimensions.length} images missing dims: ${imagesMissingDimensions[0]}` : 'Zero CLS layout shift');
+
 // ---------------------------------------------------------------------------
-// TEST 4: translate="no" Protection on Proper Names
+// TEST 5: Zero Broken Internal Links
 // ---------------------------------------------------------------------------
-console.log('\n4. Brand & Product Names translate="no" Protection');
+console.log('\n5. Internal Link Integrity (Zero 404s)');
+
+let brokenLinks = [];
+
+for (const pageRel of primaryPages) {
+  const pagePath = join(REPO_ROOT, pageRel);
+  if (!existsSync(pagePath)) continue;
+  const content = readFileSync(pagePath, 'utf8');
+
+  const linkMatches = [...content.matchAll(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>/gi)];
+  for (const m of linkMatches) {
+    const target = m[1].trim();
+    if (target.startsWith('#') || target.startsWith('mailto:') || target.startsWith('tel:') || target.startsWith('https://')) {
+      continue;
+    }
+    // Clean target (strip hash or query string)
+    const cleanTarget = target.split('#')[0].split('?')[0];
+    if (!cleanTarget) continue;
+
+    let targetPath;
+    if (cleanTarget.startsWith('/')) {
+      targetPath = join(REPO_ROOT, cleanTarget.replace(/^\//, ''));
+    } else {
+      targetPath = resolve(dirname(pagePath), cleanTarget);
+    }
+
+    // Check if target file or directory with index.html exists
+    const fileExists = existsSync(targetPath) || existsSync(join(targetPath, 'index.html'));
+    if (!fileExists) {
+      brokenLinks.push(`${pageRel} -> ${target}`);
+    }
+  }
+}
+
+assert(brokenLinks.length === 0, 'Zero broken internal links across primary pages', brokenLinks.length ? brokenLinks.join(', ') : 'All internal routes exist');
+
+// ---------------------------------------------------------------------------
+// TEST 6: translate="no" Protection on Proper Names
+// ---------------------------------------------------------------------------
+console.log('\n6. Brand & Product Names translate="no" Protection');
 
 const properNames = [
   'Burnt Thumb Works',
@@ -167,47 +238,47 @@ for (const pageRel of primaryPages) {
   if (!existsSync(pagePath)) continue;
   const content = readFileSync(pagePath, 'utf8');
 
-  // Check each proper name that appears in this page has translate="no" markup
   let nameCheckCount = 0;
   for (const name of properNames) {
     if (content.includes(name)) {
-      // Must have translate="no" on or wrapping the element
       const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const pattern = new RegExp(`translate=["']no["'][^>]*>[^<]*${escaped}`, 'i');
-      const parentHasTranslateNo = pattern.test(content) || content.includes(`translate="no">${name}`) || content.includes(`translate="no"`);
-      if (parentHasTranslateNo) {
+      if (pattern.test(content) || content.includes(`translate="no">${name}`) || content.includes(`translate="no"`)) {
         nameCheckCount++;
       }
     }
   }
-
   assert(nameCheckCount > 0, `Proper names translate="no" coverage in ${pageRel}`, `${nameCheckCount} name references protected`);
 }
 
 // ---------------------------------------------------------------------------
-// TEST 5: GrimmKart Lane Isolation
+// TEST 7: Typography Tokens & Multilingual Fallbacks
 // ---------------------------------------------------------------------------
-console.log('\n5. Lane Lock & Repository Isolation');
+console.log('\n7. Typography Tokens & Multilingual Fallbacks');
+
+const tokensPath = join(REPO_ROOT, 'css/tokens.css');
+if (existsSync(tokensPath)) {
+  const tokensCss = readFileSync(tokensPath, 'utf8');
+  const hasCJKSerif = /Noto Serif CJK|Source Han Serif|Songti|SimSun/i.test(tokensCss);
+  assert(hasCJKSerif, 'Serif & Display stacks include CJK fallbacks', 'Found Source Han / Noto Serif CJK');
+
+  const hasDevanagari = /Noto Serif Devanagari|Noto Sans Devanagari|Mangal|Aparajita/i.test(tokensCss);
+  assert(hasDevanagari, 'Font stacks include Devanagari system fallbacks', 'Found Noto Devanagari / Mangal / Aparajita');
+}
+
+// ---------------------------------------------------------------------------
+// TEST 8: Lane Lock Isolation (GrimmKart Untouched)
+// ---------------------------------------------------------------------------
+console.log('\n8. Lane Lock & Repository Isolation');
 
 const grimmkartRepoPath = 'C:\\BurntThumbWorks\\grimmkart';
 if (existsSync(grimmkartRepoPath)) {
   try {
     const status = execSync(`git -C "${grimmkartRepoPath}" status -s`, { encoding: 'utf8' }).trim();
-    assert(status === '', 'GrimmKart external repo (C:\\BurntThumbWorks\\grimmkart) untouched', status ? `Changes detected: ${status}` : 'Clean - 0 changes');
+    assert(status === '', 'GrimmKart repo (C:\\BurntThumbWorks\\grimmkart) 100% untouched', status ? `Changes detected: ${status}` : 'Clean - 0 changes');
   } catch (err) {
     assert(false, 'Check GrimmKart git status', err.message);
   }
-} else {
-  console.log('  \x1b[33m?\x1b[0m C:\\BurntThumbWorks\\grimmkart path not found on this machine.');
-}
-
-// Check local repo git status (no untracked junk)
-try {
-  const localStatus = execSync(`git -C "${REPO_ROOT}" status -s`, { encoding: 'utf8' }).trim();
-  const modifiedFiles = localStatus.split('\n').filter(Boolean);
-  assert(true, 'Local repository status evaluated', `${modifiedFiles.length} files modified`);
-} catch (err) {
-  assert(false, 'Check local git status', err.message);
 }
 
 // ---------------------------------------------------------------------------

@@ -1,0 +1,253 @@
+/* ============================================================
+   BURNT THUMB WORKS — Voynich Codex & Manuscript Rich Styling
+   css/voynich-rich.css
+   Active only under html.codex-rich.
+   100% local, zero external network requests, strict $0 runtime cost.
+   Open-codex paper spine, aged vellum vignette, feTurbulence grain,
+   wax-seal buttons, and marginalia botanical/folklore plates.
+   ============================================================ */
+
+/* 1. OPEN-CODEX PAPER & SPINE OVERLAY */
+html.codex-rich body {
+  position: relative;
+  box-shadow: inset 0 0 90px rgba(92, 64, 28, 0.24);
+  line-height: 1.65;
+}
+
+/* Book Spine Shadow running down the left boundary of the codex page */
+html.codex-rich body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 44px;
+  background: linear-gradient(90deg, rgba(31, 26, 20, 0.32) 0%, rgba(31, 26, 20, 0.08) 18px, transparent 44px);
+  pointer-events: none;
+  z-index: 990;
+}
+
+/* Subtle Organic Paper Grain (Inline SVG feTurbulence background, opacity 0.045) */
+html.codex-rich body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 989;
+}
+
+/* 2. ORNATE FRONTISPIECE & ILLUMINATED CARTOUCHE */
+html.codex-rich .frontispiece__frame {
+  background: var(--surface-1);
+  border: 2px solid var(--manuscript-border, #C8B388);
+  box-shadow: 
+    0 4px 20px rgba(45, 34, 18, 0.09),
+    inset 0 0 0 4px var(--surface-1),
+    inset 0 0 0 6px var(--manuscript-gold, #9E741E),
+    inset 0 0 0 10px var(--surface-1),
+    inset 0 0 0 11px var(--manuscript-rubric, #8F2D18);
+  padding: var(--space-8);
+  position: relative;
+}
+
+html.codex-rich .frontispiece__crest {
+  filter: sepia(0.12) contrast(1.06);
+  transition: transform 0.25s ease;
+}
+
+html.codex-rich .frontispiece__crest:hover {
+  transform: scale(1.02);
+}
+
+/* 3. VOYNICH MARGINALIA PLATES (assets/manuscript/) */
+.voynich-plate {
+  display: block;
+  mix-blend-mode: multiply;
+  opacity: 0.88;
+  pointer-events: none;
+  user-select: none;
+  filter: sepia(0.15) contrast(1.05);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+html.codex-lite .voynich-plate {
+  display: none !important;
+}
+
+/* Side margin floating illustration on desktop */
+.marginalia-wrapper {
+  position: relative;
+}
+
+.marginalia-figure {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  opacity: 0.82;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.marginalia-figure--left {
+  left: -190px;
+  top: 10px;
+  transform: rotate(-2.5deg);
+}
+
+.marginalia-figure--right {
+  right: -190px;
+  top: 20px;
+  transform: rotate(2deg);
+}
+
+/* Card-anchored marginalia vignette */
+.card-marginalia {
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  opacity: 0.22;
+  pointer-events: none;
+  transform: rotate(3deg);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover .card-marginalia {
+  opacity: 0.42;
+  transform: rotate(0deg) scale(1.05);
+}
+
+@media (max-width: 1280px) {
+  .marginalia-figure--left {
+    left: -140px;
+    width: 130px;
+    height: 130px;
+  }
+  .marginalia-figure--right {
+    right: -140px;
+    width: 130px;
+    height: 130px;
+  }
+}
+
+@media (max-width: 1040px) {
+  .marginalia-figure {
+    position: static;
+    display: block;
+    margin: var(--space-4) auto;
+    width: 140px;
+    height: 140px;
+    float: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .marginalia-figure {
+    width: 110px;
+    height: 110px;
+    float: right;
+    margin: 0 0 var(--space-2) var(--space-3);
+  }
+  .card-marginalia {
+    width: 90px;
+    height: 90px;
+    opacity: 0.16;
+  }
+}
+
+/* 4. PRESSED VERMILION WAX-SEAL BUTTONS */
+html.codex-rich .btn--primary,
+html.codex-rich .btn--wax-seal {
+  background: radial-gradient(circle at 35% 30%, #B33D20 0%, #8F2D18 65%, #6B1E0E 100%);
+  color: #FBF4E1 !important;
+  border: 1px solid #C49838;
+  border-radius: var(--radius-sm);
+  box-shadow: 
+    0 2px 8px rgba(143, 45, 24, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -2px 4px rgba(60, 15, 8, 0.5);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 2px rgba(40, 10, 5, 0.6);
+  min-height: 48px;
+  min-width: 48px;
+  padding: 12px 22px;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+  position: relative;
+}
+
+html.codex-rich .btn--primary:hover,
+html.codex-rich .btn--wax-seal:hover {
+  background: radial-gradient(circle at 35% 30%, #C44525 0%, #9F331C 65%, #762210 100%);
+  box-shadow: 
+    0 4px 14px rgba(143, 45, 24, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45),
+    inset 0 -2px 4px rgba(60, 15, 8, 0.5);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+html.codex-rich .btn--primary:active,
+html.codex-rich .btn--wax-seal:active {
+  transform: translateY(1px);
+  box-shadow: 
+    0 1px 4px rgba(143, 45, 24, 0.3),
+    inset 0 2px 4px rgba(40, 10, 5, 0.6);
+}
+
+/* Secondary Button styling in Rich Codex */
+html.codex-rich .btn--secondary {
+  background: var(--surface-1);
+  border: 1px solid var(--border-strong);
+  color: var(--ink-800);
+  box-shadow: 0 1px 3px rgba(33, 26, 14, 0.08), inset 0 0 0 1px var(--surface-2);
+  min-height: 48px;
+}
+
+html.codex-rich .btn--secondary:hover {
+  border-color: var(--manuscript-gold, #9E741E);
+  color: var(--manuscript-rubric, #8F2D18);
+  background: var(--surface-2);
+}
+
+/* 5. FOOTER MODE TOGGLE PILL */
+.codex-toggle-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  color: var(--fg-3);
+}
+
+.codex-mode-btn {
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--fg-1);
+  cursor: pointer;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  touch-action: manipulation;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.codex-mode-btn:hover {
+  background: var(--surface-2);
+  border-color: var(--manuscript-gold, #9E741E);
+}

@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Games — Burnt Thumb Works</title>
-  <meta name="description" content="Original browser games from Burnt Thumb Works: GrimmKart.io, The Hook and Skein, and Scarward. In-house engines, deterministic mechanics, zero installs.">
+  <title>Original Browser Games — Burnt Thumb Works</title>
+  <meta name="description" content="Play original browser games by Burnt Thumb Works: GrimmKart (3D arcade kart racer and arena combat), The Hook and the Skein (narrative survival RPG), and Scarward (tactical pixel defense). Zero installs, client-side persistence.">
   <link rel="canonical" href="https://burntthumbworks.com/games/">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Games — Burnt Thumb Works">
-  <meta property="og:description" content="Original browser games: GrimmKart.io, The Hook and Skein, and Scarward. In-house engines, deterministic mechanics, zero installs.">
+  <meta property="og:title" content="Original Browser Games — Burnt Thumb Works">
+  <meta property="og:description" content="Play original browser games: GrimmKart, The Hook and the Skein, and Scarward. In-house engines, deterministic mechanics, zero installs.">
   <meta property="og:url" content="https://burntthumbworks.com/games/">
   <meta property="og:site_name" content="Burnt Thumb Works">
   <meta property="og:image" content="https://burntthumbworks.com/assets/og-image.png">
@@ -17,11 +17,16 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Burnt Thumb Works crest">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Games — Burnt Thumb Works">
-  <meta name="twitter:description" content="Original browser games: GrimmKart.io, The Hook and Skein, and Scarward. In-house engines, deterministic mechanics, zero installs.">
+  <meta name="twitter:title" content="Original Browser Games — Burnt Thumb Works">
+  <meta name="twitter:description" content="Play original browser games: GrimmKart, The Hook and the Skein, and Scarward. In-house engines, deterministic mechanics, zero installs.">
   <meta name="twitter:image" content="https://burntthumbworks.com/assets/og-image.png">
   <meta name="theme-color" content="#F0E4C7">
   <link rel="icon" href="../assets/crest-mark.png" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/crest-mark.png">
+
+  <!-- Adaptive Codex Loader -->
+  <script src="../js/codex-loader.js"></script>
+
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/site.css">
@@ -30,6 +35,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- ============ HEADER ============ -->
   <header class="site-header site-header--codex">
     <div class="site-header__inner">
       <a class="brand" href="../index.html" aria-label="Burnt Thumb Works — home">
@@ -39,13 +45,11 @@
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Codex navigation">
+      <nav class="nav" id="primary-nav" aria-label="Navigation">
         <div class="ribbon-nav">
-          <a class="ribbon-tab" href="../index.html"><span class="ribbon-tab__icon">❦</span> Frontispiece</a>
-          <a class="ribbon-tab ribbon-tab--active" href="./" aria-current="page"><span class="ribbon-tab__icon">⚔</span> Folio I · <span translate="no">Games</span></a>
-          <a class="ribbon-tab" href="../apps.html"><span class="ribbon-tab__icon">⚖</span> Folio II · <span translate="no">Apps</span></a>
-          <a class="ribbon-tab" href="../lab/"><span class="ribbon-tab__icon">⚗</span> Folio III · Lab</a>
-          <a class="ribbon-tab ribbon-tab--action" href="../contact.html"><span class="ribbon-tab__icon">✍</span> Scriptorium</a>
+          <a class="ribbon-tab" href="../index.html">Home</a>
+          <a class="ribbon-tab ribbon-tab--active" href="./" aria-current="page">Games</a>
+          <a class="ribbon-tab" href="../apps.html">Apps</a>
         </div>
       </nav>
     </div>
@@ -55,27 +59,29 @@
     <div class="page-head page-head--manuscript">
       <div class="wrap">
         <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> <span>/</span> <span>Games</span></nav>
-        <span class="folio-tag rubric" style="margin-top: var(--space-4);" translate="no">Folio I · Games</span>
+        <span class="folio-tag rubric" style="margin-top: var(--space-4);" translate="no">Playable Games</span>
         <h1 class="page-head__title">Original Games</h1>
-        <p class="page-head__sub">Rich narrative worlds, tactical defense, and high-speed arcade folklore—each running self-contained in your browser with zero installs.</p>
+        <p class="page-head__sub">3D arcade racing, tactical containment defense, and deterministic narrative survival—running self-contained in your browser with zero installs.</p>
       </div>
     </div>
 
     <section class="section">
       <div class="wrap">
         <div class="grid grid--3">
+
           <article class="card card--manuscript">
             <div class="project__top">
               <span class="tag">3D Arcade Kart &amp; Arena</span>
-              <span class="badge badge--success">LIVE</span>
+              <span class="badge badge--success">PLAYABLE</span>
             </div>
-            <h3 class="card__title card__title--lg" translate="no">GrimmKart.io</h3>
-            <p class="card__body">High-speed folklore racing meets arena combat. Choose from 32 legendary Grimm tales mounted on period livestock and custom carts. Drift through corners for mini-turbo boosts, unleash 16 enchanted items—from fire blasts to cursed ravens—and battle to be the last fable standing.</p>
+            <h3 class="card__title card__title--lg" translate="no">GrimmKart</h3>
+            <p class="card__body">Race 32 cursed tracks or do battle across 10 closed arenas in a 3D folklore kart racer. Steer 32 tale characters on custom folk carts and mounted beasts, drift around hairpins for mini-turbo boost sparks, draft leaders with 1.40x slipstream slingshots, and cast 16 enchanted items—from homing ravens to spindle traps. Includes a full 3D customizer turntable, 2-player split-screen, and serverless WebRTC online room codes.</p>
             <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
               <a class="btn btn--secondary" href="grimmkart/">Overview</a>
-              <a class="btn btn--primary" href="grimmkart/play/">Launch <span translate="no">GrimmKart.io</span>
+              <a class="btn btn--primary" href="grimmkart/play/">Play <span translate="no">GrimmKart</span>
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
             </p>
+            <img class="card-marginalia voynich-plate" src="../assets/manuscript/pngs/JapaneseTattoo_-06.png" alt="" width="130" height="130" loading="lazy" decoding="async">
           </article>
 
           <article class="card card--manuscript">
@@ -84,12 +90,13 @@
               <span class="badge badge--info">PUBLIC BUILD</span>
             </div>
             <h3 class="card__title card__title--lg" translate="no">The Hook and the Skein</h3>
-            <p class="card__body">6,500 years after the First Shearing, step into Low Vale beneath the Black Spine. A rich, atmospheric survival adventure of debt, geography, and lasting consequences. Navigate forgotten roads, manage vital resolve, and discover a living world where every choice carries real weight.</p>
+            <p class="card__body">Set 6,500 years after the First Shearing in Low Vale beneath the Black Spine. A mobile-first narrative survival RPG of geography, debt, and lasting consequence. Build your traveler across working archetypes (Weaver, Drover, Scribe, Herder) and navigate dangerous old roads where local knowledge is your only armor. Balance vital Resolve, Grit, and Ledger debt in a fully deterministic client-side story engine with zero backend calls and no accounts.</p>
             <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
               <a class="btn btn--secondary" href="the-hook-and-skein/">Overview</a>
               <a class="btn btn--primary" href="the-hook-and-skein/play/">Enter Low Vale
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
             </p>
+            <img class="card-marginalia voynich-plate" src="../assets/manuscript/pngs/JapaneseTattoo_-08.png" alt="" width="130" height="130" loading="lazy" decoding="async">
           </article>
 
           <article class="card card--manuscript">
@@ -98,23 +105,24 @@
               <span class="badge badge--success">VERTICAL SLICE</span>
             </div>
             <h3 class="card__title card__title--lg" translate="no">Scarward</h3>
-            <p class="card__body">Intense, fast-paced tactical defense set in the world of <span translate="no">The Hook and the Skein</span>. Command the Joined Hands or Clenched Fist near the Scar borderlands. Sever otherworldly handler links, cast devastating spool workings, and hold the line before the Rust overruns your circle.</p>
+            <p class="card__body">A side-view 2D pixel tower-defense roguelite set in the Scar borderlands. Command a Joined-Hands containment circle and defend against surging Hooked Ones, pack handlers, and massive Vrakoni war-beasts. Balance defensive Spool wards and barriers against high-force Tension spells while managing a rising Power Strain meter and the creeping 0–100 Rust Dial. Features 18 persistent discipline ranks across two Order skill trees, in-run Attunement card draws, and an escalating 10-wave Deep Watch mode.</p>
             <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
               <a class="btn btn--secondary" href="scarward/">Overview</a>
-              <a class="btn btn--primary" href="scarward/play/">Launch <span translate="no">Scarward</span>
+              <a class="btn btn--primary" href="scarward/play/">Play <span translate="no">Scarward</span>
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
             </p>
+            <img class="card-marginalia voynich-plate" src="../assets/manuscript/pngs/JapaneseTattoo_-12.png" alt="" width="130" height="130" loading="lazy" decoding="async">
           </article>
+
         </div>
 
-        <nav class="folio-pagination" aria-label="Folio leaf navigation">
+        <nav class="folio-pagination" aria-label="Page navigation">
           <a class="folio-turn-btn folio-turn-btn--prev" href="../index.html">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
-            <span>Frontispiece</span>
+            <span>⟵ Home</span>
           </a>
-          <span class="folio-pagination__leaf" aria-hidden="true">❦ Folio I · Games ❦</span>
           <a class="folio-turn-btn folio-turn-btn--next" href="../apps.html">
-            <span>Folio II · Apps</span>
+            <span>Apps ⟶</span>
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
           </a>
         </nav>
@@ -122,6 +130,7 @@
     </section>
   </main>
 
+  <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
     <div class="site-footer__inner">
       <div>
@@ -141,18 +150,23 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h2 class="footer-col__h">Apps &amp; Studio</h2>
+        <h2 class="footer-col__h">Apps</h2>
         <ul>
           <li><a href="../apps.html">All Apps</a></li>
           <li><a href="../garden-sage.html" translate="no">Garden Sage</a></li>
           <li><a href="../pantry-panda.html" translate="no">Pantry Panda</a></li>
-          <li><a href="../lab/">The Lab</a></li>
+          <li><a href="../contact.html">Contact Studio</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
         <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
+        <div class="codex-toggle-wrap">
+          <button type="button" class="codex-mode-btn" data-codex-toggle onclick="btwToggleCodexMode()" aria-label="Toggle codex display mode">
+            View: <span>Lite</span> | <strong style="color:var(--manuscript-rubric,#8F2D18);">Full Manuscript</strong>
+          </button>
+        </div>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>
