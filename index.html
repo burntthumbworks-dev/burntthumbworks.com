@@ -32,49 +32,57 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ============ HEADER ============ -->
-  <header class="site-header">
+  <header class="site-header site-header--codex">
     <div class="site-header__inner">
       <a class="brand" href="index.html" aria-label="Burnt Thumb Works — home">
         <img class="brand__mark" src="assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="games/">Games</a>
-        <a class="nav__link" href="apps.html">Apps</a>
-        <a class="nav__link" href="lab/">Lab</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="games/">Play Now</a></span>
+      <nav class="nav" id="primary-nav" aria-label="Codex navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="games/"><span class="ribbon-tab__icon">⚔</span> Folio I · <span translate="no">Games</span></a>
+          <a class="ribbon-tab" href="apps.html"><span class="ribbon-tab__icon">⚖</span> Folio II · <span translate="no">Apps</span></a>
+          <a class="ribbon-tab" href="lab/"><span class="ribbon-tab__icon">⚗</span> Folio III · Lab</a>
+          <a class="ribbon-tab ribbon-tab--action" href="contact.html"><span class="ribbon-tab__icon">✍</span> Scriptorium</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="main">
 
-    <!-- ============ HERO ============ -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__inner">
-        <div class="hero__copy">
-          <p class="eyebrow">Burnt Thumb Works · Independent Studio</p>
-          <h1 class="hero__title" id="hero-title">Handcrafted Games &amp; Everyday Tools</h1>
-          <p class="hero__sub" style="font-family: var(--font-serif); font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--fg-2); margin: var(--space-4) 0 var(--space-6);">Independent software built with care, folklore, and enduring craft. Original browser titles running on custom in-house engines alongside practical, dependable tools for daily life—lightweight, private, and self-contained.</p>
-          <div class="hero__actions">
-            <a class="btn btn--primary btn--lg" href="games/">
-              Explore Games
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-            <a class="btn btn--secondary btn--lg" href="apps.html">Explore Apps</a>
-            <a class="btn btn--secondary btn--lg" href="lab/">The Lab</a>
-          </div>
-        </div>
-        <div class="seal">
-          <div class="seal__frame">
-            <img class="seal__crest" src="assets/crest-ink.png" alt="Burnt Thumb Works crest" width="1218" height="1089" decoding="async" fetchpriority="high">
+    <!-- ============ HERO / FRONTISPIECE ============ -->
+    <section class="hero frontispiece" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="frontispiece__frame">
+          <div class="hero__inner" style="margin:0; align-items:center;">
+            <div class="hero__copy">
+              <span class="folio-tag rubric" translate="no">Burnt Thumb Works · Codex Frontispiece</span>
+              <h1 class="hero__title" id="hero-title">Handcrafted Games &amp; Everyday Tools</h1>
+              <p class="hero__sub" style="font-family: var(--font-serif); font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--fg-2); margin: var(--space-4) 0 var(--space-6);"><span class="drop-cap" translate="no">B</span>urnt Thumb Works is an independent studio crafting rich narrative and arcade games alongside practical tools for daily life. Every build runs self-contained in your browser—clean, durable, and free of artificial friction.</p>
+              <div class="hero__actions">
+                <a class="btn btn--primary btn--lg" href="games/">
+                  Explore Games
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+                <a class="btn btn--secondary btn--lg" href="apps.html">Explore Apps</a>
+                <a class="btn btn--secondary btn--lg" href="lab/">The Lab</a>
+              </div>
+            </div>
+            <div class="frontispiece__cartouche">
+              <img class="frontispiece__crest" src="assets/crest-ink.png" alt="Burnt Thumb Works crest" width="1218" height="1089" decoding="async" fetchpriority="high">
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    <div class="manuscript-divider" aria-hidden="true">
+      <span class="manuscript-divider__ornament">❦ ❦ ❦</span>
+    </div>
 
     <!-- ============ ORIGINAL GAMES ============ -->
     <section class="section" id="featured-games" aria-labelledby="games-title">
@@ -86,37 +94,49 @@
         </div>
         <div class="grid grid--3">
 
-          <a class="card card--interactive" href="games/grimmkart/">
+          <a class="card card--interactive card--manuscript" href="games/grimmkart/">
             <div class="project__top">
               <span class="tag">3D Arcade Kart &amp; Arena</span>
               <span class="badge badge--success">LIVE</span>
             </div>
-            <h3 class="card__title card__title--lg">GrimmKart.io</h3>
+            <h3 class="card__title card__title--lg" translate="no">GrimmKart.io</h3>
             <p class="card__body">High-speed folklore racing meets arena combat. Choose from 32 legendary Grimm tales mounted on period livestock and custom carts. Drift through corners for mini-turbo boosts, unleash 16 enchanted items—from fire blasts to cursed ravens—and battle to be the last fable standing.</p>
-            <span class="card__link">Launch GrimmKart.io <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            <span class="card__link">Launch <span translate="no">GrimmKart.io</span> <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
           </a>
 
-          <a class="card card--interactive" href="games/the-hook-and-skein/">
+          <a class="card card--interactive card--manuscript" href="games/the-hook-and-skein/">
             <div class="project__top">
               <span class="tag">Narrative Survival RPG</span>
               <span class="badge badge--info">PUBLIC BUILD</span>
             </div>
-            <h3 class="card__title card__title--lg">The Hook and Skein</h3>
+            <h3 class="card__title card__title--lg" translate="no">The Hook and the Skein</h3>
             <p class="card__body">6,500 years after the First Shearing, step into Low Vale beneath the Black Spine. A rich, atmospheric survival adventure of debt, geography, and lasting consequences. Navigate forgotten roads, manage vital resolve, and discover a living world where every choice carries real weight.</p>
             <span class="card__link">Enter Low Vale <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
           </a>
 
-          <a class="card card--interactive" href="games/scarward/">
+          <a class="card card--interactive card--manuscript" href="games/scarward/">
             <div class="project__top">
               <span class="tag">2D Tactical Defense × Roguelite</span>
               <span class="badge badge--success">VERTICAL SLICE</span>
             </div>
-            <h3 class="card__title card__title--lg">Scarward</h3>
-            <p class="card__body">Intense, fast-paced tactical defense set in the world of The Hook and Skein. Command the Joined Hands or Clenched Fist near the Scar borderlands. Sever otherworldly handler links, cast devastating spool workings, and hold the line before the Rust overruns your circle.</p>
-            <span class="card__link">Launch Scarward <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            <h3 class="card__title card__title--lg" translate="no">Scarward</h3>
+            <p class="card__body">Intense, fast-paced tactical defense set in the world of <span translate="no">The Hook and the Skein</span>. Command the Joined Hands or Clenched Fist near the Scar borderlands. Sever otherworldly handler links, cast devastating spool workings, and hold the line before the Rust overruns your circle.</p>
+            <span class="card__link">Launch <span translate="no">Scarward</span> <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
           </a>
 
         </div>
+
+        <nav class="folio-pagination" aria-label="Folio leaf navigation">
+          <a class="folio-turn-btn folio-turn-btn--prev" href="#hero-title">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            <span>Frontispiece</span>
+          </a>
+          <span class="folio-pagination__leaf" aria-hidden="true">❦ Folio I · Games ❦</span>
+          <a class="folio-turn-btn folio-turn-btn--next" href="#featured-apps">
+            <span>Folio II · Apps</span>
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </nav>
       </div>
     </section>
 
@@ -130,27 +150,39 @@
         </div>
         <div class="grid grid--2">
 
-          <a class="card card--interactive" href="apps/garden-sage/demo/">
+          <a class="card card--interactive card--manuscript" href="apps/garden-sage/demo/">
             <div class="project__top">
               <span class="tag">Horticulture &amp; Crop Planning</span>
               <span class="badge badge--success">USABLE SLICE</span>
             </div>
-            <h3 class="card__title card__title--lg">Garden Sage</h3>
+            <h3 class="card__title card__title--lg" translate="no">Garden Sage</h3>
             <p class="card__body">A data-backed growing companion grounded in USDA and University Cooperative Extension science. Balances seasonal frost windows, crop tracking, and problem diagnosis—helping your garden thrive with clarity and confidence.</p>
             <span class="card__link">Launch Usable Slice <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
           </a>
 
-          <a class="card card--interactive" href="apps/pantry-panda/demo/">
+          <a class="card card--interactive card--manuscript" href="apps/pantry-panda/demo/">
             <div class="project__top">
               <span class="tag">Kitchen Ops &amp; Meal Flow</span>
               <span class="badge badge--success">USABLE SLICE</span>
             </div>
-            <h3 class="card__title card__title--lg">Pantry Panda</h3>
+            <h3 class="card__title card__title--lg" translate="no">Pantry Panda</h3>
             <p class="card__body">Clear, immediate visibility into your kitchen pantry and perishables. Keep ingredients fresh, eliminate food waste, and discover dependable recipe pairings matching what is already on your shelves.</p>
             <span class="card__link">Launch Usable Slice <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
           </a>
 
         </div>
+
+        <nav class="folio-pagination" aria-label="Folio leaf navigation">
+          <a class="folio-turn-btn folio-turn-btn--prev" href="#featured-games">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            <span>Folio I · Games</span>
+          </a>
+          <span class="folio-pagination__leaf" aria-hidden="true">❦ Folio II · Applications ❦</span>
+          <a class="folio-turn-btn folio-turn-btn--next" href="lab/">
+            <span>Folio III · The Lab</span>
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </nav>
       </div>
     </section>
 
@@ -162,7 +194,7 @@
       <div>
         <div class="footer-brand">
           <img src="assets/crest-mark.png" alt="" width="52" height="52" decoding="async" loading="lazy">
-          <span class="nm">Burnt Thumb<br>Works</span>
+          <span class="nm" translate="no">Burnt Thumb<br>Works</span>
         </div>
         <p class="footer-blurb">Handcrafted games and dependable everyday tools.</p>
       </div>
@@ -170,24 +202,24 @@
         <h2 class="footer-col__h">Games</h2>
         <ul>
           <li><a href="games/">All Games</a></li>
-          <li><a href="games/grimmkart/">GrimmKart.io</a></li>
-          <li><a href="games/the-hook-and-skein/">The Hook and Skein</a></li>
-          <li><a href="games/scarward/">Scarward</a></li>
+          <li><a href="games/grimmkart/" translate="no">GrimmKart.io</a></li>
+          <li><a href="games/the-hook-and-skein/" translate="no">The Hook and the Skein</a></li>
+          <li><a href="games/scarward/" translate="no">Scarward</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h2 class="footer-col__h">Apps &amp; Studio</h2>
         <ul>
           <li><a href="apps.html">All Apps</a></li>
-          <li><a href="garden-sage.html">Garden Sage</a></li>
-          <li><a href="pantry-panda.html">Pantry Panda</a></li>
+          <li><a href="garden-sage.html" translate="no">Garden Sage</a></li>
+          <li><a href="pantry-panda.html" translate="no">Pantry Panda</a></li>
           <li><a href="lab/">The Lab</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

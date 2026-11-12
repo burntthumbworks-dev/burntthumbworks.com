@@ -32,36 +32,39 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
+  <header class="site-header site-header--codex">
     <div class="site-header__inner">
       <a class="brand" href="index.html" aria-label="Burnt Thumb Works — home">
         <img class="brand__mark" src="assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="games/">Games</a>
-        <a class="nav__link" href="apps.html" aria-current="page">Apps</a>
-        <a class="nav__link" href="lab/">Lab</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="games/">Play Now</a></span>
+      <nav class="nav" id="primary-nav" aria-label="Codex navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="index.html"><span class="ribbon-tab__icon">❦</span> Frontispiece</a>
+          <a class="ribbon-tab" href="games/"><span class="ribbon-tab__icon">⚔</span> Folio I · <span translate="no">Games</span></a>
+          <a class="ribbon-tab ribbon-tab--active" href="apps.html"><span class="ribbon-tab__icon">⚖</span> Folio II · <span translate="no">Apps</span></a>
+          <a class="ribbon-tab" href="lab/"><span class="ribbon-tab__icon">⚗</span> Folio III · Lab</a>
+          <a class="ribbon-tab ribbon-tab--action" href="contact.html"><span class="ribbon-tab__icon">✍</span> Scriptorium</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="main" class="gs-page">
-    <div class="page-head">
+    <div class="page-head page-head--manuscript">
       <div class="wrap">
-        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="apps.html">Apps</a> <span>/</span> <span>Garden Sage</span></nav>
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="apps.html">Apps</a> <span>/</span> <span translate="no">Garden Sage</span></nav>
       </div>
     </div>
 
     <section class="gs-section" aria-label="Garden Sage overview" style="padding-top:var(--gs-space-8);">
       <div class="wrap">
         <div class="gs-hero">
-          <span class="gs-eyebrow">Horticulture &amp; Crop Planning</span>
-          <h1>Garden Sage</h1>
+          <span class="gs-eyebrow folio-tag rubric" translate="no">Folio II · Horticulture &amp; Crop Planning</span>
+          <h1 translate="no">Garden Sage</h1>
           <p>A data-backed growing companion grounded in USDA and University Cooperative Extension science. Balances seasonal frost windows, crop tracking, and problem diagnosis—helping your garden thrive with clarity and confidence.</p>
           <div style="display:flex; flex-wrap:wrap; gap:var(--gs-space-2); justify-content:center; align-items:center; margin-top:var(--gs-space-5);">
             <span class="gs-status-tag gs-status-tag--seedling">Seedling</span>
@@ -239,9 +242,21 @@
         </div>
         <div style="display:flex; gap: var(--space-4); justify-content:center; flex-wrap:wrap;">
           <a class="btn btn--primary btn--lg" href="games/">Browse Games <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-          <a class="btn btn--secondary btn--lg" href="games/the-hook-and-skein/">The Hook and Skein</a>
-          <a class="btn btn--secondary btn--lg" href="pantry-panda.html">Pantry Panda</a>
+          <a class="btn btn--secondary btn--lg" href="games/the-hook-and-skein/" translate="no">The Hook and the Skein</a>
+          <a class="btn btn--secondary btn--lg" href="pantry-panda.html" translate="no">Pantry Panda</a>
         </div>
+
+        <nav class="folio-pagination" aria-label="Folio leaf navigation" style="margin-top: var(--space-10);">
+          <a class="folio-turn-btn folio-turn-btn--prev" href="apps.html">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            <span>Folio II · All Apps</span>
+          </a>
+          <span class="folio-pagination__leaf" aria-hidden="true">❦ <span translate="no">Garden Sage</span> ❦</span>
+          <a class="folio-turn-btn folio-turn-btn--next" href="pantry-panda.html">
+            <span translate="no">Pantry Panda</span>
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </nav>
       </div>
     </section>
   </main>
@@ -251,7 +266,7 @@
       <div>
         <div class="footer-brand">
           <img src="assets/crest-mark.png" alt="" width="52" height="52" decoding="async" loading="lazy">
-          <span class="nm">Burnt Thumb<br>Works</span>
+          <span class="nm" translate="no">Burnt Thumb<br>Works</span>
         </div>
         <p class="footer-blurb">Handcrafted games and dependable everyday tools.</p>
       </div>
@@ -259,24 +274,24 @@
         <h2 class="footer-col__h">Games</h2>
         <ul>
           <li><a href="games/">All Games</a></li>
-          <li><a href="games/grimmkart/">GrimmKart.io</a></li>
-          <li><a href="games/the-hook-and-skein/">The Hook and Skein</a></li>
-          <li><a href="games/scarward/">Scarward</a></li>
+          <li><a href="games/grimmkart/" translate="no">GrimmKart.io</a></li>
+          <li><a href="games/the-hook-and-skein/" translate="no">The Hook and the Skein</a></li>
+          <li><a href="games/scarward/" translate="no">Scarward</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h2 class="footer-col__h">Apps &amp; Studio</h2>
         <ul>
           <li><a href="apps.html">All Apps</a></li>
-          <li><a href="garden-sage.html">Garden Sage</a></li>
-          <li><a href="pantry-panda.html">Pantry Panda</a></li>
+          <li><a href="garden-sage.html" translate="no">Garden Sage</a></li>
+          <li><a href="pantry-panda.html" translate="no">Pantry Panda</a></li>
           <li><a href="lab/">The Lab</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

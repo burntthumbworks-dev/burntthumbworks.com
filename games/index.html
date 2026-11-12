@@ -30,54 +30,60 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
+  <header class="site-header site-header--codex">
     <div class="site-header__inner">
       <a class="brand" href="../index.html" aria-label="Burnt Thumb Works — home">
         <img class="brand__mark" src="../assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="./" aria-current="page">Games</a>
-        <a class="nav__link" href="../apps.html">Apps</a>
-        <a class="nav__link" href="../lab/">Lab</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="grimmkart/play/">Play Now</a></span>
+      <nav class="nav" id="primary-nav" aria-label="Codex navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="../index.html"><span class="ribbon-tab__icon">❦</span> Frontispiece</a>
+          <a class="ribbon-tab ribbon-tab--active" href="./" aria-current="page"><span class="ribbon-tab__icon">⚔</span> Folio I · <span translate="no">Games</span></a>
+          <a class="ribbon-tab" href="../apps.html"><span class="ribbon-tab__icon">⚖</span> Folio II · <span translate="no">Apps</span></a>
+          <a class="ribbon-tab" href="../lab/"><span class="ribbon-tab__icon">⚗</span> Folio III · Lab</a>
+          <a class="ribbon-tab ribbon-tab--action" href="../contact.html"><span class="ribbon-tab__icon">✍</span> Scriptorium</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="main">
+    <div class="page-head page-head--manuscript">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> <span>/</span> <span>Games</span></nav>
+        <span class="folio-tag rubric" style="margin-top: var(--space-4);" translate="no">Folio I · Games</span>
+        <h1 class="page-head__title">Original Games</h1>
+        <p class="page-head__sub">Rich narrative worlds, tactical defense, and high-speed arcade folklore—each running self-contained in your browser with zero installs.</p>
+      </div>
+    </div>
+
     <section class="section">
       <div class="wrap">
-        <div class="section__head">
-          <p class="eyebrow">Folio I · Games</p>
-          <h1 class="section__title">Original Games</h1>
-          <p class="section__lede">Rich narrative worlds, tactical defense, and high-speed arcade folklore—each running self-contained in your browser with zero installs.</p>
-        </div>
-
         <div class="grid grid--3">
-          <article class="card">
+          <article class="card card--manuscript">
             <div class="project__top">
               <span class="tag">3D Arcade Kart &amp; Arena</span>
               <span class="badge badge--success">LIVE</span>
             </div>
-            <h3 class="card__title card__title--lg">GrimmKart.io</h3>
+            <h3 class="card__title card__title--lg" translate="no">GrimmKart.io</h3>
             <p class="card__body">High-speed folklore racing meets arena combat. Choose from 32 legendary Grimm tales mounted on period livestock and custom carts. Drift through corners for mini-turbo boosts, unleash 16 enchanted items—from fire blasts to cursed ravens—and battle to be the last fable standing.</p>
             <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
               <a class="btn btn--secondary" href="grimmkart/">Overview</a>
-              <a class="btn btn--primary" href="grimmkart/play/">Launch GrimmKart.io
+              <a class="btn btn--primary" href="grimmkart/play/">Launch <span translate="no">GrimmKart.io</span>
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
             </p>
           </article>
 
-          <article class="card">
+          <article class="card card--manuscript">
             <div class="project__top">
               <span class="tag">Narrative Survival RPG</span>
               <span class="badge badge--info">PUBLIC BUILD</span>
             </div>
-            <h3 class="card__title card__title--lg">The Hook and Skein</h3>
+            <h3 class="card__title card__title--lg" translate="no">The Hook and the Skein</h3>
             <p class="card__body">6,500 years after the First Shearing, step into Low Vale beneath the Black Spine. A rich, atmospheric survival adventure of debt, geography, and lasting consequences. Navigate forgotten roads, manage vital resolve, and discover a living world where every choice carries real weight.</p>
             <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
               <a class="btn btn--secondary" href="the-hook-and-skein/">Overview</a>
@@ -86,22 +92,32 @@
             </p>
           </article>
 
-          <article class="card">
+          <article class="card card--manuscript">
             <div class="project__top">
               <span class="tag">2D Tactical Defense × Roguelite</span>
               <span class="badge badge--success">VERTICAL SLICE</span>
             </div>
-            <h3 class="card__title card__title--lg">Scarward</h3>
-            <p class="card__body">Intense, fast-paced tactical defense set in the world of The Hook and Skein. Command the Joined Hands or Clenched Fist near the Scar borderlands. Sever otherworldly handler links, cast devastating spool workings, and hold the line before the Rust overruns your circle.</p>
+            <h3 class="card__title card__title--lg" translate="no">Scarward</h3>
+            <p class="card__body">Intense, fast-paced tactical defense set in the world of <span translate="no">The Hook and the Skein</span>. Command the Joined Hands or Clenched Fist near the Scar borderlands. Sever otherworldly handler links, cast devastating spool workings, and hold the line before the Rust overruns your circle.</p>
             <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
               <a class="btn btn--secondary" href="scarward/">Overview</a>
-              <a class="btn btn--primary" href="scarward/play/">Launch Scarward
+              <a class="btn btn--primary" href="scarward/play/">Launch <span translate="no">Scarward</span>
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
             </p>
           </article>
         </div>
 
-        <p style="margin-top: var(--space-8); color: var(--fg-2, #555); font-size: 14px;">Need utility software? Explore <a href="../apps.html">our Apps</a> or inspect the <a href="../lab/">Studio Lab</a> for engines and prototypes.</p>
+        <nav class="folio-pagination" aria-label="Folio leaf navigation">
+          <a class="folio-turn-btn folio-turn-btn--prev" href="../index.html">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            <span>Frontispiece</span>
+          </a>
+          <span class="folio-pagination__leaf" aria-hidden="true">❦ Folio I · Games ❦</span>
+          <a class="folio-turn-btn folio-turn-btn--next" href="../apps.html">
+            <span>Folio II · Apps</span>
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </nav>
       </div>
     </section>
   </main>
@@ -111,7 +127,7 @@
       <div>
         <div class="footer-brand">
           <img src="../assets/crest-mark.png" alt="" width="52" height="52" decoding="async" loading="lazy">
-          <span class="nm">Burnt Thumb<br>Works</span>
+          <span class="nm" translate="no">Burnt Thumb<br>Works</span>
         </div>
         <p class="footer-blurb">Handcrafted games and dependable everyday tools.</p>
       </div>
@@ -119,24 +135,24 @@
         <h2 class="footer-col__h">Games</h2>
         <ul>
           <li><a href="./">All Games</a></li>
-          <li><a href="grimmkart/play/">Play GrimmKart</a></li>
-          <li><a href="the-hook-and-skein/play/">Play The Hook and Skein</a></li>
-          <li><a href="scarward/play/">Play Scarward</a></li>
+          <li><a href="grimmkart/play/" translate="no">Play GrimmKart</a></li>
+          <li><a href="the-hook-and-skein/play/" translate="no">Play The Hook and the Skein</a></li>
+          <li><a href="scarward/play/" translate="no">Play Scarward</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h2 class="footer-col__h">Apps &amp; Studio</h2>
         <ul>
           <li><a href="../apps.html">All Apps</a></li>
-          <li><a href="../garden-sage.html">Garden Sage</a></li>
-          <li><a href="../pantry-panda.html">Pantry Panda</a></li>
+          <li><a href="../garden-sage.html" translate="no">Garden Sage</a></li>
+          <li><a href="../pantry-panda.html" translate="no">Pantry Panda</a></li>
           <li><a href="../lab/">The Lab</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

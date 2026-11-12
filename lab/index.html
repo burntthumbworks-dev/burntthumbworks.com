@@ -22,29 +22,32 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
+  <header class="site-header site-header--codex">
     <div class="site-header__inner">
       <a class="brand" href="../index.html" aria-label="Burnt Thumb Works — home">
         <img class="brand__mark" src="../assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="../games/">Games</a>
-        <a class="nav__link" href="../apps.html">Apps</a>
-        <a class="nav__link" href="./" aria-current="page">Lab</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="../games/">Play Now</a></span>
+      <nav class="nav" id="primary-nav" aria-label="Codex navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="../index.html"><span class="ribbon-tab__icon">❦</span> Frontispiece</a>
+          <a class="ribbon-tab" href="../games/"><span class="ribbon-tab__icon">⚔</span> Folio I · <span translate="no">Games</span></a>
+          <a class="ribbon-tab" href="../apps.html"><span class="ribbon-tab__icon">⚖</span> Folio II · <span translate="no">Apps</span></a>
+          <a class="ribbon-tab ribbon-tab--active" href="./" aria-current="page"><span class="ribbon-tab__icon">⚗</span> Folio III · Lab</a>
+          <a class="ribbon-tab ribbon-tab--action" href="../contact.html"><span class="ribbon-tab__icon">✍</span> Scriptorium</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <div class="page-head">
+    <div class="page-head page-head--manuscript">
       <div class="wrap">
         <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> <span>/</span> <span>The Lab</span></nav>
-        <p class="eyebrow" style="margin-top: var(--space-4);">Folio III · The Workshop</p>
+        <span class="folio-tag rubric" style="margin-top: var(--space-4);" translate="no">Folio III · The Workshop</span>
         <h1 class="page-head__title">The Studio Lab</h1>
         <p class="page-head__sub">An open workbench showcasing in-house engines, deterministic systems, and active prototypes powering Burnt Thumb Works projects.</p>
       </div>
@@ -54,19 +57,19 @@
       <div class="wrap">
         <div class="grid grid--3">
 
-          <article class="card">
+          <article class="card card--manuscript">
             <div class="project__top">
-              <span class="tag">GrimmKart · 3D Engine</span>
+              <span class="tag"><span translate="no">GrimmKart</span> · 3D Engine</span>
               <span class="badge badge--success">LIVE ENGINE</span>
             </div>
-            <h3 class="card__title card__title--lg">GrimmKart Physics Model</h3>
+            <h3 class="card__title card__title--lg"><span translate="no">GrimmKart</span> Physics Model</h3>
             <p class="card__body">Custom 32-slot physics and steering model running directly on Three.js and WebGL. 32 karts, dual race/arena modes, deterministic collision logic.</p>
-            <span class="card__link"><a href="../games/grimmkart/">Launch GrimmKart.io</a></span>
+            <span class="card__link"><a href="../games/grimmkart/">Launch <span translate="no">GrimmKart.io</span></a></span>
           </article>
 
-          <article class="card">
+          <article class="card card--manuscript">
             <div class="project__top">
-              <span class="tag">Hook &amp; Skein · State</span>
+              <span class="tag"><span translate="no">Hook &amp; Skein</span> · State</span>
               <span class="badge badge--info">PUBLIC BUILD</span>
             </div>
             <h3 class="card__title card__title--lg">Deterministic Survival Engine</h3>
@@ -74,41 +77,49 @@
             <span class="card__link"><a href="../games/the-hook-and-skein/">Enter Low Vale</a></span>
           </article>
 
-          <article class="card">
+          <article class="card card--manuscript">
             <div class="project__top">
-              <span class="tag">Scarward · Canvas 2D</span>
+              <span class="tag"><span translate="no">Scarward</span> · Canvas 2D</span>
               <span class="badge badge--success">VERTICAL SLICE</span>
             </div>
-            <h3 class="card__title card__title--lg">Scarward Tactical Slice</h3>
+            <h3 class="card__title card__title--lg"><span translate="no">Scarward</span> Tactical Slice</h3>
             <p class="card__body">Side-view pixel tactical defense on Canvas 2D. Vrakoni tether logic, ward maintenance, and high frame-rate horde simulation.</p>
-            <span class="card__link"><a href="../games/scarward/">Launch Scarward</a></span>
+            <span class="card__link"><a href="../games/scarward/">Launch <span translate="no">Scarward</span></a></span>
           </article>
 
-          <article class="card">
+          <article class="card card--manuscript">
             <div class="project__top">
-              <span class="tag">Garden Sage · Logic</span>
+              <span class="tag"><span translate="no">Garden Sage</span> · Logic</span>
               <span class="badge badge--warning">IN BUILD</span>
             </div>
             <h3 class="card__title card__title--lg">Agronomy Calculation Matrix</h3>
             <p class="card__body">USDA and Cooperative Extension agronomy matrix calculated against microclimate windows, soil temperature, and zone frost dates.</p>
-            <span class="card__link"><a href="../garden-sage.html">Inspect Garden Sage</a></span>
+            <span class="card__link"><a href="../garden-sage.html">Inspect <span translate="no">Garden Sage</span></a></span>
           </article>
 
-          <article class="card">
+          <article class="card card--manuscript">
             <div class="project__top">
-              <span class="tag">Pantry Panda · Ops</span>
+              <span class="tag"><span translate="no">Pantry Panda</span> · Ops</span>
               <span class="badge badge--info">PROTOTYPE</span>
             </div>
             <h3 class="card__title card__title--lg">Kitchen Inventory Model</h3>
             <p class="card__body">Ultra-fast shelf and inventory tracking model designed for immediate input, zero-fuss kitchen management, and zero food waste.</p>
-            <span class="card__link"><a href="../pantry-panda.html">Inspect Pantry Panda</a></span>
+            <span class="card__link"><a href="../pantry-panda.html">Inspect <span translate="no">Pantry Panda</span></a></span>
           </article>
 
         </div>
 
-        <p style="margin-top: var(--space-8);">
-          Jump directly to <a href="../games/">all Games</a> or explore <a href="../apps.html">our Apps</a>.
-        </p>
+        <nav class="folio-pagination" aria-label="Folio leaf navigation">
+          <a class="folio-turn-btn folio-turn-btn--prev" href="../apps.html">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            <span>Folio II · Apps</span>
+          </a>
+          <span class="folio-pagination__leaf" aria-hidden="true">❦ Folio III · The Workshop ❦</span>
+          <a class="folio-turn-btn folio-turn-btn--next" href="../contact.html">
+            <span>Scriptorium</span>
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </nav>
       </div>
     </section>
   </main>
@@ -118,7 +129,7 @@
       <div>
         <div class="footer-brand">
           <img src="../assets/crest-mark.png" alt="" width="52" height="52" decoding="async" loading="lazy">
-          <span class="nm">Burnt Thumb<br>Works</span>
+          <span class="nm" translate="no">Burnt Thumb<br>Works</span>
         </div>
         <p class="footer-blurb">Handcrafted games and dependable everyday tools.</p>
       </div>
@@ -126,24 +137,24 @@
         <h2 class="footer-col__h">Games</h2>
         <ul>
           <li><a href="../games/">All Games</a></li>
-          <li><a href="../games/grimmkart/">GrimmKart.io</a></li>
-          <li><a href="../games/the-hook-and-skein/">The Hook and Skein</a></li>
-          <li><a href="../games/scarward/">Scarward</a></li>
+          <li><a href="../games/grimmkart/" translate="no">GrimmKart.io</a></li>
+          <li><a href="../games/the-hook-and-skein/" translate="no">The Hook and the Skein</a></li>
+          <li><a href="../games/scarward/" translate="no">Scarward</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h2 class="footer-col__h">Apps &amp; Studio</h2>
         <ul>
           <li><a href="../apps.html">All Apps</a></li>
-          <li><a href="../garden-sage.html">Garden Sage</a></li>
-          <li><a href="../pantry-panda.html">Pantry Panda</a></li>
+          <li><a href="../garden-sage.html" translate="no">Garden Sage</a></li>
+          <li><a href="../pantry-panda.html" translate="no">Pantry Panda</a></li>
           <li><a href="./">The Lab</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

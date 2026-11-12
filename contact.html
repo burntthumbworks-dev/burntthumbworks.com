@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/manuscript.css">
   <style>
     .contact-grid { display: grid; grid-template-columns: 1.5fr .9fr; gap: var(--space-10); align-items: start; }
     @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: var(--space-8); } }
@@ -62,29 +63,33 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
+  <header class="site-header site-header--codex">
     <div class="site-header__inner">
       <a class="brand" href="index.html" aria-label="Burnt Thumb Works — home">
         <img class="brand__mark" src="assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="games/">Games</a>
-        <a class="nav__link" href="apps.html">Apps</a>
-        <a class="nav__link" href="lab/">Lab</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="games/grimmkart/">Play GrimmKart</a></span>
+      <nav class="nav" id="primary-nav" aria-label="Codex navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="index.html"><span class="ribbon-tab__icon">❦</span> Frontispiece</a>
+          <a class="ribbon-tab" href="games/"><span class="ribbon-tab__icon">⚔</span> Folio I · <span translate="no">Games</span></a>
+          <a class="ribbon-tab" href="apps.html"><span class="ribbon-tab__icon">⚖</span> Folio II · <span translate="no">Apps</span></a>
+          <a class="ribbon-tab" href="lab/"><span class="ribbon-tab__icon">⚗</span> Folio III · Lab</a>
+          <a class="ribbon-tab ribbon-tab--active ribbon-tab--action" href="contact.html" aria-current="page"><span class="ribbon-tab__icon">✍</span> Scriptorium</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <div class="page-head">
+    <div class="page-head page-head--manuscript">
       <div class="wrap">
         <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Start a project</span></nav>
-        <h1 class="page-head__title">Start a project</h1>
+        <span class="folio-tag rubric" style="margin-top: var(--space-4);" translate="no">Scriptorium · Project Intake</span>
+        <h1 class="page-head__title">Start a Project</h1>
         <p class="page-head__sub">Tell us what you're building, and we'll tell you how we'd build it.</p>
       </div>
     </div>
@@ -182,7 +187,7 @@
       <div>
         <div class="footer-brand">
           <img src="assets/crest-mark.png" alt="" width="52" height="52" decoding="async" loading="lazy">
-          <span class="nm">Burnt Thumb<br>Works</span>
+          <span class="nm" translate="no">Burnt Thumb<br>Works</span>
         </div>
         <p class="footer-blurb">Handcrafted games and dependable everyday tools.</p>
       </div>
@@ -197,15 +202,15 @@
         <h2 class="footer-col__h">Products</h2>
         <ul>
           <li><a href="apps.html">All products</a></li>
-          <li><a href="hook-and-skein.html">The Hook and Skein</a></li>
-          <li><a href="garden-sage.html">Garden Sage</a></li>
-          <li><a href="ai-workflow-setup.html">AI Workflow Setup</a></li>
+          <li><a href="games/the-hook-and-skein/" translate="no">The Hook and the Skein</a></li>
+          <li><a href="garden-sage.html" translate="no">Garden Sage</a></li>
+          <li><a href="pantry-panda.html" translate="no">Pantry Panda</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

@@ -1,13 +1,18 @@
 /* ============================================================
    BURNT THUMB WORKS — Medieval Manuscript & Illuminated Codex System
-   v01 2026-11-11
+   v02 2026-11-12
    Transforms studio pages into an illuminated medieval treatise / codex:
-   rubricated initials, double-ruled folio borders, illuminated badges,
-   calligraphic dividers, and classical bookish hierarchy.
+   rubricated initials, double-ruled folio borders, ribbon bookmarks,
+   illuminated badges, calligraphic dividers, and classical bookish hierarchy.
    100% local, zero external requests, strict $0 runtime cost.
+   GPU-light: pure CSS borders & lightweight box-shadows (no full-nav drop-shadow filters).
+   Responsive down to 360px viewport width with 48px minimum touch targets.
    ============================================================ */
 
-/* ---- Illuminated Drop Cap ---- */
+/* ============================================================
+   1. ILLUMINATED TYPOGRAPHY & DROP CAPS
+   ============================================================ */
+
 .drop-cap {
   float: left;
   font-family: var(--font-display);
@@ -19,7 +24,13 @@
   text-shadow: 1px 1px 0 var(--manuscript-gold, #9E741E);
 }
 
-/* ---- Rubricated Headings & Eyebrows ---- */
+@media (max-width: 480px) {
+  .drop-cap {
+    font-size: 3.1rem;
+    margin: 2px 10px 2px 0;
+  }
+}
+
 .rubric {
   color: var(--manuscript-rubric, #8F2D18) !important;
 }
@@ -36,18 +47,201 @@
   color: var(--manuscript-rubric, #8F2D18);
   background: var(--surface-2);
   border: 1px solid var(--border-default);
-  padding: 3px 10px;
+  padding: 4px 11px;
   border-radius: var(--radius-xs);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
 }
 
-/* ---- Illuminated Book Divider ---- */
+/* ============================================================
+   2. CODEX RIBBON BOOKMARK NAVIGATION (GPU-Light & 48px Targets)
+   ============================================================ */
+
+.ribbon-nav {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ribbon-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 10px 16px 14px;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.04em;
+  color: var(--ink-800);
+  text-decoration: none;
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-top: none;
+  border-radius: 0 0 var(--radius-xs) var(--radius-xs);
+  box-shadow: 0 2px 6px rgba(33,26,14,0.08);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), 50% 100%, 0 calc(100% - 6px));
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.ribbon-tab:hover {
+  background: var(--surface-2);
+  color: var(--manuscript-rubric, #8F2D18);
+  border-color: var(--brass-500);
+  transform: translateY(2px);
+  text-decoration: none;
+}
+
+.ribbon-tab[aria-current="page"],
+.ribbon-tab--active {
+  background: var(--surface-2);
+  color: var(--manuscript-rubric, #8F2D18);
+  border-color: var(--manuscript-gold, #9E741E);
+  font-weight: var(--weight-bold);
+  transform: translateY(3px);
+  box-shadow: 0 3px 10px rgba(143,45,24,0.14);
+}
+
+.ribbon-tab__icon {
+  font-size: 13px;
+  color: var(--manuscript-gold, #9E741E);
+}
+
+.ribbon-tab--action {
+  background: var(--brass-tint);
+  border-color: var(--brass-400);
+  color: var(--ink-900);
+}
+
+/* Responsive Ribbon Navigation down to 360px */
+@media (max-width: 900px) {
+  .ribbon-nav {
+    display: none; /* Managed by mobile nav toggle when closed */
+  }
+  .nav--open .ribbon-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    width: 100%;
+    padding: var(--space-4) 0;
+  }
+  .nav--open .ribbon-tab {
+    clip-path: none;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    justify-content: flex-start;
+    padding: 12px 18px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header__inner {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+  .brand__name {
+    font-size: var(--text-sm);
+  }
+}
+
+/* ============================================================
+   3. ILLUMINATED FRONTISPIECE & CARTOUCHE
+   ============================================================ */
+
+.frontispiece {
+  position: relative;
+  padding: var(--space-16) 0 var(--space-12);
+}
+
+.frontispiece__frame {
+  position: relative;
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: var(--space-8);
+  box-shadow: 0 2px 12px rgba(33,26,14,0.06), inset 0 0 0 4px var(--surface-1), inset 0 0 0 5px var(--border-subtle);
+}
+
+/* Frontispiece Illuminated Corner Ornaments */
+.frontispiece__frame::before,
+.frontispiece__frame::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.frontispiece__frame::before {
+  top: 8px;
+  left: 8px;
+  border-top: 3px double var(--manuscript-gold, #9E741E);
+  border-left: 3px double var(--manuscript-gold, #9E741E);
+}
+
+.frontispiece__frame::after {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 3px double var(--manuscript-gold, #9E741E);
+  border-right: 3px double var(--manuscript-gold, #9E741E);
+}
+
+.frontispiece__cartouche {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  margin: 0 auto;
+  max-width: 320px;
+}
+
+.frontispiece__crest {
+  max-width: 240px;
+  height: auto;
+  filter: sepia(0.08) contrast(1.04);
+}
+
+@media (max-width: 640px) {
+  .frontispiece__frame {
+    padding: var(--space-5);
+  }
+  .frontispiece__crest {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 360px) {
+  .frontispiece {
+    padding: var(--space-8) 0 var(--space-6);
+  }
+  .frontispiece__frame {
+    padding: var(--space-4);
+  }
+  .frontispiece__crest {
+    max-width: 150px;
+  }
+}
+
+/* ============================================================
+   4. ILLUMINATED CALLIGRAPHIC DIVIDER
+   ============================================================ */
+
 .manuscript-divider {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-4);
-  margin: var(--space-12) 0;
+  margin: var(--space-12) auto;
+  max-width: var(--maxw);
   color: var(--brass-600);
 }
 
@@ -63,10 +257,24 @@
   font-family: var(--font-display);
   font-size: 14px;
   color: var(--manuscript-rubric, #8F2D18);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
+  user-select: none;
 }
 
-/* ---- Codex Folio Cards ---- */
+@media (max-width: 360px) {
+  .manuscript-divider {
+    margin: var(--space-8) auto;
+  }
+  .manuscript-divider__ornament {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+  }
+}
+
+/* ============================================================
+   5. CODEX FOLIO CARDS & HERALDIC ACCENTS
+   ============================================================ */
+
 .card--manuscript {
   position: relative;
   background: var(--surface-1);
@@ -83,13 +291,12 @@
   transform: translateY(-2px);
 }
 
-/* Corner flourishes for manuscript cards */
 .card--manuscript::before,
 .card--manuscript::after {
   content: "";
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   pointer-events: none;
 }
 
@@ -107,9 +314,109 @@
   border-right: 2px solid var(--manuscript-gold, #9E741E);
 }
 
-/* ---- Folio Page Head Decoration ---- */
-.page-head--manuscript {
-  border-bottom: 3px double var(--border-default);
-  padding-bottom: var(--space-8);
-  margin-bottom: var(--space-10);
+.card__folio-number {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--manuscript-rubric, #8F2D18);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@media (max-width: 360px) {
+  .card--manuscript {
+    padding: var(--space-4);
+  }
+}
+
+/* ============================================================
+   6. FOLIO PAGE-TURN / LEAFING CONTROLS (48px Touch Targets)
+   ============================================================ */
+
+.folio-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-12);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.folio-turn-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  min-width: 48px;
+  padding: 12px 18px;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  color: var(--ink-800);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 3px rgba(33,26,14,0.06);
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.16s ease, border-color 0.16s ease, transform 0.12s ease;
+}
+
+.folio-turn-btn:hover {
+  background: var(--surface-2);
+  border-color: var(--brass-500);
+  color: var(--manuscript-rubric, #8F2D18);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.folio-turn-btn:active {
+  transform: translateY(1px);
+}
+
+.folio-turn-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--manuscript-gold, #9E741E);
+}
+
+.folio-pagination__leaf {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: var(--manuscript-rubric, #8F2D18);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+@media (max-width: 640px) {
+  .folio-pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+  .folio-pagination__leaf {
+    width: 100%;
+    text-align: center;
+    order: -1;
+  }
+  .folio-turn-btn {
+    flex: 1 1 140px;
+  }
+}
+
+@media (max-width: 360px) {
+  .folio-turn-btn {
+    width: 100%;
+    flex: 1 1 100%;
+    padding: 12px 14px;
+    font-size: var(--text-xs);
+  }
 }
