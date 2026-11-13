@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Business Web Builds — Burnt Thumb Works</title>
+  <meta name="description" content="Fast, mobile-first static websites for local businesses. Free live preview first, $650 flat build, optional $25/mo Care Plan, zero phone calls.">
+  <link rel="canonical" href="https://burntthumbworks.com/web-builds/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Local Business Web Builds — Burnt Thumb Works">
+  <meta property="og:description" content="Fast, mobile-first static websites for local trades and businesses. Free live preview first, $650 flat build, zero retainers.">
+  <meta property="og:url" content="https://burntthumbworks.com/web-builds/">
+  <meta property="og:site_name" content="Burnt Thumb Works">
+  <meta property="og:image" content="https://burntthumbworks.com/assets/og-image.png">
+  <meta name="theme-color" content="#F0E4C7">
+  <link rel="icon" href="../assets/crest-mark.png" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/crest-mark.png">
+
+  <script src="../js/codex-loader.js"></script>
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/manuscript.css">
+  <style>
+    .lang-switch-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-4); }
+    .lang-toggle-btn {
+      cursor: pointer; font-family: var(--font-sans); font-size: 14px; font-weight: var(--weight-semibold);
+      padding: 8px 16px; border-radius: var(--radius-pill);
+      background: var(--surface-1); color: var(--fg-strong);
+      border: 1px solid var(--brass-500, var(--border-default));
+    }
+    .lang-toggle-btn:hover { background: var(--brass-tint, var(--surface-2)); }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .price-figure {
+      font-family: var(--font-display); font-size: var(--text-3xl);
+      color: var(--fg-strong); margin: var(--space-2) 0 var(--space-3); line-height: 1.1;
+    }
+    .price-figure small { font-family: var(--font-serif); font-size: var(--text-base); color: var(--fg-3); font-weight: var(--weight-regular); }
+
+    .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-top: var(--space-6); }
+    @media (max-width: 760px) { .scope-grid { grid-template-columns: 1fr; } }
+
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    @media (max-width: 820px) { .steps-grid { grid-template-columns: 1fr; } }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: var(--radius-pill);
+      background: var(--moss-tint); border: 1px solid var(--moss-400); color: var(--moss-700);
+      font-family: var(--font-mono); font-weight: var(--weight-bold); font-size: 14px;
+      margin-bottom: var(--space-3);
+    }
+
+    .async-form-card {
+      background: var(--surface-1); border: 1px solid var(--border-default);
+      border-radius: var(--radius-xl); padding: var(--space-8); box-shadow: var(--shadow-md);
+      max-width: 760px;
+    }
+    .async-fields { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin: var(--space-5) 0; }
+    @media (max-width: 640px) { .async-fields { grid-template-columns: 1fr; } }
+    .async-field { display: flex; flex-direction: column; gap: 6px; }
+    .async-field--wide { grid-column: 1 / -1; }
+    .async-field label { font-family: var(--font-sans); font-size: 13px; font-weight: var(--weight-semibold); color: var(--ink-700); }
+    .async-field input, .async-field textarea {
+      font-family: var(--font-sans); font-size: 15px; padding: 10px 12px;
+      background: var(--surface-2); color: var(--fg-1);
+      border: 1px solid var(--border-default); border-radius: var(--radius-md);
+    }
+    .async-field textarea { min-height: 92px; resize: vertical; }
+    .async-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header site-header--codex">
+    <div class="site-header__inner">
+      <a class="brand" href="../index.html" aria-label="Burnt Thumb Works — home">
+        <img class="brand__mark" src="../assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="../index.html">Home</a>
+          <a class="ribbon-tab" href="../games/">Games</a>
+          <a class="ribbon-tab" href="../apps.html">Apps</a>
+          <a class="ribbon-tab ribbon-tab--active" href="./" aria-current="page">Web Builds</a>
+          <a class="ribbon-tab" href="../contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ PAGE HEAD / HERO ============ -->
+    <div class="page-head page-head--manuscript">
+      <div class="wrap">
+        <div class="lang-switch-bar">
+          <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> <span>/</span> <span class="i18n" data-en="Local Web Builds" data-es="Sitios Web Locales">Local Web Builds</span></nav>
+          <button type="button" class="lang-toggle-btn" id="wb-lang-toggle" aria-label="Switch language between English and Spanish">Español</button>
+        </div>
+        <div class="studio-hero-split">
+          <div>
+            <h1 class="page-head__title i18n" data-en="Hand-Built Static Websites for Local Businesses" data-es="Sitios Web Rápidos para Negocios Locales">Hand-Built Static Websites for Local Businesses</h1>
+            <p class="page-head__sub i18n" data-en="See a working preview on your phone before you pay a cent. Zero bloat, zero agency retainers, and zero phone calls required." data-es="Vea una vista previa funcional en su teléfono antes de pagar un centavo. Sin código pesado, sin contratos forzosos y sin llamadas de ventas.">See a working preview on your phone before you pay a cent. Zero bloat, zero agency retainers, and zero phone calls required.</p>
+            <div class="hero__actions" style="margin-top: var(--space-6);">
+              <a class="btn btn--primary btn--lg" href="sample/">
+                <span class="i18n" data-en="View Live Sample Site" data-es="Ver Muestra en Vivo">View Live Sample Site</span>
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+              <a class="btn btn--secondary btn--lg i18n" href="#inquiry" data-en="Request a Free Preview" data-es="Solicitar Vista Previa Gratis">Request a Free Preview</a>
+            </div>
+          </div>
+          <div class="studio-hero-plate-wrap">
+            <img class="studio-hero-plate" src="../assets/manuscript/ornaments/web-builds-herald.png" alt="Heraldic studio emblem for Burnt Thumb Works web builds" width="400" height="359" decoding="async">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section" id="pricing" aria-labelledby="pricing-title">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 class="section__title i18n" id="pricing-title" data-en="Clear Flat-Rate Pricing" data-es="Precios Claros y Fijos">Clear Flat-Rate Pricing</h2>
+          <p class="section__lede i18n" data-en="Free live preview first. If you like it, pay once to launch and own your .com domain outright." data-es="Primero recibe su vista previa gratis. Si le gusta, paga una sola vez para publicarlo y ser dueño total de su dominio .com.">Free live preview first. If you like it, pay once to launch and own your .com domain outright.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="card card--manuscript">
+            <div class="project__top">
+              <span class="badge badge--success i18n" data-en="New Website" data-es="Sitio Nuevo">New Website</span>
+            </div>
+            <h3 class="card__title card__title--lg i18n" data-en="New Local Business Website" data-es="Sitio Web Nuevo para Negocio Local">New Local Business Website</h3>
+            <div class="price-figure">$650 <small class="i18n" data-en="flat, 100% upfront before launch" data-es="pago único, 100% por adelantado">flat, 100% upfront before launch</small></div>
+            <p class="card__desc i18n" data-en="Paid in full via Stripe before domain registration, hosting setup, or file handoff begins (non-refundable once .com registration starts)." data-es="Se paga completo vía Stripe antes de registrar el dominio, configurar el hosting o entregar archivos (no reembolsable una vez iniciado el registro .com).">Paid in full via Stripe before domain registration, hosting setup, or file handoff begins (non-refundable once .com registration starts).</p>
+            <ul class="bullet-list">
+              <li class="i18n" data-en="1st-year .com registration included &amp; transferred to your name after launch (~$12–$15/yr renewal after Year 1)" data-es="Registro .com del 1er año incluido y transferido a su nombre (~$12–$15/año después del primer año)">1st-year .com registration included &amp; transferred to your name after launch (~$12–$15/yr renewal after Year 1)</li>
+              <li class="i18n" data-en="Fast 1–3 page mobile-first static site (Call/Text buttons, services, service areas, hours, reviews)" data-es="Sitio estático rápido de 1–3 páginas para móvil (botones de Llamar/Texto, servicios, áreas, horarios y reseñas)">Fast 1–3 page mobile-first static site (Call/Text buttons, services, service areas, hours, reviews)</li>
+              <li class="i18n" data-en="LocalBusiness JSON-LD schema, HTTPS/SSL, and English, Spanish, or bilingual toggle" data-es="Esquema LocalBusiness JSON-LD, HTTPS/SSL y opción en inglés, español o bilingüe">LocalBusiness JSON-LD schema, HTTPS/SSL, and English, Spanish, or bilingual toggle</li>
+              <li class="i18n" data-en="1 round of pre-launch text and photo revisions included" data-es="Incluye 1 ronda de ajustes de texto y fotos antes de publicar">1 round of pre-launch text and photo revisions included</li>
+            </ul>
+          </article>
+
+          <article class="card card--manuscript">
+            <div class="project__top">
+              <span class="badge i18n" data-en="Existing Site" data-es="Sitio Existente">Existing Site</span>
+            </div>
+            <h3 class="card__title card__title--lg i18n" data-en="Existing Site Maintenance Takeover" data-es="Migración y Mantenimiento de Sitio Actual">Existing Site Maintenance Takeover</h3>
+            <div class="price-figure">$150 <small class="i18n" data-en="one-time setup + $25/mo" data-es="configuración única + $25/mes">one-time setup + $25/mo</small></div>
+            <p class="card__desc i18n" data-en="For businesses with an existing simple site that is slow, broken on mobile, or stuck on an expensive platform." data-es="Para negocios con un sitio sencillo que carga lento, falla en móvil o paga de más en plataformas complicadas.">For businesses with an existing simple site that is slow, broken on mobile, or stuck on an expensive platform.</p>
+            <ul class="bullet-list">
+              <li class="i18n" data-en="Full speed, mobile layout, and link audit" data-es="Auditoría completa de velocidad, diseño móvil y enlaces">Full speed, mobile layout, and link audit</li>
+              <li class="i18n" data-en="Clean static migration with HTTPS/SSL setup" data-es="Migración a sitio estático limpio con certificado HTTPS/SSL">Clean static migration with HTTPS/SSL setup</li>
+              <li class="i18n" data-en="Paired with the $25/mo Care Plan for ongoing updates" data-es="Incluye conexión directa al Plan de Cuidado de $25/mes">Paired with the $25/mo Care Plan for ongoing updates</li>
+            </ul>
+          </article>
+
+          <article class="card card--manuscript">
+            <div class="project__top">
+              <span class="badge badge--gold i18n" data-en="Optional · Cancel Anytime" data-es="Opcional · Cancele Cuando Quiera">Optional · Cancel Anytime</span>
+            </div>
+            <h3 class="card__title card__title--lg i18n" data-en="Optional Care Plan" data-es="Plan de Cuidado Opcional">Optional Care Plan</h3>
+            <div class="price-figure">$25 <small class="i18n" data-en="/ month · Zero Hostage Policy" data-es="/ mes · Sin Ataduras">/ month · Zero Hostage Policy</small></div>
+            <p class="card__desc i18n" data-en="Cancel anytime with zero penalties. If you leave, we hand over your full domain and a clean ZIP of your site files." data-es="Cancele en cualquier momento sin penalizaciones. Si decide irse, entregamos su dominio y un archivo ZIP completo de su sitio.">Cancel anytime with zero penalties. If you leave, we hand over your full domain and a clean ZIP of your site files.</p>
+            <ul class="bullet-list">
+              <li class="i18n" data-en="Hosting &amp; SSL uptime + annual .com domain renewal" data-es="Hosting, SSL activo y renovación anual del dominio .com">Hosting &amp; SSL uptime + annual .com domain renewal</li>
+              <li class="i18n" data-en="Routine text, hours, phone, and service list updates" data-es="Actualizaciones de texto, horarios, teléfono y lista de servicios">Routine text, hours, phone, and service list updates</li>
+              <li class="i18n" data-en="Up to 5 new job photos/month (EXIF stripped)" data-es="Hasta 5 fotos nuevas de trabajos al mes">Up to 5 new job photos/month (EXIF stripped)</li>
+              <li class="i18n" data-en="48-hour business-day turnaround (Mon–Fri)" data-es="Entrega en 48 horas hábiles (lunes a viernes)">48-hour business-day turnaround (Mon–Fri)</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="scope-grid">
+          <div class="card">
+            <h3 class="card__title i18n" data-en="Care Plan: Explicitly Included" data-es="Plan de Cuidado: Incluido">Care Plan: Explicitly Included</h3>
+            <ul class="bullet-list">
+              <li class="i18n" data-en="Static hosting, HTTPS/SSL monitoring, and annual .com renewal" data-es="Hosting estático, monitoreo HTTPS/SSL y renovación anual .com">Static hosting, HTTPS/SSL monitoring, and annual .com renewal</li>
+              <li class="i18n" data-en="Text, hours, phone number, service, and service-area edits" data-es="Cambios de texto, horarios, teléfono, servicios y zonas">Text, hours, phone number, service, and service-area edits</li>
+              <li class="i18n" data-en="Up to 5 new job photos per month" data-es="Hasta 5 fotos nuevas por mes">Up to 5 new job photos per month</li>
+              <li class="i18n" data-en="48-hour business-day turnaround (Mon–Fri) + full domain &amp; ZIP transfer on cancel" data-es="Respuesta en 48h hábiles (Lun–Vie) y entrega total de dominio + ZIP al cancelar">48-hour business-day turnaround (Mon–Fri) + full domain &amp; ZIP transfer on cancel</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card__title i18n" data-en="Excluded (Quoted Separately)" data-es="Excluido (Se Cotiza Aparte)">Excluded (Quoted Separately)</h3>
+            <ul class="bullet-list">
+              <li class="i18n" data-en="New pages or full layout redesigns" data-es="Páginas nuevas o rediseños completos">New pages or full layout redesigns</li>
+              <li class="i18n" data-en="Custom booking engines, e-commerce, or database systems" data-es="Sistemas de reservas, tiendas en línea o bases de datos">Custom booking engines, e-commerce, or database systems</li>
+              <li class="i18n" data-en="Logo design, full copywriting, or on-site photography" data-es="Diseño de logotipo, redacción completa o fotografía profesional">Logo design, full copywriting, or on-site photography</li>
+              <li class="i18n" data-en="Google/Facebook ad management, social media, weekend/after-hours rush fixes, or third-party password recovery" data-es="Anuncios en Google/Facebook, redes sociales, urgencias de fin de semana o recuperación de contraseñas externas">Google/Facebook ad management, social media, weekend/after-hours rush fixes, or third-party password recovery</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 class="section__title i18n" id="how-title" data-en="100% Async Workflow — Zero Phone Calls" data-es="Proceso 100% Asíncrono — Cero Llamadas">100% Async Workflow — Zero Phone Calls</h2>
+          <p class="section__lede i18n" data-en="All intake and updates happen via email or text message—no phone calls or meetings required." data-es="Toda la recopilación de datos y actualizaciones se hace por correo o mensaje de texto—sin llamadas ni reuniones.">All intake and updates happen via email or text message—no phone calls or meetings required.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="card">
+            <div class="step-num">1</div>
+            <h3 class="card__title i18n" data-en="Free Live Preview First" data-es="Vista Previa Gratis Primero">Free Live Preview First</h3>
+            <p class="card__desc i18n" data-en="Send your business name, city, and trade. We build a working preview link you can test on your phone before paying anything." data-es="Envíenos su nombre comercial, ciudad y oficio. Preparamos un enlace de prueba en vivo para su teléfono antes de pagar nada.">Send your business name, city, and trade. We build a working preview link you can test on your phone before paying anything.</p>
+          </div>
+          <div class="card">
+            <div class="step-num">2</div>
+            <h3 class="card__title i18n" data-en="Pay Upfront &amp; Send Photos" data-es="Pago Único y Envío de Fotos">Pay Upfront &amp; Send Photos</h3>
+            <p class="card__desc i18n" data-en="Approve the preview, pay the $650 flat fee via Stripe, and text or email your job photos, license badge, and service list." data-es="Apruebe la vista previa, pague los $650 vía Stripe y envíe por texto o correo sus fotos, licencia y lista de servicios.">Approve the preview, pay the $650 flat fee via Stripe, and text or email your job photos, license badge, and service list.</p>
+          </div>
+          <div class="card">
+            <div class="step-num">3</div>
+            <h3 class="card__title i18n" data-en="Launch &amp; Own Your .com" data-es="Publicación y Dominio Propio">Launch &amp; Own Your .com</h3>
+            <p class="card__desc i18n" data-en="We register your .com domain, enable HTTPS/SSL, and hand over ownership after launch—no hostage contracts." data-es="Registramos su dominio .com, activamos HTTPS/SSL y transferimos la propiedad a su nombre después del lanzamiento.">We register your .com domain, enable HTTPS/SSL, and hand over ownership after launch—no hostage contracts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ASYNC INQUIRY ============ -->
+    <section class="section" id="inquiry" aria-labelledby="inquiry-title">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 class="section__title i18n" id="inquiry-title" data-en="Request a Free Preview" data-es="Solicitar Vista Previa Gratis">Request a Free Preview</h2>
+          <p class="section__lede i18n" data-en="Fill this out in 60 seconds and email it straight to our inbox. No calls, no pressure." data-es="Complete esto en 60 segundos y envíelo directo a nuestro correo. Sin llamadas ni compromiso.">Fill this out in 60 seconds and email it straight to our inbox. No calls, no pressure.</p>
+        </div>
+
+        <form class="async-form-card" id="web-build-form">
+          <div class="async-fields">
+            <div class="async-field">
+              <label for="wb-biz" class="i18n" data-en="Business Name" data-es="Nombre del Negocio">Business Name</label>
+              <input id="wb-biz" name="business" type="text" required placeholder="e.g. Patuxent Valley Plumbing">
+            </div>
+            <div class="async-field">
+              <label for="wb-trade" class="i18n" data-en="Trade &amp; City" data-es="Oficio y Ciudad">Trade &amp; City</label>
+              <input id="wb-trade" name="trade" type="text" required placeholder="e.g. Plumbing · Bowie, MD">
+            </div>
+            <div class="async-field">
+              <label for="wb-contact" class="i18n" data-en="Email or Text Number" data-es="Correo o Número de Texto">Email or Text Number</label>
+              <input id="wb-contact" name="contact" type="text" required placeholder="you@business.com or (410) 555-0199">
+            </div>
+            <div class="async-field">
+              <label for="wb-lang" class="i18n" data-en="Preferred Site Language" data-es="Idioma del Sitio">Preferred Site Language</label>
+              <input id="wb-lang" name="site_lang" type="text" placeholder="English / Español / Bilingual">
+            </div>
+            <div class="async-field async-field--wide">
+              <label for="wb-notes" class="i18n" data-en="Services &amp; Notes" data-es="Servicios y Notas">Services &amp; Notes</label>
+              <textarea id="wb-notes" name="notes" placeholder="New $650 site or $150 takeover? Top services and towns you cover?"></textarea>
+            </div>
+          </div>
+          <div class="async-actions">
+            <button type="submit" class="btn btn--primary btn--lg i18n" data-en="Open Email Request" data-es="Abrir Solicitud por Correo">Open Email Request</button>
+            <a class="btn btn--secondary" href="mailto:hello@burntthumbworks.com?subject=Local%20Web%20Build%20Preview%20Request">hello@burntthumbworks.com</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-footer--codex">
+    <div class="site-footer__inner">
+      <p class="site-footer__brand">
+        <span translate="no">Burnt Thumb Works</span> ·
+        <a href="mailto:hello@burntthumbworks.com">hello@burntthumbworks.com</a>
+      </p>
+      <div class="site-footer__links">
+        <a href="../index.html">Home</a>
+        <a href="../games/">Games</a>
+        <a href="../apps.html">Apps</a>
+        <a href="./">Web Builds</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/site.js"></script>
+  <script>
+    (function () {
+      var lang = 'en';
+      var toggle = document.getElementById('wb-lang-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          lang = lang === 'en' ? 'es' : 'en';
+          document.documentElement.lang = lang;
+          toggle.textContent = lang === 'en' ? 'Español' : 'English';
+          document.querySelectorAll('.i18n').forEach(function (el) {
+            var next = el.getAttribute('data-' + lang);
+            if (next) el.textContent = next;
+          });
+        });
+      }
+
+      var form = document.getElementById('web-build-form');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var biz = (document.getElementById('wb-biz').value || '').trim();
+          var trade = (document.getElementById('wb-trade').value || '').trim();
+          var contact = (document.getElementById('wb-contact').value || '').trim();
+          var siteLang = (document.getElementById('wb-lang').value || 'English').trim();
+          var notes = (document.getElementById('wb-notes').value || '').trim();
+          var subject = encodeURIComponent('Web Build Preview Request — ' + (biz || 'Local Business'));
+          var body = encodeURIComponent(
+            'Business: ' + biz + '\n' +
+            'Trade & City: ' + trade + '\n' +
+            'Reply Contact: ' + contact + '\n' +
+            'Site Language: ' + siteLang + '\n\n' +
+            'Notes:\n' + notes
+          );
+          window.location.href = 'mailto:hello@burntthumbworks.com?subject=' + subject + '&body=' + body;
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

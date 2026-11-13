@@ -1,3 +1,14 @@
 Burnt Thumb Works/
 reports/
 Greenthumb Abbey/
+
+# Secrets & environment
+.env
+.env.*
+
+# Internal Web Builds lead/client data & unpurchased previews
+tools/web_builds/prospects/*.csv
+!tools/web_builds/prospects/leads.example.csv
+tools/web_builds/clients/*.json
+!tools/web_builds/clients/active_clients.example.json
+web-builds/previews/

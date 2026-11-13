@@ -49,6 +49,7 @@
           <a class="ribbon-tab" href="index.html">Home</a>
           <a class="ribbon-tab" href="games/">Games</a>
           <a class="ribbon-tab ribbon-tab--active" href="apps.html" aria-current="page">Apps</a>
+          <a class="ribbon-tab" href="web-builds/">Web Builds</a>
         </div>
       </nav>
     </div>
@@ -56,11 +57,17 @@
 
   <main id="main">
     <div class="page-head page-head--manuscript">
-      <div class="wrap marginalia-wrapper">
-        <img class="marginalia-figure marginalia-figure--right voynich-plate" src="assets/manuscript/ornaments/heraldic-stag.png" alt="" width="160" height="125" loading="lazy" decoding="async">
-        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Apps</span></nav>
-        <h1 class="page-head__title">Practical Everyday Apps</h1>
-        <p class="page-head__sub">Focused, dependable utilities built to bring order, clarity, and peace of mind to gardens, kitchens, and daily routines.</p>
+      <div class="wrap">
+        <div class="studio-hero-split">
+          <div>
+            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Apps</span></nav>
+            <h1 class="page-head__title">Practical Everyday Apps</h1>
+            <p class="page-head__sub">Hand-built browser utilities for gardens and kitchens—local device storage, zero subscriptions, zero trackers.</p>
+          </div>
+          <div class="studio-hero-plate-wrap">
+            <img class="studio-hero-plate" src="assets/manuscript/ornaments/heraldic-stag.png" alt="Heraldic stag plate for Burnt Thumb Works Apps" width="480" height="376" loading="lazy" decoding="async">
+          </div>
+        </div>
       </div>
     </div>
 
@@ -68,30 +75,42 @@
     <section class="section" aria-labelledby="apps-heading">
       <div class="wrap">
         <div class="section__head">
-          <h2 class="section__title" id="apps-heading">Interactive Applications</h2>
+          <h2 class="section__title" id="apps-heading">Usable Browser Tools</h2>
           <p class="section__lede">Every tool is lightweight, private, and runs directly in your browser with zero installation required.</p>
         </div>
         <div class="grid grid--2">
 
-          <a class="card card--interactive card--manuscript" href="apps/garden-sage/demo/">
+          <article class="card card--manuscript">
+            <div class="card-plate-slot">
+              <img src="assets/manuscript/apps/garden-sage-flora.png" alt="Garden Sage flora illustration" width="336" height="480" loading="lazy" decoding="async">
+            </div>
             <div class="project__top">
               <span class="badge badge--success">Usable Slice</span>
             </div>
             <h3 class="card__title card__title--lg" translate="no">Garden Sage</h3>
-            <p class="card__body">An evidence-based horticulture companion backed by USDA and University Extension research. Select USDA Zones 5–9 to calculate frost dates, planting windows, and growth stages across beds, containers, and nursery trays. Features the Sage Advice diagnostic engine for diagnosing crop ailments and nutrient deficiencies, with a seasonal care scheduler and full citations.</p>
-            <span class="card__link">Launch <span translate="no">Garden Sage</span> <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-            <img class="card-marginalia voynich-plate" src="assets/manuscript/apps/garden-sage-flora.png" alt="" width="130" height="186" loading="lazy" decoding="async">
-          </a>
+            <p class="card__body">Evidence-based horticulture companion backed by USDA and University Extension research. Calculate frost dates, planting windows, and crop diagnostics across USDA Zones 5–9.</p>
+            <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
+              <a class="btn btn--primary" href="apps/garden-sage/demo/">Launch <span translate="no">Garden Sage</span>
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+              <a class="btn btn--secondary" href="garden-sage.html">Details</a>
+            </p>
+          </article>
 
-          <a class="card card--interactive card--manuscript" href="apps/pantry-panda/demo/">
+          <article class="card card--manuscript">
+            <div class="card-plate-slot">
+              <img src="assets/manuscript/apps/pantry-panda-harvest.png" alt="Pantry Panda harvest illustration" width="319" height="480" loading="lazy" decoding="async">
+            </div>
             <div class="project__top">
               <span class="badge badge--success">Usable Slice</span>
             </div>
             <h3 class="card__title card__title--lg" translate="no">Pantry Panda</h3>
-            <p class="card__body">A dual-philosophy kitchen inventory companion. Toggle between "Shop Like a European" (48-hour fresh turnover, daily market stops, near-zero food waste) and "Shop Like a Prepper" (bulk staple buffers, 30-day calorie cushions). Features shelf inventory tracking, a deterministic "What Can I Make?" recipe matcher with 1-tap stock deduction, and text receipt import.</p>
-            <span class="card__link">Launch <span translate="no">Pantry Panda</span> <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-            <img class="card-marginalia voynich-plate" src="assets/manuscript/apps/pantry-panda-harvest.png" alt="" width="130" height="196" loading="lazy" decoding="async">
-          </a>
+            <p class="card__body">Dual-philosophy kitchen inventory tracker. Toggle between 48-hour fresh turnover and 30-day staple buffers, match recipes to shelf stock, and import text receipts.</p>
+            <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
+              <a class="btn btn--primary" href="apps/pantry-panda/demo/">Launch <span translate="no">Pantry Panda</span>
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+              <a class="btn btn--secondary" href="pantry-panda.html">Details</a>
+            </p>
+          </article>
 
         </div>
 
@@ -122,9 +141,8 @@
               <span class="badge badge--success">Playable Now</span>
             </div>
             <h3 class="card__title card__title--lg" translate="no">GrimmKart</h3>
-            <p class="card__body">Race 32 cursed tracks or battle across 10 closed arenas in a 3D folklore kart racer. Steer 32 tale characters on custom folk carts and mounted beasts, drift around hairpins for mini-turbo boost sparks, draft leaders with 1.40x slipstream slingshots, and cast 16 enchanted items. Includes a 3D customizer turntable, 2-player split-screen, and serverless WebRTC online rooms.</p>
+            <p class="card__body">32 cursed tracks and 10 battle arenas in a 3D folklore kart racer—solo, 2-player split-screen, or WebRTC online.</p>
             <span class="card__link">Play <span translate="no">GrimmKart</span> <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-            <img class="card-marginalia voynich-plate" src="assets/manuscript/games/grimmkart-mask.png" alt="" width="130" height="125" loading="lazy" decoding="async">
           </a>
 
           <a class="card card--interactive card--manuscript" href="games/the-hook-and-skein/">
@@ -132,9 +150,8 @@
               <span class="badge badge--info">Public Build</span>
             </div>
             <h3 class="card__title card__title--lg" translate="no">The Hook and the Skein</h3>
-            <p class="card__body">Set in the Low Vale beneath the Black Spine, 6,500 years after the First Shearing. A narrative survival RPG of geography, debt, and lasting consequence. Guide working archetypes (Weaver, Drover, Scribe, Herder) across perilous old roads. Balance Resolve, Grit, and Ledger debt in a fully deterministic client-side story engine with zero server calls and no accounts.</p>
+            <p class="card__body">A deterministic narrative survival RPG of geography, debt, and consequence in the Low Vale.</p>
             <span class="card__link">Enter Low Vale <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-            <img class="card-marginalia voynich-plate" src="assets/manuscript/games/hook-and-skein-gryphon.png" alt="" width="130" height="144" loading="lazy" decoding="async">
           </a>
 
           <a class="card card--interactive card--manuscript" href="games/scarward/">
@@ -142,9 +159,8 @@
               <span class="badge badge--success">Playable Slice</span>
             </div>
             <h3 class="card__title card__title--lg" translate="no">Scarward</h3>
-            <p class="card__body">A side-view 2D pixel tower-defense roguelite set along the Scar borderlands. Anchor containment wards, manage the Power Strain meter and Tension versus Spool facets, and hold the line against surging Hooked Ones and Vrakoni war-beasts. Features 18 persistent discipline ranks across two Order skill trees, in-run Attunements, and a 10-wave Deep Watch mode.</p>
+            <p class="card__body">Side-view 2D pixel tower-defense roguelite along the Scar borderlands with 10-wave Deep Watch runs.</p>
             <span class="card__link">Play <span translate="no">Scarward</span> <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-            <img class="card-marginalia voynich-plate" src="assets/manuscript/games/scarward-sentinel.png" alt="" width="90" height="206" loading="lazy" decoding="async">
           </a>
 
         </div>

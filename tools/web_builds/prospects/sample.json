@@ -1,0 +1,108 @@
+{
+  "slug": "sample",
+  "lang": "bilingual",
+  "accentColor": "#2E6B3E",
+  "businessName": "Chesapeake Ridge Lawn & Property Care",
+  "businessNameEs": "Chesapeake Ridge Cuidado de Césped y Propiedad",
+  "tradeCategory": "Lawn Care & Property Maintenance",
+  "tradeCategoryEs": "Cuidado de Césped y Mantenimiento",
+  "tagline": "Clean cuts, sharp edges, and dependable weekly upkeep for Anne Arundel County homes.",
+  "taglineEs": "Cortes limpios, bordes definidos y mantenimiento semanal confiable para hogares en el condado de Anne Arundel.",
+  "phoneDisplay": "(410) 555-0194",
+  "phoneRaw": "+14105550194",
+  "email": "estimates@chesapeakeridgelawn.example",
+  "cityState": "Crofton, MD",
+  "yearsInBusiness": "9 Years in Business",
+  "yearsInBusinessEs": "9 Años de Experiencia",
+  "licenseBadge": "Licensed & Insured in MD",
+  "licenseBadgeEs": "Con Licencia y Seguro en MD",
+  "hours": "Mon–Sat · 7:00 AM – 6:00 PM",
+  "hoursEs": "Lun–Sáb · 7:00 AM – 6:00 PM",
+  "ctaText": "Call or Text for a Free Estimate",
+  "ctaTextEs": "Llame o Envíe un Texto para Presupuesto Gratis",
+  "domain": "chesapeakeridgelawn.example",
+  "services": [
+    {
+      "title": "Weekly Mowing & Edging",
+      "titleEs": "Corte y Orillado Semanal",
+      "description": "Consistent cut height, crisp sidewalk and driveway edging, and full blower cleanup every visit.",
+      "descriptionEs": "Altura de corte uniforme, orillado limpio en aceras y entradas, y limpieza completa con sopladora en cada visita.",
+      "badge": "Most Popular",
+      "badgeEs": "Más Popular"
+    },
+    {
+      "title": "Spring & Fall Yard Cleanups",
+      "titleEs": "Limpieza de Primavera y Otoño",
+      "description": "Leaf removal, bed clearing, deadwood haul-away, and curb-ready prep before the weather turns.",
+      "descriptionEs": "Recolección de hojas, limpieza de jardines, retiro de ramas y preparación completa antes del cambio de clima.",
+      "badge": "Seasonal",
+      "badgeEs": "De Temporada"
+    },
+    {
+      "title": "Mulching & Bed Refresh",
+      "titleEs": "Mantillo y Renovación de Jardines",
+      "description": "Double-shredded hardwood mulch installation, hand weeding, and clean spade-cut bed borders.",
+      "descriptionEs": "Instalación de mantillo triturado doble, deshierbe manual y bordes definidos alrededor de sus jardines.",
+      "badge": "Curb Appeal",
+      "badgeEs": "Fachada"
+    },
+    {
+      "title": "Shrub & Hedge Trimming",
+      "titleEs": "Poda de Arbustos y Setos",
+      "description": "Careful shaping for boxwoods, hollies, and foundation plantings with all clippings hauled off-site.",
+      "descriptionEs": "Poda cuidadosa de arbustos y setos ornamentales con retiro total de restos vegetales.",
+      "badge": "Clean Finish",
+      "badgeEs": "Acabado Limpio"
+    },
+    {
+      "title": "Core Aeration & Overseeding",
+      "titleEs": "Aireación y Resiembra",
+      "description": "Fall plug aeration paired with sun/shade fescue seed blends to thicken compacted Maryland turf.",
+      "descriptionEs": "Aireación de otoño con mezcla de semillas para fortalecer y espesar el césped compactado.",
+      "badge": "Turf Health",
+      "badgeEs": "Salud del Césped"
+    },
+    {
+      "title": "Gutter Clearing & Downspout Flush",
+      "titleEs": "Limpieza de Canaletas y Bajantes",
+      "description": "Debris clearing and downspout checks so heavy storms drain safely away from your foundation.",
+      "descriptionEs": "Limpieza de hojas y revisión de bajantes para que la lluvia drene lejos de los cimientos.",
+      "badge": "Add-On",
+      "badgeEs": "Adicional"
+    }
+  ],
+  "reviews": [
+    {
+      "name": "Homeowner M.D.",
+      "location": "Crofton, MD",
+      "rating": 5,
+      "quote": "Showed up the exact morning they promised, edged the whole corner lot cleanly, and left zero clippings on the driveway.",
+      "quoteEs": "Llegaron exactamente la mañana prometida, orillaron toda la esquina con precisión y dejaron la entrada sin un solo resto."
+    },
+    {
+      "name": "Homeowner S.K.",
+      "location": "Odenton, MD",
+      "rating": 5,
+      "quote": "Easy to reach by text, fair flat quote for our spring cleanup and mulch, and the beds still look sharp two months later.",
+      "quoteEs": "Fáciles de contactar por mensaje de texto, presupuesto justo para la limpieza de primavera y excelente trabajo."
+    },
+    {
+      "name": "Homeowner G.T.",
+      "location": "Gambrills, MD",
+      "rating": 5,
+      "quote": "Reliable crew. No contracts or surprise add-ons—they just do solid work every Thursday.",
+      "quoteEs": "Equipo muy cumplido. Sin contratos ni cargos sorpresa: trabajan de forma impecable cada jueves."
+    }
+  ],
+  "serviceAreas": [
+    "Crofton",
+    "Odenton",
+    "Bowie",
+    "Annapolis",
+    "Gambrills",
+    "Severn",
+    "Davidsonville",
+    "Millersville"
+  ],
+  "photos": []
+}

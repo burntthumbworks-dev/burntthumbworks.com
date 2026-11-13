@@ -1,0 +1,16 @@
+{
+  "clients": [
+    {
+      "slug": "sample",
+      "business_name": "Chesapeake Ridge Lawn & Property Care",
+      "authorized_emails": [
+        "estimates@chesapeakeridgelawn.example"
+      ],
+      "plan": "care_25_mo",
+      "status": "active",
+      "domain": "chesapeakeridgelawn.example",
+      "photos_used_this_month": 0,
+      "last_reset_month": "2026-11"
+    }
+  ]
+}
