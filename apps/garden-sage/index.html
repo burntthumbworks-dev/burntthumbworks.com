@@ -3,83 +3,84 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Garden Sage — app entry | Burnt Thumb Works</title>
-  <meta name="description" content="Web app entry point for Garden Sage. In development — the web app opens here when available.">
+  <title>Garden Sage — Burnt Thumb Works</title>
+  <meta name="description" content="A straightforward garden planner to track your beds, planting timing, and what's bothering your crops.">
   <link rel="canonical" href="https://burntthumbworks.com/apps/garden-sage/">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#F4EBD7">
-  <link rel="icon" href="../../assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="../../css/brand-tokens.css">
+  <meta name="theme-color" content="#F0E4C7">
+  <link rel="icon" href="../../assets/crest-mark.png" type="image/png">
+  <script src="../../js/codex-loader.js"></script>
+  <link rel="stylesheet" href="../../css/tokens.css">
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/site.css">
+  <link rel="stylesheet" href="../../css/manuscript.css">
   <link rel="stylesheet" href="../../css/garden-sage.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
+  <header class="site-header site-header--codex">
     <div class="site-header__inner">
-      <a class="brand" href="/" aria-label="Burnt Thumb Works home">
+      <a class="brand" href="../../index.html" aria-label="Burnt Thumb Works home">
         <img class="brand__mark" src="../../assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="/games/">Games</a>
-        <a class="nav__link" href="/apps.html" aria-current="page">Apps</a>
-        <a class="nav__link" href="/web-builds/">Web Builds</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="/apps/garden-sage/demo/">Open Live Slice</a></span>
+      <nav class="nav" id="primary-nav" aria-label="Navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="../../index.html">Home</a>
+          <a class="ribbon-tab" href="../../games/">Games</a>
+          <a class="ribbon-tab ribbon-tab--active" href="../../apps.html" aria-current="page">Apps</a>
+          <a class="ribbon-tab" href="../../web-builds/">Web Builds</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="main" class="gs-page">
-    <section class="gs-hero">
-      <div class="gs-hero__inner">
-        <img src="../../assets/manuscript/apps/pantry-panda-guardian.png" alt="Garden Sage studio plate" width="432" height="480" style="max-width:200px;height:auto;margin:0 auto var(--space-4);display:block;" decoding="async">
-        <p class="gs-eyebrow">Usable Slice · Local Browser Tool</p>
-        <h1 class="gs-hero__title" translate="no">Garden Sage</h1>
-        <p class="gs-hero__sub">Horticulture planner grounded in USDA hardiness zones 5–9 and Land-Grant university extension diagnostics—zero network calls, zero AI spend, and local device storage.</p>
-        <div class="gs-hero__actions">
-          <a class="gs-btn gs-btn--primary" href="/apps/garden-sage/demo/">Open Live Slice</a>
-          <a class="gs-btn" href="/garden-sage.html">App Overview</a>
-          <a class="gs-btn" href="/contact.html">Contact Studio</a>
+    <div class="page-head page-head--manuscript">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../index.html">Home</a> <span>/</span> <a href="../../apps.html">Apps</a> <span>/</span> <span translate="no">Garden Sage</span></nav>
+      </div>
+    </div>
+
+    <section class="gs-section" style="padding-top:var(--gs-space-8);">
+      <div class="wrap">
+        <div class="studio-hero-split">
+          <div class="gs-hero" style="text-align:left; margin:0;">
+            <h1 class="gs-hero__title" translate="no">Garden Sage</h1>
+            <p class="gs-hero__sub">A straightforward garden planner to keep track of your beds, planting timing, and what's bothering your crops.</p>
+            <div class="gs-hero__actions" style="justify-content:flex-start;">
+              <a class="gs-btn gs-btn--primary" href="/apps/garden-sage/demo/">Open Live Slice</a>
+              <a class="gs-btn" href="/garden-sage.html">App Overview</a>
+              <a class="gs-btn" href="/contact.html">Contact Studio</a>
+            </div>
+          </div>
+          <div class="studio-hero-plate-wrap">
+            <img class="studio-hero-plate" src="../../assets/manuscript/apps/pantry-panda-guardian.png" alt="Garden Sage studio plate" width="432" height="480" decoding="async">
+          </div>
         </div>
-        <p class="gs-hero__note">Want to be told when it opens? <a href="/#contact">Reach out</a> and we will let you know.</p>
       </div>
     </section>
 
-    <section class="gs-section">
-      <div class="gs-section__inner">
-        <h2 class="gs-section__title">How it will work</h2>
-        <p class="gs-section__lede">A simple, honest loop. Early builds keep photo drafting on your device — the app drafts what it sees, and you confirm before anything is saved.</p>
-        <ol class="gs-steps">
-          <li class="gs-step">
-            <span class="gs-step__num">1</span>
-            <div class="gs-step__body">
-              <h3 class="gs-step__title">Photo</h3>
-              <p class="gs-step__text">Snap a plant. In early builds this stays on your device — no photo is sent off to a server.</p>
-            </div>
-          </li>
-          <li class="gs-step">
-            <span class="gs-step__num">2</span>
-            <div class="gs-step__body">
-              <h3 class="gs-step__title">Draft</h3>
-              <p class="gs-step__text">Garden Sage drafts what it sees: a plant guess, a lifecycle stage, a care note.</p>
-            </div>
-          </li>
-          <li class="gs-step">
-            <span class="gs-step__num">3</span>
-            <div class="gs-step__body">
-              <h3 class="gs-step__title">Verify</h3>
-              <p class="gs-step__text">You confirm or correct the draft. Nothing is treated as fact until you say so.</p>
-            </div>
-          </li>
-        </ol>
-
-        <div class="gs-card gs-card--note">
-          <p class="gs-confidence"><span class="gs-status-tag gs-status-tag--review">In development</span> This page is a placeholder, not a live AI or customer-data system. Features shown describe the intended product and are not final. Any cannabis-related guidance, where present, will stay general and lifecycle-based, limited to legal-state context, and is not medical or legal advice.</p>
+    <section class="gs-section gs-section--alt">
+      <div class="wrap">
+        <h2 class="gs-section__title">What's in the planner</h2>
+        <p class="gs-section__lede">Try the live slice today for bed tracking, seasonal frost timing, and quick crop checks—while the fuller mobile notebook continues to grow.</p>
+        <div class="gs-grid gs-grid--3" style="margin-top:var(--gs-space-6);">
+          <div class="gs-card">
+            <h3>Beds &amp; pots</h3>
+            <p style="margin:0;color:var(--gs-text-muted);">Keep track of what's planted where, from indoor seed trays to backyard rows.</p>
+          </div>
+          <div class="gs-card">
+            <h3>Planting timing</h3>
+            <p style="margin:0;color:var(--gs-text-muted);">Line up frost dates and sowing windows so seedlings go out on time.</p>
+          </div>
+          <div class="gs-card">
+            <h3>Crop checks</h3>
+            <p style="margin:0;color:var(--gs-text-muted);">Look up common leaf, watering, and pest troubles in plain English.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -88,7 +89,12 @@
   <footer class="site-footer">
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
+        <div class="codex-toggle-wrap">
+          <button type="button" class="codex-mode-btn" data-codex-toggle onclick="btwToggleCodexMode()" aria-label="Toggle codex display mode">
+            View: <span>Lite</span> | <strong style="color:var(--manuscript-rubric,#8F2D18);">Full Manuscript</strong>
+          </button>
+        </div>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

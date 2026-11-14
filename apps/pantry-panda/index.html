@@ -3,102 +3,85 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pantry Panda — App Entry | Burnt Thumb Works</title>
-  <meta name="description" content="Web app entry point for Pantry Panda. Try the interactive usable slice directly in your browser with zero network or AI costs.">
+  <title>Pantry Panda — Burnt Thumb Works</title>
+  <meta name="description" content="Keep tabs on your kitchen, fridge, and pantry, and see what you can make with what you already have.">
   <link rel="canonical" href="https://burntthumbworks.com/apps/pantry-panda/">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#F4EBD7">
-  <link rel="icon" href="../../assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="../../css/brand-tokens.css">
+  <meta name="theme-color" content="#F0E4C7">
+  <link rel="icon" href="../../assets/crest-mark.png" type="image/png">
+  <script src="../../js/codex-loader.js"></script>
+  <link rel="stylesheet" href="../../css/tokens.css">
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/site.css">
-  <style>
-    .pp-entry-hero {
-      padding: var(--space-16) 0 var(--space-12);
-      text-align: center;
-      background: var(--surface-1);
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .pp-entry-lockup {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 72px;
-      height: 72px;
-      background: var(--fg-1);
-      border-radius: 18px;
-      font-size: 38px;
-      margin-bottom: var(--space-4);
-      box-shadow: var(--shadow-md);
-    }
-  </style>
+  <link rel="stylesheet" href="../../css/manuscript.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
+  <header class="site-header site-header--codex">
     <div class="site-header__inner">
-      <a class="brand" href="/" aria-label="Burnt Thumb Works home">
+      <a class="brand" href="../../index.html" aria-label="Burnt Thumb Works home">
         <img class="brand__mark" src="../../assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="/games/">Games</a>
-        <a class="nav__link" href="/apps.html" aria-current="page">Apps</a>
-        <a class="nav__link" href="/web-builds/">Web Builds</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="/apps/pantry-panda/demo/">Open Live Slice</a></span>
+      <nav class="nav" id="primary-nav" aria-label="Navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="../../index.html">Home</a>
+          <a class="ribbon-tab" href="../../games/">Games</a>
+          <a class="ribbon-tab ribbon-tab--active" href="../../apps.html" aria-current="page">Apps</a>
+          <a class="ribbon-tab" href="../../web-builds/">Web Builds</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="pp-entry-hero">
+    <div class="page-head page-head--manuscript">
       <div class="wrap">
-        <img src="../../assets/manuscript/apps/garden-sage-botanical.png" alt="Pantry Panda studio plate" width="347" height="480" style="max-width:190px;height:auto;margin:0 auto var(--space-4);display:block;" decoding="async">
-        <p class="eyebrow">Usable Slice · Local Browser Tool</p>
-        <h1 class="hero__title" style="margin-bottom: var(--space-4);" translate="no">Pantry Panda</h1>
-        <p class="hero__sub" style="max-width: 620px; margin: 0 auto var(--space-6);">
-          Storage-zone pantry tracker with deterministic recipe matching—switch between 48-hour fresh market turnover and 30-day bulk buffers.
-        </p>
-        <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-          <a class="btn btn--primary btn--lg" href="/apps/pantry-panda/demo/">Open Live Slice →</a>
-          <a class="btn btn--secondary btn--lg" href="/pantry-panda.html">App Overview</a>
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../index.html">Home</a> <span>/</span> <a href="../../apps.html">Apps</a> <span>/</span> <span translate="no">Pantry Panda</span></nav>
+        <div class="studio-hero-split">
+          <div>
+            <h1 class="page-head__title" translate="no">Pantry Panda</h1>
+            <p class="page-head__sub">Keep tabs on your kitchen, fridge, and pantry, and see what you can make with what you already have.</p>
+            <div class="hero__actions" style="margin-top: var(--space-6);">
+              <a class="btn btn--primary btn--lg" href="/apps/pantry-panda/demo/">Open Live Slice →</a>
+              <a class="btn btn--secondary btn--lg" href="/pantry-panda.html">App Overview</a>
+            </div>
+          </div>
+          <div class="studio-hero-plate-wrap">
+            <img class="studio-hero-plate" src="../../assets/manuscript/apps/garden-sage-botanical.png" alt="Pantry Panda studio plate" width="347" height="480" decoding="async">
+          </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <section class="section">
       <div class="wrap">
         <div class="section__head section__head--center">
-          <p class="eyebrow">Engine Features</p>
-          <h2 class="section__title">What the slice can do</h2>
+          <h2 class="section__title">What's inside</h2>
           <p class="section__lede" style="margin-left: auto; margin-right: auto;">
-            The interactive slice runs 100% in your browser using local storage and deterministic matching logic. No live AI, no accounts, and zero cloud spend.
+            A simple kitchen companion for everyday cooking and grocery runs.
           </p>
         </div>
 
         <div class="grid grid--2" style="gap: var(--space-6);">
-          <div class="card">
-            <span class="tag" style="margin-bottom: var(--space-3);">01 · Dual Philosophy</span>
-            <h3 class="card__title">European vs. Prepper Modes</h3>
-            <p class="card__body">Switch anytime between "Shop Like a European" (daily neighborhood market stops, high turnover, 48h fresh meals) and "Shop Like a Prepper" (bulk wholesale cases, deep 30-day buffer tracking, low-reserve alerts).</p>
+          <div class="card card--manuscript">
+            <h3 class="card__title">Two ways to shop</h3>
+            <p class="card__body">Switch anytime between shopping fresh every couple of days and keeping steady staple reserves stocked for busy weeks.</p>
           </div>
-          <div class="card">
-            <span class="tag" style="margin-bottom: var(--space-3);">02 · Track</span>
-            <h3 class="card__title">Storage Zones &amp; Buffers</h3>
-            <p class="card__body">Organize kitchen stock across Pantry, Fridge, Freezer, and Counter with freshness badges, count pickers, resilience meters, and instant search.</p>
+          <div class="card card--manuscript">
+            <h3 class="card__title">Pantry, fridge &amp; freezer</h3>
+            <p class="card__body">Sort your shelves by where food actually lives so produce doesn't get forgotten in the back of a drawer.</p>
           </div>
-          <div class="card">
-            <span class="tag" style="margin-bottom: var(--space-3);">03 · Cook</span>
-            <h3 class="card__title">Deterministic Matcher</h3>
-            <p class="card__body">Calculates "Ready to Make Now" (100% in-stock) vs "Almost There" recipes using canonical ingredients, weighted by your active shopping philosophy.</p>
+          <div class="card card--manuscript">
+            <h3 class="card__title">Cook with what you have</h3>
+            <p class="card__body">See meals you can pull together tonight—or recipes that only need one quick pickup on the way home.</p>
           </div>
-          <div class="card">
-            <span class="tag" style="margin-bottom: var(--space-3);">04 · Sourcing &amp; Restock</span>
-            <h3 class="card__title">Smart Store Dispatch &amp; Intake</h3>
-            <p class="card__body">Send your missing ingredients directly to partner grocers (Instacart Fresh for European mode, Amazon Bulk / Costco for Prepper mode) and restock items back into inventory with one tap.</p>
+          <div class="card card--manuscript">
+            <h3 class="card__title">Easy restocking</h3>
+            <p class="card__body">Build your grocery list from what's running low and check items right back onto your shelf after unloading the bags.</p>
           </div>
         </div>
       </div>
@@ -108,7 +91,12 @@
   <footer class="site-footer">
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works · Pantry Panda Web Slice</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
+        <div class="codex-toggle-wrap">
+          <button type="button" class="codex-mode-btn" data-codex-toggle onclick="btwToggleCodexMode()" aria-label="Toggle codex display mode">
+            View: <span>Lite</span> | <strong style="color:var(--manuscript-rubric,#8F2D18);">Full Manuscript</strong>
+          </button>
+        </div>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

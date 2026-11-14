@@ -56,6 +56,18 @@
 
   var isLite = detectLiteMode();
   var root = document.documentElement;
+  var basePrefix = '';
+
+  (function resolveBasePrefix() {
+    var scripts = document.getElementsByTagName('script');
+    for (var i = 0; i < scripts.length; i++) {
+      var src = scripts[i].getAttribute('src') || '';
+      if (src.indexOf('codex-loader.js') !== -1) {
+        basePrefix = src.replace('js/codex-loader.js', '');
+        break;
+      }
+    }
+  })();
 
   if (isLite) {
     root.classList.add('codex-lite');
@@ -67,20 +79,10 @@
     // Dynamically ensure voynich-rich.css is loaded if not already present
     var richLink = document.getElementById('voynich-rich-css');
     if (!richLink) {
-      // Find base path (relative to current document)
-      var scripts = document.getElementsByTagName('script');
-      var base = '';
-      for (var i = 0; i < scripts.length; i++) {
-        var src = scripts[i].getAttribute('src') || '';
-        if (src.indexOf('codex-loader.js') !== -1) {
-          base = src.replace('js/codex-loader.js', '');
-          break;
-        }
-      }
       var link = document.createElement('link');
       link.id = 'voynich-rich-css';
       link.rel = 'stylesheet';
-      link.href = base + 'css/voynich-rich.css';
+      link.href = basePrefix + 'css/voynich-rich.css';
       document.head.appendChild(link);
     }
   }
@@ -105,9 +107,7 @@
         var l = document.createElement('link');
         l.id = 'voynich-rich-css';
         l.rel = 'stylesheet';
-        // compute path based on document location
-        var pathPrefix = window.location.pathname.indexOf('/games/') !== -1 ? '../' : '';
-        l.href = pathPrefix + 'css/voynich-rich.css';
+        l.href = basePrefix + 'css/voynich-rich.css';
         document.head.appendChild(l);
       }
     }

@@ -27,6 +27,22 @@ html.codex-rich body::before {
   z-index: 990;
 }
 
+@media (max-width: 640px) {
+  html.codex-rich body::before {
+    width: 16px;
+    background: linear-gradient(90deg, rgba(31, 26, 20, 0.22) 0%, transparent 16px);
+  }
+  html.codex-rich .frontispiece__frame {
+    padding: var(--space-6);
+  }
+}
+
+@media (max-width: 380px) {
+  html.codex-rich .frontispiece__frame {
+    padding: var(--space-5);
+  }
+}
+
 /* Subtle Organic Paper Grain (Inline SVG feTurbulence background, opacity 0.045) */
 html.codex-rich body::after {
   content: "";

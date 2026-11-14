@@ -4,70 +4,76 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Apps — Burnt Thumb Works</title>
-  <meta name="description" content="Web app entry points for Burnt Thumb Works products. Apps are in development; entry points open as each becomes available.">
+  <meta name="description" content="Try Garden Sage, Pantry Panda, and The Hook and the Skein from Burnt Thumb Works.">
   <link rel="canonical" href="https://burntthumbworks.com/apps/">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#F4EBD7">
-  <link rel="icon" href="../assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="../css/brand-tokens.css">
+  <meta name="theme-color" content="#F0E4C7">
+  <link rel="icon" href="../assets/crest-mark.png" type="image/png">
+  <script src="../js/codex-loader.js"></script>
+  <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/manuscript.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
+  <header class="site-header site-header--codex">
     <div class="site-header__inner">
-      <a class="brand" href="/" aria-label="Burnt Thumb Works home">
+      <a class="brand" href="../index.html" aria-label="Burnt Thumb Works home">
         <img class="brand__mark" src="../assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="/games/">Games</a>
-        <a class="nav__link" href="/apps.html" aria-current="page">Apps</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="/games/grimmkart/">Play GrimmKart</a></span>
+      <nav class="nav" id="primary-nav" aria-label="Navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="../index.html">Home</a>
+          <a class="ribbon-tab" href="../games/">Games</a>
+          <a class="ribbon-tab ribbon-tab--active" href="../apps.html" aria-current="page">Apps</a>
+          <a class="ribbon-tab" href="../web-builds/">Web Builds</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero">
-      <div class="hero__inner">
-        <h1 class="hero__title">Everyday Apps</h1>
-        <p class="hero__sub">Practical tools designed to save time in the garden and the kitchen. Test the live browser slices right now.</p>
+    <div class="page-head page-head--manuscript">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> <span>/</span> <a href="../apps.html">Apps</a> <span>/</span> <span>Directory</span></nav>
+        <h1 class="page-head__title">Everyday Apps</h1>
+        <p class="page-head__sub">Simple helpers for the garden and the kitchen—open a live slice below.</p>
       </div>
-    </section>
+    </div>
 
     <section class="section">
       <div class="wrap">
         <div class="grid grid--3" style="gap: var(--space-6);">
-          <a class="card card--interactive" href="the-hook-and-skein/">
-            <div class="project__top">
-              <span class="badge badge--warning">In Development</span>
+          <a class="card card--interactive card--manuscript" href="garden-sage/demo/">
+            <div class="card-plate-slot">
+              <img src="../assets/manuscript/apps/pantry-panda-guardian.png" alt="Garden Sage studio plate" width="432" height="480" loading="lazy" decoding="async">
+            </div>
+            <h3 class="card__title card__title--lg" translate="no">Garden Sage</h3>
+            <p class="card__body">A straightforward garden planner to track your beds, planting timing, and what's bothering your crops.</p>
+            <span class="card__link">Open Live Slice <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </a>
+
+          <a class="card card--interactive card--manuscript" href="pantry-panda/demo/">
+            <div class="card-plate-slot">
+              <img src="../assets/manuscript/apps/garden-sage-botanical.png" alt="Pantry Panda studio plate" width="347" height="480" loading="lazy" decoding="async">
+            </div>
+            <h3 class="card__title card__title--lg" translate="no">Pantry Panda</h3>
+            <p class="card__body">Keep tabs on your kitchen, fridge, and pantry, and see what you can make with what you already have.</p>
+            <span class="card__link">Open Live Slice <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </a>
+
+          <a class="card card--interactive card--manuscript" href="the-hook-and-skein/">
+            <div class="card-plate-slot">
+              <img src="../assets/manuscript/games/hook-and-skein-weaver.png" alt="The Hook and the Skein weaver plate" width="296" height="479" loading="lazy" decoding="async">
             </div>
             <h3 class="card__title card__title--lg" translate="no">The Hook and the Skein</h3>
-            <p class="card__body">Companion app entry point for the Low Vale narrative survival RPG.</p>
-            <span class="card__more">Play in Browser →</span>
-          </a>
-          <a class="card card--interactive" href="garden-sage/demo/">
-            <div class="project__top">
-              <span class="badge badge--success">Usable Slice</span>
-            </div>
-            <img src="../assets/manuscript/apps/pantry-panda-guardian.png" alt="Garden Sage studio plate" width="432" height="480" style="max-height:110px;width:auto;height:auto;margin-bottom:var(--space-3);" loading="lazy" decoding="async">
-            <h3 class="card__title card__title--lg" translate="no">Garden Sage</h3>
-            <p class="card__body">Horticulture planner grounded in USDA hardiness zones 5–9 and Land-Grant university extension diagnostics.</p>
-            <span class="card__more">Open Live Slice →</span>
-          </a>
-          <a class="card card--interactive" href="pantry-panda/demo/">
-            <div class="project__top">
-              <span class="badge badge--success">Usable Slice</span>
-            </div>
-            <img src="../assets/manuscript/apps/garden-sage-botanical.png" alt="Pantry Panda studio plate" width="347" height="480" style="max-height:110px;width:auto;height:auto;margin-bottom:var(--space-3);" loading="lazy" decoding="async">
-            <h3 class="card__title card__title--lg" translate="no">Pantry Panda</h3>
-            <p class="card__body">Storage-zone pantry tracker with deterministic recipe matching and 48-hour vs. 30-day buffer modes.</p>
-            <span class="card__more">Open Live Slice →</span>
+            <p class="card__body">6,500 years after the First Shearing. Walk Low Vale in a persistent world where your choices leave a mark.</p>
+            <span class="card__link">Open Entry <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
           </a>
         </div>
       </div>
@@ -77,7 +83,12 @@
   <footer class="site-footer">
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
+        <div class="codex-toggle-wrap">
+          <button type="button" class="codex-mode-btn" data-codex-toggle onclick="btwToggleCodexMode()" aria-label="Toggle codex display mode">
+            View: <span>Lite</span> | <strong style="color:var(--manuscript-rubric,#8F2D18);">Full Manuscript</strong>
+          </button>
+        </div>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

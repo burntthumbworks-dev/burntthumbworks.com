@@ -120,8 +120,8 @@
   color: var(--ink-900);
 }
 
-/* Responsive Ribbon Navigation down to 360px */
-@media (max-width: 900px) {
+/* Responsive Ribbon Navigation down to 360px (aligned with site.css 768px toggle) */
+@media (max-width: 768px) {
   .ribbon-nav {
     display: none; /* Managed by mobile nav toggle when closed */
   }
@@ -439,6 +439,17 @@
   padding: var(--space-3);
 }
 
+.has-world .studio-hero-plate-wrap {
+  background: var(--manuscript-vellum, #F7EEDB);
+  border: 1px solid var(--has-brass, #A98A4C);
+  border-radius: var(--radius-md, 6px);
+  padding: var(--space-4);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), inset 0 0 0 3px var(--manuscript-vellum, #F7EEDB), inset 0 0 0 4px rgba(158, 116, 30, 0.35);
+  max-width: 320px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .studio-hero-plate {
   display: block;
   width: 100%;
@@ -453,8 +464,25 @@
     grid-template-columns: 1fr;
     gap: var(--space-5);
   }
-  .studio-hero-plate {
+  .studio-hero-plate-wrap {
+    padding: var(--space-2) 0 0;
+  }
+  .has-world .studio-hero-plate-wrap {
     max-width: 240px;
+    padding: var(--space-3);
+  }
+  .studio-hero-plate {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .has-world .studio-hero-plate-wrap {
+    max-width: 196px;
+  }
+  .studio-hero-plate {
+    max-width: 170px;
   }
 }
 
