@@ -199,13 +199,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6);
+  padding: var(--space-2);
   margin: 0 auto;
-  max-width: 320px;
+  max-width: 340px;
 }
 
 .frontispiece__crest {
-  max-width: 240px;
+  width: 100%;
+  max-width: 310px;
   height: auto;
   filter: sepia(0.08) contrast(1.04);
 }
@@ -215,7 +216,7 @@
     padding: var(--space-5);
   }
   .frontispiece__crest {
-    max-width: 180px;
+    max-width: 240px;
   }
 }
 
@@ -227,7 +228,7 @@
     padding: var(--space-4);
   }
   .frontispiece__crest {
-    max-width: 150px;
+    max-width: 190px;
   }
 }
 
@@ -439,7 +440,8 @@
   padding: var(--space-3);
 }
 
-.has-world .studio-hero-plate-wrap {
+.has-world .studio-hero-plate-wrap,
+.page-head--manuscript .studio-hero-plate-wrap {
   background: var(--manuscript-vellum, #F7EEDB);
   border: 1px solid var(--has-brass, #A98A4C);
   border-radius: var(--radius-md, 6px);
@@ -467,7 +469,8 @@
   .studio-hero-plate-wrap {
     padding: var(--space-2) 0 0;
   }
-  .has-world .studio-hero-plate-wrap {
+  .has-world .studio-hero-plate-wrap,
+  .page-head--manuscript .studio-hero-plate-wrap {
     max-width: 240px;
     padding: var(--space-3);
   }
@@ -478,7 +481,8 @@
 }
 
 @media (max-width: 480px) {
-  .has-world .studio-hero-plate-wrap {
+  .has-world .studio-hero-plate-wrap,
+  .page-head--manuscript .studio-hero-plate-wrap {
     max-width: 196px;
   }
   .studio-hero-plate {
