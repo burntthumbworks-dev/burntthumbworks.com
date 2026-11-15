@@ -1,20 +1,19 @@
 /**
  * BURNT THUMB WORKS — Codex & Manuscript Verification Suite (Phase 2D)
  * scripts/verify-codex.mjs
- * 
+ *
  * Verifies:
  * 1. Zero external network calls (CDNs, external fonts, external scripts)
  * 2. < 150 KB cold-load payload in Lite mode
- * 3. Zero broken internal links across primary HTML pages
- * 4. Explicit width and height attributes on all images (zero CLS)
- * 5. Zero navigation links to /lab/ in header, nav, or page-turns
+ * 3. Clean site flow (public .ribbon-nav strictly Home/Games/Apps; zero outbound links to unlisted pages; noindex,nofollow on unlisted pages; clean sitemap.xml)
+ * 4. Explicit width and height attributes on all images matching PNG dimensions (zero CLS)
+ * 5. Zero broken internal links across public and unlisted HTML pages
  * 6. translate="no" coverage on brand, game, and app proper names
  * 7. Typography tokens include CJK & Devanagari system font fallbacks
- * 8. GPU-light CSS (zero drop-shadow filters on navigation/containers)
- * 9. Lane lock integrity (C:\BurntThumbWorks\grimmkart is 100% untouched)
+ * 8. Lane lock integrity (C:\BurntThumbWorks\grimmkart is 100% untouched)
  */
 
-import { readFileSync, statSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, statSync, existsSync } from 'node:fs';
 import { resolve, join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
@@ -42,40 +41,56 @@ console.log('\n======================================================');
 console.log('  BURNT THUMB WORKS — CODEX VERIFICATION (PHASE 2D)');
 console.log('======================================================\n');
 
-const primaryPages = [
+const publicPages = [
   'index.html',
-  'apps.html',
   'games/index.html',
-  'garden-sage.html',
-  'pantry-panda.html',
-  'services.html',
-  'contact.html',
   'games/grimmkart/index.html',
   'games/the-hook-and-skein/index.html',
-  'games/scarward/index.html'
+  'games/scarward/index.html',
+  'hook-and-skein.html',
+  'apps.html',
+  'apps/index.html',
+  'garden-sage.html',
+  'apps/garden-sage/index.html',
+  'pantry-panda.html',
+  'apps/pantry-panda/index.html',
+  'apps/the-hook-and-skein/index.html',
+  '404.html'
 ];
+
+const unlistedPages = [
+  'web-builds/index.html',
+  'web-builds/sample/index.html',
+  'contact.html',
+  'services.html',
+  'ai-workflow-setup.html',
+  'lab/index.html',
+  'showcase/index.html',
+  'products/index.html',
+  'products/grimmkart.html'
+];
+
+const allCheckedPages = [...publicPages, ...unlistedPages];
 
 // ---------------------------------------------------------------------------
 // TEST 1: Zero External URLs (CDNs, Fonts, Scripts)
 // ---------------------------------------------------------------------------
 console.log('1. Zero External Network Requests ($0 Spend Guarantee)');
 
-let foundExternalUrls = [];
+const foundExternalUrls = [];
 const externalUrlPattern = /(?:src|href)=["'](https?:\/\/(?!burntthumbworks\.com|www\.burntthumbworks\.com)[^"']+)["']/gi;
 
-for (const pageRel of primaryPages) {
+for (const pageRel of allCheckedPages) {
   const pagePath = join(REPO_ROOT, pageRel);
   if (!existsSync(pagePath)) continue;
   const content = readFileSync(pagePath, 'utf8');
 
-  // Exclude schema.org, open graph metadata, and standard xmlns
   const contentCleaned = content
     .replace(/<meta\s+[^>]*property=["']og:[^"']*["'][^>]*>/gi, '')
     .replace(/xmlns=["'][^"']+["']/gi, '');
 
   const matches = [...contentCleaned.matchAll(externalUrlPattern)];
   for (const m of matches) {
-    // Only flag stylesheets, scripts, and media
     if (m[0].includes('.css') || m[0].includes('.js') || m[0].includes('fonts.')) {
       foundExternalUrls.push(`${pageRel}: ${m[1]}`);
     }
@@ -91,29 +106,27 @@ console.log('\n2. Lite Mode Cold-Load Budget (Ceiling: < 150 KB uncompressed)');
 
 const LITE_CEILING_BYTES = 150 * 1024; // 153,600 bytes
 
-for (const pageRel of primaryPages) {
+for (const pageRel of allCheckedPages) {
   const pagePath = join(REPO_ROOT, pageRel);
   if (!existsSync(pagePath)) continue;
 
   const htmlContent = readFileSync(pagePath, 'utf8');
   let bundleBytes = statSync(pagePath).size;
 
-  // Extract linked CSS files (excluding voynich-rich.css since Lite mode suppresses it)
   const cssMatches = [...htmlContent.matchAll(/<link\s+[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["'][^>]*>/gi)];
   for (const m of cssMatches) {
     const cssRel = m[1];
     if (cssRel.includes('voynich-rich.css')) continue;
-    const cssPath = resolve(dirname(pagePath), cssRel);
+    const cssPath = cssRel.startsWith('/') ? join(REPO_ROOT, cssRel.slice(1)) : resolve(dirname(pagePath), cssRel);
     if (existsSync(cssPath)) {
       bundleBytes += statSync(cssPath).size;
     }
   }
 
-  // Extract linked JS files
   const jsMatches = [...htmlContent.matchAll(/<script\s+[^>]*src=["']([^"']+)["'][^>]*>/gi)];
   for (const m of jsMatches) {
     const jsRel = m[1];
-    const jsPath = resolve(dirname(pagePath), jsRel);
+    const jsPath = jsRel.startsWith('/') ? join(REPO_ROOT, jsRel.slice(1)) : resolve(dirname(pagePath), jsRel);
     if (existsSync(jsPath)) {
       bundleBytes += statSync(jsPath).size;
     }
@@ -125,45 +138,92 @@ for (const pageRel of primaryPages) {
 }
 
 // ---------------------------------------------------------------------------
-// TEST 3: Zero Navigation Links to /lab/
+// TEST 3: Public Navigation Restrictions & Unlisted Direct-Link Isolation
 // ---------------------------------------------------------------------------
-console.log('\n3. Clean Site Flow (Zero Navigation Links to Lab)');
+console.log('\n3. Clean Site Flow (Public Home/Games/Apps Only + Unlisted Direct-Link Isolation)');
 
-let labNavLinks = [];
+const unlistedLinkPattern = /\bhref=["'][^"']*(?:web-builds|contact\.html|services\.html|ai-workflow-setup\.html|(?:^|\/)lab\/?|showcase\/?|products\/?)[^"']*["']/gi;
+const publicUnlistedLinks = [];
+const navDeviations = [];
 
-for (const pageRel of primaryPages) {
+for (const pageRel of publicPages) {
   const pagePath = join(REPO_ROOT, pageRel);
   if (!existsSync(pagePath)) continue;
   const content = readFileSync(pagePath, 'utf8');
 
-  // Check header, nav, and page-turn controls for lab references
-  const navBlocks = [...content.matchAll(/<(?:header|nav)[^>]*>([\s\S]*?)<\/(?:header|nav)>/gi)].map(m => m[1]);
-  for (const block of navBlocks) {
-    if (/\bhref=["'][^"']*lab\/?["']/i.test(block)) {
-      labNavLinks.push(`${pageRel} in header/nav`);
-    }
+  const contentWithoutHead = content.replace(/<head>[\s\S]*?<\/head>/i, '');
+  const badHrefs = [...contentWithoutHead.matchAll(unlistedLinkPattern)].map(m => m[0]);
+  if (badHrefs.length > 0) {
+    publicUnlistedLinks.push(`${pageRel}: ${badHrefs.join(', ')}`);
   }
 
-  // Check footer for lab references
-  const footerBlocks = [...content.matchAll(/<footer[^>]*>([\s\S]*?)<\/footer>/gi)].map(m => m[1]);
-  for (const block of footerBlocks) {
-    if (/\bhref=["'][^"']*lab\/?["']/i.test(block)) {
-      labNavLinks.push(`${pageRel} in footer`);
+  const ribbonMatch = content.match(/<div\s+class=["']ribbon-nav["'][^>]*>([\s\S]*?)<\/div>/i);
+  if (!ribbonMatch) {
+    navDeviations.push(`${pageRel}: missing .ribbon-nav`);
+  } else {
+    const tabs = [...ribbonMatch[1].matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/gi)]
+      .map(m => m[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
+    if (JSON.stringify(tabs) !== JSON.stringify(['Home', 'Games', 'Apps'])) {
+      navDeviations.push(`${pageRel}: ${JSON.stringify(tabs)}`);
     }
   }
 }
 
-assert(labNavLinks.length === 0, 'Zero navigation links to /lab/ across all primary pages', labNavLinks.length ? labNavLinks.join(', ') : 'Flow clean — only Games & Apps showcased');
+assert(publicUnlistedLinks.length === 0, 'Zero outbound links to unlisted/non-game/app pages from public pages', publicUnlistedLinks.length ? publicUnlistedLinks.join(' | ') : 'Public site strictly scoped to Home, Games, and Apps');
+assert(navDeviations.length === 0, 'Public .ribbon-nav strictly contains Home, Games, Apps on all public pages', navDeviations.length ? navDeviations.join(' | ') : `${publicPages.length}/${publicPages.length} public pages match`);
+
+const missingNoindex = [];
+for (const pageRel of unlistedPages) {
+  const pagePath = join(REPO_ROOT, pageRel);
+  if (!existsSync(pagePath)) continue;
+  const content = readFileSync(pagePath, 'utf8');
+  const robotsMatch = content.match(/<meta\s+[^>]*name=["']robots["'][^>]*content=["']([^"']+)["'][^>]*>|<meta\s+[^>]*content=["']([^"']+)["'][^>]*name=["']robots["'][^>]*>/i);
+  const robotsVal = robotsMatch ? (robotsMatch[1] || robotsMatch[2] || '').toLowerCase() : '';
+  if (!robotsVal.includes('noindex') || !robotsVal.includes('nofollow')) {
+    missingNoindex.push(`${pageRel} (found: "${robotsVal || 'NONE'}")`);
+  }
+}
+assert(missingNoindex.length === 0, 'All unlisted direct-link pages declare noindex, nofollow', missingNoindex.length ? missingNoindex.join(' | ') : `${unlistedPages.length}/${unlistedPages.length} unlisted pages protected`);
+
+const sitemapPath = join(REPO_ROOT, 'sitemap.xml');
+const sitemapBadUrls = [];
+const sitemapMissingTargets = [];
+if (existsSync(sitemapPath)) {
+  const sitemapXml = readFileSync(sitemapPath, 'utf8');
+  const locs = [...sitemapXml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/gi)].map(m => m[1]);
+  for (const loc of locs) {
+    if (/(web-builds|contact\.html|services\.html|ai-workflow|\/lab\/|\/showcase\/|\/products\/)/i.test(loc)) {
+      sitemapBadUrls.push(loc);
+    }
+    const rel = loc.replace(/^https?:\/\/(?:www\.)?burntthumbworks\.com\/?/, '');
+    const targetPath = rel ? join(REPO_ROOT, rel) : join(REPO_ROOT, 'index.html');
+    const exists = existsSync(targetPath) || existsSync(join(targetPath, 'index.html'));
+    if (!exists) {
+      sitemapMissingTargets.push(loc);
+    }
+  }
+}
+assert(existsSync(sitemapPath) && sitemapBadUrls.length === 0 && sitemapMissingTargets.length === 0, 'sitemap.xml lists only existing Home, Games, and Apps URLs', sitemapBadUrls.length ? `Unlisted URLs: ${sitemapBadUrls.join(', ')}` : (sitemapMissingTargets.length ? `Missing targets: ${sitemapMissingTargets.join(', ')}` : 'Clean sitemap — Home, Games & Apps only'));
 
 // ---------------------------------------------------------------------------
-// TEST 4: Explicit width and height Attributes on Images
+// TEST 4: Explicit width and height Attributes on Images & Exact PNG Match
 // ---------------------------------------------------------------------------
 console.log('\n4. Image CLS Prevention & Asset Integrity');
 
-let imagesMissingDimensions = [];
-let brokenImages = [];
+const imagesMissingDimensions = [];
+const brokenImages = [];
+const mismatchedPngDims = [];
 
-for (const pageRel of primaryPages) {
+function getPngDimensions(filePath) {
+  const buf = readFileSync(filePath);
+  if (buf.length < 24 || buf.toString('ascii', 1, 4) !== 'PNG') return null;
+  return {
+    width: buf.readUInt32BE(16),
+    height: buf.readUInt32BE(20)
+  };
+}
+
+for (const pageRel of allCheckedPages) {
   const pagePath = join(REPO_ROOT, pageRel);
   if (!existsSync(pagePath)) continue;
   const content = readFileSync(pagePath, 'utf8');
@@ -172,6 +232,13 @@ for (const pageRel of primaryPages) {
   for (const tag of imgTags) {
     const attrs = tag[1];
     const srcMatch = attrs.match(/\bsrc=["']([^"']+)["']/i);
+    const widthMatch = attrs.match(/\bwidth=["']?(\d+)["']?/i);
+    const heightMatch = attrs.match(/\bheight=["']?(\d+)["']?/i);
+
+    if (!widthMatch || !heightMatch) {
+      imagesMissingDimensions.push(`${pageRel}: ${tag[0].slice(0, 60)}...`);
+    }
+
     if (srcMatch) {
       const src = srcMatch[1].trim();
       if (!src.startsWith('data:') && !src.startsWith('http')) {
@@ -179,28 +246,34 @@ for (const pageRel of primaryPages) {
         const imgPath = cleanSrc.startsWith('/') ? join(REPO_ROOT, cleanSrc.slice(1)) : resolve(dirname(pagePath), cleanSrc);
         if (!existsSync(imgPath)) {
           brokenImages.push(`${pageRel}: ${src}`);
+        } else if (cleanSrc.toLowerCase().endsWith('.png') && widthMatch && heightMatch) {
+          const actual = getPngDimensions(imgPath);
+          const attrW = Number(widthMatch[1]);
+          const attrH = Number(heightMatch[1]);
+          if (actual && (actual.width !== attrW || actual.height !== attrH)) {
+            const isSmallBrandMark = src.includes('crest-mark.png') && attrW === attrH;
+            if (!isSmallBrandMark) {
+              mismatchedPngDims.push(`${pageRel} (${src}): attr=${attrW}x${attrH} vs actual=${actual.width}x${actual.height}`);
+            }
+          }
         }
       }
-    }
-    const hasWidth = /\bwidth=["']?\d+["']?/i.test(attrs);
-    const hasHeight = /\bheight=["']?\d+["']?/i.test(attrs);
-    if (!hasWidth || !hasHeight) {
-      imagesMissingDimensions.push(`${pageRel}: ${tag[0].slice(0, 50)}...`);
     }
   }
 }
 
 assert(brokenImages.length === 0, 'Zero broken image paths across all pages', brokenImages.length ? `${brokenImages.length} missing: ${brokenImages.join(', ')}` : 'All image assets exist on disk');
 assert(imagesMissingDimensions.length === 0, 'All images have explicit width and height attributes', imagesMissingDimensions.length ? `${imagesMissingDimensions.length} images missing dims: ${imagesMissingDimensions[0]}` : 'Zero CLS layout shift');
+assert(mismatchedPngDims.length === 0, 'Active PNG illustrations match exact on-disk dimensions', mismatchedPngDims.length ? mismatchedPngDims.join(' | ') : 'All manuscript PNG width/height exact');
 
 // ---------------------------------------------------------------------------
 // TEST 5: Zero Broken Internal Links
 // ---------------------------------------------------------------------------
 console.log('\n5. Internal Link Integrity (Zero 404s)');
 
-let brokenLinks = [];
+const brokenLinks = [];
 
-for (const pageRel of primaryPages) {
+for (const pageRel of allCheckedPages) {
   const pagePath = join(REPO_ROOT, pageRel);
   if (!existsSync(pagePath)) continue;
   const content = readFileSync(pagePath, 'utf8');
@@ -208,10 +281,9 @@ for (const pageRel of primaryPages) {
   const linkMatches = [...content.matchAll(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>/gi)];
   for (const m of linkMatches) {
     const target = m[1].trim();
-    if (target.startsWith('#') || target.startsWith('mailto:') || target.startsWith('tel:') || target.startsWith('https://')) {
+    if (target.startsWith('#') || target.startsWith('mailto:') || target.startsWith('tel:') || target.startsWith('sms:') || target.startsWith('https://')) {
       continue;
     }
-    // Clean target (strip hash or query string)
     const cleanTarget = target.split('#')[0].split('?')[0];
     if (!cleanTarget) continue;
 
@@ -222,7 +294,6 @@ for (const pageRel of primaryPages) {
       targetPath = resolve(dirname(pagePath), cleanTarget);
     }
 
-    // Check if target file or directory with index.html exists
     const fileExists = existsSync(targetPath) || existsSync(join(targetPath, 'index.html'));
     if (!fileExists) {
       brokenLinks.push(`${pageRel} -> ${target}`);
@@ -230,7 +301,7 @@ for (const pageRel of primaryPages) {
   }
 }
 
-assert(brokenLinks.length === 0, 'Zero broken internal links across primary pages', brokenLinks.length ? brokenLinks.join(', ') : 'All internal routes exist');
+assert(brokenLinks.length === 0, 'Zero broken internal links across public and unlisted pages', brokenLinks.length ? brokenLinks.join(', ') : 'All internal routes exist');
 
 // ---------------------------------------------------------------------------
 // TEST 6: translate="no" Protection on Proper Names
@@ -246,7 +317,7 @@ const properNames = [
   'Pantry Panda'
 ];
 
-for (const pageRel of primaryPages) {
+for (const pageRel of publicPages) {
   const pagePath = join(REPO_ROOT, pageRel);
   if (!existsSync(pagePath)) continue;
   const content = readFileSync(pagePath, 'utf8');

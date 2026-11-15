@@ -3,55 +3,69 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Hook and Skein — app entry | Burnt Thumb Works</title>
-  <meta name="description" content="Web app entry point for The Hook and Skein. In development — the playable web app opens here when available.">
+  <title>The Hook and the Skein — Burnt Thumb Works</title>
+  <meta name="description" content="Set 6,500 years after the First Shearing. Walk Low Vale's drowned roads in a persistent world where every decision leaves a mark.">
   <link rel="canonical" href="https://burntthumbworks.com/apps/the-hook-and-skein/">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#F4EBD7">
-  <link rel="icon" href="../../assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="../../css/brand-tokens.css">
+  <meta name="theme-color" content="#F0E4C7">
+  <link rel="icon" href="../../assets/crest-mark.png" type="image/png">
+  <script src="../../js/codex-loader.js"></script>
+  <link rel="stylesheet" href="../../css/tokens.css">
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/site.css">
+  <link rel="stylesheet" href="../../css/manuscript.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
+  <header class="site-header site-header--codex">
     <div class="site-header__inner">
-      <a class="brand" href="/" aria-label="Burnt Thumb Works home">
+      <a class="brand" href="../../index.html" aria-label="Burnt Thumb Works home">
         <img class="brand__mark" src="../../assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="/games/" aria-current="page">Games</a>
-        <a class="nav__link" href="/apps.html">Apps</a>
-        <a class="nav__link" href="/lab/">Lab</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="/games/the-hook-and-skein/play/">Play Demo</a></span>
+      <nav class="nav" id="primary-nav" aria-label="Navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="../../index.html">Home</a>
+          <a class="ribbon-tab" href="../../games/">Games</a>
+          <a class="ribbon-tab ribbon-tab--active" href="../../apps.html" aria-current="page">Apps</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero">
-      <img class="hero__bg" src="../../assets/logo-crest.png" alt="" aria-hidden="true">
-      <div class="hero__inner">
-        <p class="eyebrow">App entry · In development</p>
-        <h1 class="hero__title">The Hook and Skein</h1>
-        <p class="hero__sub">Web app entry coming soon. The playable build will open here once it is ready for testing. Until then, read about the game or get in touch to follow its progress.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary btn--lg" href="/hook-and-skein.html">About the game</a>
-          <a class="btn btn--secondary btn--lg" href="/#contact">Contact the studio</a>
+    <div class="page-head page-head--manuscript">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../index.html">Home</a> <span>/</span> <a href="../../apps.html">Apps</a> <span>/</span> <span translate="no">The Hook and the Skein</span></nav>
+        <div class="studio-hero-split">
+          <div>
+            <h1 class="page-head__title" translate="no">The Hook and the Skein</h1>
+            <p class="page-head__sub">6,500 years after the First Shearing. Walk Low Vale's drowned roads in a persistent world where every choice leaves a real footprint. Who are you, and what mark will you leave behind?</p>
+            <div class="hero__actions" style="margin-top: var(--space-6);">
+              <a class="btn btn--primary btn--lg" href="../../games/the-hook-and-skein/play/">Play Opening Chapter</a>
+              <a class="btn btn--secondary btn--lg" href="../../games/the-hook-and-skein/">Game Overview</a>
+            </div>
+          </div>
+          <div class="studio-hero-plate-wrap">
+            <img class="studio-hero-plate" src="../../assets/manuscript/games/hook-and-skein-weaver.png" alt="The Hook and the Skein weaver plate" width="296" height="479" decoding="async">
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
+        <div class="codex-toggle-wrap">
+          <button type="button" class="codex-mode-btn" data-codex-toggle onclick="btwToggleCodexMode()" aria-label="Toggle codex display mode">
+            View: <span>Lite</span> | <strong style="color:var(--manuscript-rubric,#8F2D18);">Full Manuscript</strong>
+          </button>
+        </div>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>
