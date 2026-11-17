@@ -64,7 +64,9 @@ const unlistedPages = [
   'lab/index.html',
   'showcase/index.html',
   'products/index.html',
-  'products/fowl-play.html'
+  'products/fowl-play.html',
+  'games/grimmkart/index.html',
+  'games/grimmkart/play/index.html'
 ];
 
 const allCheckedPages = [...publicPages, ...unlistedPages];
@@ -348,7 +350,7 @@ if (existsSync(tokensPath)) {
 }
 
 // ---------------------------------------------------------------------------
-// TEST 8: Sibling Repo Isolation (GrimmKart Clean, Relative Resolution)
+// TEST 8: Sibling Repo Isolation (Fowl Play / grimmkart Clean, Relative Resolution)
 // ---------------------------------------------------------------------------
 console.log('\n8. Lane Lock & Repository Isolation');
 
@@ -356,12 +358,12 @@ const grimmkartRepoPath = process.env.GRIMMKART_REPO_PATH || resolve(REPO_ROOT, 
 if (existsSync(join(grimmkartRepoPath, '.git'))) {
   try {
     const status = execSync(`git -C "${grimmkartRepoPath}" status -s`, { encoding: 'utf8' }).trim();
-    assert(status === '', 'Sibling GrimmKart repo working tree is 100% clean', status ? `Changes detected: ${status}` : 'Clean - 0 changes');
+    assert(status === '', 'Sibling Fowl Play (grimmkart) repo working tree is 100% clean', status ? `Changes detected: ${status}` : 'Clean - 0 changes');
   } catch (err) {
-    assert(false, 'Check GrimmKart git status', err.message);
+    assert(false, 'Check Fowl Play (grimmkart) git status', err.message);
   }
 } else {
-  assert(true, 'Sibling GrimmKart repo check skipped (not mounted relative to this workspace)');
+  assert(true, 'Sibling Fowl Play (grimmkart) repo check skipped (not mounted relative to this workspace)');
 }
 
 // ---------------------------------------------------------------------------
