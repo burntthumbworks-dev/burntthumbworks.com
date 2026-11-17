@@ -4,7 +4,7 @@ Static website for an original games and everyday apps studio. Zero build step, 
 
 ## Public Routes (Indexed in `sitemap.xml`)
 - `index.html` — studio home (Original Games & Everyday Apps)
-- `games/` — games hub (`GrimmKart`, `The Hook and the Skein`, `Scarward` + playable embeds under `games/*/play/`)
+- `games/` — games hub (`Fowl Play`, `The Hook and the Skein`, `Scarward` + playable embeds under `games/*/play/`)
 - `apps.html` & `apps/` — everyday apps (`Garden Sage`, `Pantry Panda` + live slices under `apps/*/demo/`)
 - `garden-sage.html`, `pantry-panda.html`, `hook-and-skein.html` — app/game overview pages
 - `404.html`, `robots.txt`, `sitemap.xml`

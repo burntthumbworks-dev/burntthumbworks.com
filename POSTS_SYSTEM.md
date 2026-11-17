@@ -8,7 +8,7 @@ framework: it's plain HTML that reuses the site's existing CSS components.
 
 | Section | URL | Purpose |
 |---------|-----|---------|
-| **Products** | `/products/` | A dedicated page for each thing we ship (e.g. `products/grimmkart.html`). |
+| **Products** | `/products/` | A dedicated page for each thing we ship (e.g. `products/fowl-play.html`). |
 | **The Lab** | `/lab/` | Build-in-the-open devlog: experiments, prototypes, ideas in progress. |
 | **Showcase** | `/showcase/` | Featured highlights — the portfolio view of finished work. |
 
@@ -58,7 +58,7 @@ The system is built to release on your schedule:
 
 ```
 products/index.html          Products hub
-products/grimmkart.html      First product post (public)
+products/fowl-play.html      First product post (public)
 products/_post-template.html Reusable template (noindex, copy me)
 lab/index.html               The Lab hub
 showcase/index.html          Showcase hub

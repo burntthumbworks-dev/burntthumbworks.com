@@ -45,7 +45,7 @@ console.log('======================================================\n');
 const publicPages = [
   'index.html',
   'games/index.html',
-  'games/grimmkart/index.html',
+  'games/fowl-play/index.html',
   'games/the-hook-and-skein/index.html',
   'games/scarward/index.html',
   'hook-and-skein.html',
@@ -64,7 +64,7 @@ const unlistedPages = [
   'lab/index.html',
   'showcase/index.html',
   'products/index.html',
-  'products/grimmkart.html'
+  'products/fowl-play.html'
 ];
 
 const allCheckedPages = [...publicPages, ...unlistedPages];
@@ -308,7 +308,7 @@ console.log('\n6. Brand & Product Names translate="no" Protection');
 const properNames = [
   'Burnt Thumb Works',
   'The Hook and the Skein',
-  'GrimmKart',
+  'Fowl Play',
   'Scarward',
   'Garden Sage',
   'Pantry Panda'
@@ -402,7 +402,7 @@ const codeScanFiles = [
   ...collectFiles('scripts', ['.js', '.mjs', '.py'])
 ];
 
-const bannedCopyRegex = /(AI Workflow Setup|Care Plan|\$650|Flat-Rate Pricing|PROJECT_FORM_URL|services\.html|ai-workflow-setup\.html|web-builds|about\.html|GrimmKart\.io)/i;
+const bannedCopyRegex = /(AI Workflow Setup|Care Plan|\$650|Flat-Rate Pricing|PROJECT_FORM_URL|services\.html|ai-workflow-setup\.html|web-builds|about\.html|GrimmKart\.io|GrimmKart)/i;
 const realNameRegex = /(?:\bEric\b|\bBalmforth\b|Duke Errol|Lord Errol)/;
 const hardcodedDriveRegex = /[A-Za-z]:(?:\\\\|\/)(?:BurntThumbWorks|Users)/i;
 
@@ -424,7 +424,7 @@ for (const rel of codeScanFiles) {
   if (m3) hardcodedPathHits.push(`${rel}: "${m3[0]}"`);
 }
 
-assert(bannedHits.length === 0, 'Zero consulting, services, pricing, About, or legacy GrimmKart.io copy', bannedHits.length ? bannedHits.join(' | ') : 'Clean across HTML, JS, CSS & scripts');
+assert(bannedHits.length === 0, 'Zero consulting, services, pricing, About, or legacy GrimmKart copy', bannedHits.length ? bannedHits.join(' | ') : 'Clean across HTML, JS, CSS & scripts');
 assert(realNameHits.length === 0, 'Zero real personal names or informal peerage variants in shipped code', realNameHits.length ? realNameHits.join(' | ') : 'Zero real-name or informal-title leaks');
 assert(hardcodedPathHits.length === 0, 'Zero hardcoded machine-specific drive paths in repo code/scripts', hardcodedPathHits.length ? hardcodedPathHits.join(' | ') : 'Clean relative paths only');
 
