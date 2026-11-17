@@ -33,7 +33,7 @@ line with:
 ```
 
 (Affected pages: index.html, apps.html, hook-and-skein.html, garden-sage.html,
-ai-workflow-setup.html, contact.html, 404.html.)
+pantry-panda.html, contact.html, 404.html.)
 
 Done — the `--font-*` tokens already prefer these families, with system-font
 fallbacks if a file is ever missing.

@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
 <!--
   ============================================================================
-  BURNT THUMB WORKS — REUSABLE PRODUCT / POST TEMPLATE
+  BURNT THUMB WORKS — REUSABLE DRAFT POST TEMPLATE
   ============================================================================
-  Copy this file to create a new post in /products/, /lab/, or /showcase/.
+  Copy this file to create a new draft post in /products/, /lab/, or /showcase/.
   See /POSTS_SYSTEM.md for the full workflow.
 
   DRAFT BY DEFAULT: this template ships with robots "noindex, nofollow" and is
@@ -12,16 +12,8 @@
   TO PUBLISH (make public + indexable):
     1. Change the robots meta below to:  <meta name="robots" content="index, follow">
     2. Set a correct <link rel="canonical"> URL.
-    3. Add a card linking to it on the section index (products/lab/showcase index.html).
+    3. Add a card linking to it on the target hub page.
     4. Add a <url> entry to /sitemap.xml.
-
-  TO KEEP AS A DRAFT:
-    - Leave robots as "noindex, nofollow".
-    - Do NOT link it from any index and do NOT add it to sitemap.xml.
-    - (Optional) keep drafts in a /drafts/ subfolder for tidiness.
-
-  Fill every  <!-- FILL: ... -->  marker. These files sit ONE level deep
-  (e.g. /products/your-post.html), so assets use "../".
   ============================================================================
 -->
 <html lang="en">
@@ -31,7 +23,6 @@
   <title><!-- FILL: Post title --> — Burnt Thumb Works</title>
   <meta name="description" content="<!-- FILL: 1–2 sentence description for search + social. -->">
   <link rel="canonical" href="https://burntthumbworks.com/<!-- FILL: section/slug.html -->">
-  <!-- DRAFT default. Change to "index, follow" only when publishing (see header). -->
   <meta name="robots" content="noindex, nofollow">
   <meta property="og:type" content="website">
   <meta property="og:title" content="<!-- FILL: Social title -->">
@@ -40,42 +31,40 @@
   <meta property="og:site_name" content="Burnt Thumb Works">
   <meta name="theme-color" content="#F0E4C7">
   <link rel="icon" href="../assets/crest-mark.png" type="image/png">
+  <script src="../js/codex-loader.js"></script>
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/manuscript.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
+  <header class="site-header site-header--codex">
     <div class="site-header__inner">
       <a class="brand" href="../index.html" aria-label="Burnt Thumb Works — home">
-        <img class="brand__mark" src="../assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <img class="brand__mark" src="../assets/crest-mark.png" alt="" width="44" height="44" decoding="async">
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="../games/">Games</a>
-        <a class="nav__link" href="../apps.html">Apps</a>
-        <a class="nav__link" href="../lab/">Lab</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="../games/grimmkart/">Play GrimmKart</a></span>
+      <nav class="nav" id="primary-nav" aria-label="Navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="../index.html">Home</a>
+          <a class="ribbon-tab" href="../games/">Games</a>
+          <a class="ribbon-tab" href="../apps.html">Apps</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <div class="page-head">
+    <div class="page-head page-head--manuscript">
       <div class="wrap">
         <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> <span>/</span> <a href="./"><!-- FILL: Section name --></a> <span>/</span> <span><!-- FILL: Post title --></span></nav>
         <h1 class="page-head__title"><!-- FILL: Post title --></h1>
         <p class="page-head__sub"><!-- FILL: One-line summary / hook. --></p>
-        <!-- Optional primary CTA:
-        <p style="margin-top: var(--space-6);">
-          <a class="btn btn--primary btn--lg" href="#"><!-- FILL: CTA label --></a>
-        </p>
-        -->
       </div>
     </div>
 
@@ -87,10 +76,8 @@
           <p class="section__lede"><!-- FILL: Lead paragraph. --></p>
         </div>
 
-        <!-- Body. Reuse site components: grid grid--3, card, card__title, card__body,
-             badge badge--success/info/warning/ember, tag, btn btn--primary/secondary/ghost. -->
         <div class="grid grid--3">
-          <article class="card">
+          <article class="card card--manuscript">
             <h3 class="card__title"><!-- FILL --></h3>
             <p class="card__body"><!-- FILL --></p>
           </article>
@@ -102,32 +89,37 @@
   <footer class="site-footer">
     <div class="site-footer__inner">
       <div>
-        <div class="footer-brand">
-          <img src="../assets/crest-mark.png" alt="" width="52" height="52" decoding="async" loading="lazy">
-          <span class="nm">Burnt Thumb<br>Works</span>
+        <div class="footer-brand footer-brand--crest">
+          <img src="../assets/crest-ink.png" alt="Burnt Thumb Works crest" width="760" height="680" decoding="async" loading="lazy">
         </div>
-        <p class="footer-blurb">An independent software studio building practical websites, apps, tools, and interactive products.</p>
+        <p class="footer-blurb">Handcrafted games and dependable everyday tools — stewarded by <span translate="no">His Grace the Duke of Errol a Dude of Greenthumb Abbey</span>.</p>
       </div>
       <div class="footer-col">
-        <h2 class="footer-col__h">Explore</h2>
+        <h2 class="footer-col__h">Games</h2>
         <ul>
-          <li><a href="../products/">Products</a></li>
-          <li><a href="../games/">Games</a></li>
-          <li><a href="../lab/">The Lab</a></li>
-          <li><a href="../showcase/">Showcase</a></li>
+          <li><a href="../games/">All Games</a></li>
+          <li><a href="../games/grimmkart/" translate="no">GrimmKart</a></li>
+          <li><a href="../games/the-hook-and-skein/" translate="no">The Hook and the Skein</a></li>
+          <li><a href="../games/scarward/" translate="no">Scarward</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h2 class="footer-col__h">Studio</h2>
+        <h2 class="footer-col__h">Apps</h2>
         <ul>
-          <li><a href="../services.html">Services</a></li>
-          <li><a href="../contact.html">Start a project</a></li>
+          <li><a href="../apps.html">All Apps</a></li>
+          <li><a href="../garden-sage.html" translate="no">Garden Sage</a></li>
+          <li><a href="../pantry-panda.html" translate="no">Pantry Panda</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
+        <div class="codex-toggle-wrap">
+          <button type="button" class="codex-mode-btn" data-codex-toggle onclick="btwToggleCodexMode()" aria-label="Toggle codex display mode">
+            View: <span>Lite</span> | <strong style="color:var(--manuscript-rubric,#8F2D18);">Full Manuscript</strong>
+          </button>
+        </div>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

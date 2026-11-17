@@ -24,7 +24,7 @@ curl -s -o /dev/null -w "%{http_code}" https://burntthumbworks.com/
 - [x] No user/customer/private data; no internal reports.
 - [x] `robots.txt`, `sitemap.xml`, `404.html`, `.nojekyll` present.
 - [ ] og:image — intentionally omitted until a real share image exists.
-- [ ] DNS/custom domain — NOT configured by this task (Eric/DNS step).
+- [ ] DNS/custom domain — NOT configured by this task (Director/DNS step).
 
 ## Rollback
 The site is live. To roll back a deploy, revert the offending commit and push:

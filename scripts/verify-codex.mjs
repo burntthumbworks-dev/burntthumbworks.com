@@ -10,10 +10,11 @@
  * 5. Zero broken internal links across public and unlisted HTML pages
  * 6. translate="no" coverage on brand, game, and app proper names
  * 7. Typography tokens include CJK & Devanagari system font fallbacks
- * 8. Lane lock integrity (C:\BurntThumbWorks\grimmkart is 100% untouched)
+ * 8. Sibling repo isolation (GrimmKart working tree is 100% clean, resolved without hardcoded C:\ paths)
+ * 9. Studio brand, identity & path invariants (zero AI consulting/services, no About page, zero real names, zero hardcoded local paths)
  */
 
-import { readFileSync, statSync, existsSync } from 'node:fs';
+import { readFileSync, statSync, existsSync, readdirSync } from 'node:fs';
 import { resolve, join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
@@ -59,11 +60,7 @@ const publicPages = [
 ];
 
 const unlistedPages = [
-  'web-builds/index.html',
-  'web-builds/sample/index.html',
   'contact.html',
-  'services.html',
-  'ai-workflow-setup.html',
   'lab/index.html',
   'showcase/index.html',
   'products/index.html',
@@ -351,19 +348,94 @@ if (existsSync(tokensPath)) {
 }
 
 // ---------------------------------------------------------------------------
-// TEST 8: Lane Lock Isolation (GrimmKart Untouched)
+// TEST 8: Sibling Repo Isolation (GrimmKart Clean, Relative Resolution)
 // ---------------------------------------------------------------------------
 console.log('\n8. Lane Lock & Repository Isolation');
 
-const grimmkartRepoPath = 'C:\\BurntThumbWorks\\grimmkart';
-if (existsSync(grimmkartRepoPath)) {
+const grimmkartRepoPath = process.env.GRIMMKART_REPO_PATH || resolve(REPO_ROOT, '..', '..', 'grimmkart');
+if (existsSync(join(grimmkartRepoPath, '.git'))) {
   try {
     const status = execSync(`git -C "${grimmkartRepoPath}" status -s`, { encoding: 'utf8' }).trim();
-    assert(status === '', 'GrimmKart repo (C:\\BurntThumbWorks\\grimmkart) 100% untouched', status ? `Changes detected: ${status}` : 'Clean - 0 changes');
+    assert(status === '', 'Sibling GrimmKart repo working tree is 100% clean', status ? `Changes detected: ${status}` : 'Clean - 0 changes');
   } catch (err) {
     assert(false, 'Check GrimmKart git status', err.message);
   }
+} else {
+  assert(true, 'Sibling GrimmKart repo check skipped (not mounted relative to this workspace)');
 }
+
+// ---------------------------------------------------------------------------
+// TEST 9: Studio Brand, Identity & Path Invariants
+// ---------------------------------------------------------------------------
+console.log('\n9. Studio Brand, Identity & Path Invariants');
+
+const forbiddenFiles = [
+  'about.html',
+  'services.html',
+  'ai-workflow-setup.html',
+  'web-builds/index.html',
+  'web-builds/sample/index.html',
+  'tools/web_builds/ASYNC_PLAYBOOK.md'
+];
+const presentForbidden = forbiddenFiles.filter((rel) => existsSync(join(REPO_ROOT, rel)));
+assert(presentForbidden.length === 0, 'Zero consulting, services, web-builds, or About pages exist in repo', presentForbidden.length ? `Found: ${presentForbidden.join(', ')}` : 'All forbidden routes absent');
+
+function collectFiles(relDir, exts) {
+  const dir = join(REPO_ROOT, relDir);
+  if (!existsSync(dir)) return [];
+  const out = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const rel = relDir ? `${relDir}/${entry.name}` : entry.name;
+    if (entry.isDirectory()) {
+      out.push(...collectFiles(rel, exts));
+    } else if (exts.some((ext) => entry.name.toLowerCase().endsWith(ext))) {
+      out.push(rel);
+    }
+  }
+  return out;
+}
+
+const codeScanFiles = [
+  ...allCheckedPages,
+  ...collectFiles('js', ['.js', '.mjs']),
+  ...collectFiles('css', ['.css']),
+  ...collectFiles('scripts', ['.js', '.mjs', '.py'])
+];
+
+const bannedCopyRegex = /(AI Workflow Setup|Care Plan|\$650|Flat-Rate Pricing|PROJECT_FORM_URL|services\.html|ai-workflow-setup\.html|web-builds|about\.html|GrimmKart\.io)/i;
+const realNameRegex = /(?:\bEric\b|\bBalmforth\b|Duke Errol|Lord Errol)/;
+const hardcodedDriveRegex = /[A-Za-z]:(?:\\\\|\/)(?:BurntThumbWorks|Users)/i;
+
+const bannedHits = [];
+const realNameHits = [];
+const hardcodedPathHits = [];
+
+for (const rel of codeScanFiles) {
+  const full = join(REPO_ROOT, rel);
+  if (!existsSync(full)) continue;
+  const text = readFileSync(full, 'utf8');
+  if (rel !== 'scripts/verify-codex.mjs') {
+    const m1 = text.match(bannedCopyRegex);
+    if (m1) bannedHits.push(`${rel}: "${m1[0]}"`);
+    const m2 = text.match(realNameRegex);
+    if (m2) realNameHits.push(`${rel}: "${m2[0]}"`);
+  }
+  const m3 = text.match(hardcodedDriveRegex);
+  if (m3) hardcodedPathHits.push(`${rel}: "${m3[0]}"`);
+}
+
+assert(bannedHits.length === 0, 'Zero consulting, services, pricing, About, or legacy GrimmKart.io copy', bannedHits.length ? bannedHits.join(' | ') : 'Clean across HTML, JS, CSS & scripts');
+assert(realNameHits.length === 0, 'Zero real personal names or informal peerage variants in shipped code', realNameHits.length ? realNameHits.join(' | ') : 'Zero real-name or informal-title leaks');
+assert(hardcodedPathHits.length === 0, 'Zero hardcoded machine-specific drive paths in repo code/scripts', hardcodedPathHits.length ? hardcodedPathHits.join(' | ') : 'Clean relative paths only');
+
+const peerageColophon = 'His Grace the Duke of Errol a Dude of Greenthumb Abbey';
+const missingColophon = publicPages
+  .filter((rel) => rel !== '404.html' && !rel.startsWith('apps/'))
+  .filter((rel) => {
+    const p = join(REPO_ROOT, rel);
+    return existsSync(p) && !readFileSync(p, 'utf8').includes(peerageColophon);
+  });
+assert(missingColophon.length === 0, 'Public studio pages carry canonical peerage colophon', missingColophon.length ? `Missing in: ${missingColophon.join(', ')}` : 'Canonical colophon present');
 
 // ---------------------------------------------------------------------------
 // FINAL SUMMARY

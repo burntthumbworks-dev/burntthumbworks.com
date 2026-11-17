@@ -4,47 +4,50 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Showcase — Burnt Thumb Works</title>
-  <meta name="description" content="A showcase of work from Burnt Thumb Works — featured games, apps, and tools built by the studio. See GrimmKart.io, The Hook and Skein, and Garden Sage.">
+  <meta name="description" content="Featured games and everyday apps from Burnt Thumb Works: GrimmKart, The Hook and the Skein, Scarward, Garden Sage, and Pantry Panda.">
   <link rel="canonical" href="https://burntthumbworks.com/showcase/">
   <meta name="robots" content="noindex, nofollow">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Showcase — Burnt Thumb Works">
-  <meta property="og:description" content="Featured work from the studio — games, apps, and tools we're proud of.">
+  <meta property="og:description" content="Featured work from the studio — original games and everyday apps.">
   <meta property="og:url" content="https://burntthumbworks.com/showcase/">
   <meta property="og:site_name" content="Burnt Thumb Works">
   <meta name="theme-color" content="#F0E4C7">
   <link rel="icon" href="../assets/crest-mark.png" type="image/png">
+  <script src="../js/codex-loader.js"></script>
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/manuscript.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
+  <header class="site-header site-header--codex">
     <div class="site-header__inner">
       <a class="brand" href="../index.html" aria-label="Burnt Thumb Works — home">
-        <img class="brand__mark" src="../assets/crest-mark.png" alt="" width="42" height="42" decoding="async">
-        <span class="brand__name">Burnt Thumb Works</span>
+        <img class="brand__mark" src="../assets/crest-mark.png" alt="" width="44" height="44" decoding="async">
+        <span class="brand__name" translate="no">Burnt Thumb Works</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
       </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="../games/">Games</a>
-        <a class="nav__link" href="../apps.html">Apps</a>
-        <a class="nav__link" href="../lab/">Lab</a>
-        <span class="nav__cta"><a class="btn btn--primary" href="../games/grimmkart/">Play GrimmKart</a></span>
+      <nav class="nav" id="primary-nav" aria-label="Navigation">
+        <div class="ribbon-nav">
+          <a class="ribbon-tab" href="../index.html">Home</a>
+          <a class="ribbon-tab" href="../games/">Games</a>
+          <a class="ribbon-tab" href="../apps.html">Apps</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <div class="page-head">
+    <div class="page-head page-head--manuscript">
       <div class="wrap">
         <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> <span>/</span> <span>Showcase</span></nav>
         <h1 class="page-head__title">Showcase</h1>
-        <p class="page-head__sub">A few things we've built and shipped. Play them, try them, see how we work — then bring us your idea.</p>
+        <p class="page-head__sub">A quiet shelf of original games and everyday tools built in the open—play them right in your browser.</p>
       </div>
     </div>
 
@@ -52,7 +55,7 @@
       <div class="wrap">
         <div class="grid grid--3">
 
-          <a class="card card--interactive" href="../games/grimmkart/">
+          <a class="card card--interactive card--manuscript" href="../games/grimmkart/">
             <div class="project__top">
               <span class="tag">Featured · game</span>
               <span class="badge badge--success">
@@ -60,42 +63,37 @@
                 Play free
               </span>
             </div>
-            <h3 class="card__title card__title--lg">GrimmKart.io</h3>
-            <p class="card__body">A folklore kart game with two modes — racing and battle arena — built in the browser with Three.js. 32 characters, 32 karts, original public-domain Grimm cast. No install, no account.</p>
+            <h3 class="card__title card__title--lg" translate="no">GrimmKart</h3>
+            <p class="card__body">A gritty folklore kart racer and 3:00 Timed FFA battle arena built with Three.js—32 tracks, 10 multi-level arenas, 16 tricks, and local Season 1 XP. No install, no account.</p>
             <span class="card__link">Play it now <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
           </a>
 
-          <a class="card card--interactive" href="../hook-and-skein.html">
+          <a class="card card--interactive card--manuscript" href="../games/the-hook-and-skein/">
             <div class="project__top">
-              <span class="tag">App</span>
-              <span class="badge badge--info">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                In development
-              </span>
+              <span class="tag">Game</span>
+              <span class="badge badge--info">Playable slice</span>
             </div>
-            <h3 class="card__title card__title--lg">The Hook and Skein</h3>
-            <p class="card__body">A mobile-first narrative choice adventure where your choices weave the story — read, choose, survive, and live with the consequences.</p>
-            <span class="card__link">See the project <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            <h3 class="card__title card__title--lg" translate="no">The Hook and the Skein</h3>
+            <p class="card__body">A survival RPG set 6,500 years after the First Shearing. Walk Low Vale's drowned roads, carry your debts, and live with every choice.</p>
+            <span class="card__link">Enter Low Vale <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
           </a>
 
-          <a class="card card--interactive" href="../garden-sage.html">
+          <a class="card card--interactive card--manuscript" href="../garden-sage.html">
             <div class="project__top">
               <span class="tag">App</span>
-              <span class="badge badge--info">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                In development
-              </span>
+              <span class="badge badge--info">Live slice</span>
             </div>
-            <h3 class="card__title card__title--lg">Garden Sage</h3>
-            <p class="card__body">A source-backed growing assistant that gives grounded, referenced advice — built for people who actually want their plants to live.</p>
-            <span class="card__link">See the project <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            <h3 class="card__title card__title--lg" translate="no">Garden Sage</h3>
+            <p class="card__body">A grounded garden planner for tracking beds, frost timing, and crop headaches—built for people who want their plants to live.</p>
+            <span class="card__link">See the app <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
           </a>
 
         </div>
 
-        <p style="margin-top: var(--space-8);">
-          <a class="btn btn--primary btn--lg" data-start-project href="../contact.html#intake">Start a project with us
+        <p style="margin-top: var(--space-8); display:flex; gap: var(--space-4); flex-wrap:wrap;">
+          <a class="btn btn--primary btn--lg" href="../games/">Browse Games
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a class="btn btn--secondary btn--lg" href="../apps.html">Everyday Apps</a>
         </p>
       </div>
     </section>
@@ -104,32 +102,37 @@
   <footer class="site-footer">
     <div class="site-footer__inner">
       <div>
-        <div class="footer-brand">
-          <img src="../assets/crest-mark.png" alt="" width="52" height="52" decoding="async" loading="lazy">
-          <span class="nm">Burnt Thumb<br>Works</span>
+        <div class="footer-brand footer-brand--crest">
+          <img src="../assets/crest-ink.png" alt="Burnt Thumb Works crest" width="760" height="680" decoding="async" loading="lazy">
         </div>
-        <p class="footer-blurb">An independent software studio building practical websites, apps, tools, and interactive products.</p>
+        <p class="footer-blurb">Handcrafted games and dependable everyday tools — stewarded by <span translate="no">His Grace the Duke of Errol a Dude of Greenthumb Abbey</span>.</p>
       </div>
       <div class="footer-col">
-        <h2 class="footer-col__h">Explore</h2>
+        <h2 class="footer-col__h">Games</h2>
         <ul>
-          <li><a href="../products/">Products</a></li>
-          <li><a href="../games/">Games</a></li>
-          <li><a href="../lab/">The Lab</a></li>
-          <li><a href="./">Showcase</a></li>
+          <li><a href="../games/">All Games</a></li>
+          <li><a href="../games/grimmkart/" translate="no">GrimmKart</a></li>
+          <li><a href="../games/the-hook-and-skein/" translate="no">The Hook and the Skein</a></li>
+          <li><a href="../games/scarward/" translate="no">Scarward</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h2 class="footer-col__h">Studio</h2>
+        <h2 class="footer-col__h">Apps</h2>
         <ul>
-          <li><a href="../services.html">Services</a></li>
-          <li><a href="../contact.html">Start a project</a></li>
+          <li><a href="../apps.html">All Apps</a></li>
+          <li><a href="../garden-sage.html" translate="no">Garden Sage</a></li>
+          <li><a href="../pantry-panda.html" translate="no">Pantry Panda</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>© <span data-year>2026</span> Burnt Thumb Works</span>
+        <span>© <span data-year>2026</span> <span translate="no">Burnt Thumb Works</span></span>
+        <div class="codex-toggle-wrap">
+          <button type="button" class="codex-mode-btn" data-codex-toggle onclick="btwToggleCodexMode()" aria-label="Toggle codex display mode">
+            View: <span>Lite</span> | <strong style="color:var(--manuscript-rubric,#8F2D18);">Full Manuscript</strong>
+          </button>
+        </div>
         <a href="https://burntthumbworks.com/">burntthumbworks.com</a>
       </div>
     </div>

@@ -42,7 +42,7 @@ The system is built to release on your schedule:
   robots tag and add the links. You control the moment each thing goes live.
 - Drafts are still just static files on a public host, so treat a draft URL as
   "unlisted, not secret." Don't put anything truly confidential (unreleased
-  pricing you don't want seen, secrets, private dashboards) in a draft post.
+  details you don't want seen, secrets, private dashboards) in a draft post.
   For genuinely private material, keep it out of this repo entirely.
 - Sitemap + `index, follow` are what actually invite search engines in. Until a
   post has both, it won't show up in Google.
