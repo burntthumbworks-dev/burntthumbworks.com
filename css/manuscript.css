@@ -497,15 +497,18 @@
 }
 
 .card-plate-slot {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 120px;
+  height: 196px;
   margin-bottom: var(--space-4);
-  padding: var(--space-2);
-  background: var(--surface-2);
-  border: 1px solid var(--border-subtle, var(--border-default));
+  padding: var(--space-3);
+  background: radial-gradient(circle at 50% 50%, var(--surface-1, #FAF3E3) 0%, var(--surface-2, #EFE3C8) 100%);
+  border: 1px solid var(--manuscript-border, #C8B388);
   border-radius: var(--radius-md);
+  box-shadow: inset 0 0 0 2px var(--surface-1, #FAF3E3), inset 0 0 0 3px rgba(158, 116, 30, 0.28);
+  overflow: hidden;
 }
 
 .card-plate-slot img {
@@ -516,17 +519,61 @@
   opacity: 1;
   object-fit: contain;
   display: block;
+  filter: drop-shadow(0 4px 10px rgba(33, 24, 12, 0.14));
+  transition: transform 0.22s ease;
+}
+
+.card--manuscript:hover .card-plate-slot img {
+  transform: scale(1.04);
+}
+
+.card__folio-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px dashed rgba(158, 116, 30, 0.35);
 }
 
 .studio-divider {
+  position: relative;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: var(--space-4) 0;
+  width: 100%;
+  max-width: var(--maxw, 1180px);
+  margin: var(--space-2) auto var(--space-6);
+  padding: 0 var(--space-6);
+}
+
+.studio-divider::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-top: 2px solid var(--manuscript-gold, #9E741E);
+  border-bottom: 1px solid var(--manuscript-rubric, #8F2D18);
+  opacity: 0.72;
 }
 
 .studio-divider img {
-  width: min(340px, 82%);
+  width: 100%;
+  max-width: 100%;
   height: auto;
   opacity: 1;
   display: block;
+  filter: drop-shadow(0 6px 14px rgba(45, 24, 12, 0.14));
+}
+
+@media (max-width: 640px) {
+  .studio-divider {
+    padding: 0 var(--space-4);
+    margin: 0 auto var(--space-4);
+  }
+  .card-plate-slot {
+    height: 168px;
+  }
 }
