@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Burnt Thumb Works — Handcrafted Games &amp; Everyday Apps</title>
-  <meta name="description" content="Independent studio building original games—Fowl Play, The Hook and the Skein, Scarward—and everyday apps Garden Sage and Pantry Panda.">
+  <title>Burnt Thumb Works — Original Games &amp; Desktop Software</title>
+  <meta name="description" content="Independent studio building original games—Fowl Play and The Hook and the Skein—and desktop software including RetroMaster 3000 and StationPing.">
   <link rel="canonical" href="https://burntthumbworks.com/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Burnt Thumb Works — Handcrafted Games &amp; Everyday Apps">
-  <meta property="og:description" content="Independent studio building original games—Fowl Play, The Hook and the Skein, Scarward—and everyday apps Garden Sage and Pantry Panda.">
+  <meta property="og:title" content="Burnt Thumb Works — Original Games &amp; Desktop Software">
+  <meta property="og:description" content="Fowl Play, The Hook and the Skein, RetroMaster 3000, and StationPing.">
   <meta property="og:url" content="https://burntthumbworks.com/">
   <meta property="og:site_name" content="Burnt Thumb Works">
   <meta property="og:image" content="https://burntthumbworks.com/assets/og-image.png">
@@ -16,26 +16,63 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Burnt Thumb Works crest">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Burnt Thumb Works — Handcrafted Games &amp; Everyday Apps">
-  <meta property="og:image:alt" content="Burnt Thumb Works crest">
-  <meta name="twitter:description" content="Independent studio building original games—Fowl Play, The Hook and the Skein, Scarward—and everyday apps Garden Sage and Pantry Panda.">
+  <meta name="twitter:title" content="Burnt Thumb Works — Original Games &amp; Desktop Software">
+  <meta name="twitter:description" content="Fowl Play, The Hook and the Skein, RetroMaster 3000, and StationPing.">
   <meta name="twitter:image" content="https://burntthumbworks.com/assets/og-image.png">
   <meta name="theme-color" content="#F0E4C7">
   <link rel="icon" href="assets/crest-mark.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/crest-mark.png">
 
-  <!-- Adaptive Codex Loader (detects data-saver, 2g networks, and China timezone for auto-lite) -->
   <script src="js/codex-loader.js"></script>
 
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/manuscript.css">
+  <style>
+    .flow-list { display: flex; flex-direction: column; }
+    .flow-row {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: clamp(24px, 4vw, 56px);
+      align-items: center;
+      padding: var(--space-10) 0;
+      border-top: 1px solid var(--border-default);
+    }
+    .flow-row:first-child { border-top: none; padding-top: var(--space-4); }
+    .flow-row--flip .flow-media { order: 2; }
+    .flow-media {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .flow-media img {
+      max-width: 100%;
+      max-height: 300px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: var(--radius-lg);
+    }
+    .flow-copy h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      color: var(--fg-strong);
+      margin-bottom: var(--space-3);
+    }
+    .section--alt .flow-copy h3 { color: var(--parchment-50); }
+    .section--alt .flow-copy p { color: var(--parchment-200); }
+    .section--alt .flow-row { border-top-color: rgba(219, 190, 120, 0.2); }
+    .flow-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-5); }
+    @media (max-width: 780px) {
+      .flow-row { grid-template-columns: 1fr; }
+      .flow-row--flip .flow-media { order: 0; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ============ HEADER ============ -->
   <header class="site-header site-header--codex">
     <div class="site-header__inner">
       <a class="brand" href="index.html" aria-label="Burnt Thumb Works — home">
@@ -63,13 +100,14 @@
         <div class="frontispiece__frame">
           <div class="studio-hero-split">
             <div class="hero__copy">
-              <h1 class="hero__title" id="hero-title">Handcrafted Games &amp; Apps</h1>
-              <p class="hero__sub" style="font-family: var(--font-serif); font-size: var(--text-lg); line-height: 1.65; color: var(--fg-2); margin: var(--space-4) 0 var(--space-6);">Small, self-contained projects made with care—games with real teeth and warm, practical helpers for the garden and the kitchen.</p>
-              <div class="hero__actions">
-                <a class="btn btn--primary btn--lg" href="#featured-games">
-                  Play Games
+              <h1 class="hero__title" id="hero-title">Original Games &amp; Desktop Software</h1>
+              <p class="hero__sub" style="font-family: var(--font-serif); font-size: var(--text-lg); line-height: 1.65; color: var(--fg-2); margin: var(--space-4) 0 var(--space-6);">Self-contained worlds you can play in your browser and zero-subscription desktop tools built to run locally on your own hardware.</p>
+              <div class="hero__actions" style="display:flex; gap: var(--space-3); flex-wrap:wrap;">
+                <a class="btn btn--primary btn--lg" href="games/fowl-play/play/">
+                  Play <span translate="no">Fowl Play</span>
                   <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
+                <a class="btn btn--secondary btn--lg" href="#featured-apps">Desktop Software</a>
               </div>
             </div>
             <div class="frontispiece__cartouche">
@@ -89,83 +127,73 @@
       <div class="wrap">
         <div class="section__head">
           <h2 class="section__title" id="games-title">Original Games</h2>
-          <p class="section__lede">Three worlds you can jump into right now—no downloads or logins.</p>
         </div>
-        <div class="grid grid--3">
 
-          <article class="card card--manuscript">
-            <div class="card-plate-slot">
+        <div class="flow-list">
+          <article class="flow-row">
+            <div class="flow-media">
               <img src="assets/manuscript/games/fowl-play-steed.png" alt="Fowl Play steed plate" width="460" height="422" loading="lazy" decoding="async">
             </div>
-            <h3 class="card__title card__title--lg" translate="no">Fowl Play</h3>
-            <p class="card__body">Battle friends in the gritty, original fairy tales told to warn you why you don't stray off the path. Pilot 17 bespoke folk-storybook wagons and carriages, drift cursed bends, and fire 16 wicked tricks across 12 spline circuits and 6 battle arenas—solo, split-screen, or online.</p>
-            <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
-              <a class="btn btn--primary" href="games/fowl-play/play/">Play</a>
-              <a class="btn btn--secondary" href="games/fowl-play/">Overview</a>
-            </p>
-          </article>
-
-          <article class="card card--manuscript">
-            <div class="card-plate-slot">
-              <img src="assets/manuscript/games/scarward-vrakoni-beast.png" alt="Scarward Vrakoni war-beast plate" width="473" height="433" loading="lazy" decoding="async">
+            <div class="flow-copy">
+              <h3 translate="no">Fowl Play</h3>
+              <p>Battle friends in the gritty, original fairy tales told to warn you why you don't stray off the path. Pilot 17 bespoke folk-storybook wagons and carriages, drift cursed bends, and fire 16 wicked tricks across 12 spline circuits and 6 battle arenas—solo, split-screen, or online.</p>
+              <div class="flow-actions">
+                <a class="btn btn--primary" href="games/fowl-play/play/">Play</a>
+                <a class="btn btn--secondary" href="games/fowl-play/">Overview</a>
+              </div>
             </div>
-            <h3 class="card__title card__title--lg" translate="no">Scarward</h3>
-            <p class="card__body">Set in the world of <span translate="no">The Hook and the Skein</span>. Hold the Scar borderlands against Vrakoni and Hooked Ones, guard the holding circles as the Rust rises, and carry your Order's discipline across every watch.</p>
-            <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
-              <a class="btn btn--primary" href="games/scarward/play/">Play</a>
-              <a class="btn btn--secondary" href="games/scarward/">Overview</a>
-            </p>
           </article>
 
-          <article class="card card--manuscript">
-            <div class="card-plate-slot">
+          <article class="flow-row flow-row--flip">
+            <div class="flow-media">
               <img src="assets/manuscript/games/hook-and-skein-weaver.png" alt="The Hook and the Skein weaver plate" width="296" height="479" loading="lazy" decoding="async">
             </div>
-            <h3 class="card__title card__title--lg" translate="no">The Hook and the Skein</h3>
-            <p class="card__body">A survival RPG set 6,500 years after the First Shearing. Walk Low Vale's drowned roads, carry your debts, and shape a persistent world that remembers. Who are you, and what mark will you leave behind?</p>
-            <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
-              <a class="btn btn--primary" href="games/the-hook-and-skein/play/">Play</a>
-              <a class="btn btn--secondary" href="games/the-hook-and-skein/">Overview</a>
-            </p>
+            <div class="flow-copy">
+              <h3 translate="no">The Hook and the Skein</h3>
+              <p>A survival RPG set 6,500 years after the First Shearing. Walk Low Vale's drowned roads, carry your debts, and shape a persistent world that remembers. Who are you, and what mark will you leave behind?</p>
+              <div class="flow-actions">
+                <a class="btn btn--primary" href="games/the-hook-and-skein/play/">Play</a>
+                <a class="btn btn--secondary" href="games/the-hook-and-skein/">Overview</a>
+              </div>
+            </div>
           </article>
-
         </div>
       </div>
     </section>
 
-    <!-- ============ 2. APPS ============ -->
+    <!-- ============ 2. DESKTOP SOFTWARE ============ -->
     <section class="section section--alt" id="featured-apps" aria-labelledby="apps-title">
       <div class="wrap">
         <div class="section__head">
-          <h2 class="section__title" id="apps-title">Apps</h2>
-          <p class="section__lede">Simple, warm helpers for the garden and the kitchen.</p>
+          <h2 class="section__title" id="apps-title">Desktop Software</h2>
         </div>
-        <div class="grid grid--2">
 
-          <article class="card card--manuscript">
-            <div class="card-plate-slot">
-              <img src="assets/manuscript/apps/garden-sage-botanical.png" alt="Garden Sage studio plate" width="432" height="480" loading="lazy" decoding="async">
+        <div class="flow-list">
+          <article class="flow-row">
+            <div class="flow-media">
+              <img src="assets/apps/retromaster-3000-cover.png" alt="RetroMaster 3000 3D arcade dashboard cover" width="1280" height="720" loading="lazy" decoding="async">
             </div>
-            <h3 class="card__title card__title--lg" translate="no">Garden Sage</h3>
-            <p class="card__body">A straightforward garden planner to keep track of your beds, planting timing, and what's bothering your crops—from seed trays on the sill to backyard rows.</p>
-            <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
-              <a class="btn btn--primary" href="apps/garden-sage/demo/">Try Live Slice</a>
-              <a class="btn btn--secondary" href="garden-sage.html">Overview</a>
-            </p>
+            <div class="flow-copy">
+              <h3 translate="no">RetroMaster 3000</h3>
+              <p>Turn your legally owned game backups into a glowing 2001-inspired 3D living-room arcade on Windows, Phone, Fire TV, and Google TV. Includes a built-in legal open-source Homebrew Store (1,100+ titles), 4-player Bluetooth controller mapping, and cross-device Auto-Save at $0/month.</p>
+              <div class="flow-actions">
+                <a class="btn btn--primary" href="apps/retromaster-3000/">Overview &amp; Specs</a>
+              </div>
+            </div>
           </article>
 
-          <article class="card card--manuscript">
-            <div class="card-plate-slot">
-              <img src="assets/manuscript/apps/pantry-panda-guardian.png" alt="Pantry Panda studio plate" width="347" height="480" loading="lazy" decoding="async">
+          <article class="flow-row flow-row--flip">
+            <div class="flow-media">
+              <img src="assets/apps/stationping-icon.png" alt="StationPing desktop intercom icon" width="256" height="256" loading="lazy" decoding="async" style="max-width: 190px;">
             </div>
-            <h3 class="card__title card__title--lg" translate="no">Pantry Panda</h3>
-            <p class="card__body">Keep tabs on your kitchen, fridge, and pantry, and see what you can make with what you already have—so dinner comes together before food goes to waste.</p>
-            <p style="display:flex; gap: var(--space-3); flex-wrap:wrap; margin-top: var(--space-4);">
-              <a class="btn btn--primary" href="apps/pantry-panda/demo/">Try Live Slice</a>
-              <a class="btn btn--secondary" href="pantry-panda.html">Overview</a>
-            </p>
+            <div class="flow-copy">
+              <h3 translate="no">StationPing</h3>
+              <p>Zero-server multi-PC AI agent intercom and desktop relay. Point it at any synced folder (Google Drive, OneDrive, Dropbox, Syncthing, or LAN) for conflict-free Markdown messaging, tray alerts, Phase Zero Secret Guard, and a built-in MCP server for Antigravity, Claude Code, Cursor, and Codex.</p>
+              <div class="flow-actions">
+                <a class="btn btn--primary" href="apps/station-ping/">Overview &amp; Specs</a>
+              </div>
+            </div>
           </article>
-
         </div>
       </div>
     </section>
@@ -179,7 +207,7 @@
         <div class="footer-brand footer-brand--crest">
           <img src="assets/crest-ink.png" alt="Burnt Thumb Works crest" width="760" height="680" loading="lazy" decoding="async">
         </div>
-        <p class="footer-blurb">Handcrafted games and dependable everyday tools — stewarded by <span translate="no">His Grace the Duke of Errol a Dude of Greenthumb Abbey</span>.</p>
+        <p class="footer-blurb">Original games and zero-subscription desktop software — stewarded by <span translate="no">His Grace the Duke of Errol a Dude of Greenthumb Abbey</span>.</p>
       </div>
       <div class="footer-col">
         <h2 class="footer-col__h">Games</h2>
@@ -187,15 +215,15 @@
           <li><a href="games/">All Games</a></li>
           <li><a href="games/fowl-play/" translate="no">Fowl Play</a></li>
           <li><a href="games/the-hook-and-skein/" translate="no">The Hook and the Skein</a></li>
-          <li><a href="games/scarward/" translate="no">Scarward</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h2 class="footer-col__h">Apps</h2>
+        <h2 class="footer-col__h">Software &amp; Workshop</h2>
         <ul>
-          <li><a href="apps.html">All Apps</a></li>
-          <li><a href="garden-sage.html" translate="no">Garden Sage</a></li>
-          <li><a href="pantry-panda.html" translate="no">Pantry Panda</a></li>
+          <li><a href="apps.html">All Software</a></li>
+          <li><a href="apps/retromaster-3000/" translate="no">RetroMaster 3000</a></li>
+          <li><a href="apps/station-ping/" translate="no">StationPing</a></li>
+          <li><a href="https://greenthumbabbey.com/" target="_blank" rel="noopener">The Abbey Workshop &rarr;</a></li>
         </ul>
       </div>
     </div>
